@@ -1,0 +1,14 @@
+//--------------------------------------------
+// Reset sequence for design counter_tb
+//--------------------------------------------
+
+// Uncomment the next line to drive 'b0 on inputs not explicitly assigned
+// $default_input_value 0
+
+// Declare the reference clock for the ## directive
+$default_clock clk
+
+// Assert reset for 5 cycles
+counter_out[0] = 1
+## 5
+

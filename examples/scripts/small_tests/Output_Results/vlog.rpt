@@ -1,0 +1,9 @@
+QuestaSim-64 vlog 10.5c Compiler 2016.07 Jul 20 2016
+Start time: 21:41:15 on Jan 22,2017
+vlog small_example.sv -l Output_Results/vlog.rpt 
+-- Compiling module small_example
+
+Top level modules:
+	small_example
+End time: 21:41:15 on Jan 22,2017, Elapsed time: 0:00:00
+Errors: 0, Warnings: 0

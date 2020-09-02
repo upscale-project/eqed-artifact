@@ -1,0 +1,149 @@
+# 
+# Questa Static Verification System
+# Version 10.2c_3 linux_x86_64 16 Oct 2013
+# 
+# Copyright 1995-2013 Mentor Graphics Corporation.
+# All Rights Reserved.
+# 
+# THIS WORK CONTAINS TRADE SECRET AND PROPRIETARY INFORMATION 
+# WHICH IS THE PROPERTY OF MENTOR GRAPHICS CORPORATION OR ITS
+# LICENSORS AND IS SUBJECT TO LICENSE TERMS.
+# 
+
+log created Fri Nov  6 02:14:06 2015 by esingh on rsg2.stanford.edu
+
+
+
+## Compiling Design...
+Reading internal mapping file for library mapping
+Reading MTI mapping for library mapping
+Writing all MTI mappings to vmap output ...
+
+Parsing files...
+
+## Elaborating Design...
+Writing all MTI mappings to vmap output ...
+
+
+
+Top level modules:
+	counter_tb
+
+Analyzing design...
+-- Loading module z0in_work.counter_tb
+-- Loading module z0in_work.up_counter
+Warning : Vopt warning.  counter_tb.v(33): (vopt-2241) Connection width does not match width of port 'reset'. The port definition is at: counter.v(9).  [parser-285]
+        : Elaboration will continue.
+Incremental compilation check found no design-units have changed.
+Optimized design name is zi_opt_csl_1718921747_1
+
+-- Restoring module work.counter_tb(fast)
+Initial/final block and initializations of reg types are ignored.  File '/scratch0/esingh/eformal/counter_tb.v', Line 8.  [parser-275]
+-- Restoring module work.up_counter(fast)
+End 0in log Fri Nov  6 02:14:13 2015
+
+
+# 
+# Questa Static Verification System
+# Version 10.2c_3 linux_x86_64 16 Oct 2013
+# 
+# Copyright 1995-2013 Mentor Graphics Corporation.
+# All Rights Reserved.
+# 
+# THIS WORK CONTAINS TRADE SECRET AND PROPRIETARY INFORMATION 
+# WHICH IS THE PROPERTY OF MENTOR GRAPHICS CORPORATION OR ITS
+# LICENSORS AND IS SUBJECT TO LICENSE TERMS.
+# 
+
+log created Fri Nov  6 02:14:14 2015 by esingh on rsg2.stanford.edu
+
+
+Command: formal compile
+Command arguments:
+    -zdb /scratch0/esingh/eformal/results/qcache/DB/zdb_0
+    -d counter_tb
+
+
+## Compiling Design...
+Reading internal mapping file for library mapping
+Reading MTI mapping for library mapping
+Writing all MTI mappings to vmap output ...
+
+
+## Elaborating Design...
+Writing all MTI mappings to vmap output ...
+
+
+## Synthesizing netlist...
+
+## Processing Formal Logic...
+Writing all MTI mappings to vmap output ...
+
+Processing module 'up_counter'
+Info    : Cached netlist database is out of date.  Cached netlist for module 'up_counter'.
+        : Will ignore cached netlist database.
+Info    : Elaborating module 'up_counter'.
+Info    : Restoring module 'up_counter'.
+Info    : Flattening design 'up_counter'.
+Processing module 'counter_tb'
+Info    : Cached netlist database is out of date.  Cached netlist for module 'counter_tb'.
+        : Will ignore cached netlist database.
+Info    : Elaborating module 'counter_tb'.
+Warning : Delay statements are ignored.  [elaboration-517]
+        : Module 'counter_tb', File '/scratch0/esingh/eformal/counter_tb.v', Line 24.
+        : Possible RTL-to-gate mismatch. Elaboration will continue.
+Info    : Restoring module 'counter_tb'.
+Info    : Flattening design 'counter_tb'.
+Info    : Flattening design 'counter_tb'.
+Info    : Detected synchronous reset 'counter_out' (active high).
+Info    : Detected posedge clock 'enable'.
+Info    : Design is processed for formal verification.  Design 'counter_tb'.
+
+Clocks
+------------------------------------------------------------------------------
+Port                                   Period        Waveform     Edges
+------------------------------------------------------------------------------
+clk                                         5          {0 2.5}    PE   
+enable                   [inferred]         ?          { ? ? }    PE   
+------------------------------------------------------------------------------
+netlist clock clk -period 5 -waveform {0 2.5}
+netlist clock enable -period ? -waveform { ? ? }
+------------------------------------------------------------------------------
+Info    : Design is linked for formal analysis.  Design 'counter_tb'.
+Warning : Clock has no specification.  Clock will be assigned fastest provided specification.  [attributes-59]
+        : Clock enable.
+Info    : Formal model has been created.
+
+Property Summary
+-------------------------------------------------------------------------------
+Total  Directives :0
+Assert Directives :0
+Assume Directives :0
+Cover  Directives :0
+-------------------------------------------------------------------------------
+
+Design Checks Summary
+-----------------------------------------------
+Check                              Found
+-----------------------------------------------
+COMBO_LOOP                             1
+LOGIC_UNDRIVEN                         3
+-----------------------------------------------
+Total                                  4
+-----------------------------------------------
+
+
+Error/Warning Summary
+-----------------------------------------------------------
+Count  Type     Message ID         Summary
+-----------------------------------------------------------
+    1  Warning  attributes-59      Clock has no specification.
+    1  Warning  elaboration-517    Delay statements are ignored.
+    1  Warning  parser-275         Initial/final block and initializations of reg types are ignored.
+    1  Warning  parser-285         Vopt warning.
+
+Summary: 3 Warnings in compile_search_logic
+Final Process Statistics: Max memory 1108MB, CPU time 2s, Total time 17s
+End 0in log Fri Nov  6 02:14:23 2015
+
+

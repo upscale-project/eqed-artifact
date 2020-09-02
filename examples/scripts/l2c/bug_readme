@@ -1,0 +1,4 @@
+op3 insts are allowed in the inst_constriant.sv
+n2sram register file has been modified 
+no reset in test.init	
+load corrupted lsu module

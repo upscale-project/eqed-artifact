@@ -1,0 +1,10 @@
+#Created Wed Dec 31 16:00:00 1969
+
+# results/qformal_cmds.tcl : 4
+/cad/mentor/qformal/linux_x86_64/bin/0in  -od results -l .elab.log  -cli -cmd elab -zdb /scratch0/esingh/eformal/results/qcache/DB/zdb_0 -tool formal  counter_tb
+
+# results/qformal_cmds.tcl : 4
+/cad/mentor/qformal/linux_x86_64/bin/0in  -od results -l .csl.log  -cli -cmd csl -zdb /scratch0/esingh/eformal/results/qcache/DB/zdb_0 -d counter_tb
+
+# results/qformal_cmds.tcl : 5
+/cad/mentor/qformal/linux_x86_64/bin/.0in_formal_engine   -od results -cli -tool prove   -effort high -import_db results/formal_compile.db 

@@ -1,0 +1,4 @@
+-v /rsgs/scratch0/nasavare/test_module/hier_top.v
+-v /rsgs/scratch0/nasavare/test_module/hier_one.v
+-v /rsgs/scratch0/nasavare/test_module/hier_two.v
+-v /rsgs/scratch0/nasavare/test_module/dff.v

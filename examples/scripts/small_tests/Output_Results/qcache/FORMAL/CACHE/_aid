@@ -1,0 +1,24 @@
+work=./work
+std=/cad/mentor/qformal/share/modeltech/linux_x86_64/../std
+ieee=/cad/mentor/qformal/share/modeltech/linux_x86_64/../ieee
+vital2000=/cad/mentor/qformal/share/modeltech/linux_x86_64/../vital2000
+verilog=/cad/mentor/qformal/share/modeltech/linux_x86_64/../verilog
+std_developerskit=/cad/mentor/qformal/share/modeltech/linux_x86_64/../std_developerskit
+synopsys=/cad/mentor/qformal/share/modeltech/linux_x86_64/../synopsys
+modelsim_lib=/cad/mentor/qformal/share/modeltech/linux_x86_64/../modelsim_lib
+sv_std=/cad/mentor/qformal/share/modeltech/linux_x86_64/../sv_std
+mtiAvm=/cad/mentor/qformal/share/modeltech/linux_x86_64/../avm
+mtiRnm=/cad/mentor/qformal/share/modeltech/linux_x86_64/../rnm
+mtiOvm=/cad/mentor/qformal/share/modeltech/linux_x86_64/../ovm-2.1.2
+mtiUvm=/cad/mentor/qformal/share/modeltech/linux_x86_64/../uvm-1.1d
+mtiUPF=/cad/mentor/qformal/share/modeltech/linux_x86_64/../upf_lib
+mtiPA=/cad/mentor/qformal/share/modeltech/linux_x86_64/../pa_lib
+floatfixlib=/cad/mentor/qformal/share/modeltech/linux_x86_64/../floatfixlib
+mc2_lib=/cad/mentor/qformal/share/modeltech/linux_x86_64/../mc2_lib
+osvvm=/cad/mentor/qformal/share/modeltech/linux_x86_64/../osvvm
+mgc_ams=/cad/mentor/qformal/share/modeltech/linux_x86_64/../mgc_ams
+ieee_env=/cad/mentor/qformal/share/modeltech/linux_x86_64/../ieee_env
+infact=/cad/mentor/qformal/share/modeltech/linux_x86_64/../infact
+vhdlopt_lib=/cad/mentor/qformal/share/modeltech/linux_x86_64/../vhdlopt_lib
+*RAW_COMMAND csl -zdb /scratch0/esingh/questa/small_tests/Output_Results/qcache/DB/zdb_0 -d small_example -tcs 
+*COMMAND csl -d small_example -tcs -zdb /scratch0/esingh/questa/small_tests/Output_Results/qcache/DB/zdb_0

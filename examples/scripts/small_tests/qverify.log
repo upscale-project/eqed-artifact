@@ -1,0 +1,38 @@
+# 
+# Copyright 1995-2016 Mentor Graphics Corporation.
+# All Rights Reserved.
+# 
+# THIS WORK CONTAINS TRADE SECRET AND PROPRIETARY INFORMATION 
+# WHICH IS THE PROPERTY OF MENTOR GRAPHICS CORPORATION OR ITS
+# LICENSORS AND IS SUBJECT TO LICENSE TERMS.
+# 
+# THIS DOCUMENT CONTAINS TRADE SECRETS AND COMMERCIAL OR FINANCIAL
+# INFORMATION THAT ARE PRIVILEGED, CONFIDENTIAL, AND EXEMPT FROM
+# DISCLOSURE UNDER THE FREEDOM OF INFORMATION ACT, 5 U.S.C. SECTION
+# 552.  FURTHERMORE, THIS INFORMATION IS PROHIBITED FROM DISCLOSURE
+# UNDER THE TRADE SECRETS ACT, 18 U.S.C. SECTION 1905.
+# 
+# "formal generate waveforms" completed successfully.
+# Replay waveform written to replay_sva_0_14.mti.do
+# //  Questa Sim-64
+# //  Version 10.5c linux_x86_64 Jul 20 2016
+# //
+# //  Copyright 1991-2016 Mentor Graphics Corporation
+# //  All Rights Reserved.
+# //
+# //  QuestaSim and its associated documentation contain trade
+# //  secrets and commercial or financial information that are the property of
+# //  Mentor Graphics Corporation and are privileged, confidential,
+# //  and exempt from disclosure under the Freedom of Information Act,
+# //  5 U.S.C. Section 552. Furthermore, this information
+# //  is prohibited from disclosure under the Trade Secrets Act,
+# //  18 U.S.C. Section 1905.
+# //
+# "formal generate waveforms" completed successfully.
+# Replay waveform written to replay_sva_0_7.mti.do
+# "formal generate waveforms" completed successfully.
+# Replay waveform written to replay_sva_0_14.mti.do
+_sva_0_7.mti.do
+# Reading design database from /scratch0/esingh/questa/small_tests/Output_Results/qcache/FORMAL/CACHE...completed (0 (s)).
+"formal generate waveforms" completed successfully.
+Replay waveform written to replay_sva_0_14.mti.do

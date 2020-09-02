@@ -1,0 +1,7 @@
+$default_clock gclk
+$default_input_value 0 -undriven_wire
+$default_initial_value 0 
+spc_wrapper.rst = 0
+##5
+spc_wrapper.rst = 1
+$dump after_init

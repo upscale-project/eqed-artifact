@@ -1,0 +1,88 @@
+-v $DV_ROOT/libs/cl/cl_rtl_ext.v 
+-v $DV_ROOT/libs/cl/cl_dp1/cl_dp1.v 
+-v $DV_ROOT/libs/cl/cl_u1/cl_u1.v 
+-v $DV_ROOT/libs/cl/cl_sc1/cl_sc1.v 
+-v $DV_ROOT/libs/cl/cl_a1/cl_a1.v 
+-v $DV_ROOT/libs/cl/cl_mc1/cl_mc1.v
+-v $DV_ROOT/libs/clk/rtl/clkgen_ccx_cmp.v
+-v $DV_ROOT/libs/clk/n2_clk_gl_cust_l/n2_clk_gl_cust/rtl/n2_clk_gl_cust.v
+-v $DV_ROOT/libs/clk/n2_clk_pgrid_cust_l/n2_clk_ccx_cmp_cust/rtl/n2_clk_ccx_cmp_cust.v
+-v $DV_ROOT/libs/clk/n2_flop_bank_cust_l/n2_flop_bank_cust/rtl/n2_flop_bank_cust.v
+-v $DV_ROOT/libs/clk/n2_clk_clstr_hdr1_cust_l/n2_clk_clstr_hdr1_cust/rtl/n2_clk_clstr_hdr1_cust.v
+-v $DV_ROOT/design/sys/iop/ccx/rtl/ccx.v
+-v $DV_ROOT/design/sys/iop/ccx/rtl/ccx_arb.v
+-v $DV_ROOT/design/sys/iop/ccx/rtl/ccx_arc_ctl.v
+-v $DV_ROOT/design/sys/iop/ccx/rtl/ccx_ard_dp.v
+-v $DV_ROOT/design/sys/iop/ccx/rtl/ccx_l1clkhdr_ctl_macro.v
+-v $DV_ROOT/design/sys/iop/ccx/rtl/ccx_new_macro.v
+-v $DV_ROOT/design/sys/iop/ccx/rtl/ccx_rep.v
+-v $DV_ROOT/design/sys/iop/ccx/rtl/ccx_srq_ctl.v
+-v $DV_ROOT/design/sys/iop/ccx/rtl/ccx_trep.v
+-v $DV_ROOT/design/sys/iop/ccx/rtl/ccx_tstg.v
+-v $DV_ROOT/design/sys/iop/ccx/rtl/cpx.v
+-v $DV_ROOT/design/sys/iop/ccx/rtl/cpx_bfd_dp.v
+-v $DV_ROOT/design/sys/iop/ccx/rtl/cpx_bfg_dp.v
+-v $DV_ROOT/design/sys/iop/ccx/rtl/cpx_dpa.v
+-v $DV_ROOT/design/sys/iop/ccx/rtl/cpx_dpsa.v
+-v $DV_ROOT/design/sys/iop/ccx/rtl/cpx_dpsb.v
+-v $DV_ROOT/design/sys/iop/ccx/rtl/cpx_dpsc.v
+-v $DV_ROOT/design/sys/iop/ccx/rtl/cpx_dpsd.v
+-v $DV_ROOT/design/sys/iop/ccx/rtl/cpx_dpse.v
+-v $DV_ROOT/design/sys/iop/ccx/rtl/cpx_dpsf.v
+-v $DV_ROOT/design/sys/iop/ccx/rtl/cpx_dpsg.v
+-v $DV_ROOT/design/sys/iop/ccx/rtl/cpx_mal_dp.v
+-v $DV_ROOT/design/sys/iop/ccx/rtl/cpx_mar_dp.v
+-v $DV_ROOT/design/sys/iop/ccx/rtl/cpx_mbl_dp.v
+-v $DV_ROOT/design/sys/iop/ccx/rtl/cpx_mbr_dp.v
+-v $DV_ROOT/design/sys/iop/ccx/rtl/cpx_mcl_dp.v
+-v $DV_ROOT/design/sys/iop/ccx/rtl/cpx_mcr_dp.v
+-v $DV_ROOT/design/sys/iop/ccx/rtl/cpx_ob1_dp.v
+-v $DV_ROOT/design/sys/iop/ccx/rtl/cpx_ob2_dp.v
+-v $DV_ROOT/design/sys/iop/ccx/rtl/cpx_rep_dp.v
+-v $DV_ROOT/design/sys/iop/ccx/rtl/inv_diode_macro.v
+-v $DV_ROOT/design/sys/iop/ccx/rtl/pcx.v
+-v $DV_ROOT/design/sys/iop/ccx/rtl/pcx_bfd_dp.v
+-v $DV_ROOT/design/sys/iop/ccx/rtl/pcx_bfg_dp.v
+-v $DV_ROOT/design/sys/iop/ccx/rtl/pcx_dpa.v
+-v $DV_ROOT/design/sys/iop/ccx/rtl/pcx_dpsa.v
+-v $DV_ROOT/design/sys/iop/ccx/rtl/pcx_dpsb.v
+-v $DV_ROOT/design/sys/iop/ccx/rtl/pcx_dpsc.v
+-v $DV_ROOT/design/sys/iop/ccx/rtl/pcx_dpsd.v
+-v $DV_ROOT/design/sys/iop/ccx/rtl/pcx_dpse.v
+-v $DV_ROOT/design/sys/iop/ccx/rtl/pcx_dpsf.v
+-v $DV_ROOT/design/sys/iop/ccx/rtl/pcx_dpsg.v
+-v $DV_ROOT/design/sys/iop/ccx/rtl/pcx_dpsh.v
+-v $DV_ROOT/design/sys/iop/ccx/rtl/pcx_mal_dp.v
+-v $DV_ROOT/design/sys/iop/ccx/rtl/pcx_mar_dp.v
+-v $DV_ROOT/design/sys/iop/ccx/rtl/pcx_mbl_dp.v
+-v $DV_ROOT/design/sys/iop/ccx/rtl/pcx_mbr_dp.v
+-v $DV_ROOT/design/sys/iop/ccx/rtl/pcx_mcl_dp.v
+-v $DV_ROOT/design/sys/iop/ccx/rtl/pcx_mcr_dp.v
+-v $DV_ROOT/design/sys/iop/ccx/rtl/pcx_ob1_dp.v
+-v $DV_ROOT/design/sys/iop/ccx/rtl/pcx_rep_dp.v
++incdir+$DV_ROOT/verif/env/fc/+
++incdir+$DV_ROOT/verif/env/fc/../common/verilog/checkers+
++incdir+$DV_ROOT/verif/env/fc/../common/coverage+
++incdir+$DV_ROOT/verif/env/fc/../../../design/sys/iop/cpu/rtl+
++incdir+$DV_ROOT/verif/env/fc/../../../verif/env/tcu+
++incdir+$DV_ROOT/design/sys/iop/dmu/rtl
++incdir+$DV_ROOT/verif/env/fc/+
++incdir+$DV_ROOT/verif/env/fc/../common/verilog/checkers+
++incdir+$DV_ROOT/verif/env/fc/../common/coverage+
++incdir+$DV_ROOT/verif/env/fc/./vera/include
++incdir+$DV_ROOT/verif/env/mcu
++incdir+$DV_ROOT/verif/env/fc/../../../verif/env/tcu+
++incdir+$DV_ROOT/verif/env/common/verilog/monitors/+
++incdir+$DV_ROOT/verif/env/common/verilog/soc_sync/+
++incdir+$DV_ROOT/verif/env/common/verilog/err_random/+
++incdir+$DV_ROOT/verif/env/common/verilog/monitors/+
++incdir+$DV_ROOT/verif/env/common/verilog/reg_slam/+
++incdir+$DV_ROOT/verif/env/common/verilog/err_sync/+
++incdir+$DV_ROOT/verif/env/common/verilog/ldst_sync/+
++incdir+$DV_ROOT/verif/env/common/verilog/int_sync/+
++incdir+$DV_ROOT/verif/env/common/verilog/tlb_sync/+
++incdir+$DV_ROOT/verif/env/common/verilog/nas_car/+
++incdir+$DV_ROOT/verif/env/common/verilog/misc/+
++incdir+$DV_ROOT/verif/env/common/verilog/misc/../../vera/include+
++incdir+$DV_ROOT/verif/env/common/verilog/debug/+
+

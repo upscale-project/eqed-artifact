@@ -1,0 +1,5686 @@
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+open_sparc_output/n2_flop_bank_cust.v
+open_sparc_output/mux_output//n2_flop_bank_cust_mux.v
+mux to add: .d(d0_15_sel? ~data_in[15] : data_in[15])
+Mux added to: temp_file.v
+Edit file: open_sparc_output/mux_output//n2_flop_bank_cust_mux.v successful
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 70, current line number to check = 72
+Edit file: open_sparc_output/mux_output//n2_flop_bank_cust_mux.v successful
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 68, current line number to check = 70
+Edit file: open_sparc_output/mux_output//ccx_tstg_mux.v successful
+Port successfully added
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+open_sparc_output/n2_flop_bank_cust.v
+open_sparc_output/mux_output//n2_flop_bank_cust_mux.v
+mux to add: .d(d0_14_sel? ~data_in[14] : data_in[14])
+Mux added to: temp_file.v
+Edit file: open_sparc_output/mux_output//n2_flop_bank_cust_mux.v successful
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 70, current line number to check = 72
+Edit file: open_sparc_output/mux_output//n2_flop_bank_cust_mux.v successful
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 68, current line number to check = 70
+Edit file: open_sparc_output/mux_output//ccx_tstg_mux.v successful
+Port successfully added
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+open_sparc_output/n2_flop_bank_cust.v
+open_sparc_output/mux_output//n2_flop_bank_cust_mux.v
+mux to add: .d(d0_13_sel? ~data_in[13] : data_in[13])
+Mux added to: temp_file.v
+Edit file: open_sparc_output/mux_output//n2_flop_bank_cust_mux.v successful
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 70, current line number to check = 72
+Edit file: open_sparc_output/mux_output//n2_flop_bank_cust_mux.v successful
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 68, current line number to check = 70
+Edit file: open_sparc_output/mux_output//ccx_tstg_mux.v successful
+Port successfully added
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+open_sparc_output/n2_flop_bank_cust.v
+open_sparc_output/mux_output//n2_flop_bank_cust_mux.v
+mux to add: .d(d0_12_sel? ~data_in[12] : data_in[12])
+Mux added to: temp_file.v
+Edit file: open_sparc_output/mux_output//n2_flop_bank_cust_mux.v successful
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 70, current line number to check = 72
+Edit file: open_sparc_output/mux_output//n2_flop_bank_cust_mux.v successful
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 68, current line number to check = 70
+Edit file: open_sparc_output/mux_output//ccx_tstg_mux.v successful
+Port successfully added
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+open_sparc_output/n2_flop_bank_cust.v
+open_sparc_output/mux_output//n2_flop_bank_cust_mux.v
+mux to add: .d(d0_11_sel? ~data_in[11] : data_in[11])
+Mux added to: temp_file.v
+Edit file: open_sparc_output/mux_output//n2_flop_bank_cust_mux.v successful
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 70, current line number to check = 72
+Edit file: open_sparc_output/mux_output//n2_flop_bank_cust_mux.v successful
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 68, current line number to check = 70
+Edit file: open_sparc_output/mux_output//ccx_tstg_mux.v successful
+Port successfully added
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+open_sparc_output/n2_flop_bank_cust.v
+open_sparc_output/mux_output//n2_flop_bank_cust_mux.v
+mux to add: .d(d0_10_sel? ~data_in[10] : data_in[10])
+Mux added to: temp_file.v
+Edit file: open_sparc_output/mux_output//n2_flop_bank_cust_mux.v successful
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 70, current line number to check = 72
+Edit file: open_sparc_output/mux_output//n2_flop_bank_cust_mux.v successful
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 68, current line number to check = 70
+Edit file: open_sparc_output/mux_output//ccx_tstg_mux.v successful
+Port successfully added
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+open_sparc_output/n2_flop_bank_cust.v
+open_sparc_output/mux_output//n2_flop_bank_cust_mux.v
+mux to add: .d(d0_9_sel? ~data_in[9] : data_in[9])
+Mux added to: temp_file.v
+Edit file: open_sparc_output/mux_output//n2_flop_bank_cust_mux.v successful
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 70, current line number to check = 72
+Edit file: open_sparc_output/mux_output//n2_flop_bank_cust_mux.v successful
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 68, current line number to check = 70
+Edit file: open_sparc_output/mux_output//ccx_tstg_mux.v successful
+Port successfully added
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+open_sparc_output/n2_flop_bank_cust.v
+open_sparc_output/mux_output//n2_flop_bank_cust_mux.v
+mux to add: .d(d0_8_sel? ~data_in[8] : data_in[8])
+Mux added to: temp_file.v
+Edit file: open_sparc_output/mux_output//n2_flop_bank_cust_mux.v successful
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 70, current line number to check = 72
+Edit file: open_sparc_output/mux_output//n2_flop_bank_cust_mux.v successful
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 68, current line number to check = 70
+Edit file: open_sparc_output/mux_output//ccx_tstg_mux.v successful
+Port successfully added
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+open_sparc_output/n2_flop_bank_cust.v
+open_sparc_output/mux_output//n2_flop_bank_cust_mux.v
+mux to add: .d(d0_7_sel? ~data_in[7] : data_in[7])
+Mux added to: temp_file.v
+Edit file: open_sparc_output/mux_output//n2_flop_bank_cust_mux.v successful
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 70, current line number to check = 72
+Edit file: open_sparc_output/mux_output//n2_flop_bank_cust_mux.v successful
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 68, current line number to check = 70
+Edit file: open_sparc_output/mux_output//ccx_tstg_mux.v successful
+Port successfully added
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+open_sparc_output/n2_flop_bank_cust.v
+open_sparc_output/mux_output//n2_flop_bank_cust_mux.v
+mux to add: .d(d0_6_sel? ~data_in[6] : data_in[6])
+Mux added to: temp_file.v
+Edit file: open_sparc_output/mux_output//n2_flop_bank_cust_mux.v successful
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 70, current line number to check = 72
+Edit file: open_sparc_output/mux_output//n2_flop_bank_cust_mux.v successful
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 68, current line number to check = 70
+Edit file: open_sparc_output/mux_output//ccx_tstg_mux.v successful
+Port successfully added
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+open_sparc_output/n2_flop_bank_cust.v
+open_sparc_output/mux_output//n2_flop_bank_cust_mux.v
+mux to add: .d(d0_5_sel? ~data_in[5] : data_in[5])
+Mux added to: temp_file.v
+Edit file: open_sparc_output/mux_output//n2_flop_bank_cust_mux.v successful
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 70, current line number to check = 72
+Edit file: open_sparc_output/mux_output//n2_flop_bank_cust_mux.v successful
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 68, current line number to check = 70
+Edit file: open_sparc_output/mux_output//ccx_tstg_mux.v successful
+Port successfully added
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+open_sparc_output/n2_flop_bank_cust.v
+open_sparc_output/mux_output//n2_flop_bank_cust_mux.v
+mux to add: .d(d0_4_sel? ~data_in[4] : data_in[4])
+Mux added to: temp_file.v
+Edit file: open_sparc_output/mux_output//n2_flop_bank_cust_mux.v successful
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 70, current line number to check = 72
+Edit file: open_sparc_output/mux_output//n2_flop_bank_cust_mux.v successful
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 68, current line number to check = 70
+Edit file: open_sparc_output/mux_output//ccx_tstg_mux.v successful
+Port successfully added
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+open_sparc_output/n2_flop_bank_cust.v
+open_sparc_output/mux_output//n2_flop_bank_cust_mux.v
+mux to add: .d(d0_3_sel? ~data_in[3] : data_in[3])
+Mux added to: temp_file.v
+Edit file: open_sparc_output/mux_output//n2_flop_bank_cust_mux.v successful
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 70, current line number to check = 72
+Edit file: open_sparc_output/mux_output//n2_flop_bank_cust_mux.v successful
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 68, current line number to check = 70
+Edit file: open_sparc_output/mux_output//ccx_tstg_mux.v successful
+Port successfully added
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+open_sparc_output/n2_flop_bank_cust.v
+open_sparc_output/mux_output//n2_flop_bank_cust_mux.v
+mux to add: .d(d0_2_sel? ~data_in[2] : data_in[2])
+Mux added to: temp_file.v
+Edit file: open_sparc_output/mux_output//n2_flop_bank_cust_mux.v successful
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 70, current line number to check = 72
+Edit file: open_sparc_output/mux_output//n2_flop_bank_cust_mux.v successful
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 68, current line number to check = 70
+Edit file: open_sparc_output/mux_output//ccx_tstg_mux.v successful
+Port successfully added
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+open_sparc_output/n2_flop_bank_cust.v
+open_sparc_output/mux_output//n2_flop_bank_cust_mux.v
+mux to add: .d(d0_1_sel? ~data_in[1] : data_in[1])
+Mux added to: temp_file.v
+Edit file: open_sparc_output/mux_output//n2_flop_bank_cust_mux.v successful
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 70, current line number to check = 72
+Edit file: open_sparc_output/mux_output//n2_flop_bank_cust_mux.v successful
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 68, current line number to check = 70
+Edit file: open_sparc_output/mux_output//ccx_tstg_mux.v successful
+Port successfully added
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+inv
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+open_sparc_output/n2_flop_bank_cust.v
+open_sparc_output/mux_output//n2_flop_bank_cust_mux.v
+mux to add: .d(d0_0_sel? ~data_in[0] : data_in[0])
+Mux added to: temp_file.v
+Edit file: open_sparc_output/mux_output//n2_flop_bank_cust_mux.v successful
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 70, current line number to check = 72
+Edit file: open_sparc_output/mux_output//n2_flop_bank_cust_mux.v successful
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 68, current line number to check = 70
+Edit file: open_sparc_output/mux_output//ccx_tstg_mux.v successful
+Port successfully added
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 68, current line number to check = 70
+Edit file: open_sparc_output/mux_output//ccx_tstg_mux.v successful
+Port successfully added
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 68, current line number to check = 70
+Edit file: open_sparc_output/mux_output//ccx_tstg_mux.v successful
+Port successfully added
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 68, current line number to check = 70
+Edit file: open_sparc_output/mux_output//ccx_tstg_mux.v successful
+Port successfully added
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 68, current line number to check = 70
+Edit file: open_sparc_output/mux_output//ccx_tstg_mux.v successful
+Port successfully added
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 68, current line number to check = 70
+Edit file: open_sparc_output/mux_output//ccx_tstg_mux.v successful
+Port successfully added
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 68, current line number to check = 70
+Edit file: open_sparc_output/mux_output//ccx_tstg_mux.v successful
+Port successfully added
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 68, current line number to check = 70
+Edit file: open_sparc_output/mux_output//ccx_tstg_mux.v successful
+Port successfully added
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 68, current line number to check = 70
+Edit file: open_sparc_output/mux_output//ccx_tstg_mux.v successful
+Port successfully added
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 68, current line number to check = 70
+Edit file: open_sparc_output/mux_output//ccx_tstg_mux.v successful
+Port successfully added
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 68, current line number to check = 70
+Edit file: open_sparc_output/mux_output//ccx_tstg_mux.v successful
+Port successfully added
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 68, current line number to check = 70
+Edit file: open_sparc_output/mux_output//ccx_tstg_mux.v successful
+Port successfully added
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 68, current line number to check = 70
+Edit file: open_sparc_output/mux_output//ccx_tstg_mux.v successful
+Port successfully added
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 68, current line number to check = 70
+Edit file: open_sparc_output/mux_output//ccx_tstg_mux.v successful
+Port successfully added
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 68, current line number to check = 70
+Edit file: open_sparc_output/mux_output//ccx_tstg_mux.v successful
+Port successfully added
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 68, current line number to check = 70
+Edit file: open_sparc_output/mux_output//ccx_tstg_mux.v successful
+Port successfully added
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+inv
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 68, current line number to check = 70
+Edit file: open_sparc_output/mux_output//ccx_tstg_mux.v successful
+Port successfully added
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 68, current line number to check = 70
+Edit file: open_sparc_output/mux_output//ccx_tstg_mux.v successful
+Port successfully added
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 68, current line number to check = 70
+Edit file: open_sparc_output/mux_output//ccx_tstg_mux.v successful
+Port successfully added
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 68, current line number to check = 70
+Edit file: open_sparc_output/mux_output//ccx_tstg_mux.v successful
+Port successfully added
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 68, current line number to check = 70
+Edit file: open_sparc_output/mux_output//ccx_tstg_mux.v successful
+Port successfully added
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 68, current line number to check = 70
+Edit file: open_sparc_output/mux_output//ccx_tstg_mux.v successful
+Port successfully added
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 68, current line number to check = 70
+Edit file: open_sparc_output/mux_output//ccx_tstg_mux.v successful
+Port successfully added
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 68, current line number to check = 70
+Edit file: open_sparc_output/mux_output//ccx_tstg_mux.v successful
+Port successfully added
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 68, current line number to check = 70
+Edit file: open_sparc_output/mux_output//ccx_tstg_mux.v successful
+Port successfully added
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 68, current line number to check = 70
+Edit file: open_sparc_output/mux_output//ccx_tstg_mux.v successful
+Port successfully added
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 68, current line number to check = 70
+Edit file: open_sparc_output/mux_output//ccx_tstg_mux.v successful
+Port successfully added
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 68, current line number to check = 70
+Edit file: open_sparc_output/mux_output//ccx_tstg_mux.v successful
+Port successfully added
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 68, current line number to check = 70
+Edit file: open_sparc_output/mux_output//ccx_tstg_mux.v successful
+Port successfully added
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 68, current line number to check = 70
+Edit file: open_sparc_output/mux_output//ccx_tstg_mux.v successful
+Port successfully added
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 68, current line number to check = 70
+Edit file: open_sparc_output/mux_output//ccx_tstg_mux.v successful
+Port successfully added
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 68, current line number to check = 70
+Edit file: open_sparc_output/mux_output//ccx_tstg_mux.v successful
+Port successfully added
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+inv
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 68, current line number to check = 70
+Edit file: open_sparc_output/mux_output//ccx_tstg_mux.v successful
+Port successfully added
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 68, current line number to check = 70
+Edit file: open_sparc_output/mux_output//ccx_tstg_mux.v successful
+Port successfully added
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 68, current line number to check = 70
+Edit file: open_sparc_output/mux_output//ccx_tstg_mux.v successful
+Port successfully added
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 68, current line number to check = 70
+Edit file: open_sparc_output/mux_output//ccx_tstg_mux.v successful
+Port successfully added
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 68, current line number to check = 70
+Edit file: open_sparc_output/mux_output//ccx_tstg_mux.v successful
+Port successfully added
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 68, current line number to check = 70
+Edit file: open_sparc_output/mux_output//ccx_tstg_mux.v successful
+Port successfully added
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 68, current line number to check = 70
+Edit file: open_sparc_output/mux_output//ccx_tstg_mux.v successful
+Port successfully added
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 68, current line number to check = 70
+Edit file: open_sparc_output/mux_output//ccx_tstg_mux.v successful
+Port successfully added
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 68, current line number to check = 70
+Edit file: open_sparc_output/mux_output//ccx_tstg_mux.v successful
+Port successfully added
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 68, current line number to check = 70
+Edit file: open_sparc_output/mux_output//ccx_tstg_mux.v successful
+Port successfully added
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 68, current line number to check = 70
+Edit file: open_sparc_output/mux_output//ccx_tstg_mux.v successful
+Port successfully added
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 68, current line number to check = 70
+Edit file: open_sparc_output/mux_output//ccx_tstg_mux.v successful
+Port successfully added
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 68, current line number to check = 70
+Edit file: open_sparc_output/mux_output//ccx_tstg_mux.v successful
+Port successfully added
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 68, current line number to check = 70
+Edit file: open_sparc_output/mux_output//ccx_tstg_mux.v successful
+Port successfully added
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 68, current line number to check = 70
+Edit file: open_sparc_output/mux_output//ccx_tstg_mux.v successful
+Port successfully added
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 68, current line number to check = 70
+Edit file: open_sparc_output/mux_output//ccx_tstg_mux.v successful
+Port successfully added
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+inv
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 68, current line number to check = 70
+Edit file: open_sparc_output/mux_output//ccx_tstg_mux.v successful
+Port successfully added
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 68, current line number to check = 70
+Edit file: open_sparc_output/mux_output//ccx_tstg_mux.v successful
+Port successfully added
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 68, current line number to check = 70
+Edit file: open_sparc_output/mux_output//ccx_tstg_mux.v successful
+Port successfully added
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 68, current line number to check = 70
+Edit file: open_sparc_output/mux_output//ccx_tstg_mux.v successful
+Port successfully added
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 68, current line number to check = 70
+Edit file: open_sparc_output/mux_output//ccx_tstg_mux.v successful
+Port successfully added
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 68, current line number to check = 70
+Edit file: open_sparc_output/mux_output//ccx_tstg_mux.v successful
+Port successfully added
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 68, current line number to check = 70
+Edit file: open_sparc_output/mux_output//ccx_tstg_mux.v successful
+Port successfully added
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 68, current line number to check = 70
+Edit file: open_sparc_output/mux_output//ccx_tstg_mux.v successful
+Port successfully added
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 68, current line number to check = 70
+Edit file: open_sparc_output/mux_output//ccx_tstg_mux.v successful
+Port successfully added
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 68, current line number to check = 70
+Edit file: open_sparc_output/mux_output//ccx_tstg_mux.v successful
+Port successfully added
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 68, current line number to check = 70
+Edit file: open_sparc_output/mux_output//ccx_tstg_mux.v successful
+Port successfully added
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 68, current line number to check = 70
+Edit file: open_sparc_output/mux_output//ccx_tstg_mux.v successful
+Port successfully added
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 68, current line number to check = 70
+Edit file: open_sparc_output/mux_output//ccx_tstg_mux.v successful
+Port successfully added
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 68, current line number to check = 70
+Edit file: open_sparc_output/mux_output//ccx_tstg_mux.v successful
+Port successfully added
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 68, current line number to check = 70
+Edit file: open_sparc_output/mux_output//ccx_tstg_mux.v successful
+Port successfully added
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 68, current line number to check = 70
+Edit file: open_sparc_output/mux_output//ccx_tstg_mux.v successful
+Port successfully added
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+inv
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 68, current line number to check = 70
+Edit file: open_sparc_output/mux_output//ccx_tstg_mux.v successful
+Port successfully added
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 68, current line number to check = 70
+Edit file: open_sparc_output/mux_output//ccx_tstg_mux.v successful
+Port successfully added
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 68, current line number to check = 70
+Edit file: open_sparc_output/mux_output//ccx_tstg_mux.v successful
+Port successfully added
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 68, current line number to check = 70
+Edit file: open_sparc_output/mux_output//ccx_tstg_mux.v successful
+Port successfully added
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 68, current line number to check = 70
+Edit file: open_sparc_output/mux_output//ccx_tstg_mux.v successful
+Port successfully added
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 68, current line number to check = 70
+Edit file: open_sparc_output/mux_output//ccx_tstg_mux.v successful
+Port successfully added
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 68, current line number to check = 70
+Edit file: open_sparc_output/mux_output//ccx_tstg_mux.v successful
+Port successfully added
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 68, current line number to check = 70
+Edit file: open_sparc_output/mux_output//ccx_tstg_mux.v successful
+Port successfully added
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 68, current line number to check = 70
+Edit file: open_sparc_output/mux_output//ccx_tstg_mux.v successful
+Port successfully added
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 68, current line number to check = 70
+Edit file: open_sparc_output/mux_output//ccx_tstg_mux.v successful
+Port successfully added
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 68, current line number to check = 70
+Edit file: open_sparc_output/mux_output//ccx_tstg_mux.v successful
+Port successfully added
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 68, current line number to check = 70
+Edit file: open_sparc_output/mux_output//ccx_tstg_mux.v successful
+Port successfully added
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 68, current line number to check = 70
+Edit file: open_sparc_output/mux_output//ccx_tstg_mux.v successful
+Port successfully added
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 68, current line number to check = 70
+Edit file: open_sparc_output/mux_output//ccx_tstg_mux.v successful
+Port successfully added
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 68, current line number to check = 70
+Edit file: open_sparc_output/mux_output//ccx_tstg_mux.v successful
+Port successfully added
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 68, current line number to check = 70
+Edit file: open_sparc_output/mux_output//ccx_tstg_mux.v successful
+Port successfully added
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+inv
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 68, current line number to check = 70
+Edit file: open_sparc_output/mux_output//ccx_tstg_mux.v successful
+Port successfully added
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 68, current line number to check = 70
+Edit file: open_sparc_output/mux_output//ccx_tstg_mux.v successful
+Port successfully added
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 68, current line number to check = 70
+Edit file: open_sparc_output/mux_output//ccx_tstg_mux.v successful
+Port successfully added
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 68, current line number to check = 70
+Edit file: open_sparc_output/mux_output//ccx_tstg_mux.v successful
+Port successfully added
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 68, current line number to check = 70
+Edit file: open_sparc_output/mux_output//ccx_tstg_mux.v successful
+Port successfully added
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 68, current line number to check = 70
+Edit file: open_sparc_output/mux_output//ccx_tstg_mux.v successful
+Port successfully added
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 68, current line number to check = 70
+Edit file: open_sparc_output/mux_output//ccx_tstg_mux.v successful
+Port successfully added
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 68, current line number to check = 70
+Edit file: open_sparc_output/mux_output//ccx_tstg_mux.v successful
+Port successfully added
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 68, current line number to check = 70
+Edit file: open_sparc_output/mux_output//ccx_tstg_mux.v successful
+Port successfully added
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 68, current line number to check = 70
+Edit file: open_sparc_output/mux_output//ccx_tstg_mux.v successful
+Port successfully added
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 68, current line number to check = 70
+Edit file: open_sparc_output/mux_output//ccx_tstg_mux.v successful
+Port successfully added
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 68, current line number to check = 70
+Edit file: open_sparc_output/mux_output//ccx_tstg_mux.v successful
+Port successfully added
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 68, current line number to check = 70
+Edit file: open_sparc_output/mux_output//ccx_tstg_mux.v successful
+Port successfully added
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 68, current line number to check = 70
+Edit file: open_sparc_output/mux_output//ccx_tstg_mux.v successful
+Port successfully added
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 68, current line number to check = 70
+Edit file: open_sparc_output/mux_output//ccx_tstg_mux.v successful
+Port successfully added
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 68, current line number to check = 70
+Edit file: open_sparc_output/mux_output//ccx_tstg_mux.v successful
+Port successfully added
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+inv
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 68, current line number to check = 70
+Edit file: open_sparc_output/mux_output//ccx_tstg_mux.v successful
+Port successfully added
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 68, current line number to check = 70
+Edit file: open_sparc_output/mux_output//ccx_tstg_mux.v successful
+Port successfully added
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 68, current line number to check = 70
+Edit file: open_sparc_output/mux_output//ccx_tstg_mux.v successful
+Port successfully added
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 68, current line number to check = 70
+Edit file: open_sparc_output/mux_output//ccx_tstg_mux.v successful
+Port successfully added
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 68, current line number to check = 70
+Edit file: open_sparc_output/mux_output//ccx_tstg_mux.v successful
+Port successfully added
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 68, current line number to check = 70
+Edit file: open_sparc_output/mux_output//ccx_tstg_mux.v successful
+Port successfully added
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 68, current line number to check = 70
+Edit file: open_sparc_output/mux_output//ccx_tstg_mux.v successful
+Port successfully added
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 68, current line number to check = 70
+Edit file: open_sparc_output/mux_output//ccx_tstg_mux.v successful
+Port successfully added
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 68, current line number to check = 70
+Edit file: open_sparc_output/mux_output//ccx_tstg_mux.v successful
+Port successfully added
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 68, current line number to check = 70
+Edit file: open_sparc_output/mux_output//ccx_tstg_mux.v successful
+Port successfully added
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 68, current line number to check = 70
+Edit file: open_sparc_output/mux_output//ccx_tstg_mux.v successful
+Port successfully added
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 68, current line number to check = 70
+Edit file: open_sparc_output/mux_output//ccx_tstg_mux.v successful
+Port successfully added
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 68, current line number to check = 70
+Edit file: open_sparc_output/mux_output//ccx_tstg_mux.v successful
+Port successfully added
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 68, current line number to check = 70
+Edit file: open_sparc_output/mux_output//ccx_tstg_mux.v successful
+Port successfully added
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 68, current line number to check = 70
+Edit file: open_sparc_output/mux_output//ccx_tstg_mux.v successful
+Port successfully added
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 68, current line number to check = 70
+Edit file: open_sparc_output/mux_output//ccx_tstg_mux.v successful
+Port successfully added
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+inv
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 68, current line number to check = 70
+Edit file: open_sparc_output/mux_output//ccx_tstg_mux.v successful
+Port successfully added
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 68, current line number to check = 70
+Edit file: open_sparc_output/mux_output//ccx_tstg_mux.v successful
+Port successfully added
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 68, current line number to check = 70
+Edit file: open_sparc_output/mux_output//ccx_tstg_mux.v successful
+Port successfully added
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 68, current line number to check = 70
+Edit file: open_sparc_output/mux_output//ccx_tstg_mux.v successful
+Port successfully added
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 68, current line number to check = 70
+Edit file: open_sparc_output/mux_output//ccx_tstg_mux.v successful
+Port successfully added
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 68, current line number to check = 70
+Edit file: open_sparc_output/mux_output//ccx_tstg_mux.v successful
+Port successfully added
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 68, current line number to check = 70
+Edit file: open_sparc_output/mux_output//ccx_tstg_mux.v successful
+Port successfully added
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 68, current line number to check = 70
+Edit file: open_sparc_output/mux_output//ccx_tstg_mux.v successful
+Port successfully added
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 68, current line number to check = 70
+Edit file: open_sparc_output/mux_output//ccx_tstg_mux.v successful
+Port successfully added
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 68, current line number to check = 70
+Edit file: open_sparc_output/mux_output//ccx_tstg_mux.v successful
+Port successfully added
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 68, current line number to check = 70
+Edit file: open_sparc_output/mux_output//ccx_tstg_mux.v successful
+Port successfully added
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 68, current line number to check = 70
+Edit file: open_sparc_output/mux_output//ccx_tstg_mux.v successful
+Port successfully added
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 68, current line number to check = 70
+Edit file: open_sparc_output/mux_output//ccx_tstg_mux.v successful
+Port successfully added
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 68, current line number to check = 70
+Edit file: open_sparc_output/mux_output//ccx_tstg_mux.v successful
+Port successfully added
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 68, current line number to check = 70
+Edit file: open_sparc_output/mux_output//ccx_tstg_mux.v successful
+Port successfully added
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 68, current line number to check = 70
+Edit file: open_sparc_output/mux_output//ccx_tstg_mux.v successful
+Port successfully added
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+inv
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 68, current line number to check = 70
+Edit file: open_sparc_output/mux_output//ccx_tstg_mux.v successful
+Port successfully added
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 68, current line number to check = 70
+Edit file: open_sparc_output/mux_output//ccx_tstg_mux.v successful
+Port successfully added
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 68, current line number to check = 70
+Edit file: open_sparc_output/mux_output//ccx_tstg_mux.v successful
+Port successfully added
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 68, current line number to check = 70
+Edit file: open_sparc_output/mux_output//ccx_tstg_mux.v successful
+Port successfully added
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 68, current line number to check = 70
+Edit file: open_sparc_output/mux_output//ccx_tstg_mux.v successful
+Port successfully added
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 68, current line number to check = 70
+Edit file: open_sparc_output/mux_output//ccx_tstg_mux.v successful
+Port successfully added
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 68, current line number to check = 70
+Edit file: open_sparc_output/mux_output//ccx_tstg_mux.v successful
+Port successfully added
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 68, current line number to check = 70
+Edit file: open_sparc_output/mux_output//ccx_tstg_mux.v successful
+Port successfully added
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 68, current line number to check = 70
+Edit file: open_sparc_output/mux_output//ccx_tstg_mux.v successful
+Port successfully added
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 68, current line number to check = 70
+Edit file: open_sparc_output/mux_output//ccx_tstg_mux.v successful
+Port successfully added
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 68, current line number to check = 70
+Edit file: open_sparc_output/mux_output//ccx_tstg_mux.v successful
+Port successfully added
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 68, current line number to check = 70
+Edit file: open_sparc_output/mux_output//ccx_tstg_mux.v successful
+Port successfully added
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 68, current line number to check = 70
+Edit file: open_sparc_output/mux_output//ccx_tstg_mux.v successful
+Port successfully added
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 68, current line number to check = 70
+Edit file: open_sparc_output/mux_output//ccx_tstg_mux.v successful
+Port successfully added
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 68, current line number to check = 70
+Edit file: open_sparc_output/mux_output//ccx_tstg_mux.v successful
+Port successfully added
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 68, current line number to check = 70
+Edit file: open_sparc_output/mux_output//ccx_tstg_mux.v successful
+Port successfully added
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+inv
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 68, current line number to check = 70
+Edit file: open_sparc_output/mux_output//ccx_tstg_mux.v successful
+Port successfully added
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+inv
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+inv
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+inv
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+inv
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+inv
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+inv
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+inv
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+inv
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+inv
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+cl_sc1_msff_8x
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+ccx_tstg
+n2_flop_bank_cust
+inv
+remove non letters in net_width to get:  and size_param = 0
+net width is: [15:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+pcx
+ccx_arb
+ccx_ard_dp
+ccx_ard_dp_msff_macro__dmsff_8x__stack_10c__stack_10c__width_10
+inv
+remove non letters in net_width to get:  and size_param = 0
+net width is: [9:0]
+/scratch0/esingh/OpenSPARC/T2_UC/design/sys/iop/ccx/rtl/ccx_ard_dp.v
+open_sparc_output/mux_output//ccx_ard_dp_mux.v
+mux to add: .d(d0_0_sel ^ din[9:0])
+Mux added to: temp_file.v
+Edit file: open_sparc_output/mux_output//ccx_ard_dp_mux.v successful
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 2880, current line number to check = 2882
+Edit file: open_sparc_output/mux_output//ccx_ard_dp_mux.v successful
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 354, current line number to check = 356
+Edit file: open_sparc_output/mux_output//ccx_ard_dp_mux.v successful
+Port successfully added
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 153, current line number to check = 155
+Edit file: open_sparc_output/mux_output//ccx_arb_mux.v successful
+Port successfully added
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 702, current line number to check = 704
+Edit file: open_sparc_output/mux_output//pcx_mux.v successful
+Port successfully added
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+pcx
+ccx_arb
+ccx_ard_dp
+ccx_ard_dp_msff_macro__dmsff_8x__stack_10c__stack_10c__width_10
+inv
+remove non letters in net_width to get:  and size_param = 0
+net width is: [9:0]
+
+pcx
+ccx_arb
+ccx_ard_dp
+ccx_ard_dp_msff_macro__dmsff_8x__stack_10c__stack_10c__width_10
+inv
+remove non letters in net_width to get:  and size_param = 0
+net width is: [9:0]
+
+pcx
+ccx_arb
+ccx_ard_dp
+ccx_ard_dp_msff_macro__dmsff_8x__stack_10c__stack_10c__width_10
+inv
+remove non letters in net_width to get:  and size_param = 0
+net width is: [9:0]
+
+pcx
+ccx_arb
+ccx_ard_dp
+ccx_ard_dp_msff_macro__dmsff_8x__stack_10c__stack_10c__width_10
+inv
+remove non letters in net_width to get:  and size_param = 0
+net width is: [9:0]
+
+pcx
+ccx_arb
+ccx_ard_dp
+ccx_ard_dp_msff_macro__dmsff_8x__stack_10c__stack_10c__width_10
+inv
+remove non letters in net_width to get:  and size_param = 0
+net width is: [9:0]
+
+pcx
+ccx_arb
+ccx_ard_dp
+ccx_ard_dp_msff_macro__dmsff_8x__stack_10c__stack_10c__width_10
+inv
+remove non letters in net_width to get:  and size_param = 0
+net width is: [9:0]
+
+pcx
+ccx_arb
+ccx_ard_dp
+ccx_ard_dp_msff_macro__dmsff_8x__stack_10c__stack_10c__width_10
+inv
+remove non letters in net_width to get:  and size_param = 0
+net width is: [9:0]
+
+pcx
+ccx_arb
+ccx_ard_dp
+ccx_ard_dp_msff_macro__dmsff_8x__stack_10c__stack_10c__width_10
+inv
+remove non letters in net_width to get:  and size_param = 0
+net width is: [9:0]
+
+pcx
+ccx_arb
+ccx_ard_dp
+ccx_ard_dp_msff_macro__dmsff_8x__stack_10c__stack_10c__width_10
+inv
+remove non letters in net_width to get:  and size_param = 0
+net width is: [9:0]
+
+pcx
+ccx_arb
+ccx_ard_dp
+ccx_ard_dp_msff_macro__dmsff_8x__stack_10c__stack_10c__width_10
+cl_dp1_muxbuff2_8x
+Cannot find pin: d for flipflop: ccx.pcx.pcx_arbr8.ard.i_dff_qual_atomic_d1.c0_0.l1en
+
+pcx
+ccx_arb
+ccx_ard_dp
+ccx_ard_dp_msff_macro__stack_10c__width_10
+inv
+remove non letters in net_width to get:  and size_param = 0
+net width is: [9:0]
+/scratch0/esingh/OpenSPARC/T2_UC/design/sys/iop/ccx/rtl/ccx_ard_dp.v
+open_sparc_output/mux_output//ccx_ard_dp_mux.v
+mux to add: .d(d0_0_sel ^ din[9:0])
+Mux added to: temp_file.v
+Edit file: open_sparc_output/mux_output//ccx_ard_dp_mux.v successful
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 1500, current line number to check = 1502
+Edit file: open_sparc_output/mux_output//ccx_ard_dp_mux.v successful
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 354, current line number to check = 356
+Edit file: open_sparc_output/mux_output//ccx_ard_dp_mux.v successful
+Port successfully added
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 153, current line number to check = 155
+Edit file: open_sparc_output/mux_output//ccx_arb_mux.v successful
+Port successfully added
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 702, current line number to check = 704
+Edit file: open_sparc_output/mux_output//pcx_mux.v successful
+Port successfully added
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+pcx
+ccx_arb
+ccx_ard_dp
+ccx_ard_dp_msff_macro__stack_10c__width_10
+inv
+remove non letters in net_width to get:  and size_param = 0
+net width is: [9:0]
+
+pcx
+ccx_arb
+ccx_ard_dp
+ccx_ard_dp_msff_macro__stack_10c__width_10
+inv
+remove non letters in net_width to get:  and size_param = 0
+net width is: [9:0]
+
+pcx
+ccx_arb
+ccx_ard_dp
+ccx_ard_dp_msff_macro__stack_10c__width_10
+inv
+remove non letters in net_width to get:  and size_param = 0
+net width is: [9:0]
+
+pcx
+ccx_arb
+ccx_ard_dp
+ccx_ard_dp_msff_macro__stack_10c__width_10
+inv
+remove non letters in net_width to get:  and size_param = 0
+net width is: [9:0]
+
+pcx
+ccx_arb
+ccx_ard_dp
+ccx_ard_dp_msff_macro__stack_10c__width_10
+inv
+remove non letters in net_width to get:  and size_param = 0
+net width is: [9:0]
+
+pcx
+ccx_arb
+ccx_ard_dp
+ccx_ard_dp_msff_macro__stack_10c__width_10
+inv
+remove non letters in net_width to get:  and size_param = 0
+net width is: [9:0]
+
+pcx
+ccx_arb
+ccx_ard_dp
+ccx_ard_dp_msff_macro__stack_10c__width_10
+inv
+remove non letters in net_width to get:  and size_param = 0
+net width is: [9:0]
+
+pcx
+ccx_arb
+ccx_ard_dp
+ccx_ard_dp_msff_macro__stack_10c__width_10
+inv
+remove non letters in net_width to get:  and size_param = 0
+net width is: [9:0]
+
+pcx
+ccx_arb
+ccx_ard_dp
+ccx_ard_dp_msff_macro__stack_10c__width_10
+inv
+remove non letters in net_width to get:  and size_param = 0
+net width is: [9:0]
+
+pcx
+ccx_arb
+ccx_ard_dp
+ccx_ard_dp_msff_macro__stack_10c__width_10
+cl_dp1_muxbuff2_8x
+Cannot find pin: d for flipflop: ccx.pcx.pcx_arbr8.ard.i_dff_reqreg.c0_0.l1en
+
+pcx
+ccx_arb
+ccx_ard_dp
+ccx_ard_dp_msff_macro__stack_10c__width_10
+inv
+remove non letters in net_width to get:  and size_param = 0
+net width is: [9:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 354, current line number to check = 356
+Edit file: open_sparc_output/mux_output//ccx_ard_dp_mux.v successful
+Port successfully added
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 153, current line number to check = 155
+Edit file: open_sparc_output/mux_output//ccx_arb_mux.v successful
+Port successfully added
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 702, current line number to check = 704
+Edit file: open_sparc_output/mux_output//pcx_mux.v successful
+Port successfully added
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+pcx
+ccx_arb
+ccx_ard_dp
+ccx_ard_dp_msff_macro__stack_10c__width_10
+inv
+remove non letters in net_width to get:  and size_param = 0
+net width is: [9:0]
+
+pcx
+ccx_arb
+ccx_ard_dp
+ccx_ard_dp_msff_macro__stack_10c__width_10
+inv
+remove non letters in net_width to get:  and size_param = 0
+net width is: [9:0]
+
+pcx
+ccx_arb
+ccx_ard_dp
+ccx_ard_dp_msff_macro__stack_10c__width_10
+inv
+remove non letters in net_width to get:  and size_param = 0
+net width is: [9:0]
+
+pcx
+ccx_arb
+ccx_ard_dp
+ccx_ard_dp_msff_macro__stack_10c__width_10
+inv
+remove non letters in net_width to get:  and size_param = 0
+net width is: [9:0]
+
+pcx
+ccx_arb
+ccx_ard_dp
+ccx_ard_dp_msff_macro__stack_10c__width_10
+inv
+remove non letters in net_width to get:  and size_param = 0
+net width is: [9:0]
+
+pcx
+ccx_arb
+ccx_ard_dp
+ccx_ard_dp_msff_macro__stack_10c__width_10
+inv
+remove non letters in net_width to get:  and size_param = 0
+net width is: [9:0]
+
+pcx
+ccx_arb
+ccx_ard_dp
+ccx_ard_dp_msff_macro__stack_10c__width_10
+inv
+remove non letters in net_width to get:  and size_param = 0
+net width is: [9:0]
+
+pcx
+ccx_arb
+ccx_ard_dp
+ccx_ard_dp_msff_macro__stack_10c__width_10
+inv
+remove non letters in net_width to get:  and size_param = 0
+net width is: [9:0]
+
+pcx
+ccx_arb
+ccx_ard_dp
+ccx_ard_dp_msff_macro__stack_10c__width_10
+inv
+remove non letters in net_width to get:  and size_param = 0
+net width is: [9:0]
+
+pcx
+ccx_arb
+ccx_ard_dp
+ccx_ard_dp_msff_macro__stack_10c__width_10
+cl_dp1_muxbuff2_8x
+Cannot find pin: d for flipflop: ccx.pcx.pcx_arbr8.ard.i_dff_fmem0.c0_0.l1en
+
+pcx
+ccx_arb
+ccx_ard_dp
+ccx_ard_dp_msff_macro__stack_10c__width_10
+inv
+remove non letters in net_width to get:  and size_param = 0
+net width is: [9:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 354, current line number to check = 356
+Edit file: open_sparc_output/mux_output//ccx_ard_dp_mux.v successful
+Port successfully added
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 153, current line number to check = 155
+Edit file: open_sparc_output/mux_output//ccx_arb_mux.v successful
+Port successfully added
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 702, current line number to check = 704
+Edit file: open_sparc_output/mux_output//pcx_mux.v successful
+Port successfully added
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+pcx
+ccx_arb
+ccx_ard_dp
+ccx_ard_dp_msff_macro__stack_10c__width_10
+inv
+remove non letters in net_width to get:  and size_param = 0
+net width is: [9:0]
+
+pcx
+ccx_arb
+ccx_ard_dp
+ccx_ard_dp_msff_macro__stack_10c__width_10
+inv
+remove non letters in net_width to get:  and size_param = 0
+net width is: [9:0]
+
+pcx
+ccx_arb
+ccx_ard_dp
+ccx_ard_dp_msff_macro__stack_10c__width_10
+inv
+remove non letters in net_width to get:  and size_param = 0
+net width is: [9:0]
+
+pcx
+ccx_arb
+ccx_ard_dp
+ccx_ard_dp_msff_macro__stack_10c__width_10
+inv
+remove non letters in net_width to get:  and size_param = 0
+net width is: [9:0]
+
+pcx
+ccx_arb
+ccx_ard_dp
+ccx_ard_dp_msff_macro__stack_10c__width_10
+inv
+remove non letters in net_width to get:  and size_param = 0
+net width is: [9:0]
+
+pcx
+ccx_arb
+ccx_ard_dp
+ccx_ard_dp_msff_macro__stack_10c__width_10
+inv
+remove non letters in net_width to get:  and size_param = 0
+net width is: [9:0]
+
+pcx
+ccx_arb
+ccx_ard_dp
+ccx_ard_dp_msff_macro__stack_10c__width_10
+inv
+remove non letters in net_width to get:  and size_param = 0
+net width is: [9:0]
+
+pcx
+ccx_arb
+ccx_ard_dp
+ccx_ard_dp_msff_macro__stack_10c__width_10
+inv
+remove non letters in net_width to get:  and size_param = 0
+net width is: [9:0]
+
+pcx
+ccx_arb
+ccx_ard_dp
+ccx_ard_dp_msff_macro__stack_10c__width_10
+inv
+remove non letters in net_width to get:  and size_param = 0
+net width is: [9:0]
+
+pcx
+ccx_arb
+ccx_ard_dp
+ccx_ard_dp_msff_macro__stack_10c__width_10
+cl_dp1_muxbuff2_8x
+Cannot find pin: d for flipflop: ccx.pcx.pcx_arbr8.ard.i_dff_fmem1.c0_0.l1en
+
+pcx
+ccx_arb
+ccx_ard_dp
+ccx_ard_dp_msff_macro__stack_10c__width_10
+inv
+remove non letters in net_width to get:  and size_param = 0
+net width is: [9:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 354, current line number to check = 356
+Edit file: open_sparc_output/mux_output//ccx_ard_dp_mux.v successful
+Port successfully added
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 153, current line number to check = 155
+Edit file: open_sparc_output/mux_output//ccx_arb_mux.v successful
+Port successfully added
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 702, current line number to check = 704
+Edit file: open_sparc_output/mux_output//pcx_mux.v successful
+Port successfully added
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+pcx
+ccx_arb
+ccx_ard_dp
+ccx_ard_dp_msff_macro__stack_10c__width_10
+inv
+remove non letters in net_width to get:  and size_param = 0
+net width is: [9:0]
+
+pcx
+ccx_arb
+ccx_ard_dp
+ccx_ard_dp_msff_macro__stack_10c__width_10
+inv
+remove non letters in net_width to get:  and size_param = 0
+net width is: [9:0]
+
+pcx
+ccx_arb
+ccx_ard_dp
+ccx_ard_dp_msff_macro__stack_10c__width_10
+inv
+remove non letters in net_width to get:  and size_param = 0
+net width is: [9:0]
+
+pcx
+ccx_arb
+ccx_ard_dp
+ccx_ard_dp_msff_macro__stack_10c__width_10
+inv
+remove non letters in net_width to get:  and size_param = 0
+net width is: [9:0]
+
+pcx
+ccx_arb
+ccx_ard_dp
+ccx_ard_dp_msff_macro__stack_10c__width_10
+inv
+remove non letters in net_width to get:  and size_param = 0
+net width is: [9:0]
+
+pcx
+ccx_arb
+ccx_ard_dp
+ccx_ard_dp_msff_macro__stack_10c__width_10
+inv
+remove non letters in net_width to get:  and size_param = 0
+net width is: [9:0]
+
+pcx
+ccx_arb
+ccx_ard_dp
+ccx_ard_dp_msff_macro__stack_10c__width_10
+inv
+remove non letters in net_width to get:  and size_param = 0
+net width is: [9:0]
+
+pcx
+ccx_arb
+ccx_ard_dp
+ccx_ard_dp_msff_macro__stack_10c__width_10
+inv
+remove non letters in net_width to get:  and size_param = 0
+net width is: [9:0]
+
+pcx
+ccx_arb
+ccx_ard_dp
+ccx_ard_dp_msff_macro__stack_10c__width_10
+inv
+remove non letters in net_width to get:  and size_param = 0
+net width is: [9:0]
+
+pcx
+ccx_arb
+ccx_ard_dp
+ccx_ard_dp_msff_macro__stack_10c__width_10
+cl_dp1_muxbuff2_8x
+Cannot find pin: d for flipflop: ccx.pcx.pcx_arbr8.ard.i_dff_fmem2.c0_0.l1en
+
+pcx
+ccx_arb
+ccx_ard_dp
+ccx_ard_dp_msff_macro__stack_10c__width_10
+inv
+remove non letters in net_width to get:  and size_param = 0
+net width is: [9:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 354, current line number to check = 356
+Edit file: open_sparc_output/mux_output//ccx_ard_dp_mux.v successful
+Port successfully added
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 153, current line number to check = 155
+Edit file: open_sparc_output/mux_output//ccx_arb_mux.v successful
+Port successfully added
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 702, current line number to check = 704
+Edit file: open_sparc_output/mux_output//pcx_mux.v successful
+Port successfully added
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+pcx
+ccx_arb
+ccx_ard_dp
+ccx_ard_dp_msff_macro__stack_10c__width_10
+inv
+remove non letters in net_width to get:  and size_param = 0
+net width is: [9:0]
+
+pcx
+ccx_arb
+ccx_ard_dp
+ccx_ard_dp_msff_macro__stack_10c__width_10
+inv
+remove non letters in net_width to get:  and size_param = 0
+net width is: [9:0]
+
+pcx
+ccx_arb
+ccx_ard_dp
+ccx_ard_dp_msff_macro__stack_10c__width_10
+inv
+remove non letters in net_width to get:  and size_param = 0
+net width is: [9:0]
+
+pcx
+ccx_arb
+ccx_ard_dp
+ccx_ard_dp_msff_macro__stack_10c__width_10
+inv
+remove non letters in net_width to get:  and size_param = 0
+net width is: [9:0]
+
+pcx
+ccx_arb
+ccx_ard_dp
+ccx_ard_dp_msff_macro__stack_10c__width_10
+inv
+remove non letters in net_width to get:  and size_param = 0
+net width is: [9:0]
+
+pcx
+ccx_arb
+ccx_ard_dp
+ccx_ard_dp_msff_macro__stack_10c__width_10
+inv
+remove non letters in net_width to get:  and size_param = 0
+net width is: [9:0]
+
+pcx
+ccx_arb
+ccx_ard_dp
+ccx_ard_dp_msff_macro__stack_10c__width_10
+inv
+remove non letters in net_width to get:  and size_param = 0
+net width is: [9:0]
+
+pcx
+ccx_arb
+ccx_ard_dp
+ccx_ard_dp_msff_macro__stack_10c__width_10
+inv
+remove non letters in net_width to get:  and size_param = 0
+net width is: [9:0]
+
+pcx
+ccx_arb
+ccx_ard_dp
+ccx_ard_dp_msff_macro__stack_10c__width_10
+inv
+remove non letters in net_width to get:  and size_param = 0
+net width is: [9:0]
+
+pcx
+ccx_arb
+ccx_ard_dp
+ccx_ard_dp_msff_macro__stack_10c__width_10
+cl_dp1_muxbuff2_8x
+Cannot find pin: d for flipflop: ccx.pcx.pcx_arbr8.ard.i_dff_fmem3.c0_0.l1en
+
+pcx
+ccx_arb
+ccx_ard_dp
+ccx_ard_dp_msff_macro__stack_10c__width_10
+inv
+remove non letters in net_width to get:  and size_param = 0
+net width is: [9:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 354, current line number to check = 356
+Edit file: open_sparc_output/mux_output//ccx_ard_dp_mux.v successful
+Port successfully added
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 153, current line number to check = 155
+Edit file: open_sparc_output/mux_output//ccx_arb_mux.v successful
+Port successfully added
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 702, current line number to check = 704
+Edit file: open_sparc_output/mux_output//pcx_mux.v successful
+Port successfully added
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+pcx
+ccx_arb
+ccx_ard_dp
+ccx_ard_dp_msff_macro__stack_10c__width_10
+inv
+remove non letters in net_width to get:  and size_param = 0
+net width is: [9:0]
+
+pcx
+ccx_arb
+ccx_ard_dp
+ccx_ard_dp_msff_macro__stack_10c__width_10
+inv
+remove non letters in net_width to get:  and size_param = 0
+net width is: [9:0]
+
+pcx
+ccx_arb
+ccx_ard_dp
+ccx_ard_dp_msff_macro__stack_10c__width_10
+inv
+remove non letters in net_width to get:  and size_param = 0
+net width is: [9:0]
+
+pcx
+ccx_arb
+ccx_ard_dp
+ccx_ard_dp_msff_macro__stack_10c__width_10
+inv
+remove non letters in net_width to get:  and size_param = 0
+net width is: [9:0]
+
+pcx
+ccx_arb
+ccx_ard_dp
+ccx_ard_dp_msff_macro__stack_10c__width_10
+inv
+remove non letters in net_width to get:  and size_param = 0
+net width is: [9:0]
+
+pcx
+ccx_arb
+ccx_ard_dp
+ccx_ard_dp_msff_macro__stack_10c__width_10
+inv
+remove non letters in net_width to get:  and size_param = 0
+net width is: [9:0]
+
+pcx
+ccx_arb
+ccx_ard_dp
+ccx_ard_dp_msff_macro__stack_10c__width_10
+inv
+remove non letters in net_width to get:  and size_param = 0
+net width is: [9:0]
+
+pcx
+ccx_arb
+ccx_ard_dp
+ccx_ard_dp_msff_macro__stack_10c__width_10
+inv
+remove non letters in net_width to get:  and size_param = 0
+net width is: [9:0]
+
+pcx
+ccx_arb
+ccx_ard_dp
+ccx_ard_dp_msff_macro__stack_10c__width_10
+inv
+remove non letters in net_width to get:  and size_param = 0
+net width is: [9:0]
+
+pcx
+ccx_arb
+ccx_ard_dp
+ccx_ard_dp_msff_macro__stack_10c__width_10
+cl_dp1_muxbuff2_8x
+Cannot find pin: d for flipflop: ccx.pcx.pcx_arbr8.ard.i_dff_fmem4.c0_0.l1en
+
+pcx
+ccx_arb
+ccx_ard_dp
+ccx_ard_dp_msff_macro__stack_10c__width_10
+inv
+remove non letters in net_width to get:  and size_param = 0
+net width is: [9:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 354, current line number to check = 356
+Edit file: open_sparc_output/mux_output//ccx_ard_dp_mux.v successful
+Port successfully added
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 153, current line number to check = 155
+Edit file: open_sparc_output/mux_output//ccx_arb_mux.v successful
+Port successfully added
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 702, current line number to check = 704
+Edit file: open_sparc_output/mux_output//pcx_mux.v successful
+Port successfully added
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+pcx
+ccx_arb
+ccx_ard_dp
+ccx_ard_dp_msff_macro__stack_10c__width_10
+inv
+remove non letters in net_width to get:  and size_param = 0
+net width is: [9:0]
+
+pcx
+ccx_arb
+ccx_ard_dp
+ccx_ard_dp_msff_macro__stack_10c__width_10
+inv
+remove non letters in net_width to get:  and size_param = 0
+net width is: [9:0]
+
+pcx
+ccx_arb
+ccx_ard_dp
+ccx_ard_dp_msff_macro__stack_10c__width_10
+inv
+remove non letters in net_width to get:  and size_param = 0
+net width is: [9:0]
+
+pcx
+ccx_arb
+ccx_ard_dp
+ccx_ard_dp_msff_macro__stack_10c__width_10
+inv
+remove non letters in net_width to get:  and size_param = 0
+net width is: [9:0]
+
+pcx
+ccx_arb
+ccx_ard_dp
+ccx_ard_dp_msff_macro__stack_10c__width_10
+inv
+remove non letters in net_width to get:  and size_param = 0
+net width is: [9:0]
+
+pcx
+ccx_arb
+ccx_ard_dp
+ccx_ard_dp_msff_macro__stack_10c__width_10
+inv
+remove non letters in net_width to get:  and size_param = 0
+net width is: [9:0]
+
+pcx
+ccx_arb
+ccx_ard_dp
+ccx_ard_dp_msff_macro__stack_10c__width_10
+inv
+remove non letters in net_width to get:  and size_param = 0
+net width is: [9:0]
+
+pcx
+ccx_arb
+ccx_ard_dp
+ccx_ard_dp_msff_macro__stack_10c__width_10
+inv
+remove non letters in net_width to get:  and size_param = 0
+net width is: [9:0]
+
+pcx
+ccx_arb
+ccx_ard_dp
+ccx_ard_dp_msff_macro__stack_10c__width_10
+inv
+remove non letters in net_width to get:  and size_param = 0
+net width is: [9:0]
+
+pcx
+ccx_arb
+ccx_ard_dp
+ccx_ard_dp_msff_macro__stack_10c__width_10
+cl_dp1_muxbuff2_8x
+Cannot find pin: d for flipflop: ccx.pcx.pcx_arbr8.ard.i_dff_fmem5.c0_0.l1en
+
+pcx
+ccx_arb
+ccx_ard_dp
+ccx_ard_dp_msff_macro__stack_10c__width_10
+inv
+remove non letters in net_width to get:  and size_param = 0
+net width is: [9:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 354, current line number to check = 356
+Edit file: open_sparc_output/mux_output//ccx_ard_dp_mux.v successful
+Port successfully added
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 153, current line number to check = 155
+Edit file: open_sparc_output/mux_output//ccx_arb_mux.v successful
+Port successfully added
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 702, current line number to check = 704
+Edit file: open_sparc_output/mux_output//pcx_mux.v successful
+Port successfully added
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+pcx
+ccx_arb
+ccx_ard_dp
+ccx_ard_dp_msff_macro__stack_10c__width_10
+inv
+remove non letters in net_width to get:  and size_param = 0
+net width is: [9:0]
+
+pcx
+ccx_arb
+ccx_ard_dp
+ccx_ard_dp_msff_macro__stack_10c__width_10
+inv
+remove non letters in net_width to get:  and size_param = 0
+net width is: [9:0]
+
+pcx
+ccx_arb
+ccx_ard_dp
+ccx_ard_dp_msff_macro__stack_10c__width_10
+inv
+remove non letters in net_width to get:  and size_param = 0
+net width is: [9:0]
+
+pcx
+ccx_arb
+ccx_ard_dp
+ccx_ard_dp_msff_macro__stack_10c__width_10
+inv
+remove non letters in net_width to get:  and size_param = 0
+net width is: [9:0]
+
+pcx
+ccx_arb
+ccx_ard_dp
+ccx_ard_dp_msff_macro__stack_10c__width_10
+inv
+remove non letters in net_width to get:  and size_param = 0
+net width is: [9:0]
+
+pcx
+ccx_arb
+ccx_ard_dp
+ccx_ard_dp_msff_macro__stack_10c__width_10
+inv
+remove non letters in net_width to get:  and size_param = 0
+net width is: [9:0]
+
+pcx
+ccx_arb
+ccx_ard_dp
+ccx_ard_dp_msff_macro__stack_10c__width_10
+inv
+remove non letters in net_width to get:  and size_param = 0
+net width is: [9:0]
+
+pcx
+ccx_arb
+ccx_ard_dp
+ccx_ard_dp_msff_macro__stack_10c__width_10
+inv
+remove non letters in net_width to get:  and size_param = 0
+net width is: [9:0]
+
+pcx
+ccx_arb
+ccx_ard_dp
+ccx_ard_dp_msff_macro__stack_10c__width_10
+inv
+remove non letters in net_width to get:  and size_param = 0
+net width is: [9:0]
+
+pcx
+ccx_arb
+ccx_ard_dp
+ccx_ard_dp_msff_macro__stack_10c__width_10
+cl_dp1_muxbuff2_8x
+Cannot find pin: d for flipflop: ccx.pcx.pcx_arbr8.ard.i_dff_fmem6.c0_0.l1en
+
+pcx
+ccx_arb
+ccx_ard_dp
+ccx_ard_dp_msff_macro__stack_10c__width_10
+inv
+remove non letters in net_width to get:  and size_param = 0
+net width is: [9:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 354, current line number to check = 356
+Edit file: open_sparc_output/mux_output//ccx_ard_dp_mux.v successful
+Port successfully added
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 153, current line number to check = 155
+Edit file: open_sparc_output/mux_output//ccx_arb_mux.v successful
+Port successfully added
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 702, current line number to check = 704
+Edit file: open_sparc_output/mux_output//pcx_mux.v successful
+Port successfully added
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+pcx
+ccx_arb
+ccx_ard_dp
+ccx_ard_dp_msff_macro__stack_10c__width_10
+inv
+remove non letters in net_width to get:  and size_param = 0
+net width is: [9:0]
+
+pcx
+ccx_arb
+ccx_ard_dp
+ccx_ard_dp_msff_macro__stack_10c__width_10
+inv
+remove non letters in net_width to get:  and size_param = 0
+net width is: [9:0]
+
+pcx
+ccx_arb
+ccx_ard_dp
+ccx_ard_dp_msff_macro__stack_10c__width_10
+inv
+remove non letters in net_width to get:  and size_param = 0
+net width is: [9:0]
+
+pcx
+ccx_arb
+ccx_ard_dp
+ccx_ard_dp_msff_macro__stack_10c__width_10
+inv
+remove non letters in net_width to get:  and size_param = 0
+net width is: [9:0]
+
+pcx
+ccx_arb
+ccx_ard_dp
+ccx_ard_dp_msff_macro__stack_10c__width_10
+inv
+remove non letters in net_width to get:  and size_param = 0
+net width is: [9:0]
+
+pcx
+ccx_arb
+ccx_ard_dp
+ccx_ard_dp_msff_macro__stack_10c__width_10
+inv
+remove non letters in net_width to get:  and size_param = 0
+net width is: [9:0]
+
+pcx
+ccx_arb
+ccx_ard_dp
+ccx_ard_dp_msff_macro__stack_10c__width_10
+inv
+remove non letters in net_width to get:  and size_param = 0
+net width is: [9:0]
+
+pcx
+ccx_arb
+ccx_ard_dp
+ccx_ard_dp_msff_macro__stack_10c__width_10
+inv
+remove non letters in net_width to get:  and size_param = 0
+net width is: [9:0]
+
+pcx
+ccx_arb
+ccx_ard_dp
+ccx_ard_dp_msff_macro__stack_10c__width_10
+inv
+remove non letters in net_width to get:  and size_param = 0
+net width is: [9:0]
+
+pcx
+ccx_arb
+ccx_ard_dp
+ccx_ard_dp_msff_macro__stack_10c__width_10
+cl_dp1_muxbuff2_8x
+Cannot find pin: d for flipflop: ccx.pcx.pcx_arbr8.ard.i_dff_fmem7.c0_0.l1en
+
+pcx
+ccx_arb
+ccx_ard_dp
+ccx_ard_dp_msff_macro__stack_10c__width_10
+inv
+remove non letters in net_width to get:  and size_param = 0
+net width is: [9:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 354, current line number to check = 356
+Edit file: open_sparc_output/mux_output//ccx_ard_dp_mux.v successful
+Port successfully added
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 153, current line number to check = 155
+Edit file: open_sparc_output/mux_output//ccx_arb_mux.v successful
+Port successfully added
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 702, current line number to check = 704
+Edit file: open_sparc_output/mux_output//pcx_mux.v successful
+Port successfully added
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+pcx
+ccx_arb
+ccx_ard_dp
+ccx_ard_dp_msff_macro__stack_10c__width_10
+inv
+remove non letters in net_width to get:  and size_param = 0
+net width is: [9:0]
+
+pcx
+ccx_arb
+ccx_ard_dp
+ccx_ard_dp_msff_macro__stack_10c__width_10
+inv
+remove non letters in net_width to get:  and size_param = 0
+net width is: [9:0]
+
+pcx
+ccx_arb
+ccx_ard_dp
+ccx_ard_dp_msff_macro__stack_10c__width_10
+inv
+remove non letters in net_width to get:  and size_param = 0
+net width is: [9:0]
+
+pcx
+ccx_arb
+ccx_ard_dp
+ccx_ard_dp_msff_macro__stack_10c__width_10
+inv
+remove non letters in net_width to get:  and size_param = 0
+net width is: [9:0]
+
+pcx
+ccx_arb
+ccx_ard_dp
+ccx_ard_dp_msff_macro__stack_10c__width_10
+inv
+remove non letters in net_width to get:  and size_param = 0
+net width is: [9:0]
+
+pcx
+ccx_arb
+ccx_ard_dp
+ccx_ard_dp_msff_macro__stack_10c__width_10
+inv
+remove non letters in net_width to get:  and size_param = 0
+net width is: [9:0]
+
+pcx
+ccx_arb
+ccx_ard_dp
+ccx_ard_dp_msff_macro__stack_10c__width_10
+inv
+remove non letters in net_width to get:  and size_param = 0
+net width is: [9:0]
+
+pcx
+ccx_arb
+ccx_ard_dp
+ccx_ard_dp_msff_macro__stack_10c__width_10
+inv
+remove non letters in net_width to get:  and size_param = 0
+net width is: [9:0]
+
+pcx
+ccx_arb
+ccx_ard_dp
+ccx_ard_dp_msff_macro__stack_10c__width_10
+inv
+remove non letters in net_width to get:  and size_param = 0
+net width is: [9:0]
+
+pcx
+ccx_arb
+ccx_ard_dp
+ccx_ard_dp_msff_macro__stack_10c__width_10
+cl_dp1_muxbuff2_8x
+Cannot find pin: d for flipflop: ccx.pcx.pcx_arbr8.ard.i_dff_fmem8.c0_0.l1en
+
+pcx
+ccx_arb
+ccx_ard_dp
+ccx_ard_dp_msff_macro__stack_10c__width_10
+inv
+remove non letters in net_width to get:  and size_param = 0
+net width is: [9:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 354, current line number to check = 356
+Edit file: open_sparc_output/mux_output//ccx_ard_dp_mux.v successful
+Port successfully added
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 153, current line number to check = 155
+Edit file: open_sparc_output/mux_output//ccx_arb_mux.v successful
+Port successfully added
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 702, current line number to check = 704
+Edit file: open_sparc_output/mux_output//pcx_mux.v successful
+Port successfully added
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+pcx
+ccx_arb
+ccx_ard_dp
+ccx_ard_dp_msff_macro__stack_10c__width_10
+inv
+remove non letters in net_width to get:  and size_param = 0
+net width is: [9:0]
+
+pcx
+ccx_arb
+ccx_ard_dp
+ccx_ard_dp_msff_macro__stack_10c__width_10
+inv
+remove non letters in net_width to get:  and size_param = 0
+net width is: [9:0]
+
+pcx
+ccx_arb
+ccx_ard_dp
+ccx_ard_dp_msff_macro__stack_10c__width_10
+inv
+remove non letters in net_width to get:  and size_param = 0
+net width is: [9:0]
+
+pcx
+ccx_arb
+ccx_ard_dp
+ccx_ard_dp_msff_macro__stack_10c__width_10
+inv
+remove non letters in net_width to get:  and size_param = 0
+net width is: [9:0]
+
+pcx
+ccx_arb
+ccx_ard_dp
+ccx_ard_dp_msff_macro__stack_10c__width_10
+inv
+remove non letters in net_width to get:  and size_param = 0
+net width is: [9:0]
+
+pcx
+ccx_arb
+ccx_ard_dp
+ccx_ard_dp_msff_macro__stack_10c__width_10
+inv
+remove non letters in net_width to get:  and size_param = 0
+net width is: [9:0]
+
+pcx
+ccx_arb
+ccx_ard_dp
+ccx_ard_dp_msff_macro__stack_10c__width_10
+inv
+remove non letters in net_width to get:  and size_param = 0
+net width is: [9:0]
+
+pcx
+ccx_arb
+ccx_ard_dp
+ccx_ard_dp_msff_macro__stack_10c__width_10
+inv
+remove non letters in net_width to get:  and size_param = 0
+net width is: [9:0]
+
+pcx
+ccx_arb
+ccx_ard_dp
+ccx_ard_dp_msff_macro__stack_10c__width_10
+inv
+remove non letters in net_width to get:  and size_param = 0
+net width is: [9:0]
+
+pcx
+ccx_arb
+ccx_ard_dp
+ccx_ard_dp_msff_macro__stack_10c__width_10
+cl_dp1_muxbuff2_8x
+Cannot find pin: d for flipflop: ccx.pcx.pcx_arbr8.ard.i_dff_fmem9.c0_0.l1en
+
+pcx
+ccx_arb
+ccx_ard_dp
+ccx_ard_dp_msff_macro__stack_10c__width_10
+inv
+remove non letters in net_width to get:  and size_param = 0
+net width is: [9:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 354, current line number to check = 356
+Edit file: open_sparc_output/mux_output//ccx_ard_dp_mux.v successful
+Port successfully added
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 153, current line number to check = 155
+Edit file: open_sparc_output/mux_output//ccx_arb_mux.v successful
+Port successfully added
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 702, current line number to check = 704
+Edit file: open_sparc_output/mux_output//pcx_mux.v successful
+Port successfully added
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+pcx
+ccx_arb
+ccx_ard_dp
+ccx_ard_dp_msff_macro__stack_10c__width_10
+inv
+remove non letters in net_width to get:  and size_param = 0
+net width is: [9:0]
+
+pcx
+ccx_arb
+ccx_ard_dp
+ccx_ard_dp_msff_macro__stack_10c__width_10
+inv
+remove non letters in net_width to get:  and size_param = 0
+net width is: [9:0]
+
+pcx
+ccx_arb
+ccx_ard_dp
+ccx_ard_dp_msff_macro__stack_10c__width_10
+inv
+remove non letters in net_width to get:  and size_param = 0
+net width is: [9:0]
+
+pcx
+ccx_arb
+ccx_ard_dp
+ccx_ard_dp_msff_macro__stack_10c__width_10
+inv
+remove non letters in net_width to get:  and size_param = 0
+net width is: [9:0]
+
+pcx
+ccx_arb
+ccx_ard_dp
+ccx_ard_dp_msff_macro__stack_10c__width_10
+inv
+remove non letters in net_width to get:  and size_param = 0
+net width is: [9:0]
+
+pcx
+ccx_arb
+ccx_ard_dp
+ccx_ard_dp_msff_macro__stack_10c__width_10
+inv
+remove non letters in net_width to get:  and size_param = 0
+net width is: [9:0]
+
+pcx
+ccx_arb
+ccx_ard_dp
+ccx_ard_dp_msff_macro__stack_10c__width_10
+inv
+remove non letters in net_width to get:  and size_param = 0
+net width is: [9:0]
+
+pcx
+ccx_arb
+ccx_ard_dp
+ccx_ard_dp_msff_macro__stack_10c__width_10
+inv
+remove non letters in net_width to get:  and size_param = 0
+net width is: [9:0]
+
+pcx
+ccx_arb
+ccx_ard_dp
+ccx_ard_dp_msff_macro__stack_10c__width_10
+inv
+remove non letters in net_width to get:  and size_param = 0
+net width is: [9:0]
+
+pcx
+ccx_arb
+ccx_ard_dp
+ccx_ard_dp_msff_macro__stack_10c__width_10
+cl_dp1_muxbuff2_8x
+Cannot find pin: d for flipflop: ccx.pcx.pcx_arbr8.ard.i_dff_fmem10.c0_0.l1en
+
+pcx
+ccx_arb
+ccx_ard_dp
+ccx_ard_dp_msff_macro__stack_10c__width_10
+inv
+remove non letters in net_width to get:  and size_param = 0
+net width is: [9:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 354, current line number to check = 356
+Edit file: open_sparc_output/mux_output//ccx_ard_dp_mux.v successful
+Port successfully added
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 153, current line number to check = 155
+Edit file: open_sparc_output/mux_output//ccx_arb_mux.v successful
+Port successfully added
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 702, current line number to check = 704
+Edit file: open_sparc_output/mux_output//pcx_mux.v successful
+Port successfully added
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+pcx
+ccx_arb
+ccx_ard_dp
+ccx_ard_dp_msff_macro__stack_10c__width_10
+inv
+remove non letters in net_width to get:  and size_param = 0
+net width is: [9:0]
+
+pcx
+ccx_arb
+ccx_ard_dp
+ccx_ard_dp_msff_macro__stack_10c__width_10
+inv
+remove non letters in net_width to get:  and size_param = 0
+net width is: [9:0]
+
+pcx
+ccx_arb
+ccx_ard_dp
+ccx_ard_dp_msff_macro__stack_10c__width_10
+inv
+remove non letters in net_width to get:  and size_param = 0
+net width is: [9:0]
+
+pcx
+ccx_arb
+ccx_ard_dp
+ccx_ard_dp_msff_macro__stack_10c__width_10
+inv
+remove non letters in net_width to get:  and size_param = 0
+net width is: [9:0]
+
+pcx
+ccx_arb
+ccx_ard_dp
+ccx_ard_dp_msff_macro__stack_10c__width_10
+inv
+remove non letters in net_width to get:  and size_param = 0
+net width is: [9:0]
+
+pcx
+ccx_arb
+ccx_ard_dp
+ccx_ard_dp_msff_macro__stack_10c__width_10
+inv
+remove non letters in net_width to get:  and size_param = 0
+net width is: [9:0]
+
+pcx
+ccx_arb
+ccx_ard_dp
+ccx_ard_dp_msff_macro__stack_10c__width_10
+inv
+remove non letters in net_width to get:  and size_param = 0
+net width is: [9:0]
+
+pcx
+ccx_arb
+ccx_ard_dp
+ccx_ard_dp_msff_macro__stack_10c__width_10
+inv
+remove non letters in net_width to get:  and size_param = 0
+net width is: [9:0]
+
+pcx
+ccx_arb
+ccx_ard_dp
+ccx_ard_dp_msff_macro__stack_10c__width_10
+inv
+remove non letters in net_width to get:  and size_param = 0
+net width is: [9:0]
+
+pcx
+ccx_arb
+ccx_ard_dp
+ccx_ard_dp_msff_macro__stack_10c__width_10
+cl_dp1_muxbuff2_8x
+Cannot find pin: d for flipflop: ccx.pcx.pcx_arbr8.ard.i_dff_fmem11.c0_0.l1en
+
+pcx
+ccx_arb
+ccx_ard_dp
+ccx_ard_dp_msff_macro__stack_10c__width_10
+inv
+remove non letters in net_width to get:  and size_param = 0
+net width is: [9:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 354, current line number to check = 356
+Edit file: open_sparc_output/mux_output//ccx_ard_dp_mux.v successful
+Port successfully added
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 153, current line number to check = 155
+Edit file: open_sparc_output/mux_output//ccx_arb_mux.v successful
+Port successfully added
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 702, current line number to check = 704
+Edit file: open_sparc_output/mux_output//pcx_mux.v successful
+Port successfully added
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+pcx
+ccx_arb
+ccx_ard_dp
+ccx_ard_dp_msff_macro__stack_10c__width_10
+inv
+remove non letters in net_width to get:  and size_param = 0
+net width is: [9:0]
+
+pcx
+ccx_arb
+ccx_ard_dp
+ccx_ard_dp_msff_macro__stack_10c__width_10
+inv
+remove non letters in net_width to get:  and size_param = 0
+net width is: [9:0]
+
+pcx
+ccx_arb
+ccx_ard_dp
+ccx_ard_dp_msff_macro__stack_10c__width_10
+inv
+remove non letters in net_width to get:  and size_param = 0
+net width is: [9:0]
+
+pcx
+ccx_arb
+ccx_ard_dp
+ccx_ard_dp_msff_macro__stack_10c__width_10
+inv
+remove non letters in net_width to get:  and size_param = 0
+net width is: [9:0]
+
+pcx
+ccx_arb
+ccx_ard_dp
+ccx_ard_dp_msff_macro__stack_10c__width_10
+inv
+remove non letters in net_width to get:  and size_param = 0
+net width is: [9:0]
+
+pcx
+ccx_arb
+ccx_ard_dp
+ccx_ard_dp_msff_macro__stack_10c__width_10
+inv
+remove non letters in net_width to get:  and size_param = 0
+net width is: [9:0]
+
+pcx
+ccx_arb
+ccx_ard_dp
+ccx_ard_dp_msff_macro__stack_10c__width_10
+inv
+remove non letters in net_width to get:  and size_param = 0
+net width is: [9:0]
+
+pcx
+ccx_arb
+ccx_ard_dp
+ccx_ard_dp_msff_macro__stack_10c__width_10
+inv
+remove non letters in net_width to get:  and size_param = 0
+net width is: [9:0]
+
+pcx
+ccx_arb
+ccx_ard_dp
+ccx_ard_dp_msff_macro__stack_10c__width_10
+inv
+remove non letters in net_width to get:  and size_param = 0
+net width is: [9:0]
+
+pcx
+ccx_arb
+ccx_ard_dp
+ccx_ard_dp_msff_macro__stack_10c__width_10
+cl_dp1_muxbuff2_8x
+Cannot find pin: d for flipflop: ccx.pcx.pcx_arbr8.ard.i_dff_fmem12.c0_0.l1en
+
+pcx
+ccx_arb
+ccx_ard_dp
+ccx_ard_dp_msff_macro__stack_10c__width_10
+inv
+remove non letters in net_width to get:  and size_param = 0
+net width is: [9:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 354, current line number to check = 356
+Edit file: open_sparc_output/mux_output//ccx_ard_dp_mux.v successful
+Port successfully added
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 153, current line number to check = 155
+Edit file: open_sparc_output/mux_output//ccx_arb_mux.v successful
+Port successfully added
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 702, current line number to check = 704
+Edit file: open_sparc_output/mux_output//pcx_mux.v successful
+Port successfully added
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+pcx
+ccx_arb
+ccx_ard_dp
+ccx_ard_dp_msff_macro__stack_10c__width_10
+inv
+remove non letters in net_width to get:  and size_param = 0
+net width is: [9:0]
+
+pcx
+ccx_arb
+ccx_ard_dp
+ccx_ard_dp_msff_macro__stack_10c__width_10
+inv
+remove non letters in net_width to get:  and size_param = 0
+net width is: [9:0]
+
+pcx
+ccx_arb
+ccx_ard_dp
+ccx_ard_dp_msff_macro__stack_10c__width_10
+inv
+remove non letters in net_width to get:  and size_param = 0
+net width is: [9:0]
+
+pcx
+ccx_arb
+ccx_ard_dp
+ccx_ard_dp_msff_macro__stack_10c__width_10
+inv
+remove non letters in net_width to get:  and size_param = 0
+net width is: [9:0]
+
+pcx
+ccx_arb
+ccx_ard_dp
+ccx_ard_dp_msff_macro__stack_10c__width_10
+inv
+remove non letters in net_width to get:  and size_param = 0
+net width is: [9:0]
+
+pcx
+ccx_arb
+ccx_ard_dp
+ccx_ard_dp_msff_macro__stack_10c__width_10
+inv
+remove non letters in net_width to get:  and size_param = 0
+net width is: [9:0]
+
+pcx
+ccx_arb
+ccx_ard_dp
+ccx_ard_dp_msff_macro__stack_10c__width_10
+inv
+remove non letters in net_width to get:  and size_param = 0
+net width is: [9:0]
+
+pcx
+ccx_arb
+ccx_ard_dp
+ccx_ard_dp_msff_macro__stack_10c__width_10
+inv
+remove non letters in net_width to get:  and size_param = 0
+net width is: [9:0]
+
+pcx
+ccx_arb
+ccx_ard_dp
+ccx_ard_dp_msff_macro__stack_10c__width_10
+inv
+remove non letters in net_width to get:  and size_param = 0
+net width is: [9:0]
+
+pcx
+ccx_arb
+ccx_ard_dp
+ccx_ard_dp_msff_macro__stack_10c__width_10
+cl_dp1_muxbuff2_8x
+Cannot find pin: d for flipflop: ccx.pcx.pcx_arbr8.ard.i_dff_fmem13.c0_0.l1en
+
+pcx
+ccx_arb
+ccx_ard_dp
+ccx_ard_dp_msff_macro__stack_10c__width_10
+inv
+remove non letters in net_width to get:  and size_param = 0
+net width is: [9:0]
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 354, current line number to check = 356
+Edit file: open_sparc_output/mux_output//ccx_ard_dp_mux.v successful
+Port successfully added
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 153, current line number to check = 155
+Edit file: open_sparc_output/mux_output//ccx_arb_mux.v successful
+Port successfully added
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 702, current line number to check = 704
+Edit file: open_sparc_output/mux_output//pcx_mux.v successful
+Port successfully added
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351
+Edit file: open_sparc_output/mux_output//ccx_mux.v successful
+Port successfully added
+
+pcx
+ccx_arb
+ccx_ard_dp
+ccx_ard_dp_msff_macro__stack_10c__width_10
+inv
+remove non letters in net_width to get:  and size_param = 0
+net width is: [9:0]
+
+pcx
+ccx_arb
+ccx_ard_dp
+ccx_ard_dp_msff_macro__stack_10c__width_10
+inv
+remove non letters in net_width to get:  and size_param = 0
+net width is: [9:0]
+
+pcx
+ccx_arb
+ccx_ard_dp
+ccx_ard_dp_msff_macro__stack_10c__width_10
+inv
+remove non letters in net_width to get:  and size_param = 0
+net width is: [9:0]
+
+500
+THE CONTROL SIGNALS: 
+number of bits for the input = 9
+line number to add port: 349
+Control signal port addition FAIL: Module does not end with a ');'
+ Port line number = 349, current line number to check = 351

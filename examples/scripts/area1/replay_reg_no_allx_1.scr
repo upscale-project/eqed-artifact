@@ -1,0 +1,50 @@
+#!/bin/csh -f
+
+setenv MODEL_TECH $HOME_0IN/share/modeltech
+
+if (-f modelsim.ini) then
+  mv -f modelsim.ini modelsim.ini.bak
+endif
+
+/scratch0/nuthakki/questa/small_tests/Output_Results/qcache/AN/tb_vmap_lib_mappings.csh
+
+set modelsimini = "-modelsimini modelsim.ini"
+
+
+/scratch0/questa/qformal-old/linux_x86_64/modeltech/plat/vlog \
+	$modelsimini \
+	+define+continue_sim_after_applying_stimulus \
+	-skipsynthoffregion \
+	-suppress 2650 \
+	-sv \
+	-work work \
+	replay_reg_no_allx_1_clk.v \
+	replay_reg_no_allx_1.v \
+
+
+/scratch0/questa/qformal-old/linux_x86_64/modeltech/plat/vsim \
+	$modelsimini \
+	-assertdebug \
+	-coverage \
+	-debugdb \
+	-default_radix symbolic \
+	-f /scratch0/nuthakki/questa/small_tests/Output_Results/qcache/FORMAL/SEARCH/SIM/vsim_tb_replay.arg \
+	-i \
+	-lib work \
+	-suppress 2734 \
+	-suppress 3009 \
+	-suppress 3838 \
+	-suppress 4018 \
+	-suppress 7052 \
+	-suppress 8386 \
+	-t 1ns \
+	-do replay_reg_no_allx_1.vsim.do \
+	zi_replay_vlog \
+	zi_replay_clk_gen_vlog
+
+
+rm -f modelsim.ini
+if (-f modelsim.ini.bak) then
+  mv -f modelsim.ini.bak modelsim.ini
+endif
+

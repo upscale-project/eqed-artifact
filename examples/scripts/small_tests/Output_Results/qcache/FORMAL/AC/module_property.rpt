@@ -1,0 +1,95 @@
+
+
+===============================================================================
+Module: small_example
+===============================================================================
+Summary
+-------------------------------------------------------------------------------
+Assertions   : 0 
+Assumptions  : 1 
+Covers       : 13 
+-------------------------------------------------------------------------------
+assume A_test (sva)
+  Instance: small_example.A_test
+  Location: File /rsghome/esingh/scratch0-esingh/questa/small_tests/small_example.sv, Line 368
+  Severity: error
+  Stats:   depth=1 gates=2 flops=0
+
+cover C_test3 (sva)
+  Instance: small_example.C_test3
+  Location: File /rsghome/esingh/scratch0-esingh/questa/small_tests/small_example.sv, Line 143
+  Severity: info
+  Stats:   depth=5 gates=22 flops=4
+
+cover C_test_c33 (sva)
+  Instance: small_example.C_test_c33
+  Location: File /rsghome/esingh/scratch0-esingh/questa/small_tests/small_example.sv, Line 160
+  Severity: info
+  Stats:   depth=6 gates=32 flops=5
+
+cover C_test_c33_1misr (sva)
+  Instance: small_example.C_test_c33_1misr
+  Location: File /rsghome/esingh/scratch0-esingh/questa/small_tests/small_example.sv, Line 177
+  Severity: info
+  Stats:   depth=6 gates=31 flops=5
+
+cover C_test_c82 (sva)
+  Instance: small_example.C_test_c82
+  Location: File /rsghome/esingh/scratch0-esingh/questa/small_tests/small_example.sv, Line 195
+  Severity: info
+  Stats:   depth=6 gates=31 flops=5
+
+cover C_test_c82_1misr (sva)
+  Instance: small_example.C_test_c82_1misr
+  Location: File /rsghome/esingh/scratch0-esingh/questa/small_tests/small_example.sv, Line 212
+  Severity: info
+  Stats:   depth=6 gates=30 flops=5
+
+cover C_test_c12 (sva)
+  Instance: small_example.C_test_c12
+  Location: File /rsghome/esingh/scratch0-esingh/questa/small_tests/small_example.sv, Line 230
+  Severity: info
+  Stats:   depth=6 gates=31 flops=5
+
+cover C_test_c12_1misr (sva)
+  Instance: small_example.C_test_c12_1misr
+  Location: File /rsghome/esingh/scratch0-esingh/questa/small_tests/small_example.sv, Line 247
+  Severity: info
+  Stats:   depth=6 gates=30 flops=5
+
+cover C_test_c63 (sva)
+  Instance: small_example.C_test_c63
+  Location: File /rsghome/esingh/scratch0-esingh/questa/small_tests/small_example.sv, Line 265
+  Severity: info
+  Stats:   depth=6 gates=31 flops=5
+
+cover C_test_c63_1misr (sva)
+  Instance: small_example.C_test_c63_1misr
+  Location: File /rsghome/esingh/scratch0-esingh/questa/small_tests/small_example.sv, Line 282
+  Severity: info
+  Stats:   depth=6 gates=30 flops=5
+
+cover C_test_c32 (sva)
+  Instance: small_example.C_test_c32
+  Location: File /rsghome/esingh/scratch0-esingh/questa/small_tests/small_example.sv, Line 299
+  Severity: info
+  Stats:   depth=6 gates=32 flops=5
+
+cover C_test_none (sva)
+  Instance: small_example.C_test_none
+  Location: File /rsghome/esingh/scratch0-esingh/questa/small_tests/small_example.sv, Line 317
+  Severity: info
+  Stats:   depth=6 gates=33 flops=5
+
+cover C_test (sva)
+  Instance: small_example.C_test
+  Location: File /rsghome/esingh/scratch0-esingh/questa/small_tests/small_example.sv, Line 340
+  Severity: info
+  Stats:   depth=9 gates=36 flops=8
+
+cover C_test_fault (sva)
+  Instance: small_example.C_test_fault
+  Location: File /rsghome/esingh/scratch0-esingh/questa/small_tests/small_example.sv, Line 363
+  Severity: info
+  Stats:   depth=9 gates=35 flops=8
+

@@ -1,0 +1,69 @@
+
+Command-line arguments:
+	-od results \
+	-cli \
+	-tool prove \
+	-effort high \
+	-import_db results/formal_compile.db  
+
+Reading file...
+Read design 'counter_tb'.
+Info    : Design is linked for formal analysis.  Design 'counter_tb'.
+Info    : Using automatically created reset sequence.
+
+---------------- BEGIN RESET SEQUENCE --------------
+//--------------------------------------------
+// Reset sequence for design counter_tb
+//--------------------------------------------
+
+// Uncomment the next line to drive 'b0 on inputs not explicitly assigned
+// $default_input_value 0
+
+// Declare the reference clock for the ## directive
+$default_clock clk
+
+// Assert reset for 5 cycles
+counter_out[0] = 1
+## 5
+
+
+---------------- END RESET SEQUENCE ----------------
+
+Info    : Applying synthesis semantics.
+
+---------------------------------------
+Property Summary                  Count
+---------------------------------------
+Assumed                               0
+Inconclusive                          0
+---------------------------------------
+Total                                 0
+---------------------------------------
+
+
+--------- Process Statistics ----------
+Elapsed Time (s):                     0
+--------- rsg2.stanford.edu:0 ---------
+Total CPU Time (s):                   0
+Memory Used (MB):                     0
+---------------------------------------
+
+Report Generated               : Fri Nov  6 02:14:26 2015
+Database File                  : /scratch0/esingh/eformal/results/formal_verify.db
+
+Targets Summary by Checker Type
+-------------------------------------------------------------------------------
+                                                           Proven         Fired
+Checker Type                  Targets   Assumptions       Targets       Targets
+-------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
+Total Targets Summary               0             0             0             0
+-------------------------------------------------------------------------------
+
+To launch the debugging environment, use qformal as follows:
+       qformal /scratch0/esingh/eformal/results/formal_verify.db
+
+Final Process Statistics: Max memory 1094MB, CPU time 2s, Total time 3s
+End /cad/mentor/qformal/linux_x86_64/bin/.0in_formal_engine log Fri Nov  6 02:14:26 2015
+
+

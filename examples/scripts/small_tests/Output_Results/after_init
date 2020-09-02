@@ -1,0 +1,5 @@
+intFF = 8'b11001011
+inj_error = 1'b0
+FFmisr = 3'b100
+FFmisr2 = 3'b100
+

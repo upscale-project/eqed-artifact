@@ -1,0 +1,13 @@
+// All inputs are 0
+$default_input_value 0
+io_pcx_stall_pq = 0
+// my_input = ’b101
+// Hold io_pcx_stall_pq at 0 for 30 clock cycles and assert
+##
+## 29
+// Hold io_pcx_stall_pq at 1 for 30 clock cycles and deassert
+io_pcx_stall_pq = 1
+## 
+## 29
+io_pcx_stall_pq = 0
+

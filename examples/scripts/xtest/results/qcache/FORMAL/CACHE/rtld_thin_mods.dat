@@ -1,0 +1,67 @@
+>1
+>2
+7
+0:21:up_counter_1547588561
+1:10:up_counter
+2:34:/scratch0/esingh/eformal/counter.v
+3:3:clk
+4:11:counter_out
+5:6:enable
+6:5:reset
+<2
+>3
+2
+0:18:7 "scalar" 0 1 0 0
+1:66:10 "scalar[3:0]" 4 1 7 "integer[3:0]" 10 32 3 0 7 "scalar" 0 1 0 0
+<3
+>4
+e1f2l5t0;
+<4
+>5
+b4@3l14knt0;
+@4l12knt1;
+@5l14knt0;
+@6l14knt0;
+<5
+>6
+b4@4l14d1x2t1;
+@5l14x3t0;
+@3l14x1t0;
+@6l14x4t0;
+<6
+>7
+c0
+<7
+<1
+>1
+>2
+7
+0:10:counter_tb
+1:37:/scratch0/esingh/eformal/counter_tb.v
+2:3:clk
+3:11:counter_out
+4:6:enable
+5:5:reset
+6:9:U_counter
+<2
+>3
+2
+0:18:7 "scalar" 0 1 0 0
+1:66:10 "scalar[3:0]" 4 1 7 "integer[3:0]" 10 32 3 0 7 "scalar" 0 1 0 0
+<3
+>4
+#1f1l2t0;
+<4
+>5
+b4@2l4knt0;
+@3l5knt1;
+@4l4knt0;
+@5l4knt0;
+<5
+>6
+b0<6
+>7
+c1
+@6i5l33x3 7 0 12;
+<7
+<1

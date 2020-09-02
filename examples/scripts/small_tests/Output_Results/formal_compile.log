@@ -1,0 +1,134 @@
+# 
+# Questa Static Verification System
+# Version 10.5 linux_x86_64 23 Jul 2016
+
+log created Sun Jan 22 21:41:17 2017 by esingh on rsg3.stanford.edu
+
+
+Command: netlist elaborate
+Command arguments:
+    -zdb /scratch0/esingh/questa/small_tests/Output_Results/qcache/DB/zdb_0
+    -tool propcheck
+    -d small_example
+
+
+## Elaborating Design...
+Reading MTI mapping for library mapping
+Writing all MTI mappings to vmap output ...
+
+Top level modules:
+	small_example
+
+Analyzing design...
+-- Loading module z0in_work.small_example
+Incremental compilation check found no design-units (out of 1) may be reused.
+Optimizing 1 design-unit (inlining 0/1 module instances, 0/0 UDP instances):
+-- Optimizing module z0in_work.small_example(fast)
+Optimized design name is zi_opt_csl_2146540151_1
+End of log Sun Jan 22 21:41:18 2017
+
+
+# 
+# Questa Static Verification System
+# Version 10.5 linux_x86_64 23 Jul 2016
+
+log created Sun Jan 22 21:41:18 2017 by esingh on rsg3.stanford.edu
+
+
+Command: netlist create
+Command arguments:
+    -zdb /scratch0/esingh/questa/small_tests/Output_Results/qcache/DB/zdb_0
+    -tool propcheck
+    -d small_example
+    -tcs
+
+
+## Synthesizing netlist...
+Processing module 'small_example'
+Info    : Cached netlist database is out of date.  Cached netlist for module 'small_example'.
+        : Will ignore cached netlist database.
+Info    : Elaborating module 'small_example'.
+
+##Time Taken (Synthesis) = 77.000000 ticks = 0.770000 secs
+
+End of log Sun Jan 22 21:41:20 2017
+
+
+# 
+# Questa Static Verification System
+# Version 10.5 linux_x86_64 23 Jul 2016
+
+log created Sun Jan 22 21:41:20 2017 by esingh on rsg3.stanford.edu
+
+
+Command: formal compile
+Command arguments:
+    -zdb /scratch0/esingh/questa/small_tests/Output_Results/qcache/DB/zdb_0
+    -d small_example
+    -tcs
+
+
+## Processing Formal Logic...
+Processing module 'small_example'
+Info    : Restoring module 'small_example'.
+Info    : Flattening design 'small_example'.
+Info    : Flattening design 'small_example'.
+Info    : Detected synchronous reset 'm_rst' (active high).
+Info    : Detected posedge clock 'clk'.
+Info    : Design is processed for formal verification.  Design 'small_example'.
+
+Clocks
+------------------------------------------------------------------------------
+Port                                   Period         Waveform    Edges
+------------------------------------------------------------------------------
+clk                                        10              0 5    PE   
+------------------------------------------------------------------------------
+
+Blackboxes
+------------------------------------------------------------------------------
+Module name                                                Reason
+------------------------------------------------------------------------------
+<no blackboxed modules>
+------------------------------------------------------------------------------
+
+Inferred directives
+------------------------------------------------------------------------------
+<no inferred directives>
+------------------------------------------------------------------------------
+
+Info    : Design is linked for formal analysis.  Design 'small_example'.
+Info    : Formal model has been created.
+
+Property Summary
+-------------------------------------------------------------------------------
+Total  Directives :14
+Assert Directives :0
+Assume Directives :1
+Cover  Directives :13
+
+SVA Summary
+-------------------------------------------------------------------------------
+SVA Directive Type        Directives           Checkers
+-------------------------------------------------------------------------------
+Assert                         0                   0
+Assume                         1                   1
+Cover                         13                  13
+-------------------------------------------------------------------------------
+
+Design Checks Summary
+-------------------------------------------------------------------------------
+Check                              Found
+-------------------------------------------------------------------------------
+DECLARATION_UNDRIVEN                   4
+-------------------------------------------------------------------------------
+Total                                  4
+-------------------------------------------------------------------------------
+
+
+To see results in the GUI run:
+qverify /scratch0/esingh/questa/small_tests/Output_Results/formal_compile.db
+
+Final Process Statistics: Max memory 370MB, CPU time 2s, Total time 6s
+End of log Sun Jan 22 21:41:23 2017
+
+

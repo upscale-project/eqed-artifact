@@ -1,0 +1,18 @@
+>8
+v358
+t12
+c13
+#0 p0 @zi_dff_o4_i4_5*i1_i4_2*i1
+#1 p256 @zi_mux_o4_i1_2*i4
+#2 p418 @zi_const_1'b1_o1
+#3 p539 @zi_oper_16_o1_2*i1
+#4 p685 @zi_const_4'b0_o4
+#5 p809 @zi_const_4'b1_o4
+#6 p933 @zi_oper_0_o4_2*i4
+#7 p1079 @zi_oper_29_o1_2*i1
+#8 p1225 @up_counter_1547588561
+#9 p2316 @zi_oper_24_o1_i1
+#10 p2447 @zi_assign_o1_i1
+#11 p2575 @zi_oper_38_o1_i4
+#12 p2716 @counter_tb
+<8

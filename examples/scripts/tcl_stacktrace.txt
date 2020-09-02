@@ -1,0 +1,74 @@
+Tue Sep 13 14:49:53 PDT 2016
+Trace back: invalid command name ""
+    while executing
+"$tw SetData "wintitle" $title"
+    (procedure "zinWaveSetWindowName" line 10)
+    invoked from within
+"zinWaveSetWindowName $winTitle"
+    (object "::.ZCTRL.formalCheckMgr" method "::zinWidgets::FormalCheckMgr::_showWaveform" body line 123)
+    invoked from within
+"_showWaveform $wavetype $node"
+    (object "::.ZCTRL.formalCheckMgr" method "::zinWidgets::FormalCheckMgr::showWaveform" body line 8)
+    invoked from within
+"showWaveform $node"
+    (object "::.ZCTRL.formalCheckMgr" method "::zinWidgets::FormalCheckMgr::_showFiring" body line 10)
+    invoked from within
+"_showFiring $node"
+    (object "::.ZCTRL.formalCheckMgr" method "::zinWidgets::FormalCheckMgr::_doubleClick" body line 3)
+    invoked from within
+"::.ZCTRL.formalCheckMgr _doubleClick ::.ZCTRL.formalCheckMgr.zinVuGrp_hd_Fadb0_1.row3"
+    (in namespace inscope "::zinWidgets::VuMgr" script line 1)
+    invoked from within
+"namespace inscope ::zinWidgets::VuMgr {::.ZCTRL.formalCheckMgr _doubleClick ::.ZCTRL.formalCheckMgr.zinVuGrp_hd_Fadb0_1.row3}"
+    ("uplevel" body line 1)
+    invoked from within
+"uplevel "#0" $cmd"
+    (object "::.main_pane.properties.interior.cs.body.vtwin" method "::vsimwidgets::Hierarchy::_evalCmd" body line 45)
+    invoked from within
+"_evalCmd $itk_option(-command) $node -column $c"
+    (object "::.main_pane.properties.interior.cs.body.vtwin" method "::vsimwidgets::Hierarchy::_doublebutton1" body line 15)
+    invoked from within
+"::.main_pane.properties.interior.cs.body.vtwin _doublebutton1 .main_pane.properties.interior.cs.body.vtwin.lwchildsite.clipper.canvas.sfchildsite.list..."
+    (in namespace inscope "::vsimwidgets::Hierarchy" script line 1)
+    invoked from within
+"namespace inscope ::vsimwidgets::Hierarchy {::.main_pane.properties.interior.cs.body.vtwin _doublebutton1 .main_pane.properties.interior.cs.body.vtwin..."
+    (command bound to event)
+  <2:/cad/mentor/qformal-old/linux_x86_64/modeltech/linux_x86_64/tk8.5/bgerror.tcl:92: ::tkerror {invalid command name ""}
+  <1:eval:1: ::tk::dialog::error::bgerror {invalid command name ""}
+Wed Sep 28 13:52:58 PDT 2016
+Trace back: invalid command name ""
+    while executing
+"$tw SetData "wintitle" $title"
+    (procedure "zinWaveSetWindowName" line 10)
+    invoked from within
+"zinWaveSetWindowName $winTitle"
+    (object "::.ZCTRL.formalCheckMgr" method "::zinWidgets::FormalCheckMgr::_showWaveform" body line 123)
+    invoked from within
+"_showWaveform $wavetype $node"
+    (object "::.ZCTRL.formalCheckMgr" method "::zinWidgets::FormalCheckMgr::showWaveform" body line 8)
+    invoked from within
+"showWaveform $node"
+    (object "::.ZCTRL.formalCheckMgr" method "::zinWidgets::FormalCheckMgr::_showFiring" body line 10)
+    invoked from within
+"_showFiring $node"
+    (object "::.ZCTRL.formalCheckMgr" method "::zinWidgets::FormalCheckMgr::_doubleClick" body line 3)
+    invoked from within
+"::.ZCTRL.formalCheckMgr _doubleClick ::.ZCTRL.formalCheckMgr.zinVuGrp_hd_Fadb0_1.row5"
+    (in namespace inscope "::zinWidgets::VuMgr" script line 1)
+    invoked from within
+"namespace inscope ::zinWidgets::VuMgr {::.ZCTRL.formalCheckMgr _doubleClick ::.ZCTRL.formalCheckMgr.zinVuGrp_hd_Fadb0_1.row5}"
+    ("uplevel" body line 1)
+    invoked from within
+"uplevel "#0" $cmd"
+    (object "::.main_pane.properties.interior.cs.body.vtwin" method "::vsimwidgets::Hierarchy::_evalCmd" body line 45)
+    invoked from within
+"_evalCmd $itk_option(-command) $node -column $c"
+    (object "::.main_pane.properties.interior.cs.body.vtwin" method "::vsimwidgets::Hierarchy::_doublebutton1" body line 15)
+    invoked from within
+"::.main_pane.properties.interior.cs.body.vtwin _doublebutton1 .main_pane.properties.interior.cs.body.vtwin.lwchildsite.clipper.canvas.sfchildsite.list..."
+    (in namespace inscope "::vsimwidgets::Hierarchy" script line 1)
+    invoked from within
+"namespace inscope ::vsimwidgets::Hierarchy {::.main_pane.properties.interior.cs.body.vtwin _doublebutton1 .main_pane.properties.interior.cs.body.vtwin..."
+    (command bound to event)
+  <2:/cad/mentor/qformal-old/linux_x86_64/modeltech/linux_x86_64/tk8.5/bgerror.tcl:92: ::tkerror {invalid command name ""}
+  <1:eval:1: ::tk::dialog::error::bgerror {invalid command name ""}

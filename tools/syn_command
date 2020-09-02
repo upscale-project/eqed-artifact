@@ -1,0 +1,51 @@
+#!/bin/csh -f
+# ========== Copyright Header Begin ==========================================
+# 
+# OpenSPARC T2 Processor File: syn_command
+# Copyright (c) 2006 Sun Microsystems, Inc.  All Rights Reserved.
+# DO NOT ALTER OR REMOVE COPYRIGHT NOTICES.
+# 
+# The above named program is free software; you can redistribute it and/or
+# modify it under the terms of the GNU General Public
+# License version 2 as published by the Free Software Foundation.
+# 
+# The above named program is distributed in the hope that it will be 
+# useful, but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+# General Public License for more details.
+# 
+# You should have received a copy of the GNU General Public
+# License along with this work; if not, write to the Free Software
+# Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
+# 
+# ========== Copyright Header End ============================================
+
+# Script to run design compiler for OpenSPARC T2
+
+rm -rf log
+rm -rf gate
+
+dc_shell-t -f $DV_ROOT/design/sys/synopsys/script/run.scr  | tee  dc_shell.log
+icc_shell -f $DV_ROOT/design/sys/synopsys/script/run_pnr.scr  | tee  icc_shell.log
+
+if [ $POWER_ANALYSIS_MODE == 0 ]
+then
+	pt_shell -f $DV_ROOT/design/sys/synopsys/script/run_prime_power_static.scr  | tee  pt_shell.log
+elif [ $POWER_ANALYSIS_MODE == 1 ]
+then
+	pt_shell -f $DV_ROOT/design/sys/synopsys/script/run_prime_power.scr  | tee  pt_shell.log
+elif [ $POWER_ANALYSIS_MODE == 2 ]
+then
+	pt_shell -f $DV_ROOT/design/sys/synopsys/script/run_prime_power_mvcd.scr  | tee  pt_shell.log
+else
+	echo "Wrong Power Analysis Mode"
+fi
+
+grep Warning dc_shell.log
+grep Error dc_shell.log
+
+grep Warning icc_shell.log
+grep Error icc_shell.log
+
+grep Warning pt_shell.log
+grep Error pt_shell.log

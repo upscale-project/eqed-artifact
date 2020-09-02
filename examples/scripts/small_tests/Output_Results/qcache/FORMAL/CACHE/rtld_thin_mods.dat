@@ -1,0 +1,72 @@
+>1
+>2
+26
+0:13:small_example
+1:4:work
+2:67:/rsghome/esingh/scratch0-esingh/questa/small_tests/small_example.sv
+3:23:<genblk#115373317#65#0>
+4:10:genblk1[0]
+5:1:a
+6:5:all_e
+7:1:b
+8:9:binary_in
+9:3:clk
+10:11:decoder_out
+11:6:enable
+12:4:FFin
+13:6:FFmisr
+14:7:FFmisr2
+15:1:i
+16:5:inj_e
+17:9:inj_error
+18:5:intFF
+19:1:l
+20:1:m
+21:5:m_rst
+22:1:n
+23:1:x
+24:1:y
+25:1:z
+<2
+>3
+7
+0:37:7 "scalar" "<zin_internal>" 0 0 1 0 0
+1:123:10 "scalar[3:0]" "<zin_internal>" 0 4 1 7 "integer[3:0]" "<zin_internal>" 0 10 32 3 0 7 "scalar" "<zin_internal>" 0 0 1 0 0
+2:123:10 "scalar[7:0]" "<zin_internal>" 0 4 1 7 "integer[7:0]" "<zin_internal>" 0 10 32 7 0 7 "scalar" "<zin_internal>" 0 0 1 0 0
+3:123:10 "scalar[0:7]" "<zin_internal>" 0 0 1 7 "integer[0:7]" "<zin_internal>" 0 10 32 0 7 7 "scalar" "<zin_internal>" 0 0 1 0 0
+4:123:10 "scalar[0:2]" "<zin_internal>" 0 4 1 7 "integer[0:2]" "<zin_internal>" 0 10 32 0 2 7 "scalar" "<zin_internal>" 0 0 1 0 0
+5:59:7 "integer" "<zin_internal>" 0 10 32 -2147483648 2147483647
+6:123:10 "scalar[0:7]" "<zin_internal>" 0 4 1 7 "integer[0:7]" "<zin_internal>" 0 10 32 0 7 7 "scalar" "<zin_internal>" 0 0 1 0 0
+<3
+>4
+b1f2l3.370t0C2B3P2S65E65B4P2S65E67;
+<4
+>5
+b21@5l10knt0;
+@6l20knt0;
+@7l11knt0;
+@8l40knt1;
+@9l9knt0;
+@10l42knt2;
+@11l41knt0;
+@12l8knt3;
+@13l6knt4;
+@14l7knt4;
+@15l24knt5;
+@16l18knt3;
+@17l22knt0;
+@18l5knt6;
+@19l15knt0;
+@20l16knt0;
+@21l19knt0;
+@22l17knt0;
+@23l12knt0;
+@24l13knt0;
+@25l14knt0;
+<5
+>6
+b0<6
+>7
+c0
+<7
+<1

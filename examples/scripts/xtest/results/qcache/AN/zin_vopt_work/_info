@@ -1,0 +1,17 @@
+m255
+K4
+z2
+13
+cModel Technology
+d/scratch0/esingh/eformal
+!s112 0.1
+!i10d 8192
+!i10e 25
+!i10f 100
+Tzi_opt_csl_1718921747_1
+!s110 1446804853
+VnKB^jD=ET]NDXal?MZ=M32
+09 10 4 z0in_work counter_tb fast 0
+o-nolock -noOptProcessWaits -noinstaliasopt -noSharedArchs -pslallowseverity -suppress 153 -suppress 3053 -suppress 8884 -suppress 8885 -suppress 1127 -suppress 7033 -suppress 3838 +acc=a -0in_elab -opt=-optStmt -opt=-optExpr -noStaticExprOpt -work work -mixedansiports -nologo
+nzi_opt_csl_1718921747_1
+OL;O;10.2c_3;57
