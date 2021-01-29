@@ -1,4 +1,0 @@
-$default_clock clk
-$default_input_value 0 -undriven_wire
-$default_initial_value 0 
-$dump after_init
