@@ -1,0 +1,12 @@
+dec - decoder
+exu - execution
+fgu - floating point
+gkt - gasket
+ifu - instruction fetch
+lsu - load store
+mmu - memory management / tlb
+pku - pick unit
+pmu - poerformance management unit
+spu - stream processing unit
+tlu - trap logic
+dmo - direct memory observe (part of Test Control Unit TSU)

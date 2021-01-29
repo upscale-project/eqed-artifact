@@ -1,0 +1,3 @@
+ifu_cmu - ifu, cache miss control
+ifu_ftu - ifu, cache data
+ifu_ibu - ifu, instruction buffer unit
