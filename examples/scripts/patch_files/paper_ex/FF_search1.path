@@ -1,0 +1,106 @@
+11,18d10
+<   reg [0:5] IN_misr;
+<   reg [0:5] OUT_misr_1;
+<   reg [0:7] decoder_out;
+<   wire [0:3] binary_sel; 
+<   wire enable;
+<   reg error_injected;
+<   reg [0:9] cycle_count;
+< 
+24,68c16,18
+< 
+<   assign enable = !error_injected;
+< 
+< // One-hot decoder to select FF to inject bit-flip
+<   always @ (enable or binary_sel) begin
+<     decoder_out = 0;
+<     if (enable) begin
+<       case (binary_sel)
+<         4'h0 : decoder_out = 8'h01;
+<         4'h1 : decoder_out = 8'h02;
+<         4'h2 : decoder_out = 8'h04;
+<         4'h3 : decoder_out = 8'h08;
+<         4'h4 : decoder_out = 8'h10;
+<         4'h5 : decoder_out = 8'h20;
+<         4'h6 : decoder_out = 8'h40;
+<         4'h7 : decoder_out = 8'h80;
+<         4'h8 : decoder_out = 8'h00;
+<       endcase
+<     end
+<   end
+< 
+< 
+< // Track if an error has been inject and the current cycle count
+<   always @ (posedge clk) begin
+<     if (rst) begin
+<       error_injected <= 1'b0;
+<       cycle_count <= 'b1;
+<     end else begin
+<       error_injected <= (|decoder_out) || (error_injected);
+<       cycle_count <= cycle_count + 1'b1;
+<     end
+<   end
+< 
+<   always @(posedge clk) begin
+<     if(rst) begin
+<       IN_misr <= 5'b00001;
+<     end else begin
+<       IN_misr[0] <= IN_misr[4]^IN_misr[5]^b;
+<       IN_misr[1] <= IN_misr[0];
+<       IN_misr[2] <= IN_misr[1]^a;
+<       IN_misr[3] <= IN_misr[2];
+<       IN_misr[4] <= IN_misr[3];
+<       IN_misr[5] <= IN_misr[4];
+<     end
+<   end
+---
+>   wire u;
+>   wire v;
+>   wire w;
+80,114c30,39
+<   always @(posedge clk) begin
+<     if(rst) begin
+<       OUT_misr_1 <= 5'b00001;
+<     end else begin
+<       OUT_misr_1[0] <= OUT_misr_1[4]^OUT_misr_1[5]^z;
+<       OUT_misr_1[1] <= OUT_misr_1[0];
+<       OUT_misr_1[2] <= OUT_misr_1[1]^y;
+<       OUT_misr_1[3] <= OUT_misr_1[2];
+<       OUT_misr_1[4] <= OUT_misr_1[3]^x;
+<       OUT_misr_1[5] <= OUT_misr_1[4];
+<     end
+<   end
+< 
+< 
+< // Connect decoder to FF mux sel inputs
+<   assign dm.eqed_sel[0] = decoder_out[0];
+<   assign dm.eqed_sel[1] = decoder_out[1];
+<   assign dm.eqed_sel[2] = decoder_out[2];
+<   assign dm.eqed_sel[3] = decoder_out[3];
+<   assign dm.eqed_sel[4] = decoder_out[4];
+<   assign dm.eqed_sel[5] = decoder_out[5];
+<   assign dm.eqed_sel[6] = decoder_out[6];
+<   assign dm.eqed_sel[7] = decoder_out[7];
+< 
+< C_check_dm_with_ff : cover property (@ (posedge clk)
+<                          $fell(rst) &&
+<                          IN_misr == 6'b000001 &&
+<                          OUT_misr_1 == 6'b000001
+<                          ##5
+<                          IN_misr == 6'b111010 &&
+<                          OUT_misr_1 == 6'b110010
+<                          );
+< 
+< 
+< 
+---
+>   neighboring_module nm(
+>     .clk(clk),
+>     .rst(rst),
+>     .x(x),
+>     .y(y),
+>     .z(z),
+>     .u(u),
+>     .v(v),
+>     .w(w)
+>   );
