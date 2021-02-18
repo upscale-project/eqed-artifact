@@ -106,7 +106,8 @@ Property covered
 echo "Add FF 6, Cycle 4 to candidates
 "
 
-echo "Search for next candidate..."
+echo "Search for next candidate...
+"
 (set -x;
 patch paper_ex.sv -i patch_files/paper_ex/FF_search2.patch;
 jaspergold -batch -tcl jasper_paper_ex.tcl)
@@ -118,7 +119,8 @@ Property covered
 echo "Add FF 7, Cycle 2 to candidates
 "
 
-echo "Search for next candidate..."
+echo "Search for next candidate...
+"
 (set -x;
 patch paper_ex.sv -i patch_files/paper_ex/FF_search3.patch;
 jaspergold -batch -tcl jasper_paper_ex.tcl)
@@ -129,7 +131,8 @@ Property covered
 "
 echo "Add FF 3, Cycle 3 to candidates
 "
-echo "Search for next candidate..."
+echo "Search for next candidate...
+"
 (set -x;
 patch paper_ex.sv -i patch_files/paper_ex/FF_search4.patch;
 jaspergold -batch -tcl jasper_paper_ex.tcl)
@@ -140,7 +143,8 @@ Property covered
 "
 echo "Add FF 4, Cycle 1 to candidates
 "
-echo "Search for next candidate..."
+echo "Search for next candidate...
+"
 (set -x;
 patch paper_ex.sv -i patch_files/paper_ex/FF_search5.patch;
 jaspergold -batch -tcl jasper_paper_ex.tcl)
@@ -151,7 +155,8 @@ Property covered
 "
 echo "Add FF 3, Cycle 1 to candidates
 "
-echo "Search for next candidate..."
+echo "Search for next candidate...
+"
 (set -x;
 patch paper_ex.sv -i patch_files/paper_ex/FF_search6.patch;
 jaspergold -batch -tcl jasper_paper_ex.tcl)
