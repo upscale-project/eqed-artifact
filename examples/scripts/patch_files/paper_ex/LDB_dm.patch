@@ -1,0 +1,83 @@
+10a11,15
+>   reg [0:5] IN_misr;
+>   reg [0:5] OUT_misr_1;
+>   reg [0:5] OUT_misr_2;
+> 
+> 
+16,18c21,33
+<   wire u;
+<   wire v;
+<   wire w;
+---
+> 
+>   always @(posedge clk) begin
+>     if(rst) begin
+>       IN_misr <= 5'b00001;
+>     end else begin
+>       IN_misr[0] <= IN_misr[4]^IN_misr[5]^b;
+>       IN_misr[1] <= IN_misr[0];
+>       IN_misr[2] <= IN_misr[1]^a;
+>       IN_misr[3] <= IN_misr[2];
+>       IN_misr[4] <= IN_misr[3];
+>       IN_misr[5] <= IN_misr[4];
+>     end
+>   end
+30,39c45,56
+<   neighboring_module nm(
+<     .clk(clk),
+<     .rst(rst),
+<     .x(x),
+<     .y(y),
+<     .z(z),
+<     .u(u),
+<     .v(v),
+<     .w(w)
+<   );
+---
+>   always @(posedge clk) begin
+>     if(rst) begin
+>       OUT_misr_1 <= 5'b00001;
+>     end else begin
+>       OUT_misr_1[0] <= OUT_misr_1[4]^OUT_misr_1[5]^z;
+>       OUT_misr_1[1] <= OUT_misr_1[0];
+>       OUT_misr_1[2] <= OUT_misr_1[1]^y;
+>       OUT_misr_1[3] <= OUT_misr_1[2];
+>       OUT_misr_1[4] <= OUT_misr_1[3]^x;
+>       OUT_misr_1[5] <= OUT_misr_1[4];
+>     end
+>   end
+40a58,87
+> C_check_dm : cover property (@ (posedge clk)
+>                          $fell(rst) &&
+>                          IN_misr == 6'b000001 &&
+>                          OUT_misr_1 == 6'b000001 
+>                          ##5
+>                          IN_misr == 6'b111010 &&
+>                          OUT_misr_1 == 6'b110010
+>                          );
+> /*
+> C_full_seq : cover property (@ (posedge clk)
+>                          $fell(rst) &&
+>                          IN_misr == 6'b000001 &&
+>                          OUT_misr_1 == 6'b000001 &&
+>                          a == 1'b1 && b == 1'b0 
+>                          ##1
+>                          a == 1'b0 && b == 1'b1 
+>                          ##1
+>                          a == 1'b0 && b == 1'b0  
+>                          ##1
+>                          a == 1'b1 && b == 1'b0 
+>                          ##1
+>                          a == 1'b1 && b == 1'b0
+>                          ##1
+>                          a == 1'b0 && b == 1'b1
+>                          //IN_misr == 6'b111010 &&
+>                          //OUT_misr_1 == 6'b110010 &&
+>                          );
+> */
+> A_no_reset : assume property (@ (posedge clk)
+>                          rst == 0);
+44c91
+< //Paper design module
+---
+> //Paper design module example

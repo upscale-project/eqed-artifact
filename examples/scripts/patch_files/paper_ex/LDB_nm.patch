@@ -1,0 +1,61 @@
+11,12c11,14
+<   wire a;
+<   wire b;
+---
+>   reg [0:5] OUT_misr_1;
+>   reg [0:5] OUT_misr_2;
+> 
+> 
+20,28c22,33
+<   design_module dm(
+<     .clk(clk),
+<     .rst(rst),
+<     .a(a),
+<     .b(b),
+<     .x(x),
+<     .y(y),
+<     .z(z)
+<   );
+---
+>   always @(posedge clk) begin
+>     if(rst) begin
+>       OUT_misr_1 <= 5'b00001;
+>     end else begin
+>       OUT_misr_1[0] <= OUT_misr_1[4]^OUT_misr_1[5]^z;
+>       OUT_misr_1[1] <= OUT_misr_1[0];
+>       OUT_misr_1[2] <= OUT_misr_1[1]^y;
+>       OUT_misr_1[3] <= OUT_misr_1[2];
+>       OUT_misr_1[4] <= OUT_misr_1[3]^x;
+>       OUT_misr_1[5] <= OUT_misr_1[4];
+>     end
+>   end
+40a46,70
+>   always @(posedge clk) begin
+>     if(rst) begin
+>       OUT_misr_2 <= 5'b00001;
+>     end else begin
+>       OUT_misr_2[0] <= OUT_misr_2[4]^OUT_misr_2[5]^w;
+>       OUT_misr_2[1] <= OUT_misr_2[0];
+>       OUT_misr_2[2] <= OUT_misr_2[1]^v;
+>       OUT_misr_2[3] <= OUT_misr_2[2];
+>       OUT_misr_2[4] <= OUT_misr_2[3]^u;
+>       OUT_misr_2[5] <= OUT_misr_2[4];
+>     end
+>   end
+> 
+> 
+> C_check_nm : cover property (@ (posedge clk)
+>                          $fell(rst) &&
+>                          OUT_misr_1 == 6'b000001 &&
+>                          OUT_misr_2 == 6'b000001
+>                          ##5
+>                          OUT_misr_1 == 6'b110010 &&
+>                          OUT_misr_2 == 6'b100010
+>                          );
+> 
+> A_no_reset : assume property (@ (posedge clk)
+>                          rst == 0);
+44c74
+< //Paper design module
+---
+> //Paper design module example
