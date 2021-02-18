@@ -1,0 +1,79 @@
+1a2,4
+> // E-QED setup and RTL for the example from the CAV'17 paper
+> //
+> //
+3a7
+> // Top level wrapper module
+10a15,19
+>   reg [0:5] IN_misr;
+>   reg [0:5] OUT_misr_1;
+>   reg [0:5] OUT_misr_2;
+> 
+> 
+16,18d24
+<   wire u;
+<   wire v;
+<   wire w;
+19a26,40
+> // Input MISR to dm
+>   always @(posedge clk) begin
+>     if(rst) begin
+>       IN_misr <= 5'b00001;
+>     end else begin
+>       IN_misr[0] <= IN_misr[4]^IN_misr[5]^b;
+>       IN_misr[1] <= IN_misr[0];
+>       IN_misr[2] <= IN_misr[1]^a;
+>       IN_misr[3] <= IN_misr[2];
+>       IN_misr[4] <= IN_misr[3];
+>       IN_misr[5] <= IN_misr[4];
+>     end
+>   end
+> 
+> // Design module from paper example
+30,39c51,77
+<   neighboring_module nm(
+<     .clk(clk),
+<     .rst(rst),
+<     .x(x),
+<     .y(y),
+<     .z(z),
+<     .u(u),
+<     .v(v),
+<     .w(w)
+<   );
+---
+> // Output MISR for dm, Input to nm
+>   always @(posedge clk) begin
+>     if(rst) begin
+>       OUT_misr_1 <= 5'b00001;
+>     end else begin
+>       OUT_misr_1[0] <= OUT_misr_1[4]^OUT_misr_1[5]^z;
+>       OUT_misr_1[1] <= OUT_misr_1[0];
+>       OUT_misr_1[2] <= OUT_misr_1[1]^y;
+>       OUT_misr_1[3] <= OUT_misr_1[2];
+>       OUT_misr_1[4] <= OUT_misr_1[3]^x;
+>       OUT_misr_1[5] <= OUT_misr_1[4];
+>     end
+>   end
+> 
+> // E-QED check property for dm
+> // Final Input  MISR value: 6'b111010
+> // Final Output MISR value: 6'b110010
+> // Capture Window: 5 cycles
+> C_check_dm : cover property (@ (posedge clk)
+>                          $fell(rst) &&
+>                          IN_misr == 6'b000001 &&
+>                          OUT_misr_1 == 6'b000001 
+>                          ##5
+>                          IN_misr == 6'b111010 &&
+>                          OUT_misr_1 == 6'b110010
+>                          );
+> 
+42a81,87
+> 
+> 
+> 
+> 
+> //
+> //Submodule RTL
+> //

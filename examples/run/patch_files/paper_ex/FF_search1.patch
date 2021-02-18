@@ -1,0 +1,121 @@
+1a2,4
+> // E-QED setup and RTL for the example from the CAV'17 paper
+> //
+> //
+3a7
+> // Top level wrapper module
+10a15,22
+>   reg [0:5] IN_misr;
+>   reg [0:5] OUT_misr_1;
+>   reg [0:7] decoder_out;
+>   wire [0:3] binary_sel; 
+>   wire enable;
+>   reg error_injected;
+>   reg [0:9] cycle_count;
+> 
+16,18d27
+<   wire u;
+<   wire v;
+<   wire w;
+19a29,76
+> // Single-cycle FF error injection is enabled if no error has been injected
+>   assign enable = !error_injected;
+> 
+> // One-hot decoder to select FF to inject bit-flip
+>   always @ (enable or binary_sel) begin
+>     decoder_out = 0;
+>     if (enable) begin
+>       case (binary_sel)
+>         4'h0 : decoder_out = 8'h01;
+>         4'h1 : decoder_out = 8'h02;
+>         4'h2 : decoder_out = 8'h04;
+>         4'h3 : decoder_out = 8'h08;
+>         4'h4 : decoder_out = 8'h10;
+>         4'h5 : decoder_out = 8'h20;
+>         4'h6 : decoder_out = 8'h40;
+>         4'h7 : decoder_out = 8'h80;
+>         4'h8 : decoder_out = 8'h00;
+>       endcase
+>     end
+>   end
+> 
+> 
+> // Track if an error has been inject and the current cycle count
+>   always @ (posedge clk) begin
+>     if (rst) begin
+>       error_injected <= 1'b0;
+>       cycle_count <= 'b1;
+>     end else begin
+>       error_injected <= (|decoder_out) || (error_injected);
+>       cycle_count <= cycle_count + 1'b1;
+>     end
+>   end
+> 
+> // Input MISR to dm
+>   always @(posedge clk) begin
+>     if(rst) begin
+>       IN_misr <= 5'b00001;
+>     end else begin
+>       IN_misr[0] <= IN_misr[4]^IN_misr[5]^b;
+>       IN_misr[1] <= IN_misr[0];
+>       IN_misr[2] <= IN_misr[1]^a;
+>       IN_misr[3] <= IN_misr[2];
+>       IN_misr[4] <= IN_misr[3];
+>       IN_misr[5] <= IN_misr[4];
+>     end
+>   end
+> 
+> // Design module from paper example
+30,39c87,119
+<   neighboring_module nm(
+<     .clk(clk),
+<     .rst(rst),
+<     .x(x),
+<     .y(y),
+<     .z(z),
+<     .u(u),
+<     .v(v),
+<     .w(w)
+<   );
+---
+> // Output MISR for dm, Input to nm
+>   always @(posedge clk) begin
+>     if(rst) begin
+>       OUT_misr_1 <= 5'b00001;
+>     end else begin
+>       OUT_misr_1[0] <= OUT_misr_1[4]^OUT_misr_1[5]^z;
+>       OUT_misr_1[1] <= OUT_misr_1[0];
+>       OUT_misr_1[2] <= OUT_misr_1[1]^y;
+>       OUT_misr_1[3] <= OUT_misr_1[2];
+>       OUT_misr_1[4] <= OUT_misr_1[3]^x;
+>       OUT_misr_1[5] <= OUT_misr_1[4];
+>     end
+>   end
+> 
+> 
+> // Connect decoder to FF mux sel inputs
+>   for (genvar i = 0; i < 8; i++) begin
+>     assign dm.eqed_sel[i] = decoder_out[i];
+>   end
+> 
+> // E-QED check property for dm
+> // Final Input  MISR value: 6'b111010
+> // Final Output MISR value: 6'b110010
+> // Capture Window: 5 cycles
+> C_check_dm_with_ff : cover property (@ (posedge clk)
+>                          $fell(rst) &&
+>                          IN_misr == 6'b000001 &&
+>                          OUT_misr_1 == 6'b000001
+>                          ##5
+>                          IN_misr == 6'b111010 &&
+>                          OUT_misr_1 == 6'b110010
+>                          );
+> 
+42a123,129
+> 
+> 
+> 
+> 
+> //
+> //Submodule RTL
+> //

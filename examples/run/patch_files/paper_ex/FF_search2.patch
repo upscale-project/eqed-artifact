@@ -1,0 +1,6 @@
+119a120,124
+> //FF Candidates 
+> //Ignore candidate 1 - Trace 1
+> A_candidate_1 : assume property (@ (posedge clk)
+>                          (cycle_count == 4) |-> (dm.mux_6.sel == 0));
+> 

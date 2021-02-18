@@ -1,0 +1,66 @@
+16a17
+>   reg [0:5] OUT_misr_2;
+27a29,32
+>   wire u;
+>   wire v;
+>   wire w;
+> 
+106a112,139
+> // Neighboring module from paper example
+>   neighboring_module nm(
+>     .clk(clk),
+>     .rst(rst),
+>     .x(x),
+>     .y(y),
+>     .z(z),
+>     .u(u),
+>     .v(v),
+>     .w(w)
+>   );
+> 
+> // Output MISR for nm
+>   always @(posedge clk) begin
+>     if(rst) begin
+>       OUT_misr_2 <= 5'b00001;
+>     end else begin
+>       OUT_misr_2[0] <= OUT_misr_2[4]^OUT_misr_2[5]^w;
+>       OUT_misr_2[1] <= OUT_misr_2[0];
+>       OUT_misr_2[2] <= OUT_misr_2[1]^v;
+>       OUT_misr_2[3] <= OUT_misr_2[2];
+>       OUT_misr_2[4] <= OUT_misr_2[3]^u;
+>       OUT_misr_2[5] <= OUT_misr_2[4];
+>     end
+>   end
+> 
+>     
+> 
+111c144
+< C_check_dm_with_ff : cover property (@ (posedge clk)
+---
+> C_check_ncc_1 : cover property (@ (posedge clk)
+114c147,148
+<                          OUT_misr_1 == 6'b000001
+---
+>                          OUT_misr_1 == 6'b000001 &&
+>                          OUT_misr_2 == 6'b000001
+117c151,152
+<                          OUT_misr_1 == 6'b110010
+---
+>                          OUT_misr_1 == 6'b110010&&
+>                          OUT_misr_2 == 6'b100010
+120c155
+< //FF Candidates 
+---
+> //Allow FF Candidates for Trace 1
+122,123c157,158
+< A_candidate_1 : assume property (@ (posedge clk)
+<                          (cycle_count == 4) |-> (dm.mux_6.sel == 0));
+---
+> //A_candidate_1 : assume property (@ (posedge clk)
+> //                         (cycle_count == 4) |-> (dm.mux_6.sel == 0));
+130,131c165,166
+< A_candidate_3 : assume property (@ (posedge clk)
+<                          (cycle_count == 3) |-> (dm.mux_3.sel == 0));
+---
+> //A_candidate_3 : assume property (@ (posedge clk)
+> //                         (cycle_count == 3) |-> (dm.mux_3.sel == 0));

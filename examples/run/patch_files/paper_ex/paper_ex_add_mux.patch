@@ -1,0 +1,118 @@
+63a64,76
+> //EQED select wires
+>   wire eqed_sel[0:7];
+> 
+> //EQED mux addition wires
+>   wire eqed_c;
+>   wire eqed_d;
+>   wire eqed_e;
+>   wire eqed_g;
+>   wire eqed_f;
+>   wire eqed_k;
+>   wire eqed_l;
+>   wire eqed_m; 
+> 
+74a88,94
+> //EQED mux 
+>   eqed_mux mux_1(
+>     .in(c),
+>     .sel(eqed_sel[0]),
+>     .out(eqed_c)
+>   );
+> 
+79c99
+<     .d(c),
+---
+>     .d(eqed_c),
+82a103,108
+>   eqed_mux mux_2(
+>     .in(d),
+>     .sel(eqed_sel[1]),
+>     .out(eqed_d)
+>   );
+> 
+87c113
+<     .d(d),
+---
+>     .d(eqed_d),
+96a123,128
+>   eqed_mux mux_3(
+>     .in(e),
+>     .sel(eqed_sel[2]),
+>     .out(eqed_e)
+>   );
+> 
+101c133
+<     .d(e),
+---
+>     .d(eqed_e),
+104a137,142
+>   eqed_mux mux_4(
+>     .in(g),
+>     .sel(eqed_sel[3]),
+>     .out(eqed_g)
+>   );
+> 
+109c147
+<     .d(g),
+---
+>     .d(eqed_g),
+112a151,156
+>   eqed_mux mux_5(
+>     .in(f),
+>     .sel(eqed_sel[4]),
+>     .out(eqed_f)
+>   );
+> 
+117c161
+<     .d(f),
+---
+>     .d(eqed_f),
+137a182,187
+>   eqed_mux mux_6(
+>     .in(k),
+>     .sel(eqed_sel[5]),
+>     .out(eqed_k)
+>   );
+> 
+142c192
+<     .d(k),
+---
+>     .d(eqed_k),
+145a196,201
+>   eqed_mux mux_7(
+>     .in(l),
+>     .sel(eqed_sel[6]),
+>     .out(eqed_l)
+>   );
+> 
+150c206
+<     .d(l),
+---
+>     .d(eqed_l),
+153a210,215
+>   eqed_mux mux_8(
+>     .in(m),
+>     .sel(eqed_sel[7]),
+>     .out(eqed_m)
+>   );
+> 
+158c220
+<     .d(m),
+---
+>     .d(eqed_m),
+317a380,389
+> //Single input inverting MUX
+> //  Inverts for sel=1
+> module eqed_mux (
+>   in,
+>   sel,
+>   out);
+> 
+>   input in;
+>   input sel;
+>   output out;
+318a391
+>   assign out = (sel) ? !in : in;
+319a393
+> endmodule
