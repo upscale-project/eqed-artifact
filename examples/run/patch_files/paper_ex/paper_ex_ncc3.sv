@@ -141,7 +141,7 @@ module paper_ex (
 // Final Input  MISR value: 6'b111010
 // Final Output MISR value: 6'b110010
 // Capture Window: 5 cycles
-C_check_ncc_2 : cover property (@ (posedge clk)
+C_check_ncc_3 : cover property (@ (posedge clk)
                          $fell(rst) &&
                          IN_misr == 6'b000001 &&
                          OUT_misr_1 == 6'b000001 &&

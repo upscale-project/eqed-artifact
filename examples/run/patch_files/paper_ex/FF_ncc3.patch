@@ -1,0 +1,22 @@
+144c144
+< C_check_ncc_2 : cover property (@ (posedge clk)
+---
+> C_check_ncc_3 : cover property (@ (posedge clk)
+161,162c161,162
+< //A_candidate_2 : assume property (@ (posedge clk)
+< //                         (cycle_count == 2) |-> (dm.mux_7.sel == 0));
+---
+> A_candidate_2 : assume property (@ (posedge clk)
+>                          (cycle_count == 2) |-> (dm.mux_7.sel == 0));
+169,170c169,170
+< //A_candidate_4 : assume property (@ (posedge clk)
+< //                         (cycle_count == 1) |-> (dm.mux_4.sel == 0));
+---
+> A_candidate_4 : assume property (@ (posedge clk)
+>                          (cycle_count == 1) |-> (dm.mux_4.sel == 0));
+173,174c173,174
+< A_candidate_5 : assume property (@ (posedge clk)
+<                          (cycle_count == 1) |-> (dm.mux_3.sel == 0));
+---
+> //A_candidate_5 : assume property (@ (posedge clk)
+> //                         (cycle_count == 1) |-> (dm.mux_3.sel == 0));

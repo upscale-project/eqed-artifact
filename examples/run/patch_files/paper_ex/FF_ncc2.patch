@@ -30,9 +30,7 @@
 ---
 > //A_candidate_4 : assume property (@ (posedge clk)
 > //                         (cycle_count == 1) |-> (dm.mux_4.sel == 0));
-173,174c173,174
-< A_candidate_5 : assume property (@ (posedge clk)
-<                          (cycle_count == 1) |-> (dm.mux_3.sel == 0));
+172c172
+< //Ignore candidate 5 - Trace 2
 ---
-> //A_candidate_5 : assume property (@ (posedge clk)
-> //                         (cycle_count == 1) |-> (dm.mux_3.sel == 0));
+> //Ignore candidate 5 - Trace 3

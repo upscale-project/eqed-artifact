@@ -178,7 +178,7 @@ read RES
 echo "Adding nm, the neighboring module and update check for NCC
 "
 (set -x;
-patch paper_ex.sv -i patch_files/paper_ex/paper_ex_ncc1.patch) 
+patch paper_ex.sv -i patch_files/paper_ex/FF_ncc1.patch) 
 
 
 echo "Check trace 1 with NCC...
@@ -195,7 +195,7 @@ echo "Trace 1: PASSED NCC
 echo "Update and check trace 2 with NCC...
 "
 (set -x;
-patch paper_ex.sv -i patch_files/paper_ex/paper_ex_ncc2.patch;
+patch paper_ex.sv -i patch_files/paper_ex/FF_ncc2.patch;
 jaspergold -batch -tcl jasper_paper_ex.tcl)
 
 
@@ -209,7 +209,7 @@ echo "
 Update and check trace 3 with NCC...
 "
 (set -x;
-patch paper_ex.sv -i patch_files/paper_ex/paper_ex_ncc3.patch; 
+patch paper_ex.sv -i patch_files/paper_ex/FF_ncc3.patch; 
 jaspergold -batch -tcl jasper_paper_ex.tcl)
 
 
