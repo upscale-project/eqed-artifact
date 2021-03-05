@@ -1,0 +1,3 @@
+Trace 1: PASSED NCC
+Trace 2: FAILED NCC
+Trace 3: FAILED NCC
