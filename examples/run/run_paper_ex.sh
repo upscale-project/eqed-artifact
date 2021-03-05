@@ -11,224 +11,173 @@
 #
 
 
-echo "Press any key to run the E-QED paper example
-"
+printf "Press any key to run the E-QED paper example\n"
+
 read RES
 
-echo "Copying original Paper Example RTL...
-"
+printf "Copying original Paper Example RTL...\n"
 
 (set -x;
 cp ../source/paper_ex/paper_ex.v .)
 
-echo "Patching original Paper Example RTL to setup consistency check for module dm...
-"
 
-(set -x;
-cp paper_ex.v paper_ex.sv;
-patch paper_ex.sv -i patch_files/paper_ex/LDB_dm.patch)
+# Loop through all modules and check consistency
 
-echo "
-Check module dm for consistency
-"
+bug_module=none
 
-echo "Press any key to launch JasperGold
-"
+for module in dm nm; do
+
+  printf "Patching original Paper Example RTL to setup consistency check for module %s...\n" "$module"
+
+  (set -x; cp paper_ex.v paper_ex.sv;
+  patch paper_ex.sv -i patch_files/paper_ex/LDB_"$module".patch)
+
+  printf "\nCheck module %s for consistency\n\n" "$module"
+
+  printf "Press any key to launch JasperGold\n"
+  read RES
+
+  (set -x; jaspergold -batch -tcl jasper_paper_ex.tcl)
+
+  printf "\ngrep jgproject/jg.log for cover property paper_ex.C_check_%s\n\n" "$module"
+
+  printf "RESULT: "
+
+  if (grep -o 'The cover property "paper_ex.C_check_'"$module"'" was proven unreachable' jgproject/jg.log); then
+
+    printf "\nConsistency Check for %s: FAILED\n\n" "$module"
+    bug_module=$module
+
+  elif (grep -o 'The cover property "paper_ex.C_check_'"$module"'" was covered' jgproject/jg.log); then
+
+      printf "\nConsistency Check for %s: PASSED\n" "$module"
+
+  else
+
+    printf "\nERROR: Unexpected JasperGold Output during Consistency Check\n"
+    printf "Please check jgproject/jg.log\n"
+    exit 1
+
+  fi
+
+done
+
+if [ "$bug_module" = none ]; then
+  printf "\nAll modules passed the Consistency Check\n"
+  exit 1
+else
+  printf "\nThe bug has been localized to module %s\n\n" "$bug_module"
+fi
+
+printf "Press any key to update RTL for FF localization\n"
 read RES
 
-(set -x;
-jaspergold -batch -tcl jasper_paper_ex.tcl)
-
-
-echo "
-Property unreachable
-"
-echo "Consistency Check for dm: FAILED
-"
-
-echo "Press any key to continue to module nm
-"
-read RES
-
-echo "Patching original Paper Example RTL to setup consistency check for module nm...
-"
-(set -x;
-cp paper_ex.v paper_ex.sv;
-patch paper_ex.sv -i patch_files/paper_ex/LDB_nm.patch) 
-
-
-echo "Check module nm for consistency
-"
-(set -x;
-jaspergold -batch -tcl jasper_paper_ex.tcl) 
-
-echo "
-Property covered
-"
-echo "Consistency Check for nm: PASSED 
-"
-
-echo "
-The bug has been localized to module dm
-"
-echo "Press any key to update RTL for FF localization
-"
-read RES
-
-echo "Patching original Paper Example RTL to add mux for each FF in module dm...
-"
+printf "Patching original Paper Example RTL to add mux for each FF in module %s\n" "$bug_module"
 
 (set -x;
 cp paper_ex.v paper_ex.sv;
 patch paper_ex.sv -i patch_files/paper_ex/paper_ex_add_mux.patch)  
 
-
-echo "Patching the E-QED decoder controller, MISRs and the E-QED check property
-"
+printf "\nPatching the E-QED decoder controller, MISRs and the E-QED check property\n"
 
 (set -x;
 patch paper_ex.sv -i patch_files/paper_ex/FF_search1.patch) 
 
 
-echo "Press any key to start FF localization
-"
+printf "\nPress any key to start FF localization\n"
+
 read RES
 
-echo "Search for FF candidate to satisfy signature consistency...
-"
-(set -x;
-jaspergold -batch -tcl jasper_paper_ex.tcl)
+no_more_candidates=0
+iteration=1
 
+while [ "$no_more_candidates" = 0 ]; do
 
-echo "
-Property covered
-"
-echo "Add FF 6, Cycle 4 to candidates
-"
+  (set -x; jaspergold -batch -tcl jasper_paper_ex.tcl)
 
-echo "Search for next candidate...
-"
-(set -x;
-patch paper_ex.sv -i patch_files/paper_ex/FF_search2.patch;
-jaspergold -batch -tcl jasper_paper_ex.tcl)
+  printf "\ngrep jgproject/jg.log for cover property paper_ex.C_check_%s_with_ff\n\n" "$bug_module"
 
+  printf "RESULT: "
 
-echo "
-Property covered
-"
-echo "Add FF 7, Cycle 2 to candidates
-"
+  if (grep -o 'The cover property "paper_ex.C_check_'"$bug_module"'_with_ff" was covered' jgproject/jg.log); then
 
-echo "Search for next candidate...
-"
-(set -x;
-patch paper_ex.sv -i patch_files/paper_ex/FF_search3.patch;
-jaspergold -batch -tcl jasper_paper_ex.tcl)
+    printf "\nProperty covered: Candidate found!\n\n "
+    iteration=$((iteration+1))
+    (set -x;
+    patch paper_ex.sv -i patch_files/paper_ex/FF_search"$iteration".patch)
 
+  elif (grep -o 'The cover property "paper_ex.C_check_'"$bug_module"'_with_ff" was proven unreachable' jgproject/jg.log); then
 
-echo "
-Property covered
-"
-echo "Add FF 3, Cycle 3 to candidates
-"
-echo "Search for next candidate...
-"
-(set -x;
-patch paper_ex.sv -i patch_files/paper_ex/FF_search4.patch;
-jaspergold -batch -tcl jasper_paper_ex.tcl)
+    no_more_candidates=1
+    printf "Property unreachable: No more candidates exist.\n\n"
 
+  else
 
-echo "
-Property covered
-"
-echo "Add FF 4, Cycle 1 to candidates
-"
-echo "Search for next candidate...
-"
-(set -x;
-patch paper_ex.sv -i patch_files/paper_ex/FF_search5.patch;
-jaspergold -batch -tcl jasper_paper_ex.tcl)
+    printf "Error: Unexpected JasperGold output during FF analysis\n"
+    printf "Please check jgproject/jg.log\n"
+    exit 1
 
+  fi
+done
 
-echo "
-Property covered
-"
-echo "Add FF 3, Cycle 1 to candidates
-"
-echo "Search for next candidate...
-"
-(set -x;
-patch paper_ex.sv -i patch_files/paper_ex/FF_search6.patch;
-jaspergold -batch -tcl jasper_paper_ex.tcl)
+final=$((iteration-1))
 
+#Print the results of FF analysis
+printf "%s FF/Cycle Candidates Found\n" "$final"
 
-echo "
-Property unreachable
-"
-echo "No more candidates exist.
-"
-echo "4 FF candidates found: 
-FF 6 (Cycle 4), FF 7 (Cycle 2), FF 3 (Cycle 3,1), FF 4 (Cycle 1)
+#Print the expected results
+cat patch_files/paper_ex/all_candidates.txt
 
-3 traces found
-
-Note FF 3 is a candidate in two traces. 
-See README in /examples/run/ for additional details.
-"
-
-echo "Press any key to run Neighbor Consistency Checking (NCC)
-"
+printf "Press any key to run Neighbor Consistency Checking (NCC)\n"
 read RES
 
-echo "Adding nm, the neighboring module and update check for NCC
-"
-(set -x;
-patch paper_ex.sv -i patch_files/paper_ex/FF_ncc1.patch) 
+cat patch_files/paper_ex/ncc.txt
 
+#Source the number of traces
+source patch_files/paper_ex/ncc_count
 
-echo "Check trace 1 with NCC...
-"
-(set -x;
-jaspergold -batch -tcl jasper_paper_ex.tcl)
+printf "\nOutput from NCC\n" > ncc_output
 
+for ncc_i in $(seq 1 $ncc_count); do
 
-echo "
-Property covered
-"
-echo "Trace 1: PASSED NCC
-"
-echo "Update and check trace 2 with NCC...
-"
-(set -x;
-patch paper_ex.sv -i patch_files/paper_ex/FF_ncc2.patch;
-jaspergold -batch -tcl jasper_paper_ex.tcl)
+  printf "Check trace %s with ncc...\n" "$ncc_i"
 
+  (set -x;
+  patch paper_ex.sv -i patch_files/paper_ex/FF_ncc"$ncc_i".patch)
 
-echo "
-Property unreachble
-"
-echo "Trace 2: FAILED NCC
-"
+  (set -x;
+  jaspergold -batch -tcl jasper_paper_ex.tcl)
 
-echo "
-Update and check trace 3 with NCC...
-"
-(set -x;
-patch paper_ex.sv -i patch_files/paper_ex/FF_ncc3.patch; 
-jaspergold -batch -tcl jasper_paper_ex.tcl)
+  printf "\ngrep jgproject/jg.log for cover property paper_ex.C_check_ncc_%s\n\n" "$ncc_i"
 
+  printf "RESULT: "
 
-echo "
-Property unreachble
-"
-echo "
-Trace 3: FAILED NCC
-"
+  if (grep -o 'The cover property "paper_ex.C_check_ncc_'"$ncc_i"'" was covered' jgproject/jg.log); then
 
-echo "Final Candidates:
-FF 6 (Cycle 4)
-FF 3 (Cycle 3)
-"
+    printf "Trace %s: PASSED NCC\n" "$ncc_i" >> ncc_output
 
+  elif (grep -o 'The cover property "paper_ex.C_check_ncc_'"$ncc_i"'" was proven unreachable' jgproject/jg.log); then
 
-echo "E-QED done"
+    printf "Trace %s: FAILED NCC\n" "$ncc_i" >> ncc_output
+
+  else
+
+    printf "Error: Unexpected JasperGold output during FF analysis\n"
+    printf "Please check jgproject/jg.log\n"
+    exit 1
+
+  fi
+
+done
+
+#Print the results from NCC
+cat ncc_output
+
+printf "\nExpected NCC Result:\n"
+
+#Print the expected results of NCC
+cat patch_files/paper_ex/expected_ncc_result.txt
+
+cat patch_files/paper_ex/final_candidates.txt
+
+printf "E-QED done\n\n"
