@@ -10,6 +10,7 @@
 #             4. Apply NCC (Neighbor Consistency Checking) to reduce the list
 #
 
+clear
 
 printf "Press any key to run the E-QED paper example\n"
 
