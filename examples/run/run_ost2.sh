@@ -46,7 +46,7 @@ for module in spc0 spc1 spc2 spc3 spc4 spc5 spc6 spc7 ccx l2c0 l2c1 l2c2 l2c3 l2
   printf "Press any key to launch JasperGold\n"
   read RES
 
-  (set -x; jaspergold -batch -tcl jasper_paper_ex.tcl)
+  (set -x; jaspergold -batch -tcl jasper_ost2.tcl)
 
   printf "\ngrep jgproject/jg.log for cover property ost2.C_check_%s\n\n" "$module"
 
@@ -109,7 +109,7 @@ iteration=1
 
 while [ "$no_more_candidates" = 0 ]; do
 
-  (set -x; jaspergold -batch -tcl jasper_paper_ex.tcl)
+  (set -x; jaspergold -batch -tcl jasper_ost2.tcl)
 
   printf "\ngrep jgproject/jg.log for cover property ost2.C_check_%s_with_ff\n\n" "$bug_module"
 
@@ -162,7 +162,7 @@ for ncc_i in $(seq 1 "$ncc_count"); do
   patch eqed_ost2.sv -i patch_files/example"$OST2_EX"/FF_ncc"$ncc_i".patch)
 
   (set -x;
-  jaspergold -batch -tcl jasper_paper_ex.tcl)
+  jaspergold -batch -tcl jasper_ost2.tcl)
 
   printf "\ngrep jgproject/jg.log for cover property ost2.C_check_ncc_%s\n\n" "$ncc_i"
 
