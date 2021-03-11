@@ -10,24 +10,26 @@
 #             4. Apply NCC (Neighbor Consistency Checking) to reduce the list
 #
 
-
 clear
 
-printf "Please enter the E-QED OpenSPARC T2 example to run\n"
+# Export global variable for OST2 file references
+export DV_ROOT=$(cd ../source/OST2_orig_rtl; pwd)
+
+printf "Please enter the E-QED OpenSPARC T2 example to run\n\n"
 
 read -r OST2_EX
 
-printf "Copying original OpenSPARC T2 top-level RTL...\n"
+printf "Copying original OpenSPARC T2 top-level RTL...\n\n"
 
 (set -x;
-cp ../source/OST2_orig_rtl/cpu/rtl/cpu.v .)
+cp ../source/OST2_orig_rtl/design/sys/iop/cpu/rtl/cpu.v .)
 
-printf "Patch original OpenSPARC T2 top-level RTL to prepare for formal analysis...\n"
+printf "Patch original OpenSPARC T2 top-level RTL to prepare for formal analysis...\n\n"
 
 (set -x; cp cpu.v eqed_ost2.sv;
 patch eqed_ost2.sv -i patch_files/ost2/reduce_design.patch)
 
-printf "...add Signature Blocks...\n"
+printf "...add Signature Blocks...\n\n"
 
 (set -x; patch eqed_ost2.sv -i patch_files/ost2/add_sb.patch)
 
