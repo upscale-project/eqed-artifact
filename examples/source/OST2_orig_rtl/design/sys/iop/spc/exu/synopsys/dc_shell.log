@@ -1,0 +1,1782 @@
+
+                      Design Compiler Graphical
+                            DC Ultra (TM)
+                             DFTMAX (TM)
+                         Power Compiler (TM)
+                           DesignWare (R)
+                           DC Expert (TM)
+                         Design Vision (TM)
+                          HDL Compiler (TM)
+                         VHDL Compiler (TM)
+                            DFT Compiler
+                        Library Compiler (TM)
+                         Design Compiler(R)
+
+         Version G-2012.06-SP5-1 for RHEL64 -- Mar 18, 2013
+               Copyright (c) 1988-2012 Synopsys, Inc.
+
+This software and the associated documentation are confidential and 
+proprietary to Synopsys, Inc. Your use or disclosure of this software 
+is subject to the terms and conditions of a written license agreement 
+between you, or your company, and Synopsys, Inc.
+
+Initializing...
+# ========== Copyright Header Begin ==========================================
+# 
+# OpenSPARC T2 Processor File: run.scr
+# Copyright (C) 1995-2007 Sun Microsystems, Inc. All Rights Reserved
+# 4150 Network Circle, Santa Clara, California 95054, U.S.A.
+#
+# * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER. 
+#
+# This program is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation; version 2 of the License.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the Free Software
+# Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+#
+# For the avoidance of doubt, and except that if any non-GPL license 
+# choice is available it will apply instead, Sun elects to use only 
+# the General Public License version 2 (GPLv2) at this time for any 
+# software where a choice of GPL license versions is made 
+# available with the language indicating that GPLv2 or any later version 
+# may be used, or where a choice of which version of the GPL is applied is 
+# otherwise unspecified. 
+#
+# Please contact Sun Microsystems, Inc., 4150 Network Circle, Santa Clara, 
+# CA 95054 USA or visit www.sun.com if you need additional information or 
+# have any questions. 
+# 
+# ========== Copyright Header End ============================================
+sh date
+Fri Aug  2 18:01:05 PDT 2013
+sh hostname
+selene.Stanford.EDU
+sh uptime
+ 18:01:05 up 7 days, 17:05,  4 users,  load average: 2.20, 2.11, 1.88
+remove_design -all
+1
+if {[file exists template]} {
+   sh rm -rf template
+}
+sh mkdir template
+if {![file exists gate]} {
+   sh mkdir gate
+}
+if {![file exists log]} {
+   sh mkdir log
+}
+###########################################################################
+# 1. Setup from environment variables
+###########################################################################
+set dv_root [sh echo \$DV_ROOT]
+/scratch0/linhai88/OST2/OST2.design
+set syn_home [sh echo \$SYN_LIB]
+/cad/synopsys/dc_shell/G-2012.06-SP5-1/libraries/syn
+source -echo -verbose script/user_cfg.scr
+# ========== Copyright Header Begin ==========================================
+# 
+# OpenSPARC T2 Processor File: user_cfg.scr
+# Copyright (C) 1995-2007 Sun Microsystems, Inc. All Rights Reserved
+# 4150 Network Circle, Santa Clara, California 95054, U.S.A.
+#
+# * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER. 
+#
+# This program is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation; version 2 of the License.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the Free Software
+# Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+#
+# For the avoidance of doubt, and except that if any non-GPL license 
+# choice is available it will apply instead, Sun elects to use only 
+# the General Public License version 2 (GPLv2) at this time for any 
+# software where a choice of GPL license versions is made 
+# available with the language indicating that GPLv2 or any later version 
+# may be used, or where a choice of which version of the GPL is applied is 
+# otherwise unspecified. 
+#
+# Please contact Sun Microsystems, Inc., 4150 Network Circle, Santa Clara, 
+# CA 95054 USA or visit www.sun.com if you need additional information or 
+# have any questions. 
+# 
+# ========== Copyright Header End ============================================
+source -echo -verbose $dv_root/design/sys/synopsys/script/project_sparc_cfg.scr
+# ========== Copyright Header Begin ==========================================
+# 
+# OpenSPARC T2 Processor File: project_sparc_cfg.scr
+# Copyright (C) 1995-2007 Sun Microsystems, Inc. All Rights Reserved
+# 4150 Network Circle, Santa Clara, California 95054, U.S.A.
+#
+# * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER. 
+#
+# This program is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation; version 2 of the License.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the Free Software
+# Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+#
+# For the avoidance of doubt, and except that if any non-GPL license 
+# choice is available it will apply instead, Sun elects to use only 
+# the General Public License version 2 (GPLv2) at this time for any 
+# software where a choice of GPL license versions is made 
+# available with the language indicating that GPLv2 or any later version 
+# may be used, or where a choice of which version of the GPL is applied is 
+# otherwise unspecified. 
+#
+# Please contact Sun Microsystems, Inc., 4150 Network Circle, Santa Clara, 
+# CA 95054 USA or visit www.sun.com if you need additional information or 
+# have any questions. 
+# 
+# ========== Copyright Header End ============================================
+set project_sparc_cfg	1
+1
+###########################################################################
+# Specify target library specific variables
+###########################################################################
+source $dv_root/design/sys/synopsys/script/target_lib.scr
+INFO: target library version /cad/synopsys/dc_shell/G-2012.06-SP5-1/libraries/syn
+lsi_10k/FJK*
+###########################################################################
+# Include Synopsys Designware library
+###########################################################################
+# Designware will not be used in sparc control blocks
+set synthetic_library {}
+set link_path [concat  $link_library $synthetic_library]
+* lsi_10k.db
+###########################################################################
+# Timing paramaters
+###########################################################################
+set max_transition   0.15
+0.15
+set max_fanout         6
+6
+# default input/output delays
+set default_input_delay  0.15
+Information: Use of Variable 'default_input_delay' is not recommended. This variable will be obsolete in a future release. (INFO-101)
+0.15
+set default_output_delay 0.2
+Information: Use of Variable 'default_output_delay' is not recommended. This variable will be obsolete in a future release. (INFO-101)
+0.2
+set critical_range       0.30
+0.30
+# default number of worst path reported
+set num_of_path 50
+50
+#default compile style for io is to not flatten the whole design
+set compile_flatten_all 0
+0
+0
+set rtl_files {libs/cl/cl_rtl_ext.v
+libs/cl/cl_a1/cl_a1.behV
+libs/cl/cl_u1/cl_u1.behV
+libs/cl/cl_dp1/cl_dp1.behV
+libs/cl/cl_sc1/cl_sc1.behV
+libs/cl/cl_u1lvt/cl_u1lvt.behV
+
+libs/n2sram/mp/n2_irf_mp_128x72_cust_l/n2_irf_mp_128x72_cust/rtl/n2_irf_mp_128x72_cust.v
+
+design/sys/iop/spc/exu/rtl/exu_ecc_ctl.v
+design/sys/iop/spc/exu/rtl/exu_ect_ctl.v
+design/sys/iop/spc/exu/rtl/exu_edp_dp.v
+design/sys/iop/spc/exu/rtl/exu_mdp_dp.v
+design/sys/iop/spc/exu/rtl/exu_rml_ctl.v
+design/sys/iop/spc/exu/rtl/exu.v
+}
+libs/cl/cl_rtl_ext.v
+libs/cl/cl_a1/cl_a1.behV
+libs/cl/cl_u1/cl_u1.behV
+libs/cl/cl_dp1/cl_dp1.behV
+libs/cl/cl_sc1/cl_sc1.behV
+libs/cl/cl_u1lvt/cl_u1lvt.behV
+
+libs/n2sram/mp/n2_irf_mp_128x72_cust_l/n2_irf_mp_128x72_cust/rtl/n2_irf_mp_128x72_cust.v
+
+design/sys/iop/spc/exu/rtl/exu_ecc_ctl.v
+design/sys/iop/spc/exu/rtl/exu_ect_ctl.v
+design/sys/iop/spc/exu/rtl/exu_edp_dp.v
+design/sys/iop/spc/exu/rtl/exu_mdp_dp.v
+design/sys/iop/spc/exu/rtl/exu_rml_ctl.v
+design/sys/iop/spc/exu/rtl/exu.v
+
+set link_library [concat $link_library    dw_foundation.sldb ]
+* lsi_10k.db dw_foundation.sldb
+set mix_files {}
+set top_module exu
+exu
+set include_paths {}
+set black_box_libs {}
+set black_box_designs {}
+set mem_libs {}
+set dont_touch_modules {}
+set compile_effort   "medium"
+medium
+set compile_flatten_all 1
+1
+set compile_no_new_cells_at_top_level false
+false
+set default_clk l2clk
+l2clk
+set default_clk_freq  1400
+1400
+set default_setup_skew  0.0
+0.0
+set default_hold_skew  0.0
+0.0
+set default_clk_transition  0.05
+0.05
+set clk_list {                                        { l2clk           1400.0   0.000   0.000   0.05}        }
+                                        { l2clk           1400.0   0.000   0.000   0.05}        
+set ideal_net_list {}
+set false_path_list {}
+set enforce_input_fanout_one     0
+0
+set allow_outport_drive_innodes  1
+1
+set skip_scan            0
+0
+set add_lockup_latch     false
+false
+set chain_count          1
+1
+set scanin_port_list     {}
+set scanout_port_list    {}
+set scanenable_port      global_shift_enable
+global_shift_enable
+set has_test_stub        1
+1
+set scanenable_pin       test_stub_no_bist/se
+test_stub_no_bist/se
+set long_chain_so_0_net  long_chain_so_0
+long_chain_so_0
+set short_chain_so_0_net short_chain_so_0
+short_chain_so_0
+set so_0_net             so_0
+so_0
+set insert_extra_lockup_latch 0
+0
+set extra_lockup_latch_clk_list {}
+set search_path [concat $search_path script/]
+. /cad/synopsys/dc_shell/G-2012.06-SP5-1/libraries/syn /cad/synopsys/dc_shell/G-2012.06-SP5-1/minpower/syn /cad/synopsys/dc_shell/G-2012.06-SP5-1/dw/syn_ver /cad/synopsys/dc_shell/G-2012.06-SP5-1/dw/sim_ver /cad/synopsys/dc_shell/G-2012.06-SP5-1/libraries/syn script/
+set search_path [concat $syn_home    $search_path ]
+/cad/synopsys/dc_shell/G-2012.06-SP5-1/libraries/syn . /cad/synopsys/dc_shell/G-2012.06-SP5-1/libraries/syn /cad/synopsys/dc_shell/G-2012.06-SP5-1/minpower/syn /cad/synopsys/dc_shell/G-2012.06-SP5-1/dw/syn_ver /cad/synopsys/dc_shell/G-2012.06-SP5-1/dw/sim_ver /cad/synopsys/dc_shell/G-2012.06-SP5-1/libraries/syn script/
+foreach include_path $include_paths {
+   set search_path [concat $search_path $dv_root/$include_path]
+}
+sh date
+Fri Aug  2 18:01:05 PDT 2013
+set link_library [concat $link_library                          $mem_libs                          $black_box_designs]
+* lsi_10k.db dw_foundation.sldb
+set target_library $syn_home/lsi_10k.db 
+/cad/synopsys/dc_shell/G-2012.06-SP5-1/libraries/syn/lsi_10k.db
+set target_library [concat $target_library                            $mem_libs]
+/cad/synopsys/dc_shell/G-2012.06-SP5-1/libraries/syn/lsi_10k.db
+set hdlin_enable_vpp true
+Information: Variable 'hdlin_enable_vpp' is obsolete and is being ignored. (INFO-100)
+true
+set hdlin_auto_save_templates false
+false
+define_design_lib WORK -path .template
+1
+set verilogout_single_bit false
+false
+set hdlout_internal_busses true
+true
+set bus_naming_style {%s[%d]}
+%s[%d]
+set bus_inference_style $bus_naming_style
+%s[%d]
+echo $search_path
+/cad/synopsys/dc_shell/G-2012.06-SP5-1/libraries/syn . /cad/synopsys/dc_shell/G-2012.06-SP5-1/libraries/syn /cad/synopsys/dc_shell/G-2012.06-SP5-1/minpower/syn /cad/synopsys/dc_shell/G-2012.06-SP5-1/dw/syn_ver /cad/synopsys/dc_shell/G-2012.06-SP5-1/dw/sim_ver /cad/synopsys/dc_shell/G-2012.06-SP5-1/libraries/syn script/
+###########################################################################
+# 2. Read Designs
+###########################################################################
+set all_rtl_files  { }
+ 
+foreach rtl_file $rtl_files {
+    set full_file_path $dv_root/$rtl_file
+    set all_rtl_files [concat $all_rtl_files $full_file_path ]
+}
+analyze -format verilog -define RUNDC $all_rtl_files
+Running PRESTO HDLC
+Compiling source file /scratch0/linhai88/OST2/OST2.design/libs/cl/cl_rtl_ext.v
+Compiling source file /scratch0/linhai88/OST2/OST2.design/libs/cl/cl_a1/cl_a1.behV
+Warning:  /scratch0/linhai88/OST2/OST2.design/libs/cl/cl_a1/cl_a1.behV:1812: The statements in initial blocks are ignored. (VER-281)
+Compiling source file /scratch0/linhai88/OST2/OST2.design/libs/cl/cl_u1/cl_u1.behV
+Compiling source file /scratch0/linhai88/OST2/OST2.design/libs/cl/cl_dp1/cl_dp1.behV
+Warning:  /scratch0/linhai88/OST2/OST2.design/libs/cl/cl_dp1/cl_dp1.behV:402: The statements in initial blocks are ignored. (VER-281)
+Warning:  /scratch0/linhai88/OST2/OST2.design/libs/cl/cl_dp1/cl_dp1.behV:447: The statements in initial blocks are ignored. (VER-281)
+Compiling source file /scratch0/linhai88/OST2/OST2.design/libs/cl/cl_sc1/cl_sc1.behV
+Warning:  /scratch0/linhai88/OST2/OST2.design/libs/cl/cl_sc1/cl_sc1.behV:1812: The statements in initial blocks are ignored. (VER-281)
+Compiling source file /scratch0/linhai88/OST2/OST2.design/libs/cl/cl_u1lvt/cl_u1lvt.behV
+Compiling source file /scratch0/linhai88/OST2/OST2.design/libs/n2sram/mp/n2_irf_mp_128x72_cust_l/n2_irf_mp_128x72_cust/rtl/n2_irf_mp_128x72_cust.v
+Compiling source file /scratch0/linhai88/OST2/OST2.design/design/sys/iop/spc/exu/rtl/exu_ecc_ctl.v
+Warning:  /scratch0/linhai88/OST2/OST2.design/libs/n2sram/mp/n2_irf_mp_128x72_cust_l/n2_irf_mp_128x72_cust/rtl/n2_irf_mp_128x72_cust.v:1355: The statements in initial blocks are ignored. (VER-281)
+Warning:  /scratch0/linhai88/OST2/OST2.design/libs/n2sram/mp/n2_irf_mp_128x72_cust_l/n2_irf_mp_128x72_cust/rtl/n2_irf_mp_128x72_cust.v:1372: The statements in initial blocks are ignored. (VER-281)
+Compiling source file /scratch0/linhai88/OST2/OST2.design/design/sys/iop/spc/exu/rtl/exu_ect_ctl.v
+Compiling source file /scratch0/linhai88/OST2/OST2.design/design/sys/iop/spc/exu/rtl/exu_edp_dp.v
+Compiling source file /scratch0/linhai88/OST2/OST2.design/design/sys/iop/spc/exu/rtl/exu_mdp_dp.v
+Compiling source file /scratch0/linhai88/OST2/OST2.design/design/sys/iop/spc/exu/rtl/exu_rml_ctl.v
+Compiling source file /scratch0/linhai88/OST2/OST2.design/design/sys/iop/spc/exu/rtl/exu.v
+Presto compilation completed successfully.
+Loading db file '/cad/synopsys/dc_shell/G-2012.06-SP5-1/libraries/syn/lsi_10k.db'
+Loading db file '/cad/synopsys/dc_shell/G-2012.06-SP5-1/libraries/syn/dw_foundation.sldb'
+1
+elaborate $top_module
+Loading db file '/cad/synopsys/dc_shell/G-2012.06-SP5-1/libraries/syn/gtech.db'
+Loading db file '/cad/synopsys/dc_shell/G-2012.06-SP5-1/libraries/syn/standard.sldb'
+  Loading link library 'lsi_10k'
+  Loading link library 'gtech'
+Running PRESTO HDLC
+Presto compilation completed successfully.
+Elaborated 1 design.
+Current design is now 'exu'.
+Information: Building the design 'exu_edp_dp'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'exu_ect_ctl'. (HDL-193)
+Warning:  /scratch0/linhai88/OST2/OST2.design/design/sys/iop/spc/exu/rtl/exu_ect_ctl.v:2562: Module 'exu_ect_ctl' contains a supply0 variable 'vss'. Replacing with wire driven by a continuous assignment to 0. (ELAB-338)
+Warning:  /scratch0/linhai88/OST2/OST2.design/design/sys/iop/spc/exu/rtl/exu_ect_ctl.v:2562: Module 'exu_ect_ctl' contains a supply1 variable 'vdd'. Replacing with wire driven by a continuous assignment to 1. (ELAB-338)
+Presto compilation completed successfully.
+Information: Building the design 'exu_ecc_ctl'. (HDL-193)
+Warning:  /scratch0/linhai88/OST2/OST2.design/design/sys/iop/spc/exu/rtl/exu_ecc_ctl.v:918: Module 'exu_ecc_ctl' contains a supply0 variable 'vss'. Replacing with wire driven by a continuous assignment to 0. (ELAB-338)
+Warning:  /scratch0/linhai88/OST2/OST2.design/design/sys/iop/spc/exu/rtl/exu_ecc_ctl.v:918: Module 'exu_ecc_ctl' contains a supply1 variable 'vdd'. Replacing with wire driven by a continuous assignment to 1. (ELAB-338)
+Presto compilation completed successfully.
+Information: Building the design 'exu_rml_ctl'. (HDL-193)
+Warning:  /scratch0/linhai88/OST2/OST2.design/design/sys/iop/spc/exu/rtl/exu_rml_ctl.v:2684: Module 'exu_rml_ctl' contains a supply0 variable 'vss'. Replacing with wire driven by a continuous assignment to 0. (ELAB-338)
+Warning:  /scratch0/linhai88/OST2/OST2.design/design/sys/iop/spc/exu/rtl/exu_rml_ctl.v:2684: Module 'exu_rml_ctl' contains a supply1 variable 'vdd'. Replacing with wire driven by a continuous assignment to 1. (ELAB-338)
+Presto compilation completed successfully.
+Information: Building the design 'n2_irf_mp_128x72_cust'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'exu_edp_dp_buff_macro__dbuff_32x__stack_none__width_4'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'exu_edp_dp_mux_macro__mux_aope__ports_6__stack_72c__width_64'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'exu_edp_dp_msff_macro__mux_aope__ports_4__stack_72c__width_72'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'cl_dp1_penc5_64x'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'exu_edp_dp_msff_macro__buffsel_none__mux_aonpe__ports_5__stack_72c__width_64'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'exu_edp_dp_buff_macro__dbuff_24x__stack_72c__width_64'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'exu_edp_dp_buff_macro__dbuff_24x__stack_72c__width_72'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'exu_edp_dp_zero_macro__width_64'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'exu_edp_dp_inv_macro__dinv_12x__stack_72c__width_1'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'exu_edp_dp_nand_macro__dnand_16x__left_1__ports_2__stack_72c__width_1'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'exu_edp_dp_nand_macro__ports_2__stack_72c__width_1'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'exu_edp_dp_nand_macro__dnand_32x__left_1__ports_2__stack_72c__width_2'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'exu_edp_dp_buff_macro__stack_72c__width_1'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'exu_edp_dp_buff_macro__stack_72c__width_7'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'exu_edp_dp_mux_macro__mux_aonpe__ports_8__stack_72c__width_64'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'exu_edp_dp_msff_macro__mux_aope__ports_5__stack_72c__width_72'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'exu_edp_dp_msff_macro__buffsel_none__mux_aonpe__ports_5__stack_72c__width_72'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'exu_edp_dp_xor_macro__ports_2__stack_72c__width_64'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'exu_edp_dp_mux_macro__mux_aope__ports_2__stack_72c__width_64'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'exu_edp_dp_buff_macro__stack_72c__width_64'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'exu_edp_dp_cmp_macro__width_32'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'exu_edp_dp_inv_macro__stack_72c__width_3'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'exu_edp_dp_nand_macro__ports_3__stack_72c__width_3'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'exu_edp_dp_nand_macro__ports_2__stack_72c__width_3'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'exu_edp_dp_cmp_macro__width_64'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'exu_edp_dp_cmp_macro__width_8'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'exu_edp_dp_buff_macro__dbuff_32x__stack_72c__width_2'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'exu_edp_dp_buff_macro__dbuff_32x__stack_72c__width_1'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'exu_edp_dp_mux_macro__mux_aonpe__ports_7__stack_72c__width_64'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'exu_edp_dp_mux_macro__mux_pgpe__ports_4__stack_72c__width_64'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'exu_edp_dp_msff_macro__stack_72c__width_67'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'exu_edp_dp_msff_macro__minbuff_1__stack_72c__width_64'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'exu_edp_dp_msff_macro__mux_aope__ports_3__stack_72c__width_64'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'exu_edp_dp_msff_macro__stack_72c__width_66'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'exu_edp_dp_buff_macro__dbuff_24x__stack_72c__width_65'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'exu_edp_dp_buff_macro__stack_72c__width_8'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'exu_edp_dp_inv_macro__stack_72c__width_64'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'exu_edp_dp_nand_macro__ports_3__stack_72c__width_64'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'exu_edp_dp_nand_macro__ports_4__stack_72c__width_64'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'exu_edp_dp_buff_macro__stack_72c__width_2'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'exu_edp_dp_zero_macro__width_32'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'exu_edp_dp_msff_macro__left_32__stack_72c__width_28'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'exu_edp_dp_inv_macro__stack_72c__width_2'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'exu_edp_dp_buff_macro__width_5'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'exu_edp_dp_mux_macro__buffsel_none__mux_aonpe__ports_3__width_7'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'exu_edp_dp_mux_macro__buffsel_none__mux_aonpe__ports_3__width_32'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'exu_edp_dp_mux_macro__buffsel_none__mux_aonpe__ports_2__width_32'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'exu_edp_dp_mux_macro__buffsel_none__mux_aonpe__ports_3__width_15'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'exu_edp_dp_mux_macro__buffsel_none__mux_aonpe__ports_2__width_16'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'exu_edp_dp_mux_macro__buffsel_none__mux_aonpe__ports_2__width_8'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'exu_edp_dp_mux_macro__buffsel_none__mux_aonpe__ports_3__width_23'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'exu_edp_dp_mux_macro__buffsel_none__mux_aonpe__ports_3__width_31'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'exu_edp_dp_mux_macro__buffsel_none__mux_aonpe__ports_3__width_16'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'exu_edp_dp_buff_macro__width_3'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'exu_edp_dp_inv_macro__stack_72c__width_1'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'exu_edp_dp_mux_macro__buffsel_none__mux_aonpe__ports_2__width_39'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'exu_edp_dp_mux_macro__buffsel_none__mux_aonpe__ports_2__width_31'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'exu_edp_dp_mux_macro__buffsel_none__mux_aonpe__ports_2__width_24'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'exu_edp_dp_mux_macro__buffsel_none__mux_aonpe__ports_2__width_23'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'exu_edp_dp_mux_macro__buffsel_none__mux_aonpe__ports_2__width_15'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'exu_edp_dp_mux_macro__buffsel_none__mux_aonpe__ports_2__width_48'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'exu_edp_dp_and_macro__dinv_16x__dnand_6x__ports_2__width_1'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'exu_edp_dp_buff_macro__dbuff_48x__width_1'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'exu_edp_dp_mux_macro__mux_aodec__ports_8__stack_72c__width_71'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'exu_edp_dp_buff_macro__stack_72c__width_71'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'exu_edp_dp_inv_macro__dinv_6x__width_3'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'exu_edp_dp_mux_macro__buffsel_none__mux_aonpe__ports_2__width_3'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'exu_edp_dp_mux_macro__mux_aodec__ports_8__stack_72c__width_64'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'exu_edp_dp_cla_macro__width_64'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'exu_edp_dp_and_macro__ports_2__stack_72c__width_3'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'exu_edp_dp_xor_macro__ports_2__stack_72c__width_3'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'exu_edp_dp_increment_macro__width_4'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'exu_edp_dp_buff_macro__stack_64c__width_64'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'cl_dp1_zdt64_8x'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'exu_edp_dp_msff_macro__stack_72c__width_65'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'exu_edp_dp_mux_macro__mux_aope__ports_3__stack_72c__width_65'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'exu_edp_dp_msff_macro__mux_aope__ports_7__stack_72c__width_65'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'exu_edp_dp_msff_macro__stack_72c__width_39'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'exu_edp_dp_inv_macro__stack_72c__width_7'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'exu_edp_dp_mux_macro__buffsel_none__mux_aonpe__ports_2__stack_72c__width_2'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'exu_edp_dp_mux_macro__buffsel_none__mux_aonpe__ports_2__stack_72c__width_5'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'exu_edp_dp_mux_macro__buffsel_none__mux_aonpe__ports_2__stack_72c__width_6'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'exu_edp_dp_mux_macro__buffsel_none__mux_aonpe__ports_2__stack_72c__width_1'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'exu_edp_dp_mux_macro__buffsel_none__mux_aonpe__ports_2__stack_72c__width_8'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'exu_edp_dp_zero_macro__width_8'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'exu_edp_dp_and_macro__ports_2__stack_72c__width_1'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'exu_edp_dp_mux_macro__mux_pgdec__ports_8__stack_72c__width_14'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'exu_edp_dp_mux_macro__mux_aope__ports_3__stack_72c__width_33'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'exu_ect_ctl_l1clkhdr_ctl_macro'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'exu_ect_ctl_msff_ctl_macro__width_5'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'exu_ect_ctl_msff_ctl_macro__width_8'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'exu_ect_ctl_msff_ctl_macro__width_37'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'exu_ect_ctl_msff_ctl_macro__width_6'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'exu_ect_ctl_msff_ctl_macro__width_15'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'exu_ect_ctl_msff_ctl_macro__width_76'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'exu_ect_ctl_msff_ctl_macro__width_28'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'exu_ect_ctl_msff_ctl_macro__width_32'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'exu_ect_ctl_msff_ctl_macro__width_9'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'exu_ect_ctl_msff_ctl_macro__width_4'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'exu_ect_ctl_msff_ctl_macro__width_1'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'exu_ect_ctl_spare_ctl_macro__num_6'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'exu_ecc_ctl_l1clkhdr_ctl_macro'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'exu_ecc_ctl_msff_ctl_macro__width_24'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'exu_ecc_ctl_msff_ctl_macro__width_14'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'exu_ecc_ctl_msff_ctl_macro__width_8'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'exu_ecc_ctl_msff_ctl_macro__width_5'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'exu_ecc_ctl_msff_ctl_macro__width_3'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'exu_ecc_ctl_spare_ctl_macro__num_4'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'exu_rml_ctl_l1clkhdr_ctl_macro'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'exu_rml_ctl_msff_ctl_macro__width_16'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'exu_rml_ctl_msff_ctl_macro__width_6'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'exu_rml_ctl_msff_ctl_macro__width_10'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'exu_rml_ctl_msff_ctl_macro__width_9'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'exu_rml_ctl_msff_ctl_macro__width_14'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'exu_rml_ctl_msff_ctl_macro__width_3'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'exu_rml_ctl_msff_ctl_macro__width_1'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'exu_rml_ctl_msff_ctl_macro__width_2'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'exu_rml_ctl_msff_ctl_macro__width_15'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'exu_rml_ctl_msff_ctl_macro__width_8'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'exu_rml_ctl_msff_ctl_macro__width_4'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'exu_rml_ctl_msff_ctl_macro__width_12'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'exu_rml_ctl_msff_ctl_macro__width_24'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'exu_rml_ctl_msff_ctl_macro__width_26'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'exu_rml_ctl_msff_ctl_macro__width_32'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'exu_rml_ctl_spare_ctl_macro__num_6'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'buff' instantiated from design 'exu_edp_dp_buff_macro__dbuff_32x__stack_none__width_4' with
+	the parameters "4". (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'cl_dp1_penc6_8x'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'mux6s' instantiated from design 'exu_edp_dp_mux_macro__mux_aope__ports_6__stack_72c__width_64' with
+	the parameters "64". (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'cl_dp1_penc4_8x'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'mux4s' instantiated from design 'exu_edp_dp_msff_macro__mux_aope__ports_4__stack_72c__width_72' with
+	the parameters "72". (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'cl_dp1_l1hdr_8x'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'dff' instantiated from design 'exu_edp_dp_msff_macro__mux_aope__ports_4__stack_72c__width_72' with
+	the parameters "72". (HDL-193)
+
+Inferred memory devices in process
+	in routine dff_SIZE72 line 1648 in file
+		'/scratch0/linhai88/OST2/OST2.design/libs/cl/cl_rtl_ext.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|        q_reg        | Flip-flop |  72   |  Y  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully.
+Information: Building the design 'mux5s' instantiated from design 'exu_edp_dp_msff_macro__buffsel_none__mux_aonpe__ports_5__stack_72c__width_64' with
+	the parameters "64". (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'dff' instantiated from design 'exu_edp_dp_msff_macro__buffsel_none__mux_aonpe__ports_5__stack_72c__width_64' with
+	the parameters "64". (HDL-193)
+
+Inferred memory devices in process
+	in routine dff_SIZE64 line 1648 in file
+		'/scratch0/linhai88/OST2/OST2.design/libs/cl/cl_rtl_ext.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|        q_reg        | Flip-flop |  64   |  Y  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully.
+Information: Building the design 'buff' instantiated from design 'exu_edp_dp_buff_macro__dbuff_24x__stack_72c__width_64' with
+	the parameters "64". (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'buff' instantiated from design 'exu_edp_dp_buff_macro__dbuff_24x__stack_72c__width_72' with
+	the parameters "72". (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'zero' instantiated from design 'exu_edp_dp_zero_macro__width_64' with
+	the parameters "64". (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'inv' instantiated from design 'exu_edp_dp_inv_macro__dinv_12x__stack_72c__width_1' with
+	the parameters "1". (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'nand2' instantiated from design 'exu_edp_dp_nand_macro__dnand_16x__left_1__ports_2__stack_72c__width_1' with
+	the parameters "1". (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'nand2' instantiated from design 'exu_edp_dp_nand_macro__dnand_32x__left_1__ports_2__stack_72c__width_2' with
+	the parameters "2". (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'buff' instantiated from design 'exu_edp_dp_buff_macro__stack_72c__width_1' with
+	the parameters "1". (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'buff' instantiated from design 'exu_edp_dp_buff_macro__stack_72c__width_7' with
+	the parameters "7". (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'cl_dp1_muxbuff8_8x'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'mux8s' instantiated from design 'exu_edp_dp_mux_macro__mux_aonpe__ports_8__stack_72c__width_64' with
+	the parameters "64". (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'cl_dp1_penc5_8x'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'mux5s' instantiated from design 'exu_edp_dp_msff_macro__mux_aope__ports_5__stack_72c__width_72' with
+	the parameters "72". (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'xor2' instantiated from design 'exu_edp_dp_xor_macro__ports_2__stack_72c__width_64' with
+	the parameters "64". (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'cl_dp1_penc2_8x'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'mux2s' instantiated from design 'exu_edp_dp_mux_macro__mux_aope__ports_2__stack_72c__width_64' with
+	the parameters "64". (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'cmp' instantiated from design 'exu_edp_dp_cmp_macro__width_32' with
+	the parameters "32". (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'inv' instantiated from design 'exu_edp_dp_inv_macro__stack_72c__width_3' with
+	the parameters "3". (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'nand3' instantiated from design 'exu_edp_dp_nand_macro__ports_3__stack_72c__width_3' with
+	the parameters "3". (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'nand2' instantiated from design 'exu_edp_dp_nand_macro__ports_2__stack_72c__width_3' with
+	the parameters "3". (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'cmp' instantiated from design 'exu_edp_dp_cmp_macro__width_64' with
+	the parameters "64". (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'cmp' instantiated from design 'exu_edp_dp_cmp_macro__width_8' with
+	the parameters "8". (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'buff' instantiated from design 'exu_edp_dp_buff_macro__dbuff_32x__stack_72c__width_2' with
+	the parameters "2". (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'cl_dp1_muxbuff7_8x'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'mux7s' instantiated from design 'exu_edp_dp_mux_macro__mux_aonpe__ports_7__stack_72c__width_64' with
+	the parameters "64". (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'mux4' instantiated from design 'exu_edp_dp_mux_macro__mux_pgpe__ports_4__stack_72c__width_64' with
+	the parameters "64". (HDL-193)
+
+Statistics for case statements in always block at line 120 in file
+	'/scratch0/linhai88/OST2/OST2.design/libs/cl/cl_rtl_ext.v'
+===============================================
+|           Line           |  full/ parallel  |
+===============================================
+|           121            |    auto/auto     |
+===============================================
+Presto compilation completed successfully.
+Information: Building the design 'dff' instantiated from design 'exu_edp_dp_msff_macro__stack_72c__width_67' with
+	the parameters "67". (HDL-193)
+
+Inferred memory devices in process
+	in routine dff_SIZE67 line 1648 in file
+		'/scratch0/linhai88/OST2/OST2.design/libs/cl/cl_rtl_ext.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|        q_reg        | Flip-flop |  67   |  Y  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully.
+Information: Building the design 'cl_dp1_penc3_8x'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'mux3s' instantiated from design 'exu_edp_dp_msff_macro__mux_aope__ports_3__stack_72c__width_64' with
+	the parameters "64". (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'dff' instantiated from design 'exu_edp_dp_msff_macro__stack_72c__width_66' with
+	the parameters "66". (HDL-193)
+
+Inferred memory devices in process
+	in routine dff_SIZE66 line 1648 in file
+		'/scratch0/linhai88/OST2/OST2.design/libs/cl/cl_rtl_ext.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|        q_reg        | Flip-flop |  66   |  Y  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully.
+Information: Building the design 'buff' instantiated from design 'exu_edp_dp_buff_macro__dbuff_24x__stack_72c__width_65' with
+	the parameters "65". (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'buff' instantiated from design 'exu_edp_dp_buff_macro__stack_72c__width_8' with
+	the parameters "8". (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'inv' instantiated from design 'exu_edp_dp_inv_macro__stack_72c__width_64' with
+	the parameters "64". (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'nand3' instantiated from design 'exu_edp_dp_nand_macro__ports_3__stack_72c__width_64' with
+	the parameters "64". (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'nand4' instantiated from design 'exu_edp_dp_nand_macro__ports_4__stack_72c__width_64' with
+	the parameters "64". (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'zero' instantiated from design 'exu_edp_dp_zero_macro__width_32' with
+	the parameters "32". (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'dff' instantiated from design 'exu_edp_dp_msff_macro__left_32__stack_72c__width_28' with
+	the parameters "28". (HDL-193)
+
+Inferred memory devices in process
+	in routine dff_SIZE28 line 1648 in file
+		'/scratch0/linhai88/OST2/OST2.design/libs/cl/cl_rtl_ext.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|        q_reg        | Flip-flop |  28   |  Y  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully.
+Information: Building the design 'inv' instantiated from design 'exu_edp_dp_inv_macro__stack_72c__width_2' with
+	the parameters "2". (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'buff' instantiated from design 'exu_edp_dp_buff_macro__width_5' with
+	the parameters "5". (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'mux3s' instantiated from design 'exu_edp_dp_mux_macro__buffsel_none__mux_aonpe__ports_3__width_7' with
+	the parameters "7". (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'mux3s' instantiated from design 'exu_edp_dp_mux_macro__buffsel_none__mux_aonpe__ports_3__width_32' with
+	the parameters "32". (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'mux2s' instantiated from design 'exu_edp_dp_mux_macro__buffsel_none__mux_aonpe__ports_2__width_32' with
+	the parameters "32". (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'mux3s' instantiated from design 'exu_edp_dp_mux_macro__buffsel_none__mux_aonpe__ports_3__width_15' with
+	the parameters "15". (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'mux2s' instantiated from design 'exu_edp_dp_mux_macro__buffsel_none__mux_aonpe__ports_2__width_16' with
+	the parameters "16". (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'mux2s' instantiated from design 'exu_edp_dp_mux_macro__buffsel_none__mux_aonpe__ports_2__width_8' with
+	the parameters "8". (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'mux3s' instantiated from design 'exu_edp_dp_mux_macro__buffsel_none__mux_aonpe__ports_3__width_23' with
+	the parameters "23". (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'mux3s' instantiated from design 'exu_edp_dp_mux_macro__buffsel_none__mux_aonpe__ports_3__width_31' with
+	the parameters "31". (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'mux3s' instantiated from design 'exu_edp_dp_mux_macro__buffsel_none__mux_aonpe__ports_3__width_16' with
+	the parameters "16". (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'buff' instantiated from design 'exu_edp_dp_buff_macro__width_3' with
+	the parameters "3". (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'mux2s' instantiated from design 'exu_edp_dp_mux_macro__buffsel_none__mux_aonpe__ports_2__width_39' with
+	the parameters "39". (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'mux2s' instantiated from design 'exu_edp_dp_mux_macro__buffsel_none__mux_aonpe__ports_2__width_31' with
+	the parameters "31". (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'mux2s' instantiated from design 'exu_edp_dp_mux_macro__buffsel_none__mux_aonpe__ports_2__width_24' with
+	the parameters "24". (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'mux2s' instantiated from design 'exu_edp_dp_mux_macro__buffsel_none__mux_aonpe__ports_2__width_23' with
+	the parameters "23". (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'mux2s' instantiated from design 'exu_edp_dp_mux_macro__buffsel_none__mux_aonpe__ports_2__width_15' with
+	the parameters "15". (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'mux2s' instantiated from design 'exu_edp_dp_mux_macro__buffsel_none__mux_aonpe__ports_2__width_48' with
+	the parameters "48". (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'and2' instantiated from design 'exu_edp_dp_and_macro__dinv_16x__dnand_6x__ports_2__width_1' with
+	the parameters "1". (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'cl_dp1_pdec8_8x'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'mux8s' instantiated from design 'exu_edp_dp_mux_macro__mux_aodec__ports_8__stack_72c__width_71' with
+	the parameters "71". (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'buff' instantiated from design 'exu_edp_dp_buff_macro__stack_72c__width_71' with
+	the parameters "71". (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'mux2s' instantiated from design 'exu_edp_dp_mux_macro__buffsel_none__mux_aonpe__ports_2__width_3' with
+	the parameters "3". (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'cla' instantiated from design 'exu_edp_dp_cla_macro__width_64' with
+	the parameters "64". (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'and2' instantiated from design 'exu_edp_dp_and_macro__ports_2__stack_72c__width_3' with
+	the parameters "3". (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'xor2' instantiated from design 'exu_edp_dp_xor_macro__ports_2__stack_72c__width_3' with
+	the parameters "3". (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'incr' instantiated from design 'exu_edp_dp_increment_macro__width_4' with
+	the parameters "4". (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'dff' instantiated from design 'exu_edp_dp_msff_macro__stack_72c__width_65' with
+	the parameters "65". (HDL-193)
+
+Inferred memory devices in process
+	in routine dff_SIZE65 line 1648 in file
+		'/scratch0/linhai88/OST2/OST2.design/libs/cl/cl_rtl_ext.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|        q_reg        | Flip-flop |  65   |  Y  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully.
+Information: Building the design 'mux3s' instantiated from design 'exu_edp_dp_mux_macro__mux_aope__ports_3__stack_72c__width_65' with
+	the parameters "65". (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'cl_dp1_penc7_8x'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'mux7s' instantiated from design 'exu_edp_dp_msff_macro__mux_aope__ports_7__stack_72c__width_65' with
+	the parameters "65". (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'dff' instantiated from design 'exu_edp_dp_msff_macro__stack_72c__width_39' with
+	the parameters "39". (HDL-193)
+
+Inferred memory devices in process
+	in routine dff_SIZE39 line 1648 in file
+		'/scratch0/linhai88/OST2/OST2.design/libs/cl/cl_rtl_ext.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|        q_reg        | Flip-flop |  39   |  Y  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully.
+Information: Building the design 'inv' instantiated from design 'exu_edp_dp_inv_macro__stack_72c__width_7' with
+	the parameters "7". (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'mux2s' instantiated from design 'exu_edp_dp_mux_macro__buffsel_none__mux_aonpe__ports_2__stack_72c__width_2' with
+	the parameters "2". (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'mux2s' instantiated from design 'exu_edp_dp_mux_macro__buffsel_none__mux_aonpe__ports_2__stack_72c__width_5' with
+	the parameters "5". (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'mux2s' instantiated from design 'exu_edp_dp_mux_macro__buffsel_none__mux_aonpe__ports_2__stack_72c__width_6' with
+	the parameters "6". (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'mux2s' instantiated from design 'exu_edp_dp_mux_macro__buffsel_none__mux_aonpe__ports_2__stack_72c__width_1' with
+	the parameters "1". (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'zero' instantiated from design 'exu_edp_dp_zero_macro__width_8' with
+	the parameters "8". (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'mux8' instantiated from design 'exu_edp_dp_mux_macro__mux_pgdec__ports_8__stack_72c__width_14' with
+	the parameters "14". (HDL-193)
+
+Statistics for case statements in always block at line 306 in file
+	'/scratch0/linhai88/OST2/OST2.design/libs/cl/cl_rtl_ext.v'
+===============================================
+|           Line           |  full/ parallel  |
+===============================================
+|           308            |    auto/auto     |
+===============================================
+Presto compilation completed successfully.
+Information: Building the design 'mux3s' instantiated from design 'exu_edp_dp_mux_macro__mux_aope__ports_3__stack_72c__width_33' with
+	the parameters "33". (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'cl_sc1_l1hdr_8x'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'dff' instantiated from design 'exu_ect_ctl_msff_ctl_macro__width_5' with
+	the parameters "5". (HDL-193)
+
+Inferred memory devices in process
+	in routine dff_SIZE5 line 1648 in file
+		'/scratch0/linhai88/OST2/OST2.design/libs/cl/cl_rtl_ext.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|        q_reg        | Flip-flop |   5   |  Y  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully.
+Information: Building the design 'dff' instantiated from design 'exu_ect_ctl_msff_ctl_macro__width_8' with
+	the parameters "8". (HDL-193)
+
+Inferred memory devices in process
+	in routine dff_SIZE8 line 1648 in file
+		'/scratch0/linhai88/OST2/OST2.design/libs/cl/cl_rtl_ext.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|        q_reg        | Flip-flop |   8   |  Y  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully.
+Information: Building the design 'dff' instantiated from design 'exu_ect_ctl_msff_ctl_macro__width_37' with
+	the parameters "37". (HDL-193)
+
+Inferred memory devices in process
+	in routine dff_SIZE37 line 1648 in file
+		'/scratch0/linhai88/OST2/OST2.design/libs/cl/cl_rtl_ext.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|        q_reg        | Flip-flop |  37   |  Y  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully.
+Information: Building the design 'dff' instantiated from design 'exu_ect_ctl_msff_ctl_macro__width_6' with
+	the parameters "6". (HDL-193)
+
+Inferred memory devices in process
+	in routine dff_SIZE6 line 1648 in file
+		'/scratch0/linhai88/OST2/OST2.design/libs/cl/cl_rtl_ext.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|        q_reg        | Flip-flop |   6   |  Y  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully.
+Information: Building the design 'dff' instantiated from design 'exu_ect_ctl_msff_ctl_macro__width_15' with
+	the parameters "15". (HDL-193)
+
+Inferred memory devices in process
+	in routine dff_SIZE15 line 1648 in file
+		'/scratch0/linhai88/OST2/OST2.design/libs/cl/cl_rtl_ext.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|        q_reg        | Flip-flop |  15   |  Y  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully.
+Information: Building the design 'dff' instantiated from design 'exu_ect_ctl_msff_ctl_macro__width_76' with
+	the parameters "76". (HDL-193)
+
+Inferred memory devices in process
+	in routine dff_SIZE76 line 1648 in file
+		'/scratch0/linhai88/OST2/OST2.design/libs/cl/cl_rtl_ext.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|        q_reg        | Flip-flop |  76   |  Y  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully.
+Information: Building the design 'dff' instantiated from design 'exu_ect_ctl_msff_ctl_macro__width_32' with
+	the parameters "32". (HDL-193)
+
+Inferred memory devices in process
+	in routine dff_SIZE32 line 1648 in file
+		'/scratch0/linhai88/OST2/OST2.design/libs/cl/cl_rtl_ext.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|        q_reg        | Flip-flop |  32   |  Y  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully.
+Information: Building the design 'dff' instantiated from design 'exu_ect_ctl_msff_ctl_macro__width_9' with
+	the parameters "9". (HDL-193)
+
+Inferred memory devices in process
+	in routine dff_SIZE9 line 1648 in file
+		'/scratch0/linhai88/OST2/OST2.design/libs/cl/cl_rtl_ext.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|        q_reg        | Flip-flop |   9   |  Y  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully.
+Information: Building the design 'dff' instantiated from design 'exu_ect_ctl_msff_ctl_macro__width_4' with
+	the parameters "4". (HDL-193)
+
+Inferred memory devices in process
+	in routine dff_SIZE4 line 1648 in file
+		'/scratch0/linhai88/OST2/OST2.design/libs/cl/cl_rtl_ext.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|        q_reg        | Flip-flop |   4   |  Y  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully.
+Information: Building the design 'dff' instantiated from design 'exu_ect_ctl_msff_ctl_macro__width_1' with
+	the parameters "1". (HDL-193)
+
+Inferred memory devices in process
+	in routine dff_SIZE1 line 1648 in file
+		'/scratch0/linhai88/OST2/OST2.design/libs/cl/cl_rtl_ext.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|        q_reg        | Flip-flop |   1   |  N  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully.
+Information: Building the design 'cl_sc1_msff_8x'. (HDL-193)
+
+Inferred memory devices in process
+	in routine cl_sc1_msff_8x line 5100 in file
+		'/scratch0/linhai88/OST2/OST2.design/libs/cl/cl_sc1/cl_sc1.behV'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|        q_reg        | Flip-flop |   1   |  N  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully.
+Information: Building the design 'cl_u1_buf_32x'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'cl_u1_nand3_8x'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'cl_u1_inv_8x'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'cl_u1_aoi22_4x'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'cl_u1_buf_8x'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'cl_u1_oai22_4x'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'cl_u1_inv_16x'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'cl_u1_nand2_16x'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'cl_u1_nor3_4x'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'cl_u1_nand2_8x'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'cl_u1_buf_16x'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'cl_u1_nor2_16x'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'cl_u1_inv_32x'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'dff' instantiated from design 'exu_ecc_ctl_msff_ctl_macro__width_24' with
+	the parameters "24". (HDL-193)
+
+Inferred memory devices in process
+	in routine dff_SIZE24 line 1648 in file
+		'/scratch0/linhai88/OST2/OST2.design/libs/cl/cl_rtl_ext.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|        q_reg        | Flip-flop |  24   |  Y  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully.
+Information: Building the design 'dff' instantiated from design 'exu_ecc_ctl_msff_ctl_macro__width_14' with
+	the parameters "14". (HDL-193)
+
+Inferred memory devices in process
+	in routine dff_SIZE14 line 1648 in file
+		'/scratch0/linhai88/OST2/OST2.design/libs/cl/cl_rtl_ext.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|        q_reg        | Flip-flop |  14   |  Y  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully.
+Information: Building the design 'dff' instantiated from design 'exu_ecc_ctl_msff_ctl_macro__width_3' with
+	the parameters "3". (HDL-193)
+
+Inferred memory devices in process
+	in routine dff_SIZE3 line 1648 in file
+		'/scratch0/linhai88/OST2/OST2.design/libs/cl/cl_rtl_ext.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|        q_reg        | Flip-flop |   3   |  Y  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully.
+Information: Building the design 'dff' instantiated from design 'exu_rml_ctl_msff_ctl_macro__width_16' with
+	the parameters "16". (HDL-193)
+
+Inferred memory devices in process
+	in routine dff_SIZE16 line 1648 in file
+		'/scratch0/linhai88/OST2/OST2.design/libs/cl/cl_rtl_ext.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|        q_reg        | Flip-flop |  16   |  Y  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully.
+Information: Building the design 'dff' instantiated from design 'exu_rml_ctl_msff_ctl_macro__width_10' with
+	the parameters "10". (HDL-193)
+
+Inferred memory devices in process
+	in routine dff_SIZE10 line 1648 in file
+		'/scratch0/linhai88/OST2/OST2.design/libs/cl/cl_rtl_ext.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|        q_reg        | Flip-flop |  10   |  Y  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully.
+Information: Building the design 'dff' instantiated from design 'exu_rml_ctl_msff_ctl_macro__width_2' with
+	the parameters "2". (HDL-193)
+
+Inferred memory devices in process
+	in routine dff_SIZE2 line 1648 in file
+		'/scratch0/linhai88/OST2/OST2.design/libs/cl/cl_rtl_ext.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|        q_reg        | Flip-flop |   2   |  Y  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully.
+Information: Building the design 'dff' instantiated from design 'exu_rml_ctl_msff_ctl_macro__width_12' with
+	the parameters "12". (HDL-193)
+
+Inferred memory devices in process
+	in routine dff_SIZE12 line 1648 in file
+		'/scratch0/linhai88/OST2/OST2.design/libs/cl/cl_rtl_ext.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|        q_reg        | Flip-flop |  12   |  Y  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully.
+Information: Building the design 'dff' instantiated from design 'exu_rml_ctl_msff_ctl_macro__width_26' with
+	the parameters "26". (HDL-193)
+
+Inferred memory devices in process
+	in routine dff_SIZE26 line 1648 in file
+		'/scratch0/linhai88/OST2/OST2.design/libs/cl/cl_rtl_ext.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|        q_reg        | Flip-flop |  26   |  Y  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully.
+1
+#####
+if {[info exists mix_files] && ($mix_files != {}) } {
+   foreach mix_file $mix_files {
+      set index_beg [expr {[string last "/" $mix_file] + 1}]
+      set mix_file_name [string range $mix_file $index_beg end]
+      read_file -format verilog -define RUNDC gate/${mix_file_name}.exp
+   }
+}
+set design_list [list]
+foreach_in_collection design_object [get_designs] {
+   set design_name [get_object_name $design_object]
+   lappend design_list $design_name
+}
+sh date
+Fri Aug  2 18:02:17 PDT 2013
+current_design $top_module
+Current design is 'exu'.
+{exu}
+echo $top_module
+exu
+if {[get_designs -hier $dont_touch_modules] != {}} {
+   set_dont_touch $dont_touch_modules
+}
+set dc_shell_status [ link ]
+
+  Linking design 'exu'
+  Using the following designs and libraries:
+  --------------------------------------------------------------------------
+  * (249 designs)             /rsgs/scratch0/linhai88/OST2/OST2.design/design/sys/iop/spc/exu/synopsys/exu.db, etc
+  lsi_10k (library)           /cad/synopsys/dc_shell/G-2012.06-SP5-1/libraries/syn/lsi_10k.db
+  dw_foundation.sldb (library) /cad/synopsys/dc_shell/G-2012.06-SP5-1/libraries/syn/dw_foundation.sldb
+
+1
+if {$dc_shell_status == 0} {
+   echo "****************************************************"
+   echo "* ERROR!!!! Failed to Link...exiting prematurely.  *"
+   echo "****************************************************"
+   quit
+}
+###########################################################################
+# 3. Set up design constraints
+###########################################################################
+current_design $top_module
+Current design is 'exu'.
+{exu}
+echo $top_module
+exu
+set clk_name_list [list]
+set ideal_inputs [list]
+foreach clk_spec $clk_list {
+   set listcnt 0
+   set clk_port_pin {}
+   set clk_name {}
+   set clk_freq 0.0
+   set setup_skew $default_setup_skew
+   set hold_skew  $default_hold_skew
+   set clock_transition  $default_clk_transition
+   set clk_is_port 1
+   foreach element $clk_spec {
+      if {$listcnt == 0} {
+         set clk_port_pin $element
+         set clk_name $element
+      }
+      if {$listcnt == 1} {
+         set clk_freq $element
+      }
+      if {$listcnt == 2} {
+         set setup_skew $element
+      }
+      if {$listcnt == 3} {
+         set hold_skew $element
+      }
+      if {$listcnt == 4} {
+         set clock_transition $element
+      }
+      if {$listcnt == 5} {
+         set clk_name $element
+         set clk_is_port 0
+      }
+      set listcnt [expr $listcnt + 1]
+   }
+   if {$clk_is_port == 1} {
+      set clk_exists [sizeof_collection [find port $clk_port_pin]]
+   } else {
+      set clk_exists [sizeof_collection [find pin $clk_port_pin]]
+   }
+   if {$clk_exists != 0} {
+      set clk_period [expr 1000.0 / $clk_freq / 1.0]
+      set high_time [expr $clk_period / 2.0]
+      create_clock $clk_port_pin -period $clk_period -waveform [list 0 $high_time] -name $clk_name
+      set_clock_uncertainty -setup $setup_skew [find clock $clk_name]
+      set_clock_uncertainty -hold $hold_skew [find clock $clk_name]
+      set_clock_transition $clock_transition [find clock $clk_name]
+      set_dont_touch_network $clk_name
+      if {$clk_is_port == 1} {
+         set_drive 0.0 $clk_name
+         lappend ideal_inputs $clk_name
+      }
+      set clk_name_list [concat  $clk_name_list $clk_name]
+   }
+}
+if {$clk_name_list == {} } {
+   echo "\[WARNING\] No clock is defined,create a virtual one -- $default_clk..."
+   set clk_name $default_clk
+   set clk_freq $default_clk_freq
+   set clk_period [expr 1000.0 / $clk_freq / 1.0]
+   set high_time [expr $clk_period / 2.0]
+   set setup_skew $default_setup_skew
+   set hold_skew  $default_hold_skew
+   set clock_transition  $default_clk_transition
+   create_clock -name $clk_name -period $clk_period -waveform [list 0 $high_time]
+   set_clock_uncertainty -setup $setup_skew $clk_name
+   set_clock_uncertainty -hold $hold_skew $clk_name
+}
+set non_ideal_inputs [list]
+foreach_in_collection input_object [all_inputs] {
+   set input_name [get_object_name $input_object]
+   set input_is_ideal [lsearch -exact $ideal_net_list $input_name]
+   if {$input_is_ideal == -1} {
+      lappend non_ideal_inputs $input_name
+   } else {
+      lappend ideal_inputs $input_name
+   }
+}
+echo $ideal_inputs
+l2clk
+echo $non_ideal_inputs
+l2clk scan_in wmr_scan_in tcu_pce_ov spc_aclk spc_bclk spc_aclk_wmr tcu_scan_en tcu_array_wr_inhibit tcu_se_scancollar_in tcu_dectest tcu_muxtest {in_rngl_cdbus[64]} {in_rngl_cdbus[63]} {in_rngl_cdbus[62]} {in_rngl_cdbus[61]} {in_rngl_cdbus[60]} {in_rngl_cdbus[59]} {in_rngl_cdbus[58]} {in_rngl_cdbus[57]} {in_rngl_cdbus[56]} {in_rngl_cdbus[55]} {in_rngl_cdbus[54]} {in_rngl_cdbus[53]} {in_rngl_cdbus[52]} {in_rngl_cdbus[51]} {in_rngl_cdbus[50]} {in_rngl_cdbus[49]} {in_rngl_cdbus[48]} {in_rngl_cdbus[47]} {in_rngl_cdbus[46]} {in_rngl_cdbus[45]} {in_rngl_cdbus[44]} {in_rngl_cdbus[43]} {in_rngl_cdbus[42]} {in_rngl_cdbus[41]} {in_rngl_cdbus[40]} {in_rngl_cdbus[39]} {in_rngl_cdbus[38]} {in_rngl_cdbus[37]} {in_rngl_cdbus[36]} {in_rngl_cdbus[35]} {in_rngl_cdbus[34]} {in_rngl_cdbus[33]} {in_rngl_cdbus[32]} {in_rngl_cdbus[31]} {in_rngl_cdbus[30]} {in_rngl_cdbus[29]} {in_rngl_cdbus[28]} {in_rngl_cdbus[27]} {in_rngl_cdbus[26]} {in_rngl_cdbus[25]} {in_rngl_cdbus[24]} {in_rngl_cdbus[23]} {in_rngl_cdbus[22]} {in_rngl_cdbus[21]} {in_rngl_cdbus[20]} {in_rngl_cdbus[19]} {in_rngl_cdbus[18]} {in_rngl_cdbus[17]} {in_rngl_cdbus[16]} {in_rngl_cdbus[15]} {in_rngl_cdbus[14]} {in_rngl_cdbus[13]} {in_rngl_cdbus[12]} {in_rngl_cdbus[11]} {in_rngl_cdbus[10]} {in_rngl_cdbus[9]} {in_rngl_cdbus[8]} {in_rngl_cdbus[7]} {in_rngl_cdbus[6]} {in_rngl_cdbus[5]} {in_rngl_cdbus[4]} {in_rngl_cdbus[3]} {in_rngl_cdbus[2]} {in_rngl_cdbus[1]} {in_rngl_cdbus[0]} {dec_tid_p[1]} {dec_tid_p[0]} dec_inst_rs1_vld_p dec_inst_rs2_vld_p dec_inst_rs3_vld_p {dec_inst_rs1_p[4]} {dec_inst_rs1_p[3]} {dec_inst_rs1_p[2]} {dec_inst_rs1_p[1]} {dec_inst_rs1_p[0]} {dec_inst_rs2_p[4]} {dec_inst_rs2_p[3]} {dec_inst_rs2_p[2]} {dec_inst_rs2_p[1]} {dec_inst_rs2_p[0]} {dec_inst_rs3_p[4]} {dec_inst_rs3_p[3]} {dec_inst_rs3_p[2]} {dec_inst_rs3_p[1]} {dec_inst_rs3_p[0]} dec_exu_clken {dec_inst_rd_d[4]} {dec_inst_rd_d[3]} {dec_inst_rd_d[2]} {dec_inst_rd_d[1]} {dec_inst_rd_d[0]} {dec_inst_d[31]} {dec_inst_d[30]} {dec_inst_d[29]} {dec_inst_d[28]} {dec_inst_d[27]} {dec_inst_d[26]} {dec_inst_d[25]} {dec_inst_d[24]} {dec_inst_d[23]} {dec_inst_d[22]} {dec_inst_d[21]} {dec_inst_d[20]} {dec_inst_d[19]} {dec_inst_d[18]} {dec_inst_d[17]} {dec_inst_d[16]} {dec_inst_d[15]} {dec_inst_d[14]} {dec_inst_d[13]} {dec_inst_d[12]} {dec_inst_d[11]} {dec_inst_d[10]} {dec_inst_d[9]} {dec_inst_d[8]} {dec_inst_d[7]} {dec_inst_d[6]} {dec_inst_d[5]} {dec_inst_d[4]} {dec_inst_d[3]} {dec_inst_d[2]} {dec_inst_d[1]} {dec_inst_d[0]} dec_decode_d dec_thread_group {tlu_pc_d[47]} {tlu_pc_d[46]} {tlu_pc_d[45]} {tlu_pc_d[44]} {tlu_pc_d[43]} {tlu_pc_d[42]} {tlu_pc_d[41]} {tlu_pc_d[40]} {tlu_pc_d[39]} {tlu_pc_d[38]} {tlu_pc_d[37]} {tlu_pc_d[36]} {tlu_pc_d[35]} {tlu_pc_d[34]} {tlu_pc_d[33]} {tlu_pc_d[32]} {tlu_pc_d[31]} {tlu_pc_d[30]} {tlu_pc_d[29]} {tlu_pc_d[28]} {tlu_pc_d[27]} {tlu_pc_d[26]} {tlu_pc_d[25]} {tlu_pc_d[24]} {tlu_pc_d[23]} {tlu_pc_d[22]} {tlu_pc_d[21]} {tlu_pc_d[20]} {tlu_pc_d[19]} {tlu_pc_d[18]} {tlu_pc_d[17]} {tlu_pc_d[16]} {tlu_pc_d[15]} {tlu_pc_d[14]} {tlu_pc_d[13]} {tlu_pc_d[12]} {tlu_pc_d[11]} {tlu_pc_d[10]} {tlu_pc_d[9]} {tlu_pc_d[8]} {tlu_pc_d[7]} {tlu_pc_d[6]} {tlu_pc_d[5]} {tlu_pc_d[4]} {tlu_pc_d[3]} {tlu_pc_d[2]} dec_valid_e tlu_itlb_bypass_e dec_flush_m dec_flush_b {fgu_exu_icc_fx5[3]} {fgu_exu_icc_fx5[2]} {fgu_exu_icc_fx5[1]} {fgu_exu_icc_fx5[0]} {fgu_exu_xcc_fx5[1]} {fgu_exu_xcc_fx5[0]} fgu_exu_cc_vld_fx5 {fgu_exu_result_fx5[63]} {fgu_exu_result_fx5[62]} {fgu_exu_result_fx5[61]} {fgu_exu_result_fx5[60]} {fgu_exu_result_fx5[59]} {fgu_exu_result_fx5[58]} {fgu_exu_result_fx5[57]} {fgu_exu_result_fx5[56]} {fgu_exu_result_fx5[55]} {fgu_exu_result_fx5[54]} {fgu_exu_result_fx5[53]} {fgu_exu_result_fx5[52]} {fgu_exu_result_fx5[51]} {fgu_exu_result_fx5[50]} {fgu_exu_result_fx5[49]} {fgu_exu_result_fx5[48]} {fgu_exu_result_fx5[47]} {fgu_exu_result_fx5[46]} {fgu_exu_result_fx5[45]} {fgu_exu_result_fx5[44]} {fgu_exu_result_fx5[43]} {fgu_exu_result_fx5[42]} {fgu_exu_result_fx5[41]} {fgu_exu_result_fx5[40]} {fgu_exu_result_fx5[39]} {fgu_exu_result_fx5[38]} {fgu_exu_result_fx5[37]} {fgu_exu_result_fx5[36]} {fgu_exu_result_fx5[35]} {fgu_exu_result_fx5[34]} {fgu_exu_result_fx5[33]} {fgu_exu_result_fx5[32]} {fgu_exu_result_fx5[31]} {fgu_exu_result_fx5[30]} {fgu_exu_result_fx5[29]} {fgu_exu_result_fx5[28]} {fgu_exu_result_fx5[27]} {fgu_exu_result_fx5[26]} {fgu_exu_result_fx5[25]} {fgu_exu_result_fx5[24]} {fgu_exu_result_fx5[23]} {fgu_exu_result_fx5[22]} {fgu_exu_result_fx5[21]} {fgu_exu_result_fx5[20]} {fgu_exu_result_fx5[19]} {fgu_exu_result_fx5[18]} {fgu_exu_result_fx5[17]} {fgu_exu_result_fx5[16]} {fgu_exu_result_fx5[15]} {fgu_exu_result_fx5[14]} {fgu_exu_result_fx5[13]} {fgu_exu_result_fx5[12]} {fgu_exu_result_fx5[11]} {fgu_exu_result_fx5[10]} {fgu_exu_result_fx5[9]} {fgu_exu_result_fx5[8]} {fgu_exu_result_fx5[7]} {fgu_exu_result_fx5[6]} {fgu_exu_result_fx5[5]} {fgu_exu_result_fx5[4]} {fgu_exu_result_fx5[3]} {fgu_exu_result_fx5[2]} {fgu_exu_result_fx5[1]} {fgu_exu_result_fx5[0]} {fgu_result_tid_fx5[1]} {fgu_result_tid_fx5[0]} {fgu_irf_w_addr_fx5[4]} {fgu_irf_w_addr_fx5[3]} {fgu_irf_w_addr_fx5[2]} {fgu_irf_w_addr_fx5[1]} {fgu_irf_w_addr_fx5[0]} fgu_exu_w_vld_fx5 {lsu_exu_ld_data_b[63]} {lsu_exu_ld_data_b[62]} {lsu_exu_ld_data_b[61]} {lsu_exu_ld_data_b[60]} {lsu_exu_ld_data_b[59]} {lsu_exu_ld_data_b[58]} {lsu_exu_ld_data_b[57]} {lsu_exu_ld_data_b[56]} {lsu_exu_ld_data_b[55]} {lsu_exu_ld_data_b[54]} {lsu_exu_ld_data_b[53]} {lsu_exu_ld_data_b[52]} {lsu_exu_ld_data_b[51]} {lsu_exu_ld_data_b[50]} {lsu_exu_ld_data_b[49]} {lsu_exu_ld_data_b[48]} {lsu_exu_ld_data_b[47]} {lsu_exu_ld_data_b[46]} {lsu_exu_ld_data_b[45]} {lsu_exu_ld_data_b[44]} {lsu_exu_ld_data_b[43]} {lsu_exu_ld_data_b[42]} {lsu_exu_ld_data_b[41]} {lsu_exu_ld_data_b[40]} {lsu_exu_ld_data_b[39]} {lsu_exu_ld_data_b[38]} {lsu_exu_ld_data_b[37]} {lsu_exu_ld_data_b[36]} {lsu_exu_ld_data_b[35]} {lsu_exu_ld_data_b[34]} {lsu_exu_ld_data_b[33]} {lsu_exu_ld_data_b[32]} {lsu_exu_ld_data_b[31]} {lsu_exu_ld_data_b[30]} {lsu_exu_ld_data_b[29]} {lsu_exu_ld_data_b[28]} {lsu_exu_ld_data_b[27]} {lsu_exu_ld_data_b[26]} {lsu_exu_ld_data_b[25]} {lsu_exu_ld_data_b[24]} {lsu_exu_ld_data_b[23]} {lsu_exu_ld_data_b[22]} {lsu_exu_ld_data_b[21]} {lsu_exu_ld_data_b[20]} {lsu_exu_ld_data_b[19]} {lsu_exu_ld_data_b[18]} {lsu_exu_ld_data_b[17]} {lsu_exu_ld_data_b[16]} {lsu_exu_ld_data_b[15]} {lsu_exu_ld_data_b[14]} {lsu_exu_ld_data_b[13]} {lsu_exu_ld_data_b[12]} {lsu_exu_ld_data_b[11]} {lsu_exu_ld_data_b[10]} {lsu_exu_ld_data_b[9]} {lsu_exu_ld_data_b[8]} {lsu_exu_ld_data_b[7]} {lsu_exu_ld_data_b[6]} {lsu_exu_ld_data_b[5]} {lsu_exu_ld_data_b[4]} {lsu_exu_ld_data_b[3]} {lsu_exu_ld_data_b[2]} {lsu_exu_ld_data_b[1]} {lsu_exu_ld_data_b[0]} lsu_exu_ld_b {lsu_exu_rd_m[4]} {lsu_exu_rd_m[3]} {lsu_exu_rd_m[2]} {lsu_exu_rd_m[1]} {lsu_exu_rd_m[0]} {lsu_exu_tid_m[2]} {lsu_exu_tid_m[1]} {lsu_exu_tid_m[0]} lsu_exu_ld_vld_w tlu_flush_exu_b {tlu_ccr[7]} {tlu_ccr[6]} {tlu_ccr[5]} {tlu_ccr[4]} {tlu_ccr[3]} {tlu_ccr[2]} {tlu_ccr[1]} {tlu_ccr[0]} {tlu_cwp[2]} {tlu_cwp[1]} {tlu_cwp[0]} tlu_ccr_cwp_valid {tlu_ccr_cwp_tid[1]} {tlu_ccr_cwp_tid[0]} {tlu_pstate_am[3]} {tlu_pstate_am[2]} {tlu_pstate_am[1]} {tlu_pstate_am[0]} {tlu_gl_thr0[1]} {tlu_gl_thr0[0]} {tlu_gl_thr1[1]} {tlu_gl_thr1[0]} {tlu_gl_thr2[1]} {tlu_gl_thr2[0]} {tlu_gl_thr3[1]} {tlu_gl_thr3[0]} tlu_cerer_irf {tlu_ceter_pscce[3]} {tlu_ceter_pscce[2]} {tlu_ceter_pscce[1]} {tlu_ceter_pscce[0]} lsu_asi_error_inject_b31 lsu_asi_error_inject_b25 {lsu_asi_error_inject[7]} {lsu_asi_error_inject[6]} {lsu_asi_error_inject[5]} {lsu_asi_error_inject[4]} {lsu_asi_error_inject[3]} {lsu_asi_error_inject[2]} {lsu_asi_error_inject[1]} {lsu_asi_error_inject[0]} lsu_exu_pmen lsu_asi_clken {spc_core_running_status[3]} {spc_core_running_status[2]} {spc_core_running_status[1]} {spc_core_running_status[0]} mbi_run {mbi_addr[9]} {mbi_addr[8]} {mbi_addr[7]} {mbi_addr[6]} {mbi_addr[5]} {mbi_addr[4]} {mbi_addr[3]} {mbi_addr[2]} {mbi_addr[1]} {mbi_addr[0]} {mbi_write_data_p1[7]} {mbi_write_data_p1[6]} {mbi_write_data_p1[5]} {mbi_write_data_p1[4]} {mbi_write_data_p1[3]} {mbi_write_data_p1[2]} {mbi_write_data_p1[1]} {mbi_write_data_p1[0]} mbi_irf_read_en mbi_irf_write_en mbi_irf_save_en mbi_irf_restore_en {fgu_fld_fcc_fx3[7]} {fgu_fld_fcc_fx3[6]} {fgu_fld_fcc_fx3[5]} {fgu_fld_fcc_fx3[4]} {fgu_fld_fcc_fx3[3]} {fgu_fld_fcc_fx3[2]} {fgu_fld_fcc_fx3[1]} {fgu_fld_fcc_fx3[0]} {lsu_fgu_fld_tid_b[2]} {lsu_fgu_fld_tid_b[1]} {lsu_fgu_fld_tid_b[0]} {fgu_fld_fcc_vld_fx3[1]} {fgu_fld_fcc_vld_fx3[0]} lsu_fgu_fld_vld_w {fgu_cmp_fcc_fx3[1]} {fgu_cmp_fcc_fx3[0]} {fgu_cmp_fcc_tid_fx2[2]} {fgu_cmp_fcc_tid_fx2[1]} {fgu_cmp_fcc_tid_fx2[0]} {fgu_cmp_fcc_vld_fx3[3]} {fgu_cmp_fcc_vld_fx3[2]} {fgu_cmp_fcc_vld_fx3[1]} {fgu_cmp_fcc_vld_fx3[0]} {dec_pick_d[3]} {dec_pick_d[2]} {dec_pick_d[1]} {dec_pick_d[0]}
+set_input_delay $default_input_delay -clock $clk_name $non_ideal_inputs
+1
+set_output_delay $default_output_delay -clock $clk_name [all_outputs]
+1
+if {$clk_name_list != {} } {
+   group_path -name "reg2reg" -critical_range $critical_range -from [ all_registers -clock_pins ] -to [ all_registers -data_pins ]
+   group_path -name "in2reg"  -from $non_ideal_inputs -to [ all_registers -data_pins ]
+   group_path -name "reg2out" -from [ all_registers -clock_pins ] -to [all_outputs]
+}
+Information: Checking out the license 'DesignWare'. (SEC-104)
+1
+group_path -name "in2out"  -from $non_ideal_inputs -to [all_outputs]
+1
+if {[info exists false_path_list] && ($false_path_list != {}) } {
+        set_false_path -through $false_path_list
+}
+if {[info exists enforce_input_fanout_one] && ($enforce_input_fanout_one  == 1)} {
+   set_max_fanout 1 $non_ideal_inputs
+}
+# Load custom constraint file for the unit
+# This will overwrite the default constraints
+###########################################################################
+# 4. More constraints and setup before compile
+###########################################################################
+# This is to prevent assign statements from generated in the netlist
+# Certain rtl coding conventions need to be followed. For IO blocks only 
+# write_name_nets_same_as_ports
+if {[info exists project_io_cfg] && ($project_io_cfg == 1) } {
+   foreach_in_collection design [ get_designs "*" ] {
+      current_design $design
+      set_fix_multiple_port_nets -outputs -feedthroughs 
+   }
+   current_design $top_module
+}
+# Check timing constraints
+###########################################################################
+# 5. Compile
+###########################################################################
+# Disable cells that we don't want to use in the library
+if {$dont_use_cells != 0} {
+   if {[info exists my_dont_use_cell_list] && ($my_dont_use_cell_list != {}) } {
+      set dont_use_cell_list [concat $dont_use_cell_list $my_dont_use_cell_list]
+   }
+   foreach dont_use_cell $dont_use_cell_list {
+      set_dont_use [find lib_cell $dont_use_cell]
+   }
+}
+sh date
+Fri Aug  2 18:02:19 PDT 2013
+sh uptime
+ 18:02:19 up 7 days, 17:06,  4 users,  load average: 2.19, 2.13, 1.90
+# Don't remove sequential cells with constant outputs
+set compile_seqmap_propagate_constants false
+false
+# Switch off the dont_touch attribute globally for set_size_only cells
+set dont_touch_nets_with_size_only_cells false
+false
+## Source user compile options
+#if set to 1, the whole design will be flattened. default 1 for cmp
+if {[info exists compile_flatten_all] && ($compile_flatten_all  == 1)} {
+      ungroup -flatten -all
+   }
+Information: Updating graph... (UID-83)
+Warning: Design 'exu' contains 1 high-fanout nets. A fanout number of 1000 will be used for delay calculations involving these nets. (TIM-134)
+1
+# compile !!
+if {[info exists project_io_cfg] && ($project_io_cfg == 1) } {
+      set dc_shell_status [ compile -boundary_optimization -exact_map -map_effort $compile_effort ]
+   }
+if {[info exists project_sparc_cfg] && ($project_sparc_cfg == 1) } {
+      if {[info exists use_physopt] && ($use_physopt == 1)} {
+         set_fix_multiple_port_nets -all -buffer_constants
+      }
+      set dc_shell_status [ compile -boundary_optimization -exact_map -map_effort $compile_effort ]
+   }
+Information: Evaluating DesignWare library utilization. (UISN-27)
+
+============================================================================
+| DesignWare Building Block Library  |         Version         | Available |
+============================================================================
+| Basic DW Building Blocks           | G-2012.06-DWBB_201206.4 |     *     |
+| Licensed DW Building Blocks        | G-2012.06-DWBB_201206.4 |     *     |
+============================================================================
+
+
+Information: There are 265 potential problems in your design. Please run 'check_design' for more information. (LINT-99)
+
+
+
+  Beginning Pass 1 Mapping
+  ------------------------
+  Processing 'exu'
+Information: The register 'rml/spares/spare4_flop/q_reg' will be removed. (OPT-1207)
+Information: The register 'rml/spares/spare3_flop/q_reg' will be removed. (OPT-1207)
+Information: The register 'rml/spares/spare2_flop/q_reg' will be removed. (OPT-1207)
+Information: The register 'rml/spares/spare1_flop/q_reg' will be removed. (OPT-1207)
+Information: The register 'rml/spares/spare0_flop/q_reg' will be removed. (OPT-1207)
+Information: The register 'ecc/spares/spare3_flop/q_reg' will be removed. (OPT-1207)
+Information: The register 'ecc/spares/spare2_flop/q_reg' will be removed. (OPT-1207)
+Information: The register 'ecc/spares/spare1_flop/q_reg' will be removed. (OPT-1207)
+Information: The register 'ecc/spares/spare0_flop/q_reg' will be removed. (OPT-1207)
+Information: The register 'ect/spares/spare5_flop/q_reg' will be removed. (OPT-1207)
+Information: The register 'ect/spares/spare4_flop/q_reg' will be removed. (OPT-1207)
+Information: The register 'ect/spares/spare3_flop/q_reg' will be removed. (OPT-1207)
+Information: The register 'ect/spares/spare2_flop/q_reg' will be removed. (OPT-1207)
+Information: The register 'ect/spares/spare1_flop/q_reg' will be removed. (OPT-1207)
+Information: The register 'ect/spares/spare0_flop/q_reg' will be removed. (OPT-1207)
+Information: Added key list 'DesignWare' to design 'exu'. (DDB-72)
+
+  Updating timing information
+Information: Updating design information... (UID-85)
+
+  Beginning Implementation Selection
+  ----------------------------------
+  Processing 'exu_DW01_add_0'
+  Processing 'exu_DW01_add_1'
+  Processing 'exu_DW01_add_2'
+
+  Beginning Mapping Optimizations  (Medium effort)
+  -------------------------------
+  Mapping Optimization (Phase 1)
+
+                                  TOTAL                                      
+   ELAPSED            WORST NEG   SETUP    DESIGN                            
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT         
+  --------- --------- --------- --------- --------- -------------------------
+    0:00:18   42240.0      0.66       1.3       0.0                          
+    0:00:18   42240.0      0.66       1.3       0.0                          
+    0:00:18   42240.0      0.66       1.3       0.0                          
+    0:00:18   42240.0      0.66       1.3       0.0                          
+    0:00:18   42240.0      0.66       1.3       0.0                          
+    0:00:18   42240.0      0.66       1.3       0.0                          
+    0:00:23   28382.0      0.66       1.3       0.0                          
+    0:00:23   28383.0      0.59       1.2       0.0                          
+    0:00:24   28383.0      0.59       1.2       0.0                          
+    0:00:24   28338.0      0.59       1.2       0.0                          
+    0:00:24   28338.0      0.59       1.2       0.0                          
+    0:00:24   28338.0      0.59       1.2       0.0                          
+    0:00:24   28338.0      0.59       1.2       0.0                          
+    0:00:24   28338.0      0.59       1.2       0.0                          
+    0:00:24   28338.0      0.59       1.2       0.0                          
+
+
+
+  Beginning Delay Optimization Phase
+  ----------------------------------
+
+                                  TOTAL                                      
+   ELAPSED            WORST NEG   SETUP    DESIGN                            
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT         
+  --------- --------- --------- --------- --------- -------------------------
+    0:00:24   28338.0      0.59       1.2       0.0                          
+    0:00:24   28338.0      0.59       1.2       0.0                          
+    0:00:24   28338.0      0.59       1.2       0.0                          
+
+
+  Beginning Critical Range Optimization
+  -------------------------------------
+
+                                  TOTAL                                      
+   ELAPSED            WORST NEG   SETUP    DESIGN                            
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT         
+  --------- --------- --------- --------- --------- -------------------------
+    0:00:24   28338.0      0.59       1.2       0.0                          
+
+
+  Beginning Area-Recovery Phase  (cleanup)
+  -----------------------------
+
+                                  TOTAL                                      
+   ELAPSED            WORST NEG   SETUP    DESIGN                            
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT         
+  --------- --------- --------- --------- --------- -------------------------
+    0:00:24   28338.0      0.59       1.2       0.0                          
+    0:00:24   28338.0      0.59       1.2       0.0                          
+    0:00:24   28338.0      0.59       1.2       0.0                          
+    0:00:24   27852.0      0.59       1.2       0.0                          
+    0:00:25   27561.0      0.59       1.2       0.0                          
+    0:00:25   27452.0      0.59       1.2       0.0                          
+    0:00:25   27384.0      0.59       1.2       0.0                          
+    0:00:25   27351.0      0.59       1.2       0.0                          
+    0:00:25   27351.0      0.59       1.2       0.0                          
+    0:00:25   27351.0      0.59       1.2       0.0                          
+    0:00:25   27351.0      0.59       1.2       0.0                          
+    0:00:25   27351.0      0.59       1.2       0.0                          
+    0:00:25   27350.0      0.59       1.2       0.0                          
+    0:00:25   27350.0      0.59       1.2       0.0                          
+    0:00:25   27350.0      0.59       1.2       0.0                          
+    0:00:25   27350.0      0.59       1.2       0.0                          
+    0:00:25   27350.0      0.59       1.2       0.0                          
+    0:00:25   27350.0      0.59       1.2       0.0                          
+    0:00:25   27350.0      0.59       1.2       0.0                          
+    0:00:25   27342.0      0.59       1.2       0.0                          
+
+
+  Beginning Critical Range Optimization
+  -------------------------------------
+
+                                  TOTAL                                      
+   ELAPSED            WORST NEG   SETUP    DESIGN                            
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT         
+  --------- --------- --------- --------- --------- -------------------------
+    0:00:25   27342.0      0.59       1.2       0.0                          
+    0:00:25   27342.0      0.59       1.2       0.0                          
+Loading db file '/cad/synopsys/dc_shell/G-2012.06-SP5-1/libraries/syn/lsi_10k.db'
+
+  Optimization Complete
+  ---------------------
+1
+if {$dc_shell_status == 0} {
+      echo "*******************************************************"
+      echo "* ERROR!!!! Failed to compile...exiting prematurely.  *"
+      echo "*******************************************************"
+      quit
+   }
+sh date
+Fri Aug  2 18:02:47 PDT 2013
+###########################################################################
+# 6. Insert Scan - Hook up the scan chain.
+###########################################################################
+if {[info exists use_physopt] && ($use_physopt == 1)} {
+   set skip_scan 1
+}
+if {[info exists skip_scan] && ($skip_scan == 1)} {
+   ######  skip section 5e. 
+} else {
+
+current_design $top_module
+
+## Tell DC the design is "scan ready"
+## We do this because we already instantiate scan flops in the rtl
+set_attribute $top_module is_test_ready true -type boolean
+foreach_in_collection design_object [get_designs] {
+   current_design $design_object
+   # make sure the module has FFs in it to prevent warning messages
+   if { [all_registers] != {} } {
+      set_attribute [all_registers] scanned_by_test_compiler true -type boolean
+   }
+}
+
+current_design $top_module
+
+
+# Tell DC not to optimize away spare FF's 
+set compile_delete_unloaded_sequential_cells false
+
+# Disable cells that we don't want to use in the library
+if {$dont_use_cells != 0} {
+   foreach dont_use_cell $dont_use_cell_list {
+      set_dont_use [find lib_cell $dont_use_cell]
+   }
+}
+
+# Insert scan chain with number of chains specified by user
+# Allow scan chain to hook up flops clocked by different clocks
+# Add lockup latches between clock domains
+set_scan_configuration -add_lockup $add_lockup_latch -chain_count $chain_count -clock_mixing mix_clocks
+
+# This should prevent assign statements from generated in the netlist
+# at the cost of extra compile time. For cmp only 
+if {[info exists project_sparc_cfg] && ($project_sparc_cfg == 1) } {
+   foreach_in_collection design [ get_designs "*" ] {
+      current_design $design
+      set_fix_multiple_port_nets -all -buffer_constants
+   }
+
+   current_design $top_module
+
+   # allow_outport_drive_innodes is used by sparc units but not IO units
+   # set this switch to 0 to make sure output port doesn't driving internal nodes
+   if {[info exists allow_outport_drive_innodes] && ($allow_outport_drive_innodes == 0)} {
+      set_isolate_ports -type inverter [all_outputs]
+   }
+
+   current_design $top_module
+   compile -inc
+}
+
+
+### section 5e. will be skipped if user want to use PC flow
+}
+Current design is 'exu'.
+Current design is 'exu'.
+Information: Attribute 'scanned_by_test_compiler' is set on 1647 objects. (UID-186)
+Current design is 'n2_irf_mp_128x72_cust'.
+Current design is 'cl_dp1_penc5_64x'.
+Current design is 'cl_dp1_zdt64_8x'.
+Current design is 'cl_dp1_penc6_8x'.
+Current design is 'cl_dp1_penc4_8x'.
+Current design is 'cl_dp1_l1hdr_8x'.
+Current design is 'cl_dp1_muxbuff8_8x'.
+Current design is 'cl_dp1_penc5_8x'.
+Current design is 'cl_dp1_penc2_8x'.
+Current design is 'cl_dp1_muxbuff7_8x'.
+Current design is 'cl_dp1_penc3_8x'.
+Current design is 'cl_dp1_pdec8_8x'.
+Current design is 'cl_dp1_penc7_8x'.
+Current design is 'cl_sc1_l1hdr_8x'.
+Current design is 'cl_u1_buf_32x'.
+Current design is 'cl_u1_nand3_8x'.
+Current design is 'cl_u1_inv_8x'.
+Current design is 'cl_u1_aoi22_4x'.
+Current design is 'cl_u1_buf_8x'.
+Current design is 'cl_u1_oai22_4x'.
+Current design is 'cl_u1_inv_16x'.
+Current design is 'cl_u1_nand2_16x'.
+Current design is 'cl_u1_nor3_4x'.
+Current design is 'cl_u1_nand2_8x'.
+Current design is 'cl_u1_buf_16x'.
+Current design is 'cl_u1_nor2_16x'.
+Current design is 'cl_u1_inv_32x'.
+Current design is 'exu_DW01_add_0'.
+Current design is 'exu_DW01_add_2'.
+Current design is 'exu'.
+Accepted scan configuration for modes: all_dft
+Current design is 'exu'.
+Current design is 'n2_irf_mp_128x72_cust'.
+Current design is 'cl_dp1_penc5_64x'.
+Current design is 'cl_dp1_zdt64_8x'.
+Current design is 'cl_dp1_penc6_8x'.
+Current design is 'cl_dp1_penc4_8x'.
+Current design is 'cl_dp1_l1hdr_8x'.
+Current design is 'cl_dp1_muxbuff8_8x'.
+Current design is 'cl_dp1_penc5_8x'.
+Current design is 'cl_dp1_penc2_8x'.
+Current design is 'cl_dp1_muxbuff7_8x'.
+Current design is 'cl_dp1_penc3_8x'.
+Current design is 'cl_dp1_pdec8_8x'.
+Current design is 'cl_dp1_penc7_8x'.
+Current design is 'cl_sc1_l1hdr_8x'.
+Current design is 'cl_u1_buf_32x'.
+Current design is 'cl_u1_nand3_8x'.
+Current design is 'cl_u1_inv_8x'.
+Current design is 'cl_u1_aoi22_4x'.
+Current design is 'cl_u1_buf_8x'.
+Current design is 'cl_u1_oai22_4x'.
+Current design is 'cl_u1_inv_16x'.
+Current design is 'cl_u1_nand2_16x'.
+Current design is 'cl_u1_nor3_4x'.
+Current design is 'cl_u1_nand2_8x'.
+Current design is 'cl_u1_buf_16x'.
+Current design is 'cl_u1_nor2_16x'.
+Current design is 'cl_u1_inv_32x'.
+Current design is 'exu_DW01_add_0'.
+Current design is 'exu_DW01_add_2'.
+Current design is 'exu'.
+Current design is 'exu'.
+
+Information: There are 18 potential problems in your design. Please run 'check_design' for more information. (LINT-99)
+
+
+
+  Beginning Pass 1 Mapping  (Incremental)
+  ------------------------
+
+  Updating timing information
+Information: Updating design information... (UID-85)
+
+  Beginning Mapping Optimizations  (Medium effort)  (Incremental)
+  -------------------------------
+
+  Beginning Incremental Implementation Selection
+  ----------------------------------------------
+  Selecting implementations
+  Building model 'DW01_add_width65' (rpl)
+
+  Beginning Delay Optimization Phase
+  ----------------------------------
+
+                                  TOTAL                                      
+   ELAPSED            WORST NEG   SETUP    DESIGN                            
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT         
+  --------- --------- --------- --------- --------- -------------------------
+    0:00:03   27342.0      0.59       1.2       0.0                          
+    0:00:03   27349.0      0.80       1.6       0.0                          
+    0:00:03   27349.0      0.80       1.6       0.0                          
+
+
+  Beginning Critical Range Optimization
+  -------------------------------------
+
+                                  TOTAL                                      
+   ELAPSED            WORST NEG   SETUP    DESIGN                            
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT         
+  --------- --------- --------- --------- --------- -------------------------
+    0:00:03   27349.0      0.80       1.6       0.0                          
+    0:00:03   27347.0      0.59       1.2       0.0                          
+
+
+  Beginning Critical Range Optimization
+  -------------------------------------
+
+                                  TOTAL                                      
+   ELAPSED            WORST NEG   SETUP    DESIGN                            
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT         
+  --------- --------- --------- --------- --------- -------------------------
+    0:00:03   27347.0      0.59       1.2       0.0                          
+    0:00:03   27347.0      0.59       1.2       0.0                          
+Loading db file '/cad/synopsys/dc_shell/G-2012.06-SP5-1/libraries/syn/lsi_10k.db'
+
+  Optimization Complete
+  ---------------------
+1
+###########################################################################
+# 7. Write Out netlist
+###########################################################################
+# Remove don't touch modules from the design
+# It caused unmatching hierarchy between rtl and netlist
+if { [get_designs -hier $dont_touch_modules] != {} } {
+   remove_design $dont_touch_modules
+}
+# remove dont_touch attribute before flattening the design
+if { [get_designs -hier $dont_touch_modules] != {} } {
+   set_dont_touch $dont_touch_modules false
+}
+current_design $top_module
+Current design is 'exu'.
+{exu}
+ungroup -all -flatten
+Information: Updating graph... (UID-83)
+1
+# Make sure flat netlist does not have "/" in signal names
+define_name_rules hier_change -restricted "/" -replacement_char "_"
+1
+change_names -rule hier_change -hierarchy
+1
+# Write out netlist.  
+write -format verilog -output [format "%s%s%s"  gate/ $top_module .vSyn]
+Writing verilog file '/rsgs/scratch0/linhai88/OST2/OST2.design/design/sys/iop/spc/exu/synopsys/gate/exu.vSyn'.
+Warning: Verilog 'assign' or 'tran' statements are written out. (VO-4)
+1
+# Report flattened results
+redirect [format "%s%s%s" log/ $top_module _area.rep] { report_area }
+redirect -append [format "%s%s%s" log/ $top_module _area.rep] { report_reference }
+###########################################################################
+# 8. Check design and Detect unmapped design
+###########################################################################
+set unmapped_designs [get_designs -filter "is_unmapped == true" $top_module]
+if {  [sizeof_collection $unmapped_designs] != 0 } {
+   echo "****************************************************"
+   echo "* ERROR!!!! Compile finished with unmapped logic.  *"
+   echo "****************************************************"
+   quit
+}
+###########################################################################
+# 9. Done
+###########################################################################
+sh date
+Fri Aug  2 18:02:53 PDT 2013
+echo "run.scr completed successfully"
+run.scr completed successfully
+quit
+
+Thank you...

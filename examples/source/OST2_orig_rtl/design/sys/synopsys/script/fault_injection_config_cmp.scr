@@ -1,0 +1,13 @@
+set faults_per_ff 10
+set regs_per_group 5
+
+set fault_injection_time_start [expr {670000 + 10*100}]
+set fault_window_cycles 10000
+set clock_cycle 100
+set error_wait_cycles 1000
+
+set run_args ""
+set assembly_prog "fft_orig fft_orig.s"
+
+set random_runs 1000
+set start_pos 20

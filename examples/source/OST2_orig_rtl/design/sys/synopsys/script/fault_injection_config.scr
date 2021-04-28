@@ -1,0 +1,10 @@
+set faults_per_ff 10
+set regs_per_group 5
+
+set fault_injection_time_start [expr {26954627 + 10*1500}]
+set fault_window_cycles 10000
+set clock_cycle 1500
+set error_wait_cycles 100
+
+set run_args "-vcs_run_args=+bank_set_mask=3 -vcs_run_args=+core_set_mask=01"
+set assembly_prog "memop_ccx_packets	memop_ccx_packets.s -midas_args=-DCMP_THREAD_START=0xff -finish_mask=ff"

@@ -1,0 +1,81 @@
+proc lselect_rand { unselected n } {
+  set size [llength $unselected]
+  set selected [list]
+  puts "Size $size\n"
+  puts "Selecting $n ffs\n"
+  for { set i 0 } { $i < $n } { incr i } {
+    set index [expr int(floor(rand()*$size))]
+    lappend selected [lindex $unselected $index]
+#    set unselected [lminus -exact $unselected  [lindex $unselected $index]]
+    set unselected [lreplace $unselected $index $index]
+    #puts "Selected: $selected\n"
+    #puts "Unselected: $unselected\n"
+    incr size -1
+  }
+  return [list $selected $unselected ]
+}
+
+proc random_list_partition { orig_list partition_num } {
+	set orig_list [random_list_shuffle $orig_list]
+	set orig_size [llength $orig_list]	
+	set partition_size [expr $orig_size/$partition_num]
+
+	set result [list]
+	set tmpPartition [list]
+
+	for { set i 0 } { $i < $orig_size } { incr i } {
+		
+		lappend tmpPartition [lindex $orig_list $i]
+
+		if { [llength $tmpPartition] == $partition_size } {
+			lappend result $tmpPartition
+			set tmpPartition [list]		
+		}
+	}
+
+	if { [llength $tmpPartition] > 1 } {
+		lappend result $tmpPartition
+		set tmpPartition [list]		
+	}	
+
+	return $result
+}
+
+proc random_list_shuffle { orig_list } {
+	set size [llength $orig_list]
+
+	for {set i 0} {$i<$size} {incr i} {
+    		set j [expr {int(rand()*$size)}]
+    		set temp [lindex $orig_list $j]
+    		set orig_list [lreplace $orig_list $j $j [lindex $orig_list $i]]
+    		set orig_list [lreplace $orig_list $i $i $temp]
+  	}
+  	
+	return $orig_list
+}
+
+proc random_list_partition { orig_list partition_num } {
+	set orig_list [random_list_shuffle $orig_list]
+	set orig_size [llength $orig_list]	
+	set partition_size [expr $orig_size/$partition_num]
+
+	set result [list]
+	set tmpPartition [list]
+
+	for { set i 0 } { $i < $orig_size } { incr i } {
+		
+		lappend tmpPartition [lindex $orig_list $i]
+
+		if { [llength $tmpPartition] == $partition_size } {
+			lappend result $tmpPartition
+			set tmpPartition [list]		
+		}
+	}
+
+	if { [llength $tmpPartition] > 1 } {
+		lappend result $tmpPartition
+		set tmpPartition [list]		
+	}	
+
+	return $result
+}

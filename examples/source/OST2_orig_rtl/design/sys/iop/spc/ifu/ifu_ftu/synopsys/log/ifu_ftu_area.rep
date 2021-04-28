@@ -1,0 +1,105 @@
+ 
+****************************************
+Report : area
+Design : ifu_ftu
+Version: G-2012.06-SP5-1
+Date   : Fri Aug  2 18:12:43 2013
+****************************************
+
+Information: Updating design information... (UID-85)
+Library(s) Used:
+
+    lsi_10k (File: /cad/synopsys/dc_shell/G-2012.06-SP5-1/libraries/syn/lsi_10k.db)
+
+Number of ports:                         1409
+Number of nets:                         16295
+Number of cells:                        13998
+Number of combinational cells:          10608
+Number of sequential cells:              3390
+Number of macros:                           0
+Number of buf/inv:                       1737
+Number of references:                      51
+
+Combinational area:       18204.000000
+Buf/Inv area:             1743.000000
+Noncombinational area:    23730.000000
+Net Interconnect area:      undefined  (No wire load specified)
+
+Total cell area:          41934.000000
+Total area:                 undefined
+1
+ 
+****************************************
+Report : reference
+Design : ifu_ftu
+Version: G-2012.06-SP5-1
+Date   : Fri Aug  2 18:12:43 2013
+****************************************
+
+Attributes:
+    b - black box (unknown)
+   bo - allows boundary optimization
+    d - dont_touch
+   mo - map_only
+    h - hierarchical
+    n - noncombinational
+    r - removable
+    s - synthetic operator
+    u - contains unmapped logic
+
+Reference          Library       Unit Area   Count    Total Area   Attributes
+-----------------------------------------------------------------------------
+AN2P               lsi_10k        2.000000     215    430.000000  
+AN3                lsi_10k        2.000000     126    252.000000  
+AN4P               lsi_10k        3.000000      29     87.000000  
+AO1P               lsi_10k        2.000000     128    256.000000  
+AO2                lsi_10k        2.000000    3077   6154.000000  
+AO2P               lsi_10k        4.000000       4     16.000000  
+AO3                lsi_10k        2.000000     419    838.000000  
+AO3P               lsi_10k        4.000000       4     16.000000  
+AO4                lsi_10k        2.000000     446    892.000000  
+AO6                lsi_10k        2.000000     181    362.000000  
+AO7                lsi_10k        2.000000     193    386.000000  
+B4IP               lsi_10k        4.000000       2      8.000000  
+EN                 lsi_10k        3.000000     112    336.000000  
+EO                 lsi_10k        3.000000     601   1803.000000  
+EO1                lsi_10k        3.000000       1      3.000000  
+EON1               lsi_10k        3.000000     136    408.000000  
+FD1                lsi_10k        7.000000    3390  23730.000000  n
+HA1                lsi_10k        5.000000      18     90.000000  r
+IV                 lsi_10k        1.000000      11     11.000000  
+IVA                lsi_10k        1.000000      95     95.000000  
+IVDA               lsi_10k        1.000000     202    202.000000  
+IVP                lsi_10k        1.000000    1427   1427.000000  
+ND2                lsi_10k        1.000000    1440   1440.000000  
+ND2P               lsi_10k        2.000000       1      2.000000  
+ND3                lsi_10k        2.000000      86    172.000000  
+ND4                lsi_10k        2.000000     695   1390.000000  
+ND8                lsi_10k        6.000000       2     12.000000  
+NR2                lsi_10k        1.000000     455    455.000000  
+NR3                lsi_10k        2.000000      59    118.000000  
+NR4                lsi_10k        2.000000     135    270.000000  
+OR2                lsi_10k        2.000000      14     28.000000  
+OR2P               lsi_10k        2.000000       4      8.000000  
+OR3                lsi_10k        2.000000      87    174.000000  
+OR4                lsi_10k        3.000000      21     63.000000  
+cl_dp1_l1hdr_8x                   0.000000      64      0.000000  b
+cl_dp1_muxbuff2_8x                0.000000      27      0.000000  b
+cl_dp1_muxbuff3_8x                0.000000      12      0.000000  b
+cl_dp1_muxbuff4_8x                0.000000      15      0.000000  b
+cl_dp1_muxbuff5_8x                0.000000       2      0.000000  b
+cl_dp1_muxbuff6_8x                0.000000       1      0.000000  b
+cl_dp1_muxbuff7_8x                0.000000       2      0.000000  b
+cl_dp1_muxbuff8_8x                0.000000       7      0.000000  b
+cl_dp1_pdec8_8x                   0.000000       1      0.000000  b
+cl_dp1_penc2_8x                   0.000000      32      0.000000  b
+cl_dp1_penc3_8x                   0.000000       3      0.000000  b
+cl_dp1_penc4_8x                   0.000000       2      0.000000  b
+cl_sc1_l1hdr_8x                   0.000000      10      0.000000  b
+n2_dva_dp_32x32_cust              0.000000       1      0.000000  b
+n2_icd_sp_16p5kb_cust             0.000000       1      0.000000  b
+n2_ict_sp_1920b_cust              0.000000       1      0.000000  b
+n2_tlb_tl_64x59_cust              0.000000       1      0.000000  b
+-----------------------------------------------------------------------------
+Total 51 references                                 41934.000000
+1

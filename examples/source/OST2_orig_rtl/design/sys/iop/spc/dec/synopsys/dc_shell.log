@@ -1,0 +1,1163 @@
+
+                      Design Compiler Graphical
+                            DC Ultra (TM)
+                             DFTMAX (TM)
+                         Power Compiler (TM)
+                           DesignWare (R)
+                           DC Expert (TM)
+                         Design Vision (TM)
+                          HDL Compiler (TM)
+                         VHDL Compiler (TM)
+                            DFT Compiler
+                        Library Compiler (TM)
+                         Design Compiler(R)
+
+         Version G-2012.06-SP5-1 for RHEL64 -- Mar 18, 2013
+               Copyright (c) 1988-2012 Synopsys, Inc.
+
+This software and the associated documentation are confidential and 
+proprietary to Synopsys, Inc. Your use or disclosure of this software 
+is subject to the terms and conditions of a written license agreement 
+between you, or your company, and Synopsys, Inc.
+
+Initializing...
+# ========== Copyright Header Begin ==========================================
+# 
+# OpenSPARC T2 Processor File: run.scr
+# Copyright (C) 1995-2007 Sun Microsystems, Inc. All Rights Reserved
+# 4150 Network Circle, Santa Clara, California 95054, U.S.A.
+#
+# * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER. 
+#
+# This program is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation; version 2 of the License.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the Free Software
+# Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+#
+# For the avoidance of doubt, and except that if any non-GPL license 
+# choice is available it will apply instead, Sun elects to use only 
+# the General Public License version 2 (GPLv2) at this time for any 
+# software where a choice of GPL license versions is made 
+# available with the language indicating that GPLv2 or any later version 
+# may be used, or where a choice of which version of the GPL is applied is 
+# otherwise unspecified. 
+#
+# Please contact Sun Microsystems, Inc., 4150 Network Circle, Santa Clara, 
+# CA 95054 USA or visit www.sun.com if you need additional information or 
+# have any questions. 
+# 
+# ========== Copyright Header End ============================================
+sh date
+Fri Aug  2 17:59:53 PDT 2013
+sh hostname
+selene.Stanford.EDU
+sh uptime
+ 17:59:53 up 7 days, 17:04,  4 users,  load average: 2.16, 2.08, 1.85
+remove_design -all
+1
+if {[file exists template]} {
+   sh rm -rf template
+}
+sh mkdir template
+if {![file exists gate]} {
+   sh mkdir gate
+}
+if {![file exists log]} {
+   sh mkdir log
+}
+###########################################################################
+# 1. Setup from environment variables
+###########################################################################
+set dv_root [sh echo \$DV_ROOT]
+/scratch0/linhai88/OST2/OST2.design
+set syn_home [sh echo \$SYN_LIB]
+/cad/synopsys/dc_shell/G-2012.06-SP5-1/libraries/syn
+source -echo -verbose script/user_cfg.scr
+# ========== Copyright Header Begin ==========================================
+# 
+# OpenSPARC T2 Processor File: user_cfg.scr
+# Copyright (C) 1995-2007 Sun Microsystems, Inc. All Rights Reserved
+# 4150 Network Circle, Santa Clara, California 95054, U.S.A.
+#
+# * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER. 
+#
+# This program is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation; version 2 of the License.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the Free Software
+# Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+#
+# For the avoidance of doubt, and except that if any non-GPL license 
+# choice is available it will apply instead, Sun elects to use only 
+# the General Public License version 2 (GPLv2) at this time for any 
+# software where a choice of GPL license versions is made 
+# available with the language indicating that GPLv2 or any later version 
+# may be used, or where a choice of which version of the GPL is applied is 
+# otherwise unspecified. 
+#
+# Please contact Sun Microsystems, Inc., 4150 Network Circle, Santa Clara, 
+# CA 95054 USA or visit www.sun.com if you need additional information or 
+# have any questions. 
+# 
+# ========== Copyright Header End ============================================
+source -echo -verbose $dv_root/design/sys/synopsys/script/project_sparc_cfg.scr
+# ========== Copyright Header Begin ==========================================
+# 
+# OpenSPARC T2 Processor File: project_sparc_cfg.scr
+# Copyright (C) 1995-2007 Sun Microsystems, Inc. All Rights Reserved
+# 4150 Network Circle, Santa Clara, California 95054, U.S.A.
+#
+# * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER. 
+#
+# This program is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation; version 2 of the License.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the Free Software
+# Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+#
+# For the avoidance of doubt, and except that if any non-GPL license 
+# choice is available it will apply instead, Sun elects to use only 
+# the General Public License version 2 (GPLv2) at this time for any 
+# software where a choice of GPL license versions is made 
+# available with the language indicating that GPLv2 or any later version 
+# may be used, or where a choice of which version of the GPL is applied is 
+# otherwise unspecified. 
+#
+# Please contact Sun Microsystems, Inc., 4150 Network Circle, Santa Clara, 
+# CA 95054 USA or visit www.sun.com if you need additional information or 
+# have any questions. 
+# 
+# ========== Copyright Header End ============================================
+set project_sparc_cfg	1
+1
+###########################################################################
+# Specify target library specific variables
+###########################################################################
+source $dv_root/design/sys/synopsys/script/target_lib.scr
+INFO: target library version /cad/synopsys/dc_shell/G-2012.06-SP5-1/libraries/syn
+lsi_10k/FJK*
+###########################################################################
+# Include Synopsys Designware library
+###########################################################################
+# Designware will not be used in sparc control blocks
+set synthetic_library {}
+set link_path [concat  $link_library $synthetic_library]
+* lsi_10k.db
+###########################################################################
+# Timing paramaters
+###########################################################################
+set max_transition   0.15
+0.15
+set max_fanout         6
+6
+# default input/output delays
+set default_input_delay  0.15
+Information: Use of Variable 'default_input_delay' is not recommended. This variable will be obsolete in a future release. (INFO-101)
+0.15
+set default_output_delay 0.2
+Information: Use of Variable 'default_output_delay' is not recommended. This variable will be obsolete in a future release. (INFO-101)
+0.2
+set critical_range       0.30
+0.30
+# default number of worst path reported
+set num_of_path 50
+50
+#default compile style for io is to not flatten the whole design
+set compile_flatten_all 0
+0
+0
+set rtl_files {libs/cl/cl_rtl_ext.v
+libs/cl/cl_a1/cl_a1.behV
+libs/cl/cl_u1/cl_u1.behV
+libs/cl/cl_dp1/cl_dp1.behV
+libs/cl/cl_sc1/cl_sc1.behV
+
+design/sys/iop/spc/dec/rtl/dec_dcd_ctl.v
+design/sys/iop/spc/dec/rtl/dec_ded_ctl.v
+design/sys/iop/spc/dec/rtl/dec_del_ctl.v
+design/sys/iop/spc/dec/rtl/dec.v
+}
+libs/cl/cl_rtl_ext.v
+libs/cl/cl_a1/cl_a1.behV
+libs/cl/cl_u1/cl_u1.behV
+libs/cl/cl_dp1/cl_dp1.behV
+libs/cl/cl_sc1/cl_sc1.behV
+
+design/sys/iop/spc/dec/rtl/dec_dcd_ctl.v
+design/sys/iop/spc/dec/rtl/dec_ded_ctl.v
+design/sys/iop/spc/dec/rtl/dec_del_ctl.v
+design/sys/iop/spc/dec/rtl/dec.v
+
+set link_library [concat $link_library    dw_foundation.sldb ]
+* lsi_10k.db dw_foundation.sldb
+set mix_files {}
+set top_module dec
+dec
+set include_paths {}
+set black_box_libs {}
+set black_box_designs {}
+set mem_libs {}
+set dont_touch_modules {}
+set compile_effort   "medium"
+medium
+set compile_flatten_all 1
+1
+set compile_no_new_cells_at_top_level false
+false
+set default_clk l2clk
+l2clk
+set default_clk_freq  1400
+1400
+set default_setup_skew  0.0
+0.0
+set default_hold_skew  0.0
+0.0
+set default_clk_transition  0.05
+0.05
+set clk_list {                                        { l2clk           1400.0   0.000   0.000   0.05}        }
+                                        { l2clk           1400.0   0.000   0.000   0.05}        
+set ideal_net_list {}
+set false_path_list {}
+set enforce_input_fanout_one     0
+0
+set allow_outport_drive_innodes  1
+1
+set skip_scan            0
+0
+set add_lockup_latch     false
+false
+set chain_count          1
+1
+set scanin_port_list     {}
+set scanout_port_list    {}
+set scanenable_port      global_shift_enable
+global_shift_enable
+set has_test_stub        1
+1
+set scanenable_pin       test_stub_no_bist/se
+test_stub_no_bist/se
+set long_chain_so_0_net  long_chain_so_0
+long_chain_so_0
+set short_chain_so_0_net short_chain_so_0
+short_chain_so_0
+set so_0_net             so_0
+so_0
+set insert_extra_lockup_latch 0
+0
+set extra_lockup_latch_clk_list {}
+set search_path [concat $search_path script/]
+. /cad/synopsys/dc_shell/G-2012.06-SP5-1/libraries/syn /cad/synopsys/dc_shell/G-2012.06-SP5-1/minpower/syn /cad/synopsys/dc_shell/G-2012.06-SP5-1/dw/syn_ver /cad/synopsys/dc_shell/G-2012.06-SP5-1/dw/sim_ver /cad/synopsys/dc_shell/G-2012.06-SP5-1/libraries/syn script/
+set search_path [concat $syn_home    $search_path ]
+/cad/synopsys/dc_shell/G-2012.06-SP5-1/libraries/syn . /cad/synopsys/dc_shell/G-2012.06-SP5-1/libraries/syn /cad/synopsys/dc_shell/G-2012.06-SP5-1/minpower/syn /cad/synopsys/dc_shell/G-2012.06-SP5-1/dw/syn_ver /cad/synopsys/dc_shell/G-2012.06-SP5-1/dw/sim_ver /cad/synopsys/dc_shell/G-2012.06-SP5-1/libraries/syn script/
+foreach include_path $include_paths {
+   set search_path [concat $search_path $dv_root/$include_path]
+}
+sh date
+Fri Aug  2 17:59:53 PDT 2013
+set link_library [concat $link_library                          $mem_libs                          $black_box_designs]
+* lsi_10k.db dw_foundation.sldb
+set target_library $syn_home/lsi_10k.db 
+/cad/synopsys/dc_shell/G-2012.06-SP5-1/libraries/syn/lsi_10k.db
+set target_library [concat $target_library                            $mem_libs]
+/cad/synopsys/dc_shell/G-2012.06-SP5-1/libraries/syn/lsi_10k.db
+set hdlin_enable_vpp true
+Information: Variable 'hdlin_enable_vpp' is obsolete and is being ignored. (INFO-100)
+true
+set hdlin_auto_save_templates false
+false
+define_design_lib WORK -path .template
+1
+set verilogout_single_bit false
+false
+set hdlout_internal_busses true
+true
+set bus_naming_style {%s[%d]}
+%s[%d]
+set bus_inference_style $bus_naming_style
+%s[%d]
+echo $search_path
+/cad/synopsys/dc_shell/G-2012.06-SP5-1/libraries/syn . /cad/synopsys/dc_shell/G-2012.06-SP5-1/libraries/syn /cad/synopsys/dc_shell/G-2012.06-SP5-1/minpower/syn /cad/synopsys/dc_shell/G-2012.06-SP5-1/dw/syn_ver /cad/synopsys/dc_shell/G-2012.06-SP5-1/dw/sim_ver /cad/synopsys/dc_shell/G-2012.06-SP5-1/libraries/syn script/
+###########################################################################
+# 2. Read Designs
+###########################################################################
+set all_rtl_files  { }
+ 
+foreach rtl_file $rtl_files {
+    set full_file_path $dv_root/$rtl_file
+    set all_rtl_files [concat $all_rtl_files $full_file_path ]
+}
+analyze -format verilog -define RUNDC $all_rtl_files
+Running PRESTO HDLC
+Compiling source file /scratch0/linhai88/OST2/OST2.design/libs/cl/cl_rtl_ext.v
+Compiling source file /scratch0/linhai88/OST2/OST2.design/libs/cl/cl_a1/cl_a1.behV
+Warning:  /scratch0/linhai88/OST2/OST2.design/libs/cl/cl_a1/cl_a1.behV:1812: The statements in initial blocks are ignored. (VER-281)
+Compiling source file /scratch0/linhai88/OST2/OST2.design/libs/cl/cl_u1/cl_u1.behV
+Compiling source file /scratch0/linhai88/OST2/OST2.design/libs/cl/cl_dp1/cl_dp1.behV
+Warning:  /scratch0/linhai88/OST2/OST2.design/libs/cl/cl_dp1/cl_dp1.behV:402: The statements in initial blocks are ignored. (VER-281)
+Warning:  /scratch0/linhai88/OST2/OST2.design/libs/cl/cl_dp1/cl_dp1.behV:447: The statements in initial blocks are ignored. (VER-281)
+Compiling source file /scratch0/linhai88/OST2/OST2.design/libs/cl/cl_sc1/cl_sc1.behV
+Warning:  /scratch0/linhai88/OST2/OST2.design/libs/cl/cl_sc1/cl_sc1.behV:1812: The statements in initial blocks are ignored. (VER-281)
+Compiling source file /scratch0/linhai88/OST2/OST2.design/design/sys/iop/spc/dec/rtl/dec_dcd_ctl.v
+Compiling source file /scratch0/linhai88/OST2/OST2.design/design/sys/iop/spc/dec/rtl/dec_ded_ctl.v
+Compiling source file /scratch0/linhai88/OST2/OST2.design/design/sys/iop/spc/dec/rtl/dec_del_ctl.v
+Compiling source file /scratch0/linhai88/OST2/OST2.design/design/sys/iop/spc/dec/rtl/dec.v
+Presto compilation completed successfully.
+Loading db file '/cad/synopsys/dc_shell/G-2012.06-SP5-1/libraries/syn/lsi_10k.db'
+Loading db file '/cad/synopsys/dc_shell/G-2012.06-SP5-1/libraries/syn/dw_foundation.sldb'
+1
+elaborate $top_module
+Loading db file '/cad/synopsys/dc_shell/G-2012.06-SP5-1/libraries/syn/gtech.db'
+Loading db file '/cad/synopsys/dc_shell/G-2012.06-SP5-1/libraries/syn/standard.sldb'
+  Loading link library 'lsi_10k'
+  Loading link library 'gtech'
+Running PRESTO HDLC
+Presto compilation completed successfully.
+Elaborated 1 design.
+Current design is now 'dec'.
+Information: Building the design 'dec_del_ctl'. (HDL-193)
+Warning:  /scratch0/linhai88/OST2/OST2.design/design/sys/iop/spc/dec/rtl/dec_del_ctl.v:3013: Module 'dec_del_ctl' contains a supply0 variable 'vss'. Replacing with wire driven by a continuous assignment to 0. (ELAB-338)
+Warning:  /scratch0/linhai88/OST2/OST2.design/design/sys/iop/spc/dec/rtl/dec_del_ctl.v:3013: Module 'dec_del_ctl' contains a supply1 variable 'vdd'. Replacing with wire driven by a continuous assignment to 1. (ELAB-338)
+Presto compilation completed successfully.
+Information: Building the design 'dec_ded_ctl'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'dec_dcd_ctl'. (HDL-193)
+Warning:  /scratch0/linhai88/OST2/OST2.design/design/sys/iop/spc/dec/rtl/dec_dcd_ctl.v:375: Module 'dec_dcd_ctl' contains a supply0 variable 'vss'. Replacing with wire driven by a continuous assignment to 0. (ELAB-338)
+Warning:  /scratch0/linhai88/OST2/OST2.design/design/sys/iop/spc/dec/rtl/dec_dcd_ctl.v:375: Module 'dec_dcd_ctl' contains a supply1 variable 'vdd'. Replacing with wire driven by a continuous assignment to 1. (ELAB-338)
+Presto compilation completed successfully.
+Information: Building the design 'dec_del_ctl_l1clkhdr_ctl_macro'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'dec_del_ctl_spare_ctl_macro__flops_0__num_6'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'dec_del_ctl_msff_ctl_macro__scanreverse_1__width_6'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'dec_del_ctl_msff_ctl_macro__width_7'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'dec_del_ctl_msff_ctl_macro__width_4'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'dec_del_ctl_msff_ctl_macro__width_16'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'dec_del_ctl_msff_ctl_macro__width_2'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'dec_del_ctl_msff_ctl_macro__width_8'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'dec_del_ctl_msff_ctl_macro__width_1'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'dec_del_ctl_msff_ctl_macro__width_3'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'dec_del_ctl_msff_ctl_macro__width_5'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'dec_del_ctl_msff_ctl_macro__width_6'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'dec_del_ctl_msff_ctl_macro__width_14'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'dec_del_ctl_msff_ctl_macro__width_12'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'cl_sc1_clksyncff_4x'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'dec_ded_ctl_l1clkhdr_ctl_macro'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'dec_ded_ctl_spare_ctl_macro__num_2'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'dec_ded_ctl_msff_ctl_macro__width_1'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'dec_ded_ctl_msff_ctl_macro__width_4'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'dec_ded_ctl_msff_ctl_macro__width_9'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'dec_ded_ctl_msff_ctl_macro__width_3'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'dec_ded_ctl_msff_ctl_macro__width_5'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'dec_ded_ctl_msff_ctl_macro__width_33'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'dec_dcd_ctl_spare_ctl_macro__flops_0__num_2'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'cl_sc1_l1hdr_8x'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'cl_u1_buf_32x'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'cl_u1_nand3_8x'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'cl_u1_inv_8x'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'cl_u1_aoi22_4x'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'cl_u1_buf_8x'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'cl_u1_oai22_4x'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'cl_u1_inv_16x'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'cl_u1_nand2_16x'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'cl_u1_nor3_4x'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'cl_u1_nand2_8x'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'cl_u1_buf_16x'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'cl_u1_nor2_16x'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'cl_u1_inv_32x'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'dff' instantiated from design 'dec_del_ctl_msff_ctl_macro__scanreverse_1__width_6' with
+	the parameters "6". (HDL-193)
+
+Inferred memory devices in process
+	in routine dff_SIZE6 line 1648 in file
+		'/scratch0/linhai88/OST2/OST2.design/libs/cl/cl_rtl_ext.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|        q_reg        | Flip-flop |   6   |  Y  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully.
+Information: Building the design 'dff' instantiated from design 'dec_del_ctl_msff_ctl_macro__width_7' with
+	the parameters "7". (HDL-193)
+
+Inferred memory devices in process
+	in routine dff_SIZE7 line 1648 in file
+		'/scratch0/linhai88/OST2/OST2.design/libs/cl/cl_rtl_ext.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|        q_reg        | Flip-flop |   7   |  Y  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully.
+Information: Building the design 'dff' instantiated from design 'dec_del_ctl_msff_ctl_macro__width_4' with
+	the parameters "4". (HDL-193)
+
+Inferred memory devices in process
+	in routine dff_SIZE4 line 1648 in file
+		'/scratch0/linhai88/OST2/OST2.design/libs/cl/cl_rtl_ext.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|        q_reg        | Flip-flop |   4   |  Y  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully.
+Information: Building the design 'dff' instantiated from design 'dec_del_ctl_msff_ctl_macro__width_16' with
+	the parameters "16". (HDL-193)
+
+Inferred memory devices in process
+	in routine dff_SIZE16 line 1648 in file
+		'/scratch0/linhai88/OST2/OST2.design/libs/cl/cl_rtl_ext.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|        q_reg        | Flip-flop |  16   |  Y  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully.
+Information: Building the design 'dff' instantiated from design 'dec_del_ctl_msff_ctl_macro__width_2' with
+	the parameters "2". (HDL-193)
+
+Inferred memory devices in process
+	in routine dff_SIZE2 line 1648 in file
+		'/scratch0/linhai88/OST2/OST2.design/libs/cl/cl_rtl_ext.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|        q_reg        | Flip-flop |   2   |  Y  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully.
+Information: Building the design 'dff' instantiated from design 'dec_del_ctl_msff_ctl_macro__width_8' with
+	the parameters "8". (HDL-193)
+
+Inferred memory devices in process
+	in routine dff_SIZE8 line 1648 in file
+		'/scratch0/linhai88/OST2/OST2.design/libs/cl/cl_rtl_ext.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|        q_reg        | Flip-flop |   8   |  Y  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully.
+Information: Building the design 'dff' instantiated from design 'dec_del_ctl_msff_ctl_macro__width_1' with
+	the parameters "1". (HDL-193)
+
+Inferred memory devices in process
+	in routine dff_SIZE1 line 1648 in file
+		'/scratch0/linhai88/OST2/OST2.design/libs/cl/cl_rtl_ext.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|        q_reg        | Flip-flop |   1   |  N  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully.
+Information: Building the design 'dff' instantiated from design 'dec_del_ctl_msff_ctl_macro__width_3' with
+	the parameters "3". (HDL-193)
+
+Inferred memory devices in process
+	in routine dff_SIZE3 line 1648 in file
+		'/scratch0/linhai88/OST2/OST2.design/libs/cl/cl_rtl_ext.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|        q_reg        | Flip-flop |   3   |  Y  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully.
+Information: Building the design 'dff' instantiated from design 'dec_del_ctl_msff_ctl_macro__width_5' with
+	the parameters "5". (HDL-193)
+
+Inferred memory devices in process
+	in routine dff_SIZE5 line 1648 in file
+		'/scratch0/linhai88/OST2/OST2.design/libs/cl/cl_rtl_ext.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|        q_reg        | Flip-flop |   5   |  Y  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully.
+Information: Building the design 'dff' instantiated from design 'dec_del_ctl_msff_ctl_macro__width_14' with
+	the parameters "14". (HDL-193)
+
+Inferred memory devices in process
+	in routine dff_SIZE14 line 1648 in file
+		'/scratch0/linhai88/OST2/OST2.design/libs/cl/cl_rtl_ext.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|        q_reg        | Flip-flop |  14   |  Y  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully.
+Information: Building the design 'dff' instantiated from design 'dec_del_ctl_msff_ctl_macro__width_12' with
+	the parameters "12". (HDL-193)
+
+Inferred memory devices in process
+	in routine dff_SIZE12 line 1648 in file
+		'/scratch0/linhai88/OST2/OST2.design/libs/cl/cl_rtl_ext.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|        q_reg        | Flip-flop |  12   |  Y  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully.
+Information: Building the design 'cl_sc1_msff_4x'. (HDL-193)
+
+Inferred memory devices in process
+	in routine cl_sc1_msff_4x line 5034 in file
+		'/scratch0/linhai88/OST2/OST2.design/libs/cl/cl_sc1/cl_sc1.behV'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|        q_reg        | Flip-flop |   1   |  N  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully.
+Information: Building the design 'cl_sc1_msff_8x'. (HDL-193)
+
+Inferred memory devices in process
+	in routine cl_sc1_msff_8x line 5100 in file
+		'/scratch0/linhai88/OST2/OST2.design/libs/cl/cl_sc1/cl_sc1.behV'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|        q_reg        | Flip-flop |   1   |  N  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully.
+Information: Building the design 'dff' instantiated from design 'dec_ded_ctl_msff_ctl_macro__width_9' with
+	the parameters "9". (HDL-193)
+
+Inferred memory devices in process
+	in routine dff_SIZE9 line 1648 in file
+		'/scratch0/linhai88/OST2/OST2.design/libs/cl/cl_rtl_ext.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|        q_reg        | Flip-flop |   9   |  Y  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully.
+Information: Building the design 'dff' instantiated from design 'dec_ded_ctl_msff_ctl_macro__width_33' with
+	the parameters "33". (HDL-193)
+
+Inferred memory devices in process
+	in routine dff_SIZE33 line 1648 in file
+		'/scratch0/linhai88/OST2/OST2.design/libs/cl/cl_rtl_ext.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|        q_reg        | Flip-flop |  33   |  Y  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully.
+1
+#####
+if {[info exists mix_files] && ($mix_files != {}) } {
+   foreach mix_file $mix_files {
+      set index_beg [expr {[string last "/" $mix_file] + 1}]
+      set mix_file_name [string range $mix_file $index_beg end]
+      read_file -format verilog -define RUNDC gate/${mix_file_name}.exp
+   }
+}
+set design_list [list]
+foreach_in_collection design_object [get_designs] {
+   set design_name [get_object_name $design_object]
+   lappend design_list $design_name
+}
+sh date
+Fri Aug  2 18:00:48 PDT 2013
+current_design $top_module
+Current design is 'dec'.
+{dec}
+echo $top_module
+dec
+if {[get_designs -hier $dont_touch_modules] != {}} {
+   set_dont_touch $dont_touch_modules
+}
+set dc_shell_status [ link ]
+
+  Linking design 'dec'
+  Using the following designs and libraries:
+  --------------------------------------------------------------------------
+  * (57 designs)              /rsgs/scratch0/linhai88/OST2/OST2.design/design/sys/iop/spc/dec/synopsys/dec.db, etc
+  lsi_10k (library)           /cad/synopsys/dc_shell/G-2012.06-SP5-1/libraries/syn/lsi_10k.db
+  dw_foundation.sldb (library) /cad/synopsys/dc_shell/G-2012.06-SP5-1/libraries/syn/dw_foundation.sldb
+
+1
+if {$dc_shell_status == 0} {
+   echo "****************************************************"
+   echo "* ERROR!!!! Failed to Link...exiting prematurely.  *"
+   echo "****************************************************"
+   quit
+}
+###########################################################################
+# 3. Set up design constraints
+###########################################################################
+current_design $top_module
+Current design is 'dec'.
+{dec}
+echo $top_module
+dec
+set clk_name_list [list]
+set ideal_inputs [list]
+foreach clk_spec $clk_list {
+   set listcnt 0
+   set clk_port_pin {}
+   set clk_name {}
+   set clk_freq 0.0
+   set setup_skew $default_setup_skew
+   set hold_skew  $default_hold_skew
+   set clock_transition  $default_clk_transition
+   set clk_is_port 1
+   foreach element $clk_spec {
+      if {$listcnt == 0} {
+         set clk_port_pin $element
+         set clk_name $element
+      }
+      if {$listcnt == 1} {
+         set clk_freq $element
+      }
+      if {$listcnt == 2} {
+         set setup_skew $element
+      }
+      if {$listcnt == 3} {
+         set hold_skew $element
+      }
+      if {$listcnt == 4} {
+         set clock_transition $element
+      }
+      if {$listcnt == 5} {
+         set clk_name $element
+         set clk_is_port 0
+      }
+      set listcnt [expr $listcnt + 1]
+   }
+   if {$clk_is_port == 1} {
+      set clk_exists [sizeof_collection [find port $clk_port_pin]]
+   } else {
+      set clk_exists [sizeof_collection [find pin $clk_port_pin]]
+   }
+   if {$clk_exists != 0} {
+      set clk_period [expr 1000.0 / $clk_freq / 1.0]
+      set high_time [expr $clk_period / 2.0]
+      create_clock $clk_port_pin -period $clk_period -waveform [list 0 $high_time] -name $clk_name
+      set_clock_uncertainty -setup $setup_skew [find clock $clk_name]
+      set_clock_uncertainty -hold $hold_skew [find clock $clk_name]
+      set_clock_transition $clock_transition [find clock $clk_name]
+      set_dont_touch_network $clk_name
+      if {$clk_is_port == 1} {
+         set_drive 0.0 $clk_name
+         lappend ideal_inputs $clk_name
+      }
+      set clk_name_list [concat  $clk_name_list $clk_name]
+   }
+}
+if {$clk_name_list == {} } {
+   echo "\[WARNING\] No clock is defined,create a virtual one -- $default_clk..."
+   set clk_name $default_clk
+   set clk_freq $default_clk_freq
+   set clk_period [expr 1000.0 / $clk_freq / 1.0]
+   set high_time [expr $clk_period / 2.0]
+   set setup_skew $default_setup_skew
+   set hold_skew  $default_hold_skew
+   set clock_transition  $default_clk_transition
+   create_clock -name $clk_name -period $clk_period -waveform [list 0 $high_time]
+   set_clock_uncertainty -setup $setup_skew $clk_name
+   set_clock_uncertainty -hold $hold_skew $clk_name
+}
+set non_ideal_inputs [list]
+foreach_in_collection input_object [all_inputs] {
+   set input_name [get_object_name $input_object]
+   set input_is_ideal [lsearch -exact $ideal_net_list $input_name]
+   if {$input_is_ideal == -1} {
+      lappend non_ideal_inputs $input_name
+   } else {
+      lappend ideal_inputs $input_name
+   }
+}
+echo $ideal_inputs
+l2clk
+echo $non_ideal_inputs
+l2clk scan_in tcu_pce_ov spc_aclk spc_bclk tcu_scan_en {power_throttle[2]} {power_throttle[1]} {power_throttle[0]} lb_lbist_running lsu_dec_pmen lsu_exu_pmen {spc_core_running_status[7]} {spc_core_running_status[6]} {spc_core_running_status[5]} {spc_core_running_status[4]} {spc_core_running_status[3]} {spc_core_running_status[2]} {spc_core_running_status[1]} {spc_core_running_status[0]} {exu_test_tid0[1]} {exu_test_tid0[0]} {exu_test_addr0[4]} {exu_test_addr0[3]} {exu_test_addr0[2]} {exu_test_addr0[1]} {exu_test_addr0[0]} exu_test_valid0 {exu_test_tid1[1]} {exu_test_tid1[0]} {exu_test_addr1[4]} {exu_test_addr1[3]} {exu_test_addr1[2]} {exu_test_addr1[1]} {exu_test_addr1[0]} exu_test_valid1 tlu_cerer_icdp {tlu_dec_pstate_pef[7]} {tlu_dec_pstate_pef[6]} {tlu_dec_pstate_pef[5]} {tlu_dec_pstate_pef[4]} {tlu_dec_pstate_pef[3]} {tlu_dec_pstate_pef[2]} {tlu_dec_pstate_pef[1]} {tlu_dec_pstate_pef[0]} {fgu_fprs_fef[7]} {fgu_fprs_fef[6]} {fgu_fprs_fef[5]} {fgu_fprs_fef[4]} {fgu_fprs_fef[3]} {fgu_fprs_fef[2]} {fgu_fprs_fef[1]} {fgu_fprs_fef[0]} {tlu_dec_hpstate_hpriv[7]} {tlu_dec_hpstate_hpriv[6]} {tlu_dec_hpstate_hpriv[5]} {tlu_dec_hpstate_hpriv[4]} {tlu_dec_hpstate_hpriv[3]} {tlu_dec_hpstate_hpriv[2]} {tlu_dec_hpstate_hpriv[1]} {tlu_dec_hpstate_hpriv[0]} {tlu_dec_pstate_priv[7]} {tlu_dec_pstate_priv[6]} {tlu_dec_pstate_priv[5]} {tlu_dec_pstate_priv[4]} {tlu_dec_pstate_priv[3]} {tlu_dec_pstate_priv[2]} {tlu_dec_pstate_priv[1]} {tlu_dec_pstate_priv[0]} {tlu_pstate_am[7]} {tlu_pstate_am[6]} {tlu_pstate_am[5]} {tlu_pstate_am[4]} {tlu_pstate_am[3]} {tlu_pstate_am[2]} {tlu_pstate_am[1]} {tlu_pstate_am[0]} {tlu_window_block[1]} {tlu_window_block[0]} exu0_window_block exu1_window_block lsu_cpq_stall {ifu_buf0_inst0[32]} {ifu_buf0_inst0[31]} {ifu_buf0_inst0[30]} {ifu_buf0_inst0[29]} {ifu_buf0_inst0[28]} {ifu_buf0_inst0[27]} {ifu_buf0_inst0[26]} {ifu_buf0_inst0[25]} {ifu_buf0_inst0[24]} {ifu_buf0_inst0[23]} {ifu_buf0_inst0[22]} {ifu_buf0_inst0[21]} {ifu_buf0_inst0[20]} {ifu_buf0_inst0[19]} {ifu_buf0_inst0[18]} {ifu_buf0_inst0[17]} {ifu_buf0_inst0[16]} {ifu_buf0_inst0[15]} {ifu_buf0_inst0[14]} {ifu_buf0_inst0[13]} {ifu_buf0_inst0[12]} {ifu_buf0_inst0[11]} {ifu_buf0_inst0[10]} {ifu_buf0_inst0[9]} {ifu_buf0_inst0[8]} {ifu_buf0_inst0[7]} {ifu_buf0_inst0[6]} {ifu_buf0_inst0[5]} {ifu_buf0_inst0[4]} {ifu_buf0_inst0[3]} {ifu_buf0_inst0[2]} {ifu_buf0_inst0[1]} {ifu_buf0_inst0[0]} {ifu_buf0_inst1[32]} {ifu_buf0_inst1[31]} {ifu_buf0_inst1[30]} {ifu_buf0_inst1[29]} {ifu_buf0_inst1[28]} {ifu_buf0_inst1[27]} {ifu_buf0_inst1[26]} {ifu_buf0_inst1[25]} {ifu_buf0_inst1[24]} {ifu_buf0_inst1[23]} {ifu_buf0_inst1[22]} {ifu_buf0_inst1[21]} {ifu_buf0_inst1[20]} {ifu_buf0_inst1[19]} {ifu_buf0_inst1[18]} {ifu_buf0_inst1[17]} {ifu_buf0_inst1[16]} {ifu_buf0_inst1[15]} {ifu_buf0_inst1[14]} {ifu_buf0_inst1[13]} {ifu_buf0_inst1[12]} {ifu_buf0_inst1[11]} {ifu_buf0_inst1[10]} {ifu_buf0_inst1[9]} {ifu_buf0_inst1[8]} {ifu_buf0_inst1[7]} {ifu_buf0_inst1[6]} {ifu_buf0_inst1[5]} {ifu_buf0_inst1[4]} {ifu_buf0_inst1[3]} {ifu_buf0_inst1[2]} {ifu_buf0_inst1[1]} {ifu_buf0_inst1[0]} {ifu_buf0_inst2[32]} {ifu_buf0_inst2[31]} {ifu_buf0_inst2[30]} {ifu_buf0_inst2[29]} {ifu_buf0_inst2[28]} {ifu_buf0_inst2[27]} {ifu_buf0_inst2[26]} {ifu_buf0_inst2[25]} {ifu_buf0_inst2[24]} {ifu_buf0_inst2[23]} {ifu_buf0_inst2[22]} {ifu_buf0_inst2[21]} {ifu_buf0_inst2[20]} {ifu_buf0_inst2[19]} {ifu_buf0_inst2[18]} {ifu_buf0_inst2[17]} {ifu_buf0_inst2[16]} {ifu_buf0_inst2[15]} {ifu_buf0_inst2[14]} {ifu_buf0_inst2[13]} {ifu_buf0_inst2[12]} {ifu_buf0_inst2[11]} {ifu_buf0_inst2[10]} {ifu_buf0_inst2[9]} {ifu_buf0_inst2[8]} {ifu_buf0_inst2[7]} {ifu_buf0_inst2[6]} {ifu_buf0_inst2[5]} {ifu_buf0_inst2[4]} {ifu_buf0_inst2[3]} {ifu_buf0_inst2[2]} {ifu_buf0_inst2[1]} {ifu_buf0_inst2[0]} {ifu_buf0_inst3[32]} {ifu_buf0_inst3[31]} {ifu_buf0_inst3[30]} {ifu_buf0_inst3[29]} {ifu_buf0_inst3[28]} {ifu_buf0_inst3[27]} {ifu_buf0_inst3[26]} {ifu_buf0_inst3[25]} {ifu_buf0_inst3[24]} {ifu_buf0_inst3[23]} {ifu_buf0_inst3[22]} {ifu_buf0_inst3[21]} {ifu_buf0_inst3[20]} {ifu_buf0_inst3[19]} {ifu_buf0_inst3[18]} {ifu_buf0_inst3[17]} {ifu_buf0_inst3[16]} {ifu_buf0_inst3[15]} {ifu_buf0_inst3[14]} {ifu_buf0_inst3[13]} {ifu_buf0_inst3[12]} {ifu_buf0_inst3[11]} {ifu_buf0_inst3[10]} {ifu_buf0_inst3[9]} {ifu_buf0_inst3[8]} {ifu_buf0_inst3[7]} {ifu_buf0_inst3[6]} {ifu_buf0_inst3[5]} {ifu_buf0_inst3[4]} {ifu_buf0_inst3[3]} {ifu_buf0_inst3[2]} {ifu_buf0_inst3[1]} {ifu_buf0_inst3[0]} {ifu_buf0_inst4[32]} {ifu_buf0_inst4[31]} {ifu_buf0_inst4[30]} {ifu_buf0_inst4[29]} {ifu_buf0_inst4[28]} {ifu_buf0_inst4[27]} {ifu_buf0_inst4[26]} {ifu_buf0_inst4[25]} {ifu_buf0_inst4[24]} {ifu_buf0_inst4[23]} {ifu_buf0_inst4[22]} {ifu_buf0_inst4[21]} {ifu_buf0_inst4[20]} {ifu_buf0_inst4[19]} {ifu_buf0_inst4[18]} {ifu_buf0_inst4[17]} {ifu_buf0_inst4[16]} {ifu_buf0_inst4[15]} {ifu_buf0_inst4[14]} {ifu_buf0_inst4[13]} {ifu_buf0_inst4[12]} {ifu_buf0_inst4[11]} {ifu_buf0_inst4[10]} {ifu_buf0_inst4[9]} {ifu_buf0_inst4[8]} {ifu_buf0_inst4[7]} {ifu_buf0_inst4[6]} {ifu_buf0_inst4[5]} {ifu_buf0_inst4[4]} {ifu_buf0_inst4[3]} {ifu_buf0_inst4[2]} {ifu_buf0_inst4[1]} {ifu_buf0_inst4[0]} {ifu_buf0_inst5[32]} {ifu_buf0_inst5[31]} {ifu_buf0_inst5[30]} {ifu_buf0_inst5[29]} {ifu_buf0_inst5[28]} {ifu_buf0_inst5[27]} {ifu_buf0_inst5[26]} {ifu_buf0_inst5[25]} {ifu_buf0_inst5[24]} {ifu_buf0_inst5[23]} {ifu_buf0_inst5[22]} {ifu_buf0_inst5[21]} {ifu_buf0_inst5[20]} {ifu_buf0_inst5[19]} {ifu_buf0_inst5[18]} {ifu_buf0_inst5[17]} {ifu_buf0_inst5[16]} {ifu_buf0_inst5[15]} {ifu_buf0_inst5[14]} {ifu_buf0_inst5[13]} {ifu_buf0_inst5[12]} {ifu_buf0_inst5[11]} {ifu_buf0_inst5[10]} {ifu_buf0_inst5[9]} {ifu_buf0_inst5[8]} {ifu_buf0_inst5[7]} {ifu_buf0_inst5[6]} {ifu_buf0_inst5[5]} {ifu_buf0_inst5[4]} {ifu_buf0_inst5[3]} {ifu_buf0_inst5[2]} {ifu_buf0_inst5[1]} {ifu_buf0_inst5[0]} {ifu_buf0_inst6[32]} {ifu_buf0_inst6[31]} {ifu_buf0_inst6[30]} {ifu_buf0_inst6[29]} {ifu_buf0_inst6[28]} {ifu_buf0_inst6[27]} {ifu_buf0_inst6[26]} {ifu_buf0_inst6[25]} {ifu_buf0_inst6[24]} {ifu_buf0_inst6[23]} {ifu_buf0_inst6[22]} {ifu_buf0_inst6[21]} {ifu_buf0_inst6[20]} {ifu_buf0_inst6[19]} {ifu_buf0_inst6[18]} {ifu_buf0_inst6[17]} {ifu_buf0_inst6[16]} {ifu_buf0_inst6[15]} {ifu_buf0_inst6[14]} {ifu_buf0_inst6[13]} {ifu_buf0_inst6[12]} {ifu_buf0_inst6[11]} {ifu_buf0_inst6[10]} {ifu_buf0_inst6[9]} {ifu_buf0_inst6[8]} {ifu_buf0_inst6[7]} {ifu_buf0_inst6[6]} {ifu_buf0_inst6[5]} {ifu_buf0_inst6[4]} {ifu_buf0_inst6[3]} {ifu_buf0_inst6[2]} {ifu_buf0_inst6[1]} {ifu_buf0_inst6[0]} {ifu_buf0_inst7[32]} {ifu_buf0_inst7[31]} {ifu_buf0_inst7[30]} {ifu_buf0_inst7[29]} {ifu_buf0_inst7[28]} {ifu_buf0_inst7[27]} {ifu_buf0_inst7[26]} {ifu_buf0_inst7[25]} {ifu_buf0_inst7[24]} {ifu_buf0_inst7[23]} {ifu_buf0_inst7[22]} {ifu_buf0_inst7[21]} {ifu_buf0_inst7[20]} {ifu_buf0_inst7[19]} {ifu_buf0_inst7[18]} {ifu_buf0_inst7[17]} {ifu_buf0_inst7[16]} {ifu_buf0_inst7[15]} {ifu_buf0_inst7[14]} {ifu_buf0_inst7[13]} {ifu_buf0_inst7[12]} {ifu_buf0_inst7[11]} {ifu_buf0_inst7[10]} {ifu_buf0_inst7[9]} {ifu_buf0_inst7[8]} {ifu_buf0_inst7[7]} {ifu_buf0_inst7[6]} {ifu_buf0_inst7[5]} {ifu_buf0_inst7[4]} {ifu_buf0_inst7[3]} {ifu_buf0_inst7[2]} {ifu_buf0_inst7[1]} {ifu_buf0_inst7[0]} {ifu_buf0_excp0[4]} {ifu_buf0_excp0[3]} {ifu_buf0_excp0[2]} {ifu_buf0_excp0[1]} {ifu_buf0_excp0[0]} {ifu_buf0_excp1[4]} {ifu_buf0_excp1[3]} {ifu_buf0_excp1[2]} {ifu_buf0_excp1[1]} {ifu_buf0_excp1[0]} {ifu_buf0_excp2[4]} {ifu_buf0_excp2[3]} {ifu_buf0_excp2[2]} {ifu_buf0_excp2[1]} {ifu_buf0_excp2[0]} {ifu_buf0_excp3[4]} {ifu_buf0_excp3[3]} {ifu_buf0_excp3[2]} {ifu_buf0_excp3[1]} {ifu_buf0_excp3[0]} {ifu_buf0_excp4[4]} {ifu_buf0_excp4[3]} {ifu_buf0_excp4[2]} {ifu_buf0_excp4[1]} {ifu_buf0_excp4[0]} {ifu_buf0_excp5[4]} {ifu_buf0_excp5[3]} {ifu_buf0_excp5[2]} {ifu_buf0_excp5[1]} {ifu_buf0_excp5[0]} {ifu_buf0_excp6[4]} {ifu_buf0_excp6[3]} {ifu_buf0_excp6[2]} {ifu_buf0_excp6[1]} {ifu_buf0_excp6[0]} {ifu_buf0_excp7[4]} {ifu_buf0_excp7[3]} {ifu_buf0_excp7[2]} {ifu_buf0_excp7[1]} {ifu_buf0_excp7[0]} {tlu_flush_ifu[7]} {tlu_flush_ifu[6]} {tlu_flush_ifu[5]} {tlu_flush_ifu[4]} {tlu_flush_ifu[3]} {tlu_flush_ifu[2]} {tlu_flush_ifu[1]} {tlu_flush_ifu[0]} {pku_load_flush_w[7]} {pku_load_flush_w[6]} {pku_load_flush_w[5]} {pku_load_flush_w[4]} {pku_load_flush_w[3]} {pku_load_flush_w[2]} {pku_load_flush_w[1]} {pku_load_flush_w[0]} {pku_inst_cnt_brtaken00[1]} {pku_inst_cnt_brtaken00[0]} {pku_inst_cnt_brtaken01[1]} {pku_inst_cnt_brtaken01[0]} {pku_inst_cnt_brtaken02[1]} {pku_inst_cnt_brtaken02[0]} {pku_inst_cnt_brtaken03[1]} {pku_inst_cnt_brtaken03[0]} {pku_inst_cnt_brtaken04[1]} {pku_inst_cnt_brtaken04[0]} {pku_inst_cnt_brtaken05[1]} {pku_inst_cnt_brtaken05[0]} {pku_inst_cnt_brtaken06[1]} {pku_inst_cnt_brtaken06[0]} {pku_inst_cnt_brtaken07[1]} {pku_inst_cnt_brtaken07[0]} {pku_inst_cnt_brtaken10[1]} {pku_inst_cnt_brtaken10[0]} {pku_inst_cnt_brtaken11[1]} {pku_inst_cnt_brtaken11[0]} {pku_inst_cnt_brtaken12[1]} {pku_inst_cnt_brtaken12[0]} {pku_inst_cnt_brtaken13[1]} {pku_inst_cnt_brtaken13[0]} {pku_inst_cnt_brtaken14[1]} {pku_inst_cnt_brtaken14[0]} {pku_inst_cnt_brtaken15[1]} {pku_inst_cnt_brtaken15[0]} {pku_inst_cnt_brtaken16[1]} {pku_inst_cnt_brtaken16[0]} {pku_inst_cnt_brtaken17[1]} {pku_inst_cnt_brtaken17[0]} {pku_base_pick_p[7]} {pku_base_pick_p[6]} {pku_base_pick_p[5]} {pku_base_pick_p[4]} {pku_base_pick_p[3]} {pku_base_pick_p[2]} {pku_base_pick_p[1]} {pku_base_pick_p[0]} {pku_raw_pick0_p[3]} {pku_raw_pick0_p[2]} {pku_raw_pick0_p[1]} {pku_raw_pick0_p[0]} {pku_raw_pick1_p[7]} {pku_raw_pick1_p[6]} {pku_raw_pick1_p[5]} {pku_raw_pick1_p[4]} {pku_annul_ds_dcti_brtaken0_e[7]} {pku_annul_ds_dcti_brtaken0_e[6]} {pku_annul_ds_dcti_brtaken0_e[5]} {pku_annul_ds_dcti_brtaken0_e[4]} {pku_annul_ds_dcti_brtaken0_e[3]} {pku_annul_ds_dcti_brtaken0_e[2]} {pku_annul_ds_dcti_brtaken0_e[1]} {pku_annul_ds_dcti_brtaken0_e[0]} {pku_annul_ds_dcti_brtaken1_e[7]} {pku_annul_ds_dcti_brtaken1_e[6]} {pku_annul_ds_dcti_brtaken1_e[5]} {pku_annul_ds_dcti_brtaken1_e[4]} {pku_annul_ds_dcti_brtaken1_e[3]} {pku_annul_ds_dcti_brtaken1_e[2]} {pku_annul_ds_dcti_brtaken1_e[1]} {pku_annul_ds_dcti_brtaken1_e[0]} {pku_valid_e[7]} {pku_valid_e[6]} {pku_valid_e[5]} {pku_valid_e[4]} {pku_valid_e[3]} {pku_valid_e[2]} {pku_valid_e[1]} {pku_valid_e[0]} {pku_ds_e[7]} {pku_ds_e[6]} {pku_ds_e[5]} {pku_ds_e[4]} {pku_ds_e[3]} {pku_ds_e[2]} {pku_ds_e[1]} {pku_ds_e[0]} {pku_lsu_p[7]} {pku_lsu_p[6]} {pku_lsu_p[5]} {pku_lsu_p[4]} {pku_lsu_p[3]} {pku_lsu_p[2]} {pku_lsu_p[1]} {pku_lsu_p[0]} {pku_fgu_p[7]} {pku_fgu_p[6]} {pku_fgu_p[5]} {pku_fgu_p[4]} {pku_fgu_p[3]} {pku_fgu_p[2]} {pku_fgu_p[1]} {pku_fgu_p[0]} {pku_pdist_p[7]} {pku_pdist_p[6]} {pku_pdist_p[5]} {pku_pdist_p[4]} {pku_pdist_p[3]} {pku_pdist_p[2]} {pku_pdist_p[1]} {pku_pdist_p[0]} {pku_twocycle_p[7]} {pku_twocycle_p[6]} {pku_twocycle_p[5]} {pku_twocycle_p[4]} {pku_twocycle_p[3]} {pku_twocycle_p[2]} {pku_twocycle_p[1]} {pku_twocycle_p[0]} {pku_idest_p[7]} {pku_idest_p[6]} {pku_idest_p[5]} {pku_idest_p[4]} {pku_idest_p[3]} {pku_idest_p[2]} {pku_idest_p[1]} {pku_idest_p[0]} {pku_fdest_p[7]} {pku_fdest_p[6]} {pku_fdest_p[5]} {pku_fdest_p[4]} {pku_fdest_p[3]} {pku_fdest_p[2]} {pku_fdest_p[1]} {pku_fdest_p[0]} {pku_fsrc_rd_p[7]} {pku_fsrc_rd_p[6]} {pku_fsrc_rd_p[5]} {pku_fsrc_rd_p[4]} {pku_fsrc_rd_p[3]} {pku_fsrc_rd_p[2]} {pku_fsrc_rd_p[1]} {pku_fsrc_rd_p[0]} {pku_isrc_rs1_p[7]} {pku_isrc_rs1_p[6]} {pku_isrc_rs1_p[5]} {pku_isrc_rs1_p[4]} {pku_isrc_rs1_p[3]} {pku_isrc_rs1_p[2]} {pku_isrc_rs1_p[1]} {pku_isrc_rs1_p[0]} {pku_isrc_rs2_p[7]} {pku_isrc_rs2_p[6]} {pku_isrc_rs2_p[5]} {pku_isrc_rs2_p[4]} {pku_isrc_rs2_p[3]} {pku_isrc_rs2_p[2]} {pku_isrc_rs2_p[1]} {pku_isrc_rs2_p[0]} {pku_isrc_rd_p[7]} {pku_isrc_rd_p[6]} {pku_isrc_rd_p[5]} {pku_isrc_rd_p[4]} {pku_isrc_rd_p[3]} {pku_isrc_rd_p[2]} {pku_isrc_rd_p[1]} {pku_isrc_rd_p[0]} {pku_flush_f1[7]} {pku_flush_f1[6]} {pku_flush_f1[5]} {pku_flush_f1[4]} {pku_flush_f1[3]} {pku_flush_f1[2]} {pku_flush_f1[1]} {pku_flush_f1[0]} {pku_flush_f2[7]} {pku_flush_f2[6]} {pku_flush_f2[5]} {pku_flush_f2[4]} {pku_flush_f2[3]} {pku_flush_f2[2]} {pku_flush_f2[1]} {pku_flush_f2[0]} {pku_flush_lm[7]} {pku_flush_lm[6]} {pku_flush_lm[5]} {pku_flush_lm[4]} {pku_flush_lm[3]} {pku_flush_lm[2]} {pku_flush_lm[1]} {pku_flush_lm[0]} {pku_flush_lb[7]} {pku_flush_lb[6]} {pku_flush_lb[5]} {pku_flush_lb[4]} {pku_flush_lb[3]} {pku_flush_lb[2]} {pku_flush_lb[1]} {pku_flush_lb[0]} {pku_flush_m[7]} {pku_flush_m[6]} {pku_flush_m[5]} {pku_flush_m[4]} {pku_flush_m[3]} {pku_flush_m[2]} {pku_flush_m[1]} {pku_flush_m[0]} {pku_flush_b[7]} {pku_flush_b[6]} {pku_flush_b[5]} {pku_flush_b[4]} {pku_flush_b[3]} {pku_flush_b[2]} {pku_flush_b[1]} {pku_flush_b[0]} spu_mult_request lsu_block_store_stall {lsu_block_store_rd[4]} {lsu_block_store_rd[3]} {lsu_block_store_tid[2]} {lsu_block_store_tid[1]} {lsu_block_store_tid[0]} tlu_dtlb_reload_stall fgu_ecc_asi_stall {exu0_oddwin_b[3]} {exu0_oddwin_b[2]} {exu0_oddwin_b[1]} {exu0_oddwin_b[0]} {exu1_oddwin_b[3]} {exu1_oddwin_b[2]} {exu1_oddwin_b[1]} {exu1_oddwin_b[0]} {fgu_idiv_stall[1]} {fgu_idiv_stall[0]} fgu_fdiv_stall {dec_br_taken_e1[1]} {dec_br_taken_e1[0]}
+set_input_delay $default_input_delay -clock $clk_name $non_ideal_inputs
+1
+set_output_delay $default_output_delay -clock $clk_name [all_outputs]
+1
+if {$clk_name_list != {} } {
+   group_path -name "reg2reg" -critical_range $critical_range -from [ all_registers -clock_pins ] -to [ all_registers -data_pins ]
+   group_path -name "in2reg"  -from $non_ideal_inputs -to [ all_registers -data_pins ]
+   group_path -name "reg2out" -from [ all_registers -clock_pins ] -to [all_outputs]
+}
+Information: Checking out the license 'DesignWare'. (SEC-104)
+1
+group_path -name "in2out"  -from $non_ideal_inputs -to [all_outputs]
+1
+if {[info exists false_path_list] && ($false_path_list != {}) } {
+        set_false_path -through $false_path_list
+}
+if {[info exists enforce_input_fanout_one] && ($enforce_input_fanout_one  == 1)} {
+   set_max_fanout 1 $non_ideal_inputs
+}
+# Load custom constraint file for the unit
+# This will overwrite the default constraints
+###########################################################################
+# 4. More constraints and setup before compile
+###########################################################################
+# This is to prevent assign statements from generated in the netlist
+# Certain rtl coding conventions need to be followed. For IO blocks only 
+# write_name_nets_same_as_ports
+if {[info exists project_io_cfg] && ($project_io_cfg == 1) } {
+   foreach_in_collection design [ get_designs "*" ] {
+      current_design $design
+      set_fix_multiple_port_nets -outputs -feedthroughs 
+   }
+   current_design $top_module
+}
+# Check timing constraints
+###########################################################################
+# 5. Compile
+###########################################################################
+# Disable cells that we don't want to use in the library
+if {$dont_use_cells != 0} {
+   if {[info exists my_dont_use_cell_list] && ($my_dont_use_cell_list != {}) } {
+      set dont_use_cell_list [concat $dont_use_cell_list $my_dont_use_cell_list]
+   }
+   foreach dont_use_cell $dont_use_cell_list {
+      set_dont_use [find lib_cell $dont_use_cell]
+   }
+}
+sh date
+Fri Aug  2 18:00:49 PDT 2013
+sh uptime
+ 18:00:49 up 7 days, 17:04,  4 users,  load average: 2.10, 2.08, 1.86
+# Don't remove sequential cells with constant outputs
+set compile_seqmap_propagate_constants false
+false
+# Switch off the dont_touch attribute globally for set_size_only cells
+set dont_touch_nets_with_size_only_cells false
+false
+## Source user compile options
+#if set to 1, the whole design will be flattened. default 1 for cmp
+if {[info exists compile_flatten_all] && ($compile_flatten_all  == 1)} {
+      ungroup -flatten -all
+   }
+Information: Updating graph... (UID-83)
+1
+# compile !!
+if {[info exists project_io_cfg] && ($project_io_cfg == 1) } {
+      set dc_shell_status [ compile -boundary_optimization -exact_map -map_effort $compile_effort ]
+   }
+if {[info exists project_sparc_cfg] && ($project_sparc_cfg == 1) } {
+      if {[info exists use_physopt] && ($use_physopt == 1)} {
+         set_fix_multiple_port_nets -all -buffer_constants
+      }
+      set dc_shell_status [ compile -boundary_optimization -exact_map -map_effort $compile_effort ]
+   }
+Information: Evaluating DesignWare library utilization. (UISN-27)
+
+============================================================================
+| DesignWare Building Block Library  |         Version         | Available |
+============================================================================
+| Basic DW Building Blocks           | G-2012.06-DWBB_201206.4 |     *     |
+| Licensed DW Building Blocks        | G-2012.06-DWBB_201206.4 |     *     |
+============================================================================
+
+
+Information: There are 201 potential problems in your design. Please run 'check_design' for more information. (LINT-99)
+
+
+
+  Beginning Pass 1 Mapping
+  ------------------------
+  Processing 'dec'
+Information: The register 'ded1/spares/spare1_flop/q_reg' will be removed. (OPT-1207)
+Information: The register 'ded1/spares/spare0_flop/q_reg' will be removed. (OPT-1207)
+Information: The register 'ded0/spares/spare1_flop/q_reg' will be removed. (OPT-1207)
+Information: The register 'ded0/spares/spare0_flop/q_reg' will be removed. (OPT-1207)
+Information: The register 'del/spare_5_0_lat/d0_0/q_reg[5]' will be removed. (OPT-1207)
+Information: The register 'del/spare_5_0_lat/d0_0/q_reg[4]' will be removed. (OPT-1207)
+Information: The register 'del/spare_5_0_lat/d0_0/q_reg[3]' will be removed. (OPT-1207)
+Information: The register 'del/spare_5_0_lat/d0_0/q_reg[1]' will be removed. (OPT-1207)
+Information: Added key list 'DesignWare' to design 'dec'. (DDB-72)
+
+  Updating timing information
+Information: Updating design information... (UID-85)
+
+  Beginning Mapping Optimizations  (Medium effort)
+  -------------------------------
+  Mapping Optimization (Phase 1)
+  Mapping Optimization (Phase 2)
+
+                                  TOTAL                                      
+   ELAPSED            WORST NEG   SETUP    DESIGN                            
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT         
+  --------- --------- --------- --------- --------- -------------------------
+    0:00:07    9096.0      3.24     210.0       0.0                          
+    0:00:07    9096.0      3.24     210.0       0.0                          
+    0:00:07    9096.0      3.24     210.0       0.0                          
+    0:00:07    9096.0      3.24     210.0       0.0                          
+    0:00:07    9096.0      3.24     210.0       0.0                          
+    0:00:07    9096.0      3.24     210.0       0.0                          
+    0:00:07    7495.0      3.31     206.7       0.0                          
+    0:00:08    7482.0      3.31     203.1       0.0                          
+    0:00:08    7494.0      3.31     201.1       0.0                          
+    0:00:08    7495.0      3.24     200.7       0.0                          
+    0:00:08    7496.0      3.24     200.6       0.0                          
+    0:00:08    7499.0      3.24     200.5       0.0                          
+    0:00:08    7500.0      3.24     199.9       0.0                          
+    0:00:08    7501.0      3.24     199.3       0.0                          
+    0:00:08    7502.0      3.24     198.6       0.0                          
+    0:00:08    7502.0      3.24     198.6       0.0                          
+    0:00:08    7502.0      3.24     198.6       0.0                          
+    0:00:08    7502.0      3.24     198.6       0.0                          
+    0:00:08    7502.0      3.24     198.6       0.0                          
+    0:00:08    7502.0      3.24     198.6       0.0                          
+    0:00:08    7502.0      3.24     198.6       0.0                          
+    0:00:08    7502.0      3.24     198.6       0.0                          
+
+
+
+  Beginning Delay Optimization Phase
+  ----------------------------------
+
+                                  TOTAL                                      
+   ELAPSED            WORST NEG   SETUP    DESIGN                            
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT         
+  --------- --------- --------- --------- --------- -------------------------
+    0:00:08    7502.0      3.24     198.6       0.0                          
+    0:00:08    7502.0      3.24     198.6       0.0                          
+    0:00:08    7502.0      3.24     198.6       0.0                          
+
+
+  Beginning Critical Range Optimization
+  -------------------------------------
+
+                                  TOTAL                                      
+   ELAPSED            WORST NEG   SETUP    DESIGN                            
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT         
+  --------- --------- --------- --------- --------- -------------------------
+    0:00:08    7502.0      3.24     198.6       0.0                          
+    0:00:08    7513.0      3.24     198.1       0.0                          
+    0:00:08    7541.0      3.24     195.0       0.0                          
+    0:00:08    7542.0      3.24     194.2       0.0                          
+    0:00:08    7552.0      3.24     193.1       0.0                          
+    0:00:08    7554.0      3.24     192.6       0.0                          
+    0:00:08    7554.0      3.24     192.4       0.0                          
+    0:00:08    7565.0      3.24     190.3       0.0                          
+    0:00:08    7588.0      3.24     188.9       0.0                          
+    0:00:08    7600.0      3.24     188.4       0.0                          
+
+
+  Beginning Area-Recovery Phase  (cleanup)
+  -----------------------------
+
+                                  TOTAL                                      
+   ELAPSED            WORST NEG   SETUP    DESIGN                            
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT         
+  --------- --------- --------- --------- --------- -------------------------
+    0:00:08    7600.0      3.24     188.4       0.0                          
+    0:00:08    7600.0      3.24     188.4       0.0                          
+    0:00:08    7600.0      3.24     188.4       0.0                          
+    0:00:09    7497.0      3.24     188.2       0.0                          
+    0:00:09    7455.0      3.24     188.0       0.0                          
+    0:00:09    7442.0      3.24     188.0       0.0                          
+    0:00:09    7439.0      3.24     188.0       0.0                          
+    0:00:09    7437.0      3.24     188.0       0.0                          
+    0:00:09    7437.0      3.24     188.0       0.0                          
+    0:00:09    7437.0      3.24     188.0       0.0                          
+    0:00:09    7437.0      3.24     188.0       0.0                          
+    0:00:09    7437.0      3.24     188.0       0.0                          
+    0:00:09    7437.0      3.24     188.0       0.0                          
+    0:00:09    7437.0      3.24     188.0       0.0                          
+    0:00:09    7437.0      3.24     188.0       0.0                          
+    0:00:09    7437.0      3.24     188.0       0.0                          
+    0:00:09    7437.0      3.24     188.0       0.0                          
+    0:00:09    7437.0      3.24     188.0       0.0                          
+
+
+  Beginning Critical Range Optimization
+  -------------------------------------
+
+                                  TOTAL                                      
+   ELAPSED            WORST NEG   SETUP    DESIGN                            
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT         
+  --------- --------- --------- --------- --------- -------------------------
+    0:00:09    7437.0      3.24     188.0       0.0                          
+    0:00:09    7437.0      3.24     187.8       0.0                          
+    0:00:09    7441.0      3.24     187.5       0.0                          
+    0:00:09    7441.0      3.24     187.5       0.0                          
+    0:00:09    7448.0      3.24     186.5       0.0                          
+Loading db file '/cad/synopsys/dc_shell/G-2012.06-SP5-1/libraries/syn/lsi_10k.db'
+
+  Optimization Complete
+  ---------------------
+1
+if {$dc_shell_status == 0} {
+      echo "*******************************************************"
+      echo "* ERROR!!!! Failed to compile...exiting prematurely.  *"
+      echo "*******************************************************"
+      quit
+   }
+sh date
+Fri Aug  2 18:00:59 PDT 2013
+###########################################################################
+# 6. Insert Scan - Hook up the scan chain.
+###########################################################################
+if {[info exists use_physopt] && ($use_physopt == 1)} {
+   set skip_scan 1
+}
+if {[info exists skip_scan] && ($skip_scan == 1)} {
+   ######  skip section 5e. 
+} else {
+
+current_design $top_module
+
+## Tell DC the design is "scan ready"
+## We do this because we already instantiate scan flops in the rtl
+set_attribute $top_module is_test_ready true -type boolean
+foreach_in_collection design_object [get_designs] {
+   current_design $design_object
+   # make sure the module has FFs in it to prevent warning messages
+   if { [all_registers] != {} } {
+      set_attribute [all_registers] scanned_by_test_compiler true -type boolean
+   }
+}
+
+current_design $top_module
+
+
+# Tell DC not to optimize away spare FF's 
+set compile_delete_unloaded_sequential_cells false
+
+# Disable cells that we don't want to use in the library
+if {$dont_use_cells != 0} {
+   foreach dont_use_cell $dont_use_cell_list {
+      set_dont_use [find lib_cell $dont_use_cell]
+   }
+}
+
+# Insert scan chain with number of chains specified by user
+# Allow scan chain to hook up flops clocked by different clocks
+# Add lockup latches between clock domains
+set_scan_configuration -add_lockup $add_lockup_latch -chain_count $chain_count -clock_mixing mix_clocks
+
+# This should prevent assign statements from generated in the netlist
+# at the cost of extra compile time. For cmp only 
+if {[info exists project_sparc_cfg] && ($project_sparc_cfg == 1) } {
+   foreach_in_collection design [ get_designs "*" ] {
+      current_design $design
+      set_fix_multiple_port_nets -all -buffer_constants
+   }
+
+   current_design $top_module
+
+   # allow_outport_drive_innodes is used by sparc units but not IO units
+   # set this switch to 0 to make sure output port doesn't driving internal nodes
+   if {[info exists allow_outport_drive_innodes] && ($allow_outport_drive_innodes == 0)} {
+      set_isolate_ports -type inverter [all_outputs]
+   }
+
+   current_design $top_module
+   compile -inc
+}
+
+
+### section 5e. will be skipped if user want to use PC flow
+}
+Current design is 'dec'.
+Current design is 'dec'.
+Information: Attribute 'scanned_by_test_compiler' is set on 436 objects. (UID-186)
+Current design is 'cl_sc1_l1hdr_8x'.
+Current design is 'cl_u1_buf_32x'.
+Current design is 'cl_u1_nand3_8x'.
+Current design is 'cl_u1_inv_8x'.
+Current design is 'cl_u1_aoi22_4x'.
+Current design is 'cl_u1_buf_8x'.
+Current design is 'cl_u1_oai22_4x'.
+Current design is 'cl_u1_inv_16x'.
+Current design is 'cl_u1_nand2_16x'.
+Current design is 'cl_u1_nor3_4x'.
+Current design is 'cl_u1_nand2_8x'.
+Current design is 'cl_u1_buf_16x'.
+Current design is 'cl_u1_nor2_16x'.
+Current design is 'cl_u1_inv_32x'.
+Current design is 'dec'.
+Accepted scan configuration for modes: all_dft
+Current design is 'dec'.
+Current design is 'cl_sc1_l1hdr_8x'.
+Current design is 'cl_u1_buf_32x'.
+Current design is 'cl_u1_nand3_8x'.
+Current design is 'cl_u1_inv_8x'.
+Current design is 'cl_u1_aoi22_4x'.
+Current design is 'cl_u1_buf_8x'.
+Current design is 'cl_u1_oai22_4x'.
+Current design is 'cl_u1_inv_16x'.
+Current design is 'cl_u1_nand2_16x'.
+Current design is 'cl_u1_nor3_4x'.
+Current design is 'cl_u1_nand2_8x'.
+Current design is 'cl_u1_buf_16x'.
+Current design is 'cl_u1_nor2_16x'.
+Current design is 'cl_u1_inv_32x'.
+Current design is 'dec'.
+Current design is 'dec'.
+
+Information: There are 11 potential problems in your design. Please run 'check_design' for more information. (LINT-99)
+
+
+
+  Beginning Pass 1 Mapping  (Incremental)
+  ------------------------
+
+  Updating timing information
+Information: Updating design information... (UID-85)
+
+  Beginning Mapping Optimizations  (Medium effort)  (Incremental)
+  -------------------------------
+
+  Beginning Incremental Implementation Selection
+  ----------------------------------------------
+
+  Beginning Delay Optimization Phase
+  ----------------------------------
+
+                                  TOTAL                                      
+   ELAPSED            WORST NEG   SETUP    DESIGN                            
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT         
+  --------- --------- --------- --------- --------- -------------------------
+    0:00:01    7448.0      3.24     186.5       0.0                          
+    0:00:01    7456.0      3.24     186.5       0.0                          
+    0:00:01    7456.0      3.24     186.5       0.0                          
+
+
+  Beginning Critical Range Optimization
+  -------------------------------------
+
+                                  TOTAL                                      
+   ELAPSED            WORST NEG   SETUP    DESIGN                            
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT         
+  --------- --------- --------- --------- --------- -------------------------
+    0:00:01    7456.0      3.24     186.5       0.0                          
+    0:00:01    7461.0      3.24     186.4       0.0                          
+    0:00:01    7472.0      3.24     185.9       0.0                          
+    0:00:01    7474.0      3.24     185.8       0.0                          
+    0:00:01    7478.0      3.24     185.8       0.0                          
+    0:00:01    7478.0      3.24     185.7       0.0                          
+
+
+  Beginning Critical Range Optimization
+  -------------------------------------
+
+                                  TOTAL                                      
+   ELAPSED            WORST NEG   SETUP    DESIGN                            
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT         
+  --------- --------- --------- --------- --------- -------------------------
+    0:00:01    7478.0      3.24     185.7       0.0                          
+    0:00:01    7479.0      3.24     185.7       0.0                          
+    0:00:02    7482.0      3.24     185.7       0.0                          
+    0:00:02    7489.0      3.24     185.6       0.0                          
+Loading db file '/cad/synopsys/dc_shell/G-2012.06-SP5-1/libraries/syn/lsi_10k.db'
+
+  Optimization Complete
+  ---------------------
+1
+###########################################################################
+# 7. Write Out netlist
+###########################################################################
+# Remove don't touch modules from the design
+# It caused unmatching hierarchy between rtl and netlist
+if { [get_designs -hier $dont_touch_modules] != {} } {
+   remove_design $dont_touch_modules
+}
+# remove dont_touch attribute before flattening the design
+if { [get_designs -hier $dont_touch_modules] != {} } {
+   set_dont_touch $dont_touch_modules false
+}
+current_design $top_module
+Current design is 'dec'.
+{dec}
+ungroup -all -flatten
+Warning: Design has no hierarchy.  No cells can be ungrouped. (UID-228)
+0
+# Make sure flat netlist does not have "/" in signal names
+define_name_rules hier_change -restricted "/" -replacement_char "_"
+1
+change_names -rule hier_change -hierarchy
+1
+# Write out netlist.  
+write -format verilog -output [format "%s%s%s"  gate/ $top_module .vSyn]
+Writing verilog file '/rsgs/scratch0/linhai88/OST2/OST2.design/design/sys/iop/spc/dec/synopsys/gate/dec.vSyn'.
+Warning: Verilog 'assign' or 'tran' statements are written out. (VO-4)
+1
+# Report flattened results
+redirect [format "%s%s%s" log/ $top_module _area.rep] { report_area }
+redirect -append [format "%s%s%s" log/ $top_module _area.rep] { report_reference }
+###########################################################################
+# 8. Check design and Detect unmapped design
+###########################################################################
+set unmapped_designs [get_designs -filter "is_unmapped == true" $top_module]
+if {  [sizeof_collection $unmapped_designs] != 0 } {
+   echo "****************************************************"
+   echo "* ERROR!!!! Compile finished with unmapped logic.  *"
+   echo "****************************************************"
+   quit
+}
+###########################################################################
+# 9. Done
+###########################################################################
+sh date
+Fri Aug  2 18:01:02 PDT 2013
+echo "run.scr completed successfully"
+run.scr completed successfully
+quit
+
+Thank you...

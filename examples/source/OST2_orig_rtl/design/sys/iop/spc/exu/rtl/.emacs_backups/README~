@@ -1,0 +1,7 @@
+exu_ecc_ctl.v - ecc control
+exu_ect_ctl.v - execution control, execution decoder
+exu_edp_dp.v  - datapath
+exu_mdp_dp.v  - muxing
+exu_rml_ctl.v
+exu.v
+README

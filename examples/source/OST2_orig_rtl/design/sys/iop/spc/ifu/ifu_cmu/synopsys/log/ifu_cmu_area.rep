@@ -1,0 +1,99 @@
+ 
+****************************************
+Report : area
+Design : ifu_cmu
+Version: G-2012.06-SP5-1
+Date   : Fri Aug  2 18:10:30 2013
+****************************************
+
+Information: Updating design information... (UID-85)
+Library(s) Used:
+
+    lsi_10k (File: /cad/synopsys/dc_shell/G-2012.06-SP5-1/libraries/syn/lsi_10k.db)
+
+Number of ports:                          810
+Number of nets:                          5406
+Number of cells:                         4668
+Number of combinational cells:           3736
+Number of sequential cells:               932
+Number of macros:                           0
+Number of buf/inv:                        624
+Number of references:                      45
+
+Combinational area:       7044.000000
+Buf/Inv area:              671.000000
+Noncombinational area:    6524.000000
+Net Interconnect area:      undefined  (No wire load specified)
+
+Total cell area:          13568.000000
+Total area:                 undefined
+1
+ 
+****************************************
+Report : reference
+Design : ifu_cmu
+Version: G-2012.06-SP5-1
+Date   : Fri Aug  2 18:10:31 2013
+****************************************
+
+Attributes:
+    b - black box (unknown)
+   bo - allows boundary optimization
+    d - dont_touch
+   mo - map_only
+    h - hierarchical
+    n - noncombinational
+    r - removable
+    s - synthetic operator
+    u - contains unmapped logic
+
+Reference          Library       Unit Area   Count    Total Area   Attributes
+-----------------------------------------------------------------------------
+AN2                lsi_10k        2.000000      10     20.000000  
+AN2P               lsi_10k        2.000000      22     44.000000  
+AN3                lsi_10k        2.000000      12     24.000000  
+AN4                lsi_10k        3.000000       4     12.000000  
+AN4P               lsi_10k        3.000000       2      6.000000  
+AO1P               lsi_10k        2.000000      28     56.000000  
+AO2                lsi_10k        2.000000     883   1766.000000  
+AO3                lsi_10k        2.000000      72    144.000000  
+AO4                lsi_10k        2.000000     666   1332.000000  
+AO6                lsi_10k        2.000000      10     20.000000  
+AO6P               lsi_10k        3.000000       1      3.000000  
+AO7                lsi_10k        2.000000      20     40.000000  
+AO7P               lsi_10k        3.000000       2      6.000000  
+B4I                lsi_10k        2.000000       1      2.000000  
+B4IP               lsi_10k        4.000000      11     44.000000  
+B5IP               lsi_10k        3.000000       3      9.000000  
+EN                 lsi_10k        3.000000       4     12.000000  
+EO                 lsi_10k        3.000000     404   1212.000000  
+EO1                lsi_10k        3.000000       3      9.000000  
+EON1               lsi_10k        3.000000     130    390.000000  
+FD1                lsi_10k        7.000000     932   6524.000000  n
+IV                 lsi_10k        1.000000       1      1.000000  
+IVA                lsi_10k        1.000000      91     91.000000  
+IVAP               lsi_10k        2.000000       6     12.000000  
+IVDA               lsi_10k        1.000000      26     26.000000  
+IVDAP              lsi_10k        2.000000       1      2.000000  
+IVP                lsi_10k        1.000000     484    484.000000  
+ND2                lsi_10k        1.000000     186    186.000000  
+ND2P               lsi_10k        2.000000       3      6.000000  
+ND3                lsi_10k        2.000000      81    162.000000  
+ND4                lsi_10k        2.000000     254    508.000000  
+ND4P               lsi_10k        4.000000       1      4.000000  
+NR2                lsi_10k        1.000000     142    142.000000  
+NR2P               lsi_10k        2.000000       5     10.000000  
+NR3                lsi_10k        2.000000       5     10.000000  
+NR4                lsi_10k        2.000000      92    184.000000  
+NR4P               lsi_10k        4.000000       5     20.000000  
+OR2                lsi_10k        2.000000       9     18.000000  
+OR3                lsi_10k        2.000000       9     18.000000  
+OR4                lsi_10k        3.000000       3      9.000000  
+cl_dp1_l1hdr_8x                   0.000000      18      0.000000  b
+cl_dp1_muxbuff8_8x                0.000000       5      0.000000  b
+cl_dp1_pdec8_8x                   0.000000       1      0.000000  b
+cl_dp1_penc2_8x                   0.000000      17      0.000000  b
+cl_sc1_l1hdr_8x                   0.000000       3      0.000000  b
+-----------------------------------------------------------------------------
+Total 45 references                                 13568.000000
+1

@@ -1,0 +1,3272 @@
+
+                      Design Compiler Graphical
+                            DC Ultra (TM)
+                             DFTMAX (TM)
+                         Power Compiler (TM)
+                           DesignWare (R)
+                           DC Expert (TM)
+                         Design Vision (TM)
+                          HDL Compiler (TM)
+                         VHDL Compiler (TM)
+                            DFT Compiler
+                        Library Compiler (TM)
+                         Design Compiler(R)
+
+         Version G-2012.06-SP5-1 for RHEL64 -- Mar 18, 2013
+               Copyright (c) 1988-2012 Synopsys, Inc.
+
+This software and the associated documentation are confidential and 
+proprietary to Synopsys, Inc. Your use or disclosure of this software 
+is subject to the terms and conditions of a written license agreement 
+between you, or your company, and Synopsys, Inc.
+
+Initializing...
+# ========== Copyright Header Begin ==========================================
+# 
+# OpenSPARC T2 Processor File: run.scr
+# Copyright (C) 1995-2007 Sun Microsystems, Inc. All Rights Reserved
+# 4150 Network Circle, Santa Clara, California 95054, U.S.A.
+#
+# * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER. 
+#
+# This program is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation; version 2 of the License.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the Free Software
+# Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+#
+# For the avoidance of doubt, and except that if any non-GPL license 
+# choice is available it will apply instead, Sun elects to use only 
+# the General Public License version 2 (GPLv2) at this time for any 
+# software where a choice of GPL license versions is made 
+# available with the language indicating that GPLv2 or any later version 
+# may be used, or where a choice of which version of the GPL is applied is 
+# otherwise unspecified. 
+#
+# Please contact Sun Microsystems, Inc., 4150 Network Circle, Santa Clara, 
+# CA 95054 USA or visit www.sun.com if you need additional information or 
+# have any questions. 
+# 
+# ========== Copyright Header End ============================================
+sh date
+Fri Aug  2 18:02:56 PDT 2013
+sh hostname
+selene.Stanford.EDU
+sh uptime
+ 18:02:56 up 7 days, 17:07,  4 users,  load average: 2.45, 2.20, 1.93
+remove_design -all
+1
+if {[file exists template]} {
+   sh rm -rf template
+}
+sh mkdir template
+if {![file exists gate]} {
+   sh mkdir gate
+}
+if {![file exists log]} {
+   sh mkdir log
+}
+###########################################################################
+# 1. Setup from environment variables
+###########################################################################
+set dv_root [sh echo \$DV_ROOT]
+/scratch0/linhai88/OST2/OST2.design
+set syn_home [sh echo \$SYN_LIB]
+/cad/synopsys/dc_shell/G-2012.06-SP5-1/libraries/syn
+source -echo -verbose script/user_cfg.scr
+# ========== Copyright Header Begin ==========================================
+# 
+# OpenSPARC T2 Processor File: user_cfg.scr
+# Copyright (C) 1995-2007 Sun Microsystems, Inc. All Rights Reserved
+# 4150 Network Circle, Santa Clara, California 95054, U.S.A.
+#
+# * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER. 
+#
+# This program is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation; version 2 of the License.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the Free Software
+# Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+#
+# For the avoidance of doubt, and except that if any non-GPL license 
+# choice is available it will apply instead, Sun elects to use only 
+# the General Public License version 2 (GPLv2) at this time for any 
+# software where a choice of GPL license versions is made 
+# available with the language indicating that GPLv2 or any later version 
+# may be used, or where a choice of which version of the GPL is applied is 
+# otherwise unspecified. 
+#
+# Please contact Sun Microsystems, Inc., 4150 Network Circle, Santa Clara, 
+# CA 95054 USA or visit www.sun.com if you need additional information or 
+# have any questions. 
+# 
+# ========== Copyright Header End ============================================
+source -echo -verbose $dv_root/design/sys/synopsys/script/project_sparc_cfg.scr
+# ========== Copyright Header Begin ==========================================
+# 
+# OpenSPARC T2 Processor File: project_sparc_cfg.scr
+# Copyright (C) 1995-2007 Sun Microsystems, Inc. All Rights Reserved
+# 4150 Network Circle, Santa Clara, California 95054, U.S.A.
+#
+# * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER. 
+#
+# This program is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation; version 2 of the License.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the Free Software
+# Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+#
+# For the avoidance of doubt, and except that if any non-GPL license 
+# choice is available it will apply instead, Sun elects to use only 
+# the General Public License version 2 (GPLv2) at this time for any 
+# software where a choice of GPL license versions is made 
+# available with the language indicating that GPLv2 or any later version 
+# may be used, or where a choice of which version of the GPL is applied is 
+# otherwise unspecified. 
+#
+# Please contact Sun Microsystems, Inc., 4150 Network Circle, Santa Clara, 
+# CA 95054 USA or visit www.sun.com if you need additional information or 
+# have any questions. 
+# 
+# ========== Copyright Header End ============================================
+set project_sparc_cfg	1
+1
+###########################################################################
+# Specify target library specific variables
+###########################################################################
+source $dv_root/design/sys/synopsys/script/target_lib.scr
+INFO: target library version /cad/synopsys/dc_shell/G-2012.06-SP5-1/libraries/syn
+lsi_10k/FJK*
+###########################################################################
+# Include Synopsys Designware library
+###########################################################################
+# Designware will not be used in sparc control blocks
+set synthetic_library {}
+set link_path [concat  $link_library $synthetic_library]
+* lsi_10k.db
+###########################################################################
+# Timing paramaters
+###########################################################################
+set max_transition   0.15
+0.15
+set max_fanout         6
+6
+# default input/output delays
+set default_input_delay  0.15
+Information: Use of Variable 'default_input_delay' is not recommended. This variable will be obsolete in a future release. (INFO-101)
+0.15
+set default_output_delay 0.2
+Information: Use of Variable 'default_output_delay' is not recommended. This variable will be obsolete in a future release. (INFO-101)
+0.2
+set critical_range       0.30
+0.30
+# default number of worst path reported
+set num_of_path 50
+50
+#default compile style for io is to not flatten the whole design
+set compile_flatten_all 0
+0
+0
+set rtl_files {libs/cl/cl_rtl_ext.v
+libs/cl/cl_a1/cl_a1.behV
+libs/cl/cl_u1/cl_u1.behV
+libs/cl/cl_dp1/cl_dp1.behV
+libs/cl/cl_sc1/cl_sc1.behV
+libs/cl/cl_mc1/cl_mc1.v
+
+libs/n2sram/mp/n2_frf_mp_256x78_cust_l/n2_frf_mp_256x78_cust/rtl/n2_frf_mp_256x78_cust.v
+
+design/sys/iop/spc/fgu/rtl/fgu.v
+design/sys/iop/spc/fgu/rtl/fgu_fac_ctl.v
+design/sys/iop/spc/fgu/rtl/fgu_fad_dp.v
+design/sys/iop/spc/fgu/rtl/fgu_fdc_ctl.v
+design/sys/iop/spc/fgu/rtl/fgu_fdd_dp.v
+design/sys/iop/spc/fgu/rtl/fgu_fec_ctl.v
+design/sys/iop/spc/fgu/rtl/fgu_fgd_dp.v
+design/sys/iop/spc/fgu/rtl/fgu_fic_ctl.v
+design/sys/iop/spc/fgu/rtl/fgu_fpc_ctl.v
+design/sys/iop/spc/fgu/rtl/fgu_fpe_dp.v
+design/sys/iop/spc/fgu/rtl/fgu_fpf_dp.v
+design/sys/iop/spc/fgu/rtl/fgu_fpy_dp.v
+design/sys/iop/spc/fgu/rtl/fgu_rep_dp.v
+}
+libs/cl/cl_rtl_ext.v
+libs/cl/cl_a1/cl_a1.behV
+libs/cl/cl_u1/cl_u1.behV
+libs/cl/cl_dp1/cl_dp1.behV
+libs/cl/cl_sc1/cl_sc1.behV
+libs/cl/cl_mc1/cl_mc1.v
+
+libs/n2sram/mp/n2_frf_mp_256x78_cust_l/n2_frf_mp_256x78_cust/rtl/n2_frf_mp_256x78_cust.v
+
+design/sys/iop/spc/fgu/rtl/fgu.v
+design/sys/iop/spc/fgu/rtl/fgu_fac_ctl.v
+design/sys/iop/spc/fgu/rtl/fgu_fad_dp.v
+design/sys/iop/spc/fgu/rtl/fgu_fdc_ctl.v
+design/sys/iop/spc/fgu/rtl/fgu_fdd_dp.v
+design/sys/iop/spc/fgu/rtl/fgu_fec_ctl.v
+design/sys/iop/spc/fgu/rtl/fgu_fgd_dp.v
+design/sys/iop/spc/fgu/rtl/fgu_fic_ctl.v
+design/sys/iop/spc/fgu/rtl/fgu_fpc_ctl.v
+design/sys/iop/spc/fgu/rtl/fgu_fpe_dp.v
+design/sys/iop/spc/fgu/rtl/fgu_fpf_dp.v
+design/sys/iop/spc/fgu/rtl/fgu_fpy_dp.v
+design/sys/iop/spc/fgu/rtl/fgu_rep_dp.v
+
+set link_library [concat $link_library    dw_foundation.sldb ]
+* lsi_10k.db dw_foundation.sldb
+set mix_files {}
+set top_module fgu
+fgu
+set include_paths {}
+set black_box_libs {}
+set black_box_designs {}
+set mem_libs {}
+set dont_touch_modules {}
+set compile_effort   "medium"
+medium
+set compile_flatten_all 1
+1
+set compile_no_new_cells_at_top_level false
+false
+set default_clk l2clk
+l2clk
+set default_clk_freq  1400
+1400
+set default_setup_skew  0.0
+0.0
+set default_hold_skew  0.0
+0.0
+set default_clk_transition  0.05
+0.05
+set clk_list {                                        { l2clk           1400.0   0.000   0.000   0.05}        }
+                                        { l2clk           1400.0   0.000   0.000   0.05}        
+set ideal_net_list {}
+set false_path_list {}
+set enforce_input_fanout_one     0
+0
+set allow_outport_drive_innodes  1
+1
+set skip_scan            0
+0
+set add_lockup_latch     false
+false
+set chain_count          1
+1
+set scanin_port_list     {}
+set scanout_port_list    {}
+set scanenable_port      global_shift_enable
+global_shift_enable
+set has_test_stub        1
+1
+set scanenable_pin       test_stub_no_bist/se
+test_stub_no_bist/se
+set long_chain_so_0_net  long_chain_so_0
+long_chain_so_0
+set short_chain_so_0_net short_chain_so_0
+short_chain_so_0
+set so_0_net             so_0
+so_0
+set insert_extra_lockup_latch 0
+0
+set extra_lockup_latch_clk_list {}
+set search_path [concat $search_path script/]
+. /cad/synopsys/dc_shell/G-2012.06-SP5-1/libraries/syn /cad/synopsys/dc_shell/G-2012.06-SP5-1/minpower/syn /cad/synopsys/dc_shell/G-2012.06-SP5-1/dw/syn_ver /cad/synopsys/dc_shell/G-2012.06-SP5-1/dw/sim_ver /cad/synopsys/dc_shell/G-2012.06-SP5-1/libraries/syn script/
+set search_path [concat $syn_home    $search_path ]
+/cad/synopsys/dc_shell/G-2012.06-SP5-1/libraries/syn . /cad/synopsys/dc_shell/G-2012.06-SP5-1/libraries/syn /cad/synopsys/dc_shell/G-2012.06-SP5-1/minpower/syn /cad/synopsys/dc_shell/G-2012.06-SP5-1/dw/syn_ver /cad/synopsys/dc_shell/G-2012.06-SP5-1/dw/sim_ver /cad/synopsys/dc_shell/G-2012.06-SP5-1/libraries/syn script/
+foreach include_path $include_paths {
+   set search_path [concat $search_path $dv_root/$include_path]
+}
+sh date
+Fri Aug  2 18:02:56 PDT 2013
+set link_library [concat $link_library                          $mem_libs                          $black_box_designs]
+* lsi_10k.db dw_foundation.sldb
+set target_library $syn_home/lsi_10k.db 
+/cad/synopsys/dc_shell/G-2012.06-SP5-1/libraries/syn/lsi_10k.db
+set target_library [concat $target_library                            $mem_libs]
+/cad/synopsys/dc_shell/G-2012.06-SP5-1/libraries/syn/lsi_10k.db
+set hdlin_enable_vpp true
+Information: Variable 'hdlin_enable_vpp' is obsolete and is being ignored. (INFO-100)
+true
+set hdlin_auto_save_templates false
+false
+define_design_lib WORK -path .template
+1
+set verilogout_single_bit false
+false
+set hdlout_internal_busses true
+true
+set bus_naming_style {%s[%d]}
+%s[%d]
+set bus_inference_style $bus_naming_style
+%s[%d]
+echo $search_path
+/cad/synopsys/dc_shell/G-2012.06-SP5-1/libraries/syn . /cad/synopsys/dc_shell/G-2012.06-SP5-1/libraries/syn /cad/synopsys/dc_shell/G-2012.06-SP5-1/minpower/syn /cad/synopsys/dc_shell/G-2012.06-SP5-1/dw/syn_ver /cad/synopsys/dc_shell/G-2012.06-SP5-1/dw/sim_ver /cad/synopsys/dc_shell/G-2012.06-SP5-1/libraries/syn script/
+###########################################################################
+# 2. Read Designs
+###########################################################################
+set all_rtl_files  { }
+ 
+foreach rtl_file $rtl_files {
+    set full_file_path $dv_root/$rtl_file
+    set all_rtl_files [concat $all_rtl_files $full_file_path ]
+}
+analyze -format verilog -define RUNDC $all_rtl_files
+Running PRESTO HDLC
+Compiling source file /scratch0/linhai88/OST2/OST2.design/libs/cl/cl_rtl_ext.v
+Compiling source file /scratch0/linhai88/OST2/OST2.design/libs/cl/cl_a1/cl_a1.behV
+Warning:  /scratch0/linhai88/OST2/OST2.design/libs/cl/cl_a1/cl_a1.behV:1812: The statements in initial blocks are ignored. (VER-281)
+Compiling source file /scratch0/linhai88/OST2/OST2.design/libs/cl/cl_u1/cl_u1.behV
+Compiling source file /scratch0/linhai88/OST2/OST2.design/libs/cl/cl_dp1/cl_dp1.behV
+Warning:  /scratch0/linhai88/OST2/OST2.design/libs/cl/cl_dp1/cl_dp1.behV:402: The statements in initial blocks are ignored. (VER-281)
+Warning:  /scratch0/linhai88/OST2/OST2.design/libs/cl/cl_dp1/cl_dp1.behV:447: The statements in initial blocks are ignored. (VER-281)
+Compiling source file /scratch0/linhai88/OST2/OST2.design/libs/cl/cl_sc1/cl_sc1.behV
+Warning:  /scratch0/linhai88/OST2/OST2.design/libs/cl/cl_sc1/cl_sc1.behV:1812: The statements in initial blocks are ignored. (VER-281)
+Compiling source file /scratch0/linhai88/OST2/OST2.design/libs/cl/cl_mc1/cl_mc1.v
+Compiling source file /scratch0/linhai88/OST2/OST2.design/libs/n2sram/mp/n2_frf_mp_256x78_cust_l/n2_frf_mp_256x78_cust/rtl/n2_frf_mp_256x78_cust.v
+Compiling source file /scratch0/linhai88/OST2/OST2.design/design/sys/iop/spc/fgu/rtl/fgu.v
+Warning:  /scratch0/linhai88/OST2/OST2.design/libs/n2sram/mp/n2_frf_mp_256x78_cust_l/n2_frf_mp_256x78_cust/rtl/n2_frf_mp_256x78_cust.v:1079: The statements in initial blocks are ignored. (VER-281)
+Compiling source file /scratch0/linhai88/OST2/OST2.design/design/sys/iop/spc/fgu/rtl/fgu_fac_ctl.v
+Compiling source file /scratch0/linhai88/OST2/OST2.design/design/sys/iop/spc/fgu/rtl/fgu_fad_dp.v
+Compiling source file /scratch0/linhai88/OST2/OST2.design/design/sys/iop/spc/fgu/rtl/fgu_fdc_ctl.v
+Compiling source file /scratch0/linhai88/OST2/OST2.design/design/sys/iop/spc/fgu/rtl/fgu_fdd_dp.v
+Compiling source file /scratch0/linhai88/OST2/OST2.design/design/sys/iop/spc/fgu/rtl/fgu_fec_ctl.v
+Compiling source file /scratch0/linhai88/OST2/OST2.design/design/sys/iop/spc/fgu/rtl/fgu_fgd_dp.v
+Compiling source file /scratch0/linhai88/OST2/OST2.design/design/sys/iop/spc/fgu/rtl/fgu_fic_ctl.v
+Compiling source file /scratch0/linhai88/OST2/OST2.design/design/sys/iop/spc/fgu/rtl/fgu_fpc_ctl.v
+Compiling source file /scratch0/linhai88/OST2/OST2.design/design/sys/iop/spc/fgu/rtl/fgu_fpe_dp.v
+Compiling source file /scratch0/linhai88/OST2/OST2.design/design/sys/iop/spc/fgu/rtl/fgu_fpf_dp.v
+Compiling source file /scratch0/linhai88/OST2/OST2.design/design/sys/iop/spc/fgu/rtl/fgu_fpy_dp.v
+Compiling source file /scratch0/linhai88/OST2/OST2.design/design/sys/iop/spc/fgu/rtl/fgu_rep_dp.v
+Presto compilation completed successfully.
+Loading db file '/cad/synopsys/dc_shell/G-2012.06-SP5-1/libraries/syn/lsi_10k.db'
+Loading db file '/cad/synopsys/dc_shell/G-2012.06-SP5-1/libraries/syn/dw_foundation.sldb'
+1
+elaborate $top_module
+Loading db file '/cad/synopsys/dc_shell/G-2012.06-SP5-1/libraries/syn/gtech.db'
+Loading db file '/cad/synopsys/dc_shell/G-2012.06-SP5-1/libraries/syn/standard.sldb'
+  Loading link library 'lsi_10k'
+  Loading link library 'gtech'
+Running PRESTO HDLC
+Presto compilation completed successfully.
+Elaborated 1 design.
+Current design is now 'fgu'.
+Information: Building the design 'fgu_rep_dp'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fpf_dp'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fpy_dp'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fpe_dp'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fpc_ctl'. (HDL-193)
+Warning:  /scratch0/linhai88/OST2/OST2.design/design/sys/iop/spc/fgu/rtl/fgu_fpc_ctl.v:4926: Module 'fgu_fpc_ctl' contains a supply0 variable 'vss'. Replacing with wire driven by a continuous assignment to 0. (ELAB-338)
+Warning:  /scratch0/linhai88/OST2/OST2.design/design/sys/iop/spc/fgu/rtl/fgu_fpc_ctl.v:4926: Module 'fgu_fpc_ctl' contains a supply1 variable 'vdd'. Replacing with wire driven by a continuous assignment to 1. (ELAB-338)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fic_ctl'. (HDL-193)
+Warning:  /scratch0/linhai88/OST2/OST2.design/design/sys/iop/spc/fgu/rtl/fgu_fic_ctl.v:1116: Module 'fgu_fic_ctl' contains a supply0 variable 'vss'. Replacing with wire driven by a continuous assignment to 0. (ELAB-338)
+Warning:  /scratch0/linhai88/OST2/OST2.design/design/sys/iop/spc/fgu/rtl/fgu_fic_ctl.v:1116: Module 'fgu_fic_ctl' contains a supply1 variable 'vdd'. Replacing with wire driven by a continuous assignment to 1. (ELAB-338)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fgd_dp'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fdd_dp'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fdc_ctl'. (HDL-193)
+Warning:  /scratch0/linhai88/OST2/OST2.design/design/sys/iop/spc/fgu/rtl/fgu_fdc_ctl.v:2194: Module 'fgu_fdc_ctl' contains a supply0 variable 'vss'. Replacing with wire driven by a continuous assignment to 0. (ELAB-338)
+Warning:  /scratch0/linhai88/OST2/OST2.design/design/sys/iop/spc/fgu/rtl/fgu_fdc_ctl.v:2194: Module 'fgu_fdc_ctl' contains a supply1 variable 'vdd'. Replacing with wire driven by a continuous assignment to 1. (ELAB-338)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fad_dp'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fac_ctl'. (HDL-193)
+Warning:  /scratch0/linhai88/OST2/OST2.design/design/sys/iop/spc/fgu/rtl/fgu_fac_ctl.v:3655: Module 'fgu_fac_ctl' contains a supply0 variable 'vss'. Replacing with wire driven by a continuous assignment to 0. (ELAB-338)
+Warning:  /scratch0/linhai88/OST2/OST2.design/design/sys/iop/spc/fgu/rtl/fgu_fac_ctl.v:3655: Module 'fgu_fac_ctl' contains a supply1 variable 'vdd'. Replacing with wire driven by a continuous assignment to 1. (ELAB-338)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fec_ctl'. (HDL-193)
+Warning:  /scratch0/linhai88/OST2/OST2.design/design/sys/iop/spc/fgu/rtl/fgu_fec_ctl.v:868: Module 'fgu_fec_ctl' contains a supply0 variable 'vss'. Replacing with wire driven by a continuous assignment to 0. (ELAB-338)
+Warning:  /scratch0/linhai88/OST2/OST2.design/design/sys/iop/spc/fgu/rtl/fgu_fec_ctl.v:868: Module 'fgu_fec_ctl' contains a supply1 variable 'vdd'. Replacing with wire driven by a continuous assignment to 1. (ELAB-338)
+Presto compilation completed successfully.
+Information: Building the design 'n2_frf_mp_256x78_cust'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_rep_dp_buff_macro__rep_1__width_64'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_rep_dp_buff_macro__rep_1__stack_88c__width_64'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_rep_dp_buff_macro__rep_1__width_52'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_rep_dp_buff_macro__rep_1__width_2'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_rep_dp_buff_macro__rep_1__width_1'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_rep_dp_buff_macro__rep_1__width_8'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_rep_dp_buff_macro__rep_1__width_3'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fpf_dp_buff_macro__dbuff_32x__rep_1__width_4'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fpf_dp_mux_macro__mux_pgpe__ports_2__width_32'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fpf_dp_buff_macro__width_2'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fpf_dp_mux_macro__dmux_6x__mux_aonpe__ports_4__width_64'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fpf_dp_buff_macro__width_64'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fpf_dp_inv_macro__width_64'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fpf_dp_cla_macro__width_16'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fpf_dp_cmp_macro__width_16'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fpf_dp_nor_macro__ports_2__width_3'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fpf_dp_nand_macro__ports_4__width_4'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fpf_dp_xnor_macro__ports_2__width_1'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fpf_dp_inv_macro__width_1'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fpf_dp_or_macro__ports_2__width_2'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fpf_dp_and_macro__ports_4__width_2'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fpf_dp_cmp_macro__width_32'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fpf_dp_zero_macro__width_64'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fpf_dp_buff_macro__width_7'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fpf_dp_inv_macro__width_6'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fpf_dp_or_macro__ports_2__width_6'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fpf_dp_cmp_macro__width_12'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fpf_dp_and_macro__ports_2__width_8'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fpf_dp_zero_macro__width_12'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fpf_dp_mux_macro__buffsel_none__mux_aonpe__ports_2__width_1'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fpf_dp_nand_macro__ports_4__width_1'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fpf_dp_inv_macro__width_3'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fpf_dp_nand_macro__ports_2__width_3'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fpf_dp_nor_macro__ports_2__width_2'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fpf_dp_msff_macro__mux_aope__ports_2__width_64'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fpf_dp_msff_macro__mux_aope__ports_3__width_64'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fpf_dp_msff_macro__width_29'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fpf_dp_mux_macro__buffsel_none__mux_aonpe__ports_2__width_2'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fpf_dp_nand_macro__ports_4__width_3'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fpf_dp_inv_macro__width_63'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fpf_dp_mux_macro__dmux_6x__mux_aonpe__ports_2__width_63'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fpf_dp_nand_macro__ports_2__width_18'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fpf_dp_buff_macro__dbuff_48x__width_1'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fpf_dp_mux_macro__mux_pgdec__ports_8__width_64'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fpf_dp_mux_macro__mux_aodec__ports_8__width_64'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fpf_dp_and_macro__ports_2__width_31'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fpf_dp_mux_macro__mux_aodec__ports_8__width_57'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fpf_dp_buff_macro__dbuff_32x__width_1'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fpf_dp_mux_macro__mux_pgdec__ports_8__width_14'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fpf_dp_msff_macro__width_64'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fpf_dp_msff_macro__width_54'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fpf_dp_inv_macro__width_2'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fpf_dp_and_macro__ports_3__width_4'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fpf_dp_mux_macro__mux_pgpe__ports_2__width_64'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fpf_dp_mux_macro__mux_pgpe__ports_4__width_64'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fpf_dp_or_macro__ports_2__width_1'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fpf_dp_nand_macro__ports_2__width_6'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fpf_dp_cla_macro__width_64'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fpf_dp_msff_macro__width_14'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fpf_dp_mux_macro__mux_pgpe__ports_7__width_64'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fpf_dp_mux_macro__mux_pgpe__ports_8__width_29'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fpf_dp_mux_macro__mux_pgdec__ports_8__width_59'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fpf_dp_mux_macro__mux_pgdec__ports_8__width_52'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fpf_dp_increment_macro__width_64'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fpf_dp_mux_macro__mux_aope__ports_2__width_52'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fpf_dp_mux_macro__mux_aope__ports_5__width_64'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fpf_dp_msff_macro__mux_aope__ports_6__width_64'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fpf_dp_mux_macro__mux_aonpe__ports_6__width_64'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fpf_dp_buff_macro__rep_1__width_64'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fpf_dp_msff_macro__width_58'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fpf_dp_prty_macro__width_32'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fpf_dp_prty_macro__width_16'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fpf_dp_prty_macro__width_8'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fpy_dp_buff_macro__dbuff_32x__rep_1__stack_88c__width_4'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fpy_dp_msff_macro__minbuff_1__stack_88c__width_64'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fpy_dp_msff_macro__stack_88c__width_64'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fpy_dp_buff_macro__stack_88c__width_4'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fpy_dp_inv_macro__stack_88c__width_1'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fpy_dp_buff_macro__stack_88c__width_2'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fpy_dp_buff_macro__dbuff_48x__stack_88c__width_1'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fpy_dp_mux_macro__mux_pgpe__ports_6__stack_88c__width_69'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fpy_dp_booth_encode_macro'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fpy_dp_xor_macro__ports_2__stack_88c__width_63'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fpy_dp_msff_macro__stack_88c__width_65'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fpy_dp_buff_macro__stack_88c__width_65'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fpy_dp_msff_macro__stack_88c__width_63'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fpy_dp_buff_macro__stack_88c__width_3'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fpy_dp_msff_macro__mux_aope__ports_5__stack_88c__width_64'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fpy_dp_buff_macro__stack_88c__width_64'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fpy_dp_inv_macro__stack_88c__width_64'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fpy_dp_mux_macro__mux_aonpe__ports_5__stack_88c__width_65'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fpy_dp_csa32_macro__stack_88c__width_69'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fpy_dp_csa32_macro__stack_88c__width_73'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fpy_dp_csa42_macro__stack_88c__width_81'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fpy_dp_msff_macro__stack_88c__width_39'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fpy_dp_msff_macro__stack_88c__width_44'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fpy_dp_msff_macro__stack_88c__width_37'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fpy_dp_msff_macro__stack_88c__width_31'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fpy_dp_msff_macro__stack_88c__width_41'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fpy_dp_msff_macro__mux_aope__ports_4__stack_88c__width_64'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fpy_dp_mux_macro__mux_aope__ports_2__stack_88c__width_64'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fpy_dp_csa32_macro__stack_88c__width_68'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fpy_dp_csa42_macro__stack_88c__width_74'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fpy_dp_msff_macro__stack_88c__width_40'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fpy_dp_msff_macro__stack_88c__width_36'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fpy_dp_csa32_macro__stack_88c__width_25'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fpy_dp_csa42_macro__stack_88c__width_3'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fpy_dp_csa42_macro__stack_96c__width_96'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fpy_dp_csa42_macro__stack_96c__width_92'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fpy_dp_csa42_macro__stack_88c__width_32'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fpy_dp_msff_macro__mux_aope__ports_5__stack_88c__width_72'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fpy_dp_msff_macro__mux_aonpe__ports_3__stack_88c__width_62'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fpy_dp_msff_macro__mux_aonpe__ports_3__stack_88c__width_69'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fpy_dp_xor_macro__ports_2__stack_88c__width_64'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fpy_dp_msff_macro__mux_aope__ports_6__stack_88c__width_72'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fpy_dp_msff_macro__mux_aope__ports_6__stack_88c__width_64'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fpy_dp_msff_macro__stack_88c__width_4'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'cl_dp1_add136_8x'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fpy_dp_buff_macro__stack_88c__width_1'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fpy_dp_msff_macro__mux_aope__ports_7__stack_88c__width_68'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fpy_dp_msff_macro__mux_aope__ports_2__stack_88c__width_64'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fpe_dp_buff_macro__dbuff_32x__rep_1__stack_32l__width_4'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fpe_dp_msff_macro__stack_32l__width_18'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fpe_dp_buff_macro__dbuff_32x__stack_32l__width_1'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fpe_dp_mux_macro__mux_pgpe__ports_8__stack_32l__width_11'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fpe_dp_mux_macro__mux_pgpe__ports_4__stack_32l__width_11'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fpe_dp_inv_macro__stack_32l__width_11'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fpe_dp_cla_macro__width_12'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fpe_dp_msff_macro__mux_aonpe__ports_2__stack_32l__width_22'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fpe_dp_inv_macro__stack_32l__width_21'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fpe_dp_mux_macro__mux_pgpe__ports_7__stack_32l__width_11'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fpe_dp_buff_macro__width_12'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fpe_dp_msff_macro__stack_32l__width_11'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fpe_dp_mux_macro__mux_aope__ports_5__stack_32l__width_11'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fpe_dp_inv_macro__stack_32l__width_6'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fpe_dp_mux_macro__mux_aope__ports_4__stack_32l__width_12'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fpe_dp_msff_macro__stack_32l__width_24'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fpe_dp_increment_macro__width_12'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fpe_dp_mux_macro__buffsel_none__mux_aonpe__ports_2__stack_32l__width_1'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fpe_dp_inv_macro__stack_32l__width_8'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fpe_dp_cmp_macro__width_12'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fpe_dp_nand_macro__ports_2__stack_32l__width_2'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fpe_dp_inv_macro__stack_32l__width_2'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fpe_dp_nand_macro__dnand_8x__ports_2__stack_32l__width_4'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fpe_dp_mux_macro__mux_aope__ports_3__stack_32l__width_11'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fpc_ctl_l1clkhdr_ctl_macro'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fpc_ctl_spare_ctl_macro__num_9'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fpc_ctl_msff_ctl_macro__width_3'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fpc_ctl_msff_ctl_macro__width_2'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fpc_ctl_msff_ctl_macro__width_8'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fpc_ctl_msff_ctl_macro__width_51'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fpc_ctl_msff_ctl_macro__width_14'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fpc_ctl_msff_ctl_macro__width_17'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fpc_ctl_msff_ctl_macro__width_4'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fpc_ctl_msff_ctl_macro__width_6'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fpc_ctl_msff_ctl_macro__width_7'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fpc_ctl_msff_ctl_macro__width_20'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fpc_ctl_msff_ctl_macro__width_15'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fpc_ctl_msff_ctl_macro__width_13'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fpc_ctl_msff_ctl_macro__width_5'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fpc_ctl_msff_ctl_macro__width_10'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fpc_ctl_msff_ctl_macro__width_28'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fpc_ctl_msff_ctl_macro__width_18'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fpc_ctl_msff_ctl_macro__width_16'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fpc_ctl_msff_ctl_macro__width_37'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fpc_ctl_msff_ctl_macro__width_38'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fpc_ctl_msff_ctl_macro__width_88'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fpc_ctl_msff_ctl_macro__width_11'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fpc_ctl_msff_ctl_macro__width_1'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fpc_ctl_msff_ctl_macro__width_19'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fpc_ctl_msff_ctl_macro__width_36'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fpc_ctl_msff_ctl_macro__width_31'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fic_ctl_l1clkhdr_ctl_macro'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fic_ctl_spare_ctl_macro__num_2'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fic_ctl_msff_ctl_macro__width_43'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fic_ctl_msff_ctl_macro__width_14'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fic_ctl_msff_ctl_macro__width_2'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fic_ctl_msff_ctl_macro__width_6'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fgd_dp_buff_macro__dbuff_32x__rep_1__width_4'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fgd_dp_msff_macro__width_64'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fgd_dp_msff_macro__stack_32l__width_32'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fgd_dp_mux_macro__buffsel_none__mux_aonpe__ports_2__width_12'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fgd_dp_csa42_macro__width_1'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fgd_dp_cla_macro__width_4'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fgd_dp_buff_macro__width_64'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fgd_dp_msff_macro__minbuff_1__width_64'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fgd_dp_msff_macro__width_32'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fgd_dp_msff_macro__width_33'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fgd_dp_inv_macro__width_64'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fgd_dp_buff_macro__width_8'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fgd_dp_nand_macro__ports_3__width_64'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fgd_dp_nand_macro__ports_4__width_64'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fgd_dp_mux_macro__mux_aodec__ports_8__width_8'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fgd_dp_mux_macro__mux_pgpe__ports_2__width_8'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fgd_dp_mux_macro__mux_aodec__ports_8__width_64'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fgd_dp_xnor_macro__ports_2__width_1'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fgd_dp_nor_macro__ports_2__width_1'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fgd_dp_msff_macro__mux_aope__ports_6__width_64'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fgd_dp_inv_macro__width_1'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fgd_dp_nand_macro__ports_2__width_1'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fgd_dp_mux_macro__mux_aope__ports_2__width_32'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fgd_dp_and_macro__ports_2__width_12'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fgd_dp_mux_macro__mux_aodec__ports_4__width_16'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fgd_dp_and_macro__ports_2__width_3'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fgd_dp_and_macro__ports_2__width_1'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fgd_dp_mux_macro__mux_aope__ports_2__width_16'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fgd_dp_mux_macro__mux_aodec__ports_4__width_28'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fgd_dp_mux_macro__mux_aodec__ports_4__width_31'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fgd_dp_mux_macro__mux_aodec__ports_4__width_12'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fgd_dp_mux_macro__mux_aodec__ports_4__width_15'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fgd_dp_cla_macro__width_8'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fgd_dp_mux_macro__mux_aope__ports_3__width_8'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fgd_dp_csa42_macro__width_8'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fgd_dp_msff_macro__width_48'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fgd_dp_msff_macro__width_50'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fgd_dp_msff_macro__width_62'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fgd_dp_msff_macro__width_37'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fgd_dp_msff_macro__width_34'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fgd_dp_msff_macro__stack_32l__width_6'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fgd_dp_msff_macro__mux_aope__ports_2__stack_32l__width_32'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fgd_dp_mux_macro__mux_aodec__ports_8__stack_32l__width_32'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fgd_dp_buff_macro__stack_32l__width_32'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fgd_dp_buff_macro__dbuff_48x__stack_32l__width_1'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fgd_dp_mux_macro__mux_pgdec__ports_8__stack_32l__width_32'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fgd_dp_zero_macro__width_32'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fgd_dp_cmp_macro__width_32'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fgd_dp_zero_macro__width_16'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fgd_dp_inv_macro__width_8'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fgd_dp_and_macro__ports_3__width_2'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fgd_dp_mux_macro__buffsel_none__mux_aonpe__ports_2__width_2'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fgd_dp_mux_macro__mux_aope__ports_7__width_8'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fgd_dp_csa42_macro__width_9'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fgd_dp_csa32_macro__width_10'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fgd_dp_cla_macro__width_12'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fgd_dp_increment_macro__width_64'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fgd_dp_msff_macro__mux_aope__ports_5__width_64'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fgd_dp_mux_macro__mux_pgpe__ports_5__stack_32l__width_31'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fgd_dp_mux_macro__mux_pgpe__ports_4__stack_32l__width_32'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fdd_dp_buff_macro__dbuff_32x__rep_1__stack_66c__width_4'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fdd_dp_msff_macro__stack_66c__width_64'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fdd_dp_msff_macro__mux_aope__ports_3__stack_66c__width_64'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fdd_dp_msff_macro__mux_aope__ports_4__stack_66c__width_64'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fdd_dp_mux_macro__mux_aodec__ports_8__stack_66c__width_64'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fdd_dp_buff_macro__stack_66c__width_2'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fdd_dp_xor_macro__ports_2__stack_66c__width_64'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fdd_dp_mux_macro__mux_aonpe__ports_5__stack_66c__width_66'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fdd_dp_mux_macro__mux_aonpe__ports_3__stack_66c__width_66'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fdd_dp_or_macro__ports_2__width_1'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fdd_dp_nor_macro__ports_2__width_1'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fdd_dp_msff_macro__mux_aonpe__ports_4__stack_66c__width_66'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fdd_dp_msff_macro__mux_aonpe__ports_4__stack_66c__width_64'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fdd_dp_or_macro__ports_2__stack_66c__width_66'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fdd_dp_xor_macro__ports_2__stack_66c__width_66'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fdd_dp_nor_macro__ports_2__stack_66c__width_65'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fdd_dp_msff_macro__mux_aonpe__ports_4__stack_66c__width_65'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fdd_dp_or_macro__ports_2__stack_66c__width_65'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fdd_dp_csa32_macro__stack_66c__width_65'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fdd_dp_mux_macro__dmux_6x__mux_aonpe__ports_3__stack_66c__width_65'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fdd_dp_mux_macro__dmux_6x__mux_aonpe__ports_3__stack_66c__width_64'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fdd_dp_mux_macro__mux_aonpe__ports_3__stack_66c__width_65'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fdd_dp_mux_macro__mux_aope__ports_2__stack_66c__width_64'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fdd_dp_msff_macro__stack_66c__width_66'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fdd_dp_inv_macro__stack_66c__width_65'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fdd_dp_mux_macro__mux_aope__ports_4__stack_66c__width_64'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fdd_dp_csa32_macro__stack_66c__width_64'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fdd_dp_msff_macro__mux_aope__ports_6__stack_66c__width_65'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fdd_dp_msff_macro__mux_aope__ports_4__stack_66c__width_65'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fdd_dp_cla_macro__width_64'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fdd_dp_and_macro__ports_2__stack_66c__width_1'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'cl_dp1_zdt64_8x'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fdd_dp_msff_macro__mux_aope__ports_6__stack_66c__width_64'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fdd_dp_msff_macro__mux_aope__ports_2__stack_66c__width_66'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fdd_dp_inv_macro__stack_66c__width_66'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fdd_dp_msff_macro__mux_aonpe__ports_2__stack_66c__width_66'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fdd_dp_mux_macro__mux_aonpe__ports_2__stack_66c__width_66'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fdd_dp_nand_macro__ports_3__stack_66c__width_66'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fdd_dp_nand_macro__ports_2__stack_66c__width_65'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fdd_dp_nand_macro__ports_2__stack_66c__width_66'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fdc_ctl_l1clkhdr_ctl_macro'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fdc_ctl_spare_ctl_macro__num_3'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fdc_ctl_msff_ctl_macro__width_8'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fdc_ctl_msff_ctl_macro__width_10'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fdc_ctl_msff_ctl_macro__width_4'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fdc_ctl_msff_ctl_macro__width_9'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fdc_ctl_msff_ctl_macro__width_6'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fdc_ctl_msff_ctl_macro__width_1'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fad_dp_buff_macro__dbuff_32x__rep_1__width_4'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fad_dp_msff_macro__width_47'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fad_dp_msff_macro__width_23'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fad_dp_and_macro__ports_2__width_2'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fad_dp_cmp_macro__width_12'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fad_dp_nor_macro__ports_3__width_4'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fad_dp_nand_macro__ports_2__width_2'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fad_dp_msff_macro__dmux_4x__mux_aope__ports_7__width_64'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fad_dp_cmp_macro__width_64'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fad_dp_prty_macro__width_32'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fad_dp_mux_macro__mux_aonpe__ports_3__stack_32l__width_12'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fad_dp_msff_macro__mux_aodec__ports_8__stack_32l__width_28'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fad_dp_msff_macro__stack_32l__width_31'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fad_dp_msff_macro__stack_32l__width_32'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fad_dp_buff_macro__rep_1__stack_32l__width_31'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fad_dp_buff_macro__rep_1__stack_32l__width_32'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fad_dp_mux_macro__mux_aonpe__ports_5__width_64'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fad_dp_buff_macro__width_64'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fad_dp_mux_macro__mux_aonpe__ports_4__width_64'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fad_dp_buff_macro__rep_1__width_64'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fad_dp_mux_macro__mux_aope__ports_3__width_12'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fad_dp_inv_macro__width_5'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fad_dp_mux_macro__buffsel_none__mux_aonpe__ports_2__width_1'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fad_dp_or_macro__ports_2__width_2'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fad_dp_and_macro__ports_3__width_2'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fad_dp_mux_macro__buffsel_none__mux_aonpe__ports_2__width_2'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fad_dp_and_macro__ports_2__width_3'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fad_dp_mux_macro__mux_aonpe__ports_2__width_52'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fad_dp_mux_macro__mux_aope__ports_4__width_64'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fad_dp_msff_macro__width_64'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fad_dp_msff_macro__stack_32l__width_26'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fad_dp_inv_macro__width_1'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fad_dp_mux_macro__buffsel_none__mux_aonpe__ports_3__width_2'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fad_dp_mux_macro__mux_pgpe__ports_2__width_64'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fad_dp_mux_macro__buffsel_none__mux_aonpe__ports_2__width_8'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fad_dp_buff_macro__width_8'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fad_dp_msff_macro__minbuff_1__width_64'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fac_ctl_l1clkhdr_ctl_macro'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fac_ctl_spare_ctl_macro__num_5'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fac_ctl_msff_ctl_macro__width_10'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fac_ctl_msff_ctl_macro__width_37'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fac_ctl_msff_ctl_macro__width_17'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fac_ctl_msff_ctl_macro__width_9'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fac_ctl_msff_ctl_macro__width_128'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fac_ctl_msff_ctl_macro__width_21'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fac_ctl_msff_ctl_macro__width_4'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fac_ctl_msff_ctl_macro__width_16'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fac_ctl_msff_ctl_macro__width_60'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fac_ctl_msff_ctl_macro__width_3'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fac_ctl_msff_ctl_macro__width_52'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fac_ctl_msff_ctl_macro__width_31'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fac_ctl_msff_ctl_macro__width_26'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fac_ctl_msff_ctl_macro__width_25'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fac_ctl_msff_ctl_macro__width_53'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fac_ctl_msff_ctl_macro__width_12'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fac_ctl_msff_ctl_macro__width_6'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fac_ctl_msff_ctl_macro__width_5'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fec_ctl_l1clkhdr_ctl_macro'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fec_ctl_spare_ctl_macro__num_2'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fec_ctl_msff_ctl_macro__width_28'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fec_ctl_msff_ctl_macro__width_14'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fec_ctl_msff_ctl_macro__width_76'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fec_ctl_msff_ctl_macro__width_9'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fgu_fec_ctl_msff_ctl_macro__width_2'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'buff' instantiated from design 'fgu_rep_dp_buff_macro__rep_1__width_64' with
+	the parameters "64". (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'buff' instantiated from design 'fgu_rep_dp_buff_macro__rep_1__width_52' with
+	the parameters "52". (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'buff' instantiated from design 'fgu_rep_dp_buff_macro__rep_1__width_2' with
+	the parameters "2". (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'buff' instantiated from design 'fgu_rep_dp_buff_macro__rep_1__width_1' with
+	the parameters "1". (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'buff' instantiated from design 'fgu_rep_dp_buff_macro__rep_1__width_8' with
+	the parameters "8". (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'buff' instantiated from design 'fgu_rep_dp_buff_macro__rep_1__width_3' with
+	the parameters "3". (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'buff' instantiated from design 'fgu_fpf_dp_buff_macro__dbuff_32x__rep_1__width_4' with
+	the parameters "4". (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'cl_dp1_penc2_8x'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'mux2e' instantiated from design 'fgu_fpf_dp_mux_macro__mux_pgpe__ports_2__width_32' with
+	the parameters "32". (HDL-193)
+Warning:  /scratch0/linhai88/OST2/OST2.design/libs/cl/cl_rtl_ext.v:48: DEFAULT branch of CASE statement cannot be reached. (ELAB-311)
+
+Statistics for case statements in always block at line 46 in file
+	'/scratch0/linhai88/OST2/OST2.design/libs/cl/cl_rtl_ext.v'
+===============================================
+|           Line           |  full/ parallel  |
+===============================================
+|            48            |    auto/auto     |
+===============================================
+Presto compilation completed successfully.
+Information: Building the design 'cl_dp1_muxbuff4_8x'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'mux4s' instantiated from design 'fgu_fpf_dp_mux_macro__dmux_6x__mux_aonpe__ports_4__width_64' with
+	the parameters "64". (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'inv' instantiated from design 'fgu_fpf_dp_inv_macro__width_64' with
+	the parameters "64". (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'cla' instantiated from design 'fgu_fpf_dp_cla_macro__width_16' with
+	the parameters "16". (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'cmp' instantiated from design 'fgu_fpf_dp_cmp_macro__width_16' with
+	the parameters "16". (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'nor2' instantiated from design 'fgu_fpf_dp_nor_macro__ports_2__width_3' with
+	the parameters "3". (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'nand4' instantiated from design 'fgu_fpf_dp_nand_macro__ports_4__width_4' with
+	the parameters "4". (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'xnor2' instantiated from design 'fgu_fpf_dp_xnor_macro__ports_2__width_1' with
+	the parameters "1". (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'inv' instantiated from design 'fgu_fpf_dp_inv_macro__width_1' with
+	the parameters "1". (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'or2' instantiated from design 'fgu_fpf_dp_or_macro__ports_2__width_2' with
+	the parameters "2". (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'and4' instantiated from design 'fgu_fpf_dp_and_macro__ports_4__width_2' with
+	the parameters "2". (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'cmp' instantiated from design 'fgu_fpf_dp_cmp_macro__width_32' with
+	the parameters "32". (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'zero' instantiated from design 'fgu_fpf_dp_zero_macro__width_64' with
+	the parameters "64". (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'buff' instantiated from design 'fgu_fpf_dp_buff_macro__width_7' with
+	the parameters "7". (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'inv' instantiated from design 'fgu_fpf_dp_inv_macro__width_6' with
+	the parameters "6". (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'or2' instantiated from design 'fgu_fpf_dp_or_macro__ports_2__width_6' with
+	the parameters "6". (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'cmp' instantiated from design 'fgu_fpf_dp_cmp_macro__width_12' with
+	the parameters "12". (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'and2' instantiated from design 'fgu_fpf_dp_and_macro__ports_2__width_8' with
+	the parameters "8". (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'zero' instantiated from design 'fgu_fpf_dp_zero_macro__width_12' with
+	the parameters "12". (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'mux2s' instantiated from design 'fgu_fpf_dp_mux_macro__buffsel_none__mux_aonpe__ports_2__width_1' with
+	the parameters "1". (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'nand4' instantiated from design 'fgu_fpf_dp_nand_macro__ports_4__width_1' with
+	the parameters "1". (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'inv' instantiated from design 'fgu_fpf_dp_inv_macro__width_3' with
+	the parameters "3". (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'nand2' instantiated from design 'fgu_fpf_dp_nand_macro__ports_2__width_3' with
+	the parameters "3". (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'nor2' instantiated from design 'fgu_fpf_dp_nor_macro__ports_2__width_2' with
+	the parameters "2". (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'mux2s' instantiated from design 'fgu_fpf_dp_msff_macro__mux_aope__ports_2__width_64' with
+	the parameters "64". (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'cl_dp1_l1hdr_8x'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'dff' instantiated from design 'fgu_fpf_dp_msff_macro__mux_aope__ports_2__width_64' with
+	the parameters "64". (HDL-193)
+
+Inferred memory devices in process
+	in routine dff_SIZE64 line 1648 in file
+		'/scratch0/linhai88/OST2/OST2.design/libs/cl/cl_rtl_ext.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|        q_reg        | Flip-flop |  64   |  Y  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully.
+Information: Building the design 'cl_dp1_penc3_8x'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'mux3s' instantiated from design 'fgu_fpf_dp_msff_macro__mux_aope__ports_3__width_64' with
+	the parameters "64". (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'dff' instantiated from design 'fgu_fpf_dp_msff_macro__width_29' with
+	the parameters "29". (HDL-193)
+
+Inferred memory devices in process
+	in routine dff_SIZE29 line 1648 in file
+		'/scratch0/linhai88/OST2/OST2.design/libs/cl/cl_rtl_ext.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|        q_reg        | Flip-flop |  29   |  Y  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully.
+Information: Building the design 'mux2s' instantiated from design 'fgu_fpf_dp_mux_macro__buffsel_none__mux_aonpe__ports_2__width_2' with
+	the parameters "2". (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'nand4' instantiated from design 'fgu_fpf_dp_nand_macro__ports_4__width_3' with
+	the parameters "3". (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'inv' instantiated from design 'fgu_fpf_dp_inv_macro__width_63' with
+	the parameters "63". (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'cl_dp1_muxbuff2_8x'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'mux2s' instantiated from design 'fgu_fpf_dp_mux_macro__dmux_6x__mux_aonpe__ports_2__width_63' with
+	the parameters "63". (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'nand2' instantiated from design 'fgu_fpf_dp_nand_macro__ports_2__width_18' with
+	the parameters "18". (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'cl_dp1_pdec8_8x'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'mux8' instantiated from design 'fgu_fpf_dp_mux_macro__mux_pgdec__ports_8__width_64' with
+	the parameters "64". (HDL-193)
+
+Statistics for case statements in always block at line 306 in file
+	'/scratch0/linhai88/OST2/OST2.design/libs/cl/cl_rtl_ext.v'
+===============================================
+|           Line           |  full/ parallel  |
+===============================================
+|           308            |    auto/auto     |
+===============================================
+Presto compilation completed successfully.
+Information: Building the design 'mux8s' instantiated from design 'fgu_fpf_dp_mux_macro__mux_aodec__ports_8__width_64' with
+	the parameters "64". (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'and2' instantiated from design 'fgu_fpf_dp_and_macro__ports_2__width_31' with
+	the parameters "31". (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'mux8s' instantiated from design 'fgu_fpf_dp_mux_macro__mux_aodec__ports_8__width_57' with
+	the parameters "57". (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'mux8' instantiated from design 'fgu_fpf_dp_mux_macro__mux_pgdec__ports_8__width_14' with
+	the parameters "14". (HDL-193)
+
+Statistics for case statements in always block at line 306 in file
+	'/scratch0/linhai88/OST2/OST2.design/libs/cl/cl_rtl_ext.v'
+===============================================
+|           Line           |  full/ parallel  |
+===============================================
+|           308            |    auto/auto     |
+===============================================
+Presto compilation completed successfully.
+Information: Building the design 'dff' instantiated from design 'fgu_fpf_dp_msff_macro__width_54' with
+	the parameters "54". (HDL-193)
+
+Inferred memory devices in process
+	in routine dff_SIZE54 line 1648 in file
+		'/scratch0/linhai88/OST2/OST2.design/libs/cl/cl_rtl_ext.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|        q_reg        | Flip-flop |  54   |  Y  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully.
+Information: Building the design 'inv' instantiated from design 'fgu_fpf_dp_inv_macro__width_2' with
+	the parameters "2". (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'and3' instantiated from design 'fgu_fpf_dp_and_macro__ports_3__width_4' with
+	the parameters "4". (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'mux2e' instantiated from design 'fgu_fpf_dp_mux_macro__mux_pgpe__ports_2__width_64' with
+	the parameters "64". (HDL-193)
+Warning:  /scratch0/linhai88/OST2/OST2.design/libs/cl/cl_rtl_ext.v:48: DEFAULT branch of CASE statement cannot be reached. (ELAB-311)
+
+Statistics for case statements in always block at line 46 in file
+	'/scratch0/linhai88/OST2/OST2.design/libs/cl/cl_rtl_ext.v'
+===============================================
+|           Line           |  full/ parallel  |
+===============================================
+|            48            |    auto/auto     |
+===============================================
+Presto compilation completed successfully.
+Information: Building the design 'cl_dp1_penc4_8x'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'mux4' instantiated from design 'fgu_fpf_dp_mux_macro__mux_pgpe__ports_4__width_64' with
+	the parameters "64". (HDL-193)
+
+Statistics for case statements in always block at line 120 in file
+	'/scratch0/linhai88/OST2/OST2.design/libs/cl/cl_rtl_ext.v'
+===============================================
+|           Line           |  full/ parallel  |
+===============================================
+|           121            |    auto/auto     |
+===============================================
+Presto compilation completed successfully.
+Information: Building the design 'or2' instantiated from design 'fgu_fpf_dp_or_macro__ports_2__width_1' with
+	the parameters "1". (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'nand2' instantiated from design 'fgu_fpf_dp_nand_macro__ports_2__width_6' with
+	the parameters "6". (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'cla' instantiated from design 'fgu_fpf_dp_cla_macro__width_64' with
+	the parameters "64". (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'dff' instantiated from design 'fgu_fpf_dp_msff_macro__width_14' with
+	the parameters "14". (HDL-193)
+
+Inferred memory devices in process
+	in routine dff_SIZE14 line 1648 in file
+		'/scratch0/linhai88/OST2/OST2.design/libs/cl/cl_rtl_ext.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|        q_reg        | Flip-flop |  14   |  Y  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully.
+Information: Building the design 'cl_dp1_penc7_8x'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'mux7' instantiated from design 'fgu_fpf_dp_mux_macro__mux_pgpe__ports_7__width_64' with
+	the parameters "64". (HDL-193)
+
+Statistics for case statements in always block at line 255 in file
+	'/scratch0/linhai88/OST2/OST2.design/libs/cl/cl_rtl_ext.v'
+===============================================
+|           Line           |  full/ parallel  |
+===============================================
+|           257            |    auto/auto     |
+===============================================
+Presto compilation completed successfully.
+Information: Building the design 'cl_dp1_penc8_8x'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'mux8' instantiated from design 'fgu_fpf_dp_mux_macro__mux_pgpe__ports_8__width_29' with
+	the parameters "29". (HDL-193)
+
+Statistics for case statements in always block at line 306 in file
+	'/scratch0/linhai88/OST2/OST2.design/libs/cl/cl_rtl_ext.v'
+===============================================
+|           Line           |  full/ parallel  |
+===============================================
+|           308            |    auto/auto     |
+===============================================
+Presto compilation completed successfully.
+Information: Building the design 'mux8' instantiated from design 'fgu_fpf_dp_mux_macro__mux_pgdec__ports_8__width_59' with
+	the parameters "59". (HDL-193)
+
+Statistics for case statements in always block at line 306 in file
+	'/scratch0/linhai88/OST2/OST2.design/libs/cl/cl_rtl_ext.v'
+===============================================
+|           Line           |  full/ parallel  |
+===============================================
+|           308            |    auto/auto     |
+===============================================
+Presto compilation completed successfully.
+Information: Building the design 'mux8' instantiated from design 'fgu_fpf_dp_mux_macro__mux_pgdec__ports_8__width_52' with
+	the parameters "52". (HDL-193)
+
+Statistics for case statements in always block at line 306 in file
+	'/scratch0/linhai88/OST2/OST2.design/libs/cl/cl_rtl_ext.v'
+===============================================
+|           Line           |  full/ parallel  |
+===============================================
+|           308            |    auto/auto     |
+===============================================
+Presto compilation completed successfully.
+Information: Building the design 'incr' instantiated from design 'fgu_fpf_dp_increment_macro__width_64' with
+	the parameters "64". (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'mux2s' instantiated from design 'fgu_fpf_dp_mux_macro__mux_aope__ports_2__width_52' with
+	the parameters "52". (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'cl_dp1_penc5_8x'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'mux5s' instantiated from design 'fgu_fpf_dp_mux_macro__mux_aope__ports_5__width_64' with
+	the parameters "64". (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'cl_dp1_penc6_8x'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'mux6s' instantiated from design 'fgu_fpf_dp_msff_macro__mux_aope__ports_6__width_64' with
+	the parameters "64". (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'cl_dp1_muxbuff6_8x'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'dff' instantiated from design 'fgu_fpf_dp_msff_macro__width_58' with
+	the parameters "58". (HDL-193)
+
+Inferred memory devices in process
+	in routine dff_SIZE58 line 1648 in file
+		'/scratch0/linhai88/OST2/OST2.design/libs/cl/cl_rtl_ext.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|        q_reg        | Flip-flop |  58   |  Y  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully.
+Information: Building the design 'prty' instantiated from design 'fgu_fpf_dp_prty_macro__width_32' with
+	the parameters "32". (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'prty' instantiated from design 'fgu_fpf_dp_prty_macro__width_16' with
+	the parameters "16". (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'prty' instantiated from design 'fgu_fpf_dp_prty_macro__width_8' with
+	the parameters "8". (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'mux6' instantiated from design 'fgu_fpy_dp_mux_macro__mux_pgpe__ports_6__stack_88c__width_69' with
+	the parameters "69". (HDL-193)
+
+Statistics for case statements in always block at line 207 in file
+	'/scratch0/linhai88/OST2/OST2.design/libs/cl/cl_rtl_ext.v'
+===============================================
+|           Line           |  full/ parallel  |
+===============================================
+|           209            |    auto/auto     |
+===============================================
+Presto compilation completed successfully.
+Information: Building the design 'cl_dp1_boothenc_4x'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'xor2' instantiated from design 'fgu_fpy_dp_xor_macro__ports_2__stack_88c__width_63' with
+	the parameters "63". (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'dff' instantiated from design 'fgu_fpy_dp_msff_macro__stack_88c__width_65' with
+	the parameters "65". (HDL-193)
+
+Inferred memory devices in process
+	in routine dff_SIZE65 line 1648 in file
+		'/scratch0/linhai88/OST2/OST2.design/libs/cl/cl_rtl_ext.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|        q_reg        | Flip-flop |  65   |  Y  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully.
+Information: Building the design 'buff' instantiated from design 'fgu_fpy_dp_buff_macro__stack_88c__width_65' with
+	the parameters "65". (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'dff' instantiated from design 'fgu_fpy_dp_msff_macro__stack_88c__width_63' with
+	the parameters "63". (HDL-193)
+
+Inferred memory devices in process
+	in routine dff_SIZE63 line 1648 in file
+		'/scratch0/linhai88/OST2/OST2.design/libs/cl/cl_rtl_ext.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|        q_reg        | Flip-flop |  63   |  Y  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully.
+Information: Building the design 'cl_dp1_muxbuff5_8x'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'mux5s' instantiated from design 'fgu_fpy_dp_mux_macro__mux_aonpe__ports_5__stack_88c__width_65' with
+	the parameters "65". (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'csa32' instantiated from design 'fgu_fpy_dp_csa32_macro__stack_88c__width_69' with
+	the parameters "69". (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'csa32' instantiated from design 'fgu_fpy_dp_csa32_macro__stack_88c__width_73' with
+	the parameters "73". (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'csa42' instantiated from design 'fgu_fpy_dp_csa42_macro__stack_88c__width_81' with
+	the parameters "81". (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'dff' instantiated from design 'fgu_fpy_dp_msff_macro__stack_88c__width_39' with
+	the parameters "39". (HDL-193)
+
+Inferred memory devices in process
+	in routine dff_SIZE39 line 1648 in file
+		'/scratch0/linhai88/OST2/OST2.design/libs/cl/cl_rtl_ext.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|        q_reg        | Flip-flop |  39   |  Y  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully.
+Information: Building the design 'dff' instantiated from design 'fgu_fpy_dp_msff_macro__stack_88c__width_44' with
+	the parameters "44". (HDL-193)
+
+Inferred memory devices in process
+	in routine dff_SIZE44 line 1648 in file
+		'/scratch0/linhai88/OST2/OST2.design/libs/cl/cl_rtl_ext.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|        q_reg        | Flip-flop |  44   |  Y  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully.
+Information: Building the design 'dff' instantiated from design 'fgu_fpy_dp_msff_macro__stack_88c__width_37' with
+	the parameters "37". (HDL-193)
+
+Inferred memory devices in process
+	in routine dff_SIZE37 line 1648 in file
+		'/scratch0/linhai88/OST2/OST2.design/libs/cl/cl_rtl_ext.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|        q_reg        | Flip-flop |  37   |  Y  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully.
+Information: Building the design 'dff' instantiated from design 'fgu_fpy_dp_msff_macro__stack_88c__width_31' with
+	the parameters "31". (HDL-193)
+
+Inferred memory devices in process
+	in routine dff_SIZE31 line 1648 in file
+		'/scratch0/linhai88/OST2/OST2.design/libs/cl/cl_rtl_ext.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|        q_reg        | Flip-flop |  31   |  Y  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully.
+Information: Building the design 'dff' instantiated from design 'fgu_fpy_dp_msff_macro__stack_88c__width_41' with
+	the parameters "41". (HDL-193)
+
+Inferred memory devices in process
+	in routine dff_SIZE41 line 1648 in file
+		'/scratch0/linhai88/OST2/OST2.design/libs/cl/cl_rtl_ext.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|        q_reg        | Flip-flop |  41   |  Y  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully.
+Information: Building the design 'csa32' instantiated from design 'fgu_fpy_dp_csa32_macro__stack_88c__width_68' with
+	the parameters "68". (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'csa42' instantiated from design 'fgu_fpy_dp_csa42_macro__stack_88c__width_74' with
+	the parameters "74". (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'dff' instantiated from design 'fgu_fpy_dp_msff_macro__stack_88c__width_40' with
+	the parameters "40". (HDL-193)
+
+Inferred memory devices in process
+	in routine dff_SIZE40 line 1648 in file
+		'/scratch0/linhai88/OST2/OST2.design/libs/cl/cl_rtl_ext.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|        q_reg        | Flip-flop |  40   |  Y  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully.
+Information: Building the design 'dff' instantiated from design 'fgu_fpy_dp_msff_macro__stack_88c__width_36' with
+	the parameters "36". (HDL-193)
+
+Inferred memory devices in process
+	in routine dff_SIZE36 line 1648 in file
+		'/scratch0/linhai88/OST2/OST2.design/libs/cl/cl_rtl_ext.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|        q_reg        | Flip-flop |  36   |  Y  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully.
+Information: Building the design 'csa32' instantiated from design 'fgu_fpy_dp_csa32_macro__stack_88c__width_25' with
+	the parameters "25". (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'csa42' instantiated from design 'fgu_fpy_dp_csa42_macro__stack_88c__width_3' with
+	the parameters "3". (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'csa42' instantiated from design 'fgu_fpy_dp_csa42_macro__stack_96c__width_96' with
+	the parameters "96". (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'csa42' instantiated from design 'fgu_fpy_dp_csa42_macro__stack_96c__width_92' with
+	the parameters "92". (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'csa42' instantiated from design 'fgu_fpy_dp_csa42_macro__stack_88c__width_32' with
+	the parameters "32". (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'mux5s' instantiated from design 'fgu_fpy_dp_msff_macro__mux_aope__ports_5__stack_88c__width_72' with
+	the parameters "72". (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'dff' instantiated from design 'fgu_fpy_dp_msff_macro__mux_aope__ports_5__stack_88c__width_72' with
+	the parameters "72". (HDL-193)
+
+Inferred memory devices in process
+	in routine dff_SIZE72 line 1648 in file
+		'/scratch0/linhai88/OST2/OST2.design/libs/cl/cl_rtl_ext.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|        q_reg        | Flip-flop |  72   |  Y  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully.
+Information: Building the design 'cl_dp1_muxbuff3_8x'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'mux3s' instantiated from design 'fgu_fpy_dp_msff_macro__mux_aonpe__ports_3__stack_88c__width_62' with
+	the parameters "62". (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'dff' instantiated from design 'fgu_fpy_dp_msff_macro__mux_aonpe__ports_3__stack_88c__width_62' with
+	the parameters "62". (HDL-193)
+
+Inferred memory devices in process
+	in routine dff_SIZE62 line 1648 in file
+		'/scratch0/linhai88/OST2/OST2.design/libs/cl/cl_rtl_ext.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|        q_reg        | Flip-flop |  62   |  Y  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully.
+Information: Building the design 'mux3s' instantiated from design 'fgu_fpy_dp_msff_macro__mux_aonpe__ports_3__stack_88c__width_69' with
+	the parameters "69". (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'dff' instantiated from design 'fgu_fpy_dp_msff_macro__mux_aonpe__ports_3__stack_88c__width_69' with
+	the parameters "69". (HDL-193)
+
+Inferred memory devices in process
+	in routine dff_SIZE69 line 1648 in file
+		'/scratch0/linhai88/OST2/OST2.design/libs/cl/cl_rtl_ext.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|        q_reg        | Flip-flop |  69   |  Y  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully.
+Information: Building the design 'xor2' instantiated from design 'fgu_fpy_dp_xor_macro__ports_2__stack_88c__width_64' with
+	the parameters "64". (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'mux6s' instantiated from design 'fgu_fpy_dp_msff_macro__mux_aope__ports_6__stack_88c__width_72' with
+	the parameters "72". (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'dff' instantiated from design 'fgu_fpy_dp_msff_macro__stack_88c__width_4' with
+	the parameters "4". (HDL-193)
+
+Inferred memory devices in process
+	in routine dff_SIZE4 line 1648 in file
+		'/scratch0/linhai88/OST2/OST2.design/libs/cl/cl_rtl_ext.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|        q_reg        | Flip-flop |   4   |  Y  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully.
+Information: Building the design 'mux7s' instantiated from design 'fgu_fpy_dp_msff_macro__mux_aope__ports_7__stack_88c__width_68' with
+	the parameters "68". (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'dff' instantiated from design 'fgu_fpy_dp_msff_macro__mux_aope__ports_7__stack_88c__width_68' with
+	the parameters "68". (HDL-193)
+
+Inferred memory devices in process
+	in routine dff_SIZE68 line 1648 in file
+		'/scratch0/linhai88/OST2/OST2.design/libs/cl/cl_rtl_ext.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|        q_reg        | Flip-flop |  68   |  Y  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully.
+Information: Building the design 'dff' instantiated from design 'fgu_fpe_dp_msff_macro__stack_32l__width_18' with
+	the parameters "18". (HDL-193)
+
+Inferred memory devices in process
+	in routine dff_SIZE18 line 1648 in file
+		'/scratch0/linhai88/OST2/OST2.design/libs/cl/cl_rtl_ext.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|        q_reg        | Flip-flop |  18   |  Y  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully.
+Information: Building the design 'mux8' instantiated from design 'fgu_fpe_dp_mux_macro__mux_pgpe__ports_8__stack_32l__width_11' with
+	the parameters "11". (HDL-193)
+
+Statistics for case statements in always block at line 306 in file
+	'/scratch0/linhai88/OST2/OST2.design/libs/cl/cl_rtl_ext.v'
+===============================================
+|           Line           |  full/ parallel  |
+===============================================
+|           308            |    auto/auto     |
+===============================================
+Presto compilation completed successfully.
+Information: Building the design 'mux4' instantiated from design 'fgu_fpe_dp_mux_macro__mux_pgpe__ports_4__stack_32l__width_11' with
+	the parameters "11". (HDL-193)
+
+Statistics for case statements in always block at line 120 in file
+	'/scratch0/linhai88/OST2/OST2.design/libs/cl/cl_rtl_ext.v'
+===============================================
+|           Line           |  full/ parallel  |
+===============================================
+|           121            |    auto/auto     |
+===============================================
+Presto compilation completed successfully.
+Information: Building the design 'inv' instantiated from design 'fgu_fpe_dp_inv_macro__stack_32l__width_11' with
+	the parameters "11". (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'cla' instantiated from design 'fgu_fpe_dp_cla_macro__width_12' with
+	the parameters "12". (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'mux2s' instantiated from design 'fgu_fpe_dp_msff_macro__mux_aonpe__ports_2__stack_32l__width_22' with
+	the parameters "22". (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'dff' instantiated from design 'fgu_fpe_dp_msff_macro__mux_aonpe__ports_2__stack_32l__width_22' with
+	the parameters "22". (HDL-193)
+
+Inferred memory devices in process
+	in routine dff_SIZE22 line 1648 in file
+		'/scratch0/linhai88/OST2/OST2.design/libs/cl/cl_rtl_ext.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|        q_reg        | Flip-flop |  22   |  Y  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully.
+Information: Building the design 'inv' instantiated from design 'fgu_fpe_dp_inv_macro__stack_32l__width_21' with
+	the parameters "21". (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'mux7' instantiated from design 'fgu_fpe_dp_mux_macro__mux_pgpe__ports_7__stack_32l__width_11' with
+	the parameters "11". (HDL-193)
+
+Statistics for case statements in always block at line 255 in file
+	'/scratch0/linhai88/OST2/OST2.design/libs/cl/cl_rtl_ext.v'
+===============================================
+|           Line           |  full/ parallel  |
+===============================================
+|           257            |    auto/auto     |
+===============================================
+Presto compilation completed successfully.
+Information: Building the design 'buff' instantiated from design 'fgu_fpe_dp_buff_macro__width_12' with
+	the parameters "12". (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'dff' instantiated from design 'fgu_fpe_dp_msff_macro__stack_32l__width_11' with
+	the parameters "11". (HDL-193)
+
+Inferred memory devices in process
+	in routine dff_SIZE11 line 1648 in file
+		'/scratch0/linhai88/OST2/OST2.design/libs/cl/cl_rtl_ext.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|        q_reg        | Flip-flop |  11   |  Y  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully.
+Information: Building the design 'mux5s' instantiated from design 'fgu_fpe_dp_mux_macro__mux_aope__ports_5__stack_32l__width_11' with
+	the parameters "11". (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'mux4s' instantiated from design 'fgu_fpe_dp_mux_macro__mux_aope__ports_4__stack_32l__width_12' with
+	the parameters "12". (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'dff' instantiated from design 'fgu_fpe_dp_msff_macro__stack_32l__width_24' with
+	the parameters "24". (HDL-193)
+
+Inferred memory devices in process
+	in routine dff_SIZE24 line 1648 in file
+		'/scratch0/linhai88/OST2/OST2.design/libs/cl/cl_rtl_ext.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|        q_reg        | Flip-flop |  24   |  Y  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully.
+Information: Building the design 'incr' instantiated from design 'fgu_fpe_dp_increment_macro__width_12' with
+	the parameters "12". (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'inv' instantiated from design 'fgu_fpe_dp_inv_macro__stack_32l__width_8' with
+	the parameters "8". (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'nand2' instantiated from design 'fgu_fpe_dp_nand_macro__ports_2__stack_32l__width_2' with
+	the parameters "2". (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'nand2' instantiated from design 'fgu_fpe_dp_nand_macro__dnand_8x__ports_2__stack_32l__width_4' with
+	the parameters "4". (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'mux3s' instantiated from design 'fgu_fpe_dp_mux_macro__mux_aope__ports_3__stack_32l__width_11' with
+	the parameters "11". (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'cl_sc1_l1hdr_8x'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'cl_sc1_msff_8x'. (HDL-193)
+
+Inferred memory devices in process
+	in routine cl_sc1_msff_8x line 5100 in file
+		'/scratch0/linhai88/OST2/OST2.design/libs/cl/cl_sc1/cl_sc1.behV'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|        q_reg        | Flip-flop |   1   |  N  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully.
+Information: Building the design 'cl_u1_buf_32x'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'cl_u1_nand3_8x'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'cl_u1_inv_8x'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'cl_u1_aoi22_4x'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'cl_u1_buf_8x'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'cl_u1_oai22_4x'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'cl_u1_inv_16x'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'cl_u1_nand2_16x'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'cl_u1_nor3_4x'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'cl_u1_nand2_8x'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'cl_u1_buf_16x'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'cl_u1_nor2_16x'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'cl_u1_inv_32x'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'dff' instantiated from design 'fgu_fpc_ctl_msff_ctl_macro__width_3' with
+	the parameters "3". (HDL-193)
+
+Inferred memory devices in process
+	in routine dff_SIZE3 line 1648 in file
+		'/scratch0/linhai88/OST2/OST2.design/libs/cl/cl_rtl_ext.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|        q_reg        | Flip-flop |   3   |  Y  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully.
+Information: Building the design 'dff' instantiated from design 'fgu_fpc_ctl_msff_ctl_macro__width_2' with
+	the parameters "2". (HDL-193)
+
+Inferred memory devices in process
+	in routine dff_SIZE2 line 1648 in file
+		'/scratch0/linhai88/OST2/OST2.design/libs/cl/cl_rtl_ext.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|        q_reg        | Flip-flop |   2   |  Y  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully.
+Information: Building the design 'dff' instantiated from design 'fgu_fpc_ctl_msff_ctl_macro__width_8' with
+	the parameters "8". (HDL-193)
+
+Inferred memory devices in process
+	in routine dff_SIZE8 line 1648 in file
+		'/scratch0/linhai88/OST2/OST2.design/libs/cl/cl_rtl_ext.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|        q_reg        | Flip-flop |   8   |  Y  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully.
+Information: Building the design 'dff' instantiated from design 'fgu_fpc_ctl_msff_ctl_macro__width_51' with
+	the parameters "51". (HDL-193)
+
+Inferred memory devices in process
+	in routine dff_SIZE51 line 1648 in file
+		'/scratch0/linhai88/OST2/OST2.design/libs/cl/cl_rtl_ext.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|        q_reg        | Flip-flop |  51   |  Y  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully.
+Information: Building the design 'dff' instantiated from design 'fgu_fpc_ctl_msff_ctl_macro__width_17' with
+	the parameters "17". (HDL-193)
+
+Inferred memory devices in process
+	in routine dff_SIZE17 line 1648 in file
+		'/scratch0/linhai88/OST2/OST2.design/libs/cl/cl_rtl_ext.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|        q_reg        | Flip-flop |  17   |  Y  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully.
+Information: Building the design 'dff' instantiated from design 'fgu_fpc_ctl_msff_ctl_macro__width_6' with
+	the parameters "6". (HDL-193)
+
+Inferred memory devices in process
+	in routine dff_SIZE6 line 1648 in file
+		'/scratch0/linhai88/OST2/OST2.design/libs/cl/cl_rtl_ext.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|        q_reg        | Flip-flop |   6   |  Y  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully.
+Information: Building the design 'dff' instantiated from design 'fgu_fpc_ctl_msff_ctl_macro__width_7' with
+	the parameters "7". (HDL-193)
+
+Inferred memory devices in process
+	in routine dff_SIZE7 line 1648 in file
+		'/scratch0/linhai88/OST2/OST2.design/libs/cl/cl_rtl_ext.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|        q_reg        | Flip-flop |   7   |  Y  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully.
+Information: Building the design 'dff' instantiated from design 'fgu_fpc_ctl_msff_ctl_macro__width_20' with
+	the parameters "20". (HDL-193)
+
+Inferred memory devices in process
+	in routine dff_SIZE20 line 1648 in file
+		'/scratch0/linhai88/OST2/OST2.design/libs/cl/cl_rtl_ext.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|        q_reg        | Flip-flop |  20   |  Y  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully.
+Information: Building the design 'dff' instantiated from design 'fgu_fpc_ctl_msff_ctl_macro__width_15' with
+	the parameters "15". (HDL-193)
+
+Inferred memory devices in process
+	in routine dff_SIZE15 line 1648 in file
+		'/scratch0/linhai88/OST2/OST2.design/libs/cl/cl_rtl_ext.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|        q_reg        | Flip-flop |  15   |  Y  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully.
+Information: Building the design 'dff' instantiated from design 'fgu_fpc_ctl_msff_ctl_macro__width_13' with
+	the parameters "13". (HDL-193)
+
+Inferred memory devices in process
+	in routine dff_SIZE13 line 1648 in file
+		'/scratch0/linhai88/OST2/OST2.design/libs/cl/cl_rtl_ext.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|        q_reg        | Flip-flop |  13   |  Y  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully.
+Information: Building the design 'dff' instantiated from design 'fgu_fpc_ctl_msff_ctl_macro__width_5' with
+	the parameters "5". (HDL-193)
+
+Inferred memory devices in process
+	in routine dff_SIZE5 line 1648 in file
+		'/scratch0/linhai88/OST2/OST2.design/libs/cl/cl_rtl_ext.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|        q_reg        | Flip-flop |   5   |  Y  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully.
+Information: Building the design 'dff' instantiated from design 'fgu_fpc_ctl_msff_ctl_macro__width_10' with
+	the parameters "10". (HDL-193)
+
+Inferred memory devices in process
+	in routine dff_SIZE10 line 1648 in file
+		'/scratch0/linhai88/OST2/OST2.design/libs/cl/cl_rtl_ext.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|        q_reg        | Flip-flop |  10   |  Y  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully.
+Information: Building the design 'dff' instantiated from design 'fgu_fpc_ctl_msff_ctl_macro__width_28' with
+	the parameters "28". (HDL-193)
+
+Inferred memory devices in process
+	in routine dff_SIZE28 line 1648 in file
+		'/scratch0/linhai88/OST2/OST2.design/libs/cl/cl_rtl_ext.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|        q_reg        | Flip-flop |  28   |  Y  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully.
+Information: Building the design 'dff' instantiated from design 'fgu_fpc_ctl_msff_ctl_macro__width_16' with
+	the parameters "16". (HDL-193)
+
+Inferred memory devices in process
+	in routine dff_SIZE16 line 1648 in file
+		'/scratch0/linhai88/OST2/OST2.design/libs/cl/cl_rtl_ext.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|        q_reg        | Flip-flop |  16   |  Y  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully.
+Information: Building the design 'dff' instantiated from design 'fgu_fpc_ctl_msff_ctl_macro__width_38' with
+	the parameters "38". (HDL-193)
+
+Inferred memory devices in process
+	in routine dff_SIZE38 line 1648 in file
+		'/scratch0/linhai88/OST2/OST2.design/libs/cl/cl_rtl_ext.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|        q_reg        | Flip-flop |  38   |  Y  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully.
+Information: Building the design 'dff' instantiated from design 'fgu_fpc_ctl_msff_ctl_macro__width_88' with
+	the parameters "88". (HDL-193)
+
+Inferred memory devices in process
+	in routine dff_SIZE88 line 1648 in file
+		'/scratch0/linhai88/OST2/OST2.design/libs/cl/cl_rtl_ext.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|        q_reg        | Flip-flop |  88   |  Y  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully.
+Information: Building the design 'dff' instantiated from design 'fgu_fpc_ctl_msff_ctl_macro__width_1' with
+	the parameters "1". (HDL-193)
+
+Inferred memory devices in process
+	in routine dff_SIZE1 line 1648 in file
+		'/scratch0/linhai88/OST2/OST2.design/libs/cl/cl_rtl_ext.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|        q_reg        | Flip-flop |   1   |  N  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully.
+Information: Building the design 'dff' instantiated from design 'fgu_fpc_ctl_msff_ctl_macro__width_19' with
+	the parameters "19". (HDL-193)
+
+Inferred memory devices in process
+	in routine dff_SIZE19 line 1648 in file
+		'/scratch0/linhai88/OST2/OST2.design/libs/cl/cl_rtl_ext.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|        q_reg        | Flip-flop |  19   |  Y  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully.
+Information: Building the design 'dff' instantiated from design 'fgu_fic_ctl_msff_ctl_macro__width_43' with
+	the parameters "43". (HDL-193)
+
+Inferred memory devices in process
+	in routine dff_SIZE43 line 1648 in file
+		'/scratch0/linhai88/OST2/OST2.design/libs/cl/cl_rtl_ext.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|        q_reg        | Flip-flop |  43   |  Y  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully.
+Information: Building the design 'dff' instantiated from design 'fgu_fgd_dp_msff_macro__stack_32l__width_32' with
+	the parameters "32". (HDL-193)
+
+Inferred memory devices in process
+	in routine dff_SIZE32 line 1648 in file
+		'/scratch0/linhai88/OST2/OST2.design/libs/cl/cl_rtl_ext.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|        q_reg        | Flip-flop |  32   |  Y  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully.
+Information: Building the design 'mux2s' instantiated from design 'fgu_fgd_dp_mux_macro__buffsel_none__mux_aonpe__ports_2__width_12' with
+	the parameters "12". (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'csa42' instantiated from design 'fgu_fgd_dp_csa42_macro__width_1' with
+	the parameters "1". (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'cla' instantiated from design 'fgu_fgd_dp_cla_macro__width_4' with
+	the parameters "4". (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'dff' instantiated from design 'fgu_fgd_dp_msff_macro__width_33' with
+	the parameters "33". (HDL-193)
+
+Inferred memory devices in process
+	in routine dff_SIZE33 line 1648 in file
+		'/scratch0/linhai88/OST2/OST2.design/libs/cl/cl_rtl_ext.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|        q_reg        | Flip-flop |  33   |  Y  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully.
+Information: Building the design 'nand3' instantiated from design 'fgu_fgd_dp_nand_macro__ports_3__width_64' with
+	the parameters "64". (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'nand4' instantiated from design 'fgu_fgd_dp_nand_macro__ports_4__width_64' with
+	the parameters "64". (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'mux8s' instantiated from design 'fgu_fgd_dp_mux_macro__mux_aodec__ports_8__width_8' with
+	the parameters "8". (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'mux2e' instantiated from design 'fgu_fgd_dp_mux_macro__mux_pgpe__ports_2__width_8' with
+	the parameters "8". (HDL-193)
+Warning:  /scratch0/linhai88/OST2/OST2.design/libs/cl/cl_rtl_ext.v:48: DEFAULT branch of CASE statement cannot be reached. (ELAB-311)
+
+Statistics for case statements in always block at line 46 in file
+	'/scratch0/linhai88/OST2/OST2.design/libs/cl/cl_rtl_ext.v'
+===============================================
+|           Line           |  full/ parallel  |
+===============================================
+|            48            |    auto/auto     |
+===============================================
+Presto compilation completed successfully.
+Information: Building the design 'nor2' instantiated from design 'fgu_fgd_dp_nor_macro__ports_2__width_1' with
+	the parameters "1". (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'nand2' instantiated from design 'fgu_fgd_dp_nand_macro__ports_2__width_1' with
+	the parameters "1". (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'mux2s' instantiated from design 'fgu_fgd_dp_mux_macro__mux_aope__ports_2__width_32' with
+	the parameters "32". (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'and2' instantiated from design 'fgu_fgd_dp_and_macro__ports_2__width_12' with
+	the parameters "12". (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'cl_dp1_pdec4_8x'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'mux4s' instantiated from design 'fgu_fgd_dp_mux_macro__mux_aodec__ports_4__width_16' with
+	the parameters "16". (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'and2' instantiated from design 'fgu_fgd_dp_and_macro__ports_2__width_3' with
+	the parameters "3". (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'and2' instantiated from design 'fgu_fgd_dp_and_macro__ports_2__width_1' with
+	the parameters "1". (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'mux2s' instantiated from design 'fgu_fgd_dp_mux_macro__mux_aope__ports_2__width_16' with
+	the parameters "16". (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'mux4s' instantiated from design 'fgu_fgd_dp_mux_macro__mux_aodec__ports_4__width_28' with
+	the parameters "28". (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'mux4s' instantiated from design 'fgu_fgd_dp_mux_macro__mux_aodec__ports_4__width_31' with
+	the parameters "31". (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'mux4s' instantiated from design 'fgu_fgd_dp_mux_macro__mux_aodec__ports_4__width_15' with
+	the parameters "15". (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'cla' instantiated from design 'fgu_fgd_dp_cla_macro__width_8' with
+	the parameters "8". (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'mux3s' instantiated from design 'fgu_fgd_dp_mux_macro__mux_aope__ports_3__width_8' with
+	the parameters "8". (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'csa42' instantiated from design 'fgu_fgd_dp_csa42_macro__width_8' with
+	the parameters "8". (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'dff' instantiated from design 'fgu_fgd_dp_msff_macro__width_48' with
+	the parameters "48". (HDL-193)
+
+Inferred memory devices in process
+	in routine dff_SIZE48 line 1648 in file
+		'/scratch0/linhai88/OST2/OST2.design/libs/cl/cl_rtl_ext.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|        q_reg        | Flip-flop |  48   |  Y  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully.
+Information: Building the design 'dff' instantiated from design 'fgu_fgd_dp_msff_macro__width_50' with
+	the parameters "50". (HDL-193)
+
+Inferred memory devices in process
+	in routine dff_SIZE50 line 1648 in file
+		'/scratch0/linhai88/OST2/OST2.design/libs/cl/cl_rtl_ext.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|        q_reg        | Flip-flop |  50   |  Y  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully.
+Information: Building the design 'dff' instantiated from design 'fgu_fgd_dp_msff_macro__width_34' with
+	the parameters "34". (HDL-193)
+
+Inferred memory devices in process
+	in routine dff_SIZE34 line 1648 in file
+		'/scratch0/linhai88/OST2/OST2.design/libs/cl/cl_rtl_ext.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|        q_reg        | Flip-flop |  34   |  Y  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully.
+Information: Building the design 'mux8s' instantiated from design 'fgu_fgd_dp_mux_macro__mux_aodec__ports_8__stack_32l__width_32' with
+	the parameters "32". (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'buff' instantiated from design 'fgu_fgd_dp_buff_macro__stack_32l__width_32' with
+	the parameters "32". (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'mux8' instantiated from design 'fgu_fgd_dp_mux_macro__mux_pgdec__ports_8__stack_32l__width_32' with
+	the parameters "32". (HDL-193)
+
+Statistics for case statements in always block at line 306 in file
+	'/scratch0/linhai88/OST2/OST2.design/libs/cl/cl_rtl_ext.v'
+===============================================
+|           Line           |  full/ parallel  |
+===============================================
+|           308            |    auto/auto     |
+===============================================
+Presto compilation completed successfully.
+Information: Building the design 'zero' instantiated from design 'fgu_fgd_dp_zero_macro__width_32' with
+	the parameters "32". (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'zero' instantiated from design 'fgu_fgd_dp_zero_macro__width_16' with
+	the parameters "16". (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'and3' instantiated from design 'fgu_fgd_dp_and_macro__ports_3__width_2' with
+	the parameters "2". (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'mux7s' instantiated from design 'fgu_fgd_dp_mux_macro__mux_aope__ports_7__width_8' with
+	the parameters "8". (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'csa42' instantiated from design 'fgu_fgd_dp_csa42_macro__width_9' with
+	the parameters "9". (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'csa32' instantiated from design 'fgu_fgd_dp_csa32_macro__width_10' with
+	the parameters "10". (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'mux5' instantiated from design 'fgu_fgd_dp_mux_macro__mux_pgpe__ports_5__stack_32l__width_31' with
+	the parameters "31". (HDL-193)
+
+Statistics for case statements in always block at line 162 in file
+	'/scratch0/linhai88/OST2/OST2.design/libs/cl/cl_rtl_ext.v'
+===============================================
+|           Line           |  full/ parallel  |
+===============================================
+|           163            |    auto/auto     |
+===============================================
+Presto compilation completed successfully.
+Information: Building the design 'mux4' instantiated from design 'fgu_fgd_dp_mux_macro__mux_pgpe__ports_4__stack_32l__width_32' with
+	the parameters "32". (HDL-193)
+
+Statistics for case statements in always block at line 120 in file
+	'/scratch0/linhai88/OST2/OST2.design/libs/cl/cl_rtl_ext.v'
+===============================================
+|           Line           |  full/ parallel  |
+===============================================
+|           121            |    auto/auto     |
+===============================================
+Presto compilation completed successfully.
+Information: Building the design 'mux5s' instantiated from design 'fgu_fdd_dp_mux_macro__mux_aonpe__ports_5__stack_66c__width_66' with
+	the parameters "66". (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'mux3s' instantiated from design 'fgu_fdd_dp_mux_macro__mux_aonpe__ports_3__stack_66c__width_66' with
+	the parameters "66". (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'mux4s' instantiated from design 'fgu_fdd_dp_msff_macro__mux_aonpe__ports_4__stack_66c__width_66' with
+	the parameters "66". (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'dff' instantiated from design 'fgu_fdd_dp_msff_macro__mux_aonpe__ports_4__stack_66c__width_66' with
+	the parameters "66". (HDL-193)
+
+Inferred memory devices in process
+	in routine dff_SIZE66 line 1648 in file
+		'/scratch0/linhai88/OST2/OST2.design/libs/cl/cl_rtl_ext.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|        q_reg        | Flip-flop |  66   |  Y  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully.
+Information: Building the design 'or2' instantiated from design 'fgu_fdd_dp_or_macro__ports_2__stack_66c__width_66' with
+	the parameters "66". (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'xor2' instantiated from design 'fgu_fdd_dp_xor_macro__ports_2__stack_66c__width_66' with
+	the parameters "66". (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'nor2' instantiated from design 'fgu_fdd_dp_nor_macro__ports_2__stack_66c__width_65' with
+	the parameters "65". (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'mux4s' instantiated from design 'fgu_fdd_dp_msff_macro__mux_aonpe__ports_4__stack_66c__width_65' with
+	the parameters "65". (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'or2' instantiated from design 'fgu_fdd_dp_or_macro__ports_2__stack_66c__width_65' with
+	the parameters "65". (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'csa32' instantiated from design 'fgu_fdd_dp_csa32_macro__stack_66c__width_65' with
+	the parameters "65". (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'mux3s' instantiated from design 'fgu_fdd_dp_mux_macro__dmux_6x__mux_aonpe__ports_3__stack_66c__width_65' with
+	the parameters "65". (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'inv' instantiated from design 'fgu_fdd_dp_inv_macro__stack_66c__width_65' with
+	the parameters "65". (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'csa32' instantiated from design 'fgu_fdd_dp_csa32_macro__stack_66c__width_64' with
+	the parameters "64". (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'mux6s' instantiated from design 'fgu_fdd_dp_msff_macro__mux_aope__ports_6__stack_66c__width_65' with
+	the parameters "65". (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'mux2s' instantiated from design 'fgu_fdd_dp_msff_macro__mux_aope__ports_2__stack_66c__width_66' with
+	the parameters "66". (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'inv' instantiated from design 'fgu_fdd_dp_inv_macro__stack_66c__width_66' with
+	the parameters "66". (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'nand3' instantiated from design 'fgu_fdd_dp_nand_macro__ports_3__stack_66c__width_66' with
+	the parameters "66". (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'nand2' instantiated from design 'fgu_fdd_dp_nand_macro__ports_2__stack_66c__width_65' with
+	the parameters "65". (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'nand2' instantiated from design 'fgu_fdd_dp_nand_macro__ports_2__stack_66c__width_66' with
+	the parameters "66". (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'dff' instantiated from design 'fgu_fdc_ctl_msff_ctl_macro__width_9' with
+	the parameters "9". (HDL-193)
+
+Inferred memory devices in process
+	in routine dff_SIZE9 line 1648 in file
+		'/scratch0/linhai88/OST2/OST2.design/libs/cl/cl_rtl_ext.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|        q_reg        | Flip-flop |   9   |  Y  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully.
+Information: Building the design 'dff' instantiated from design 'fgu_fad_dp_msff_macro__width_47' with
+	the parameters "47". (HDL-193)
+
+Inferred memory devices in process
+	in routine dff_SIZE47 line 1648 in file
+		'/scratch0/linhai88/OST2/OST2.design/libs/cl/cl_rtl_ext.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|        q_reg        | Flip-flop |  47   |  Y  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully.
+Information: Building the design 'dff' instantiated from design 'fgu_fad_dp_msff_macro__width_23' with
+	the parameters "23". (HDL-193)
+
+Inferred memory devices in process
+	in routine dff_SIZE23 line 1648 in file
+		'/scratch0/linhai88/OST2/OST2.design/libs/cl/cl_rtl_ext.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|        q_reg        | Flip-flop |  23   |  Y  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully.
+Information: Building the design 'and2' instantiated from design 'fgu_fad_dp_and_macro__ports_2__width_2' with
+	the parameters "2". (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'nor3' instantiated from design 'fgu_fad_dp_nor_macro__ports_3__width_4' with
+	the parameters "4". (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'mux7s' instantiated from design 'fgu_fad_dp_msff_macro__dmux_4x__mux_aope__ports_7__width_64' with
+	the parameters "64". (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'cmp' instantiated from design 'fgu_fad_dp_cmp_macro__width_64' with
+	the parameters "64". (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'mux3s' instantiated from design 'fgu_fad_dp_mux_macro__mux_aonpe__ports_3__stack_32l__width_12' with
+	the parameters "12". (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'mux8s' instantiated from design 'fgu_fad_dp_msff_macro__mux_aodec__ports_8__stack_32l__width_28' with
+	the parameters "28". (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'buff' instantiated from design 'fgu_fad_dp_buff_macro__rep_1__stack_32l__width_31' with
+	the parameters "31". (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'inv' instantiated from design 'fgu_fad_dp_inv_macro__width_5' with
+	the parameters "5". (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'dff' instantiated from design 'fgu_fad_dp_msff_macro__stack_32l__width_26' with
+	the parameters "26". (HDL-193)
+
+Inferred memory devices in process
+	in routine dff_SIZE26 line 1648 in file
+		'/scratch0/linhai88/OST2/OST2.design/libs/cl/cl_rtl_ext.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|        q_reg        | Flip-flop |  26   |  Y  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully.
+Information: Building the design 'mux3s' instantiated from design 'fgu_fad_dp_mux_macro__buffsel_none__mux_aonpe__ports_3__width_2' with
+	the parameters "2". (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'mux2s' instantiated from design 'fgu_fad_dp_mux_macro__buffsel_none__mux_aonpe__ports_2__width_8' with
+	the parameters "8". (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'dff' instantiated from design 'fgu_fac_ctl_msff_ctl_macro__width_128' with
+	the parameters "128". (HDL-193)
+
+Inferred memory devices in process
+	in routine dff_SIZE128 line 1648 in file
+		'/scratch0/linhai88/OST2/OST2.design/libs/cl/cl_rtl_ext.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|        q_reg        | Flip-flop |  128  |  Y  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully.
+Information: Building the design 'dff' instantiated from design 'fgu_fac_ctl_msff_ctl_macro__width_21' with
+	the parameters "21". (HDL-193)
+
+Inferred memory devices in process
+	in routine dff_SIZE21 line 1648 in file
+		'/scratch0/linhai88/OST2/OST2.design/libs/cl/cl_rtl_ext.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|        q_reg        | Flip-flop |  21   |  Y  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully.
+Information: Building the design 'dff' instantiated from design 'fgu_fac_ctl_msff_ctl_macro__width_60' with
+	the parameters "60". (HDL-193)
+
+Inferred memory devices in process
+	in routine dff_SIZE60 line 1648 in file
+		'/scratch0/linhai88/OST2/OST2.design/libs/cl/cl_rtl_ext.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|        q_reg        | Flip-flop |  60   |  Y  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully.
+Information: Building the design 'dff' instantiated from design 'fgu_fac_ctl_msff_ctl_macro__width_52' with
+	the parameters "52". (HDL-193)
+
+Inferred memory devices in process
+	in routine dff_SIZE52 line 1648 in file
+		'/scratch0/linhai88/OST2/OST2.design/libs/cl/cl_rtl_ext.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|        q_reg        | Flip-flop |  52   |  Y  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully.
+Information: Building the design 'dff' instantiated from design 'fgu_fac_ctl_msff_ctl_macro__width_25' with
+	the parameters "25". (HDL-193)
+
+Inferred memory devices in process
+	in routine dff_SIZE25 line 1648 in file
+		'/scratch0/linhai88/OST2/OST2.design/libs/cl/cl_rtl_ext.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|        q_reg        | Flip-flop |  25   |  Y  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully.
+Information: Building the design 'dff' instantiated from design 'fgu_fac_ctl_msff_ctl_macro__width_53' with
+	the parameters "53". (HDL-193)
+
+Inferred memory devices in process
+	in routine dff_SIZE53 line 1648 in file
+		'/scratch0/linhai88/OST2/OST2.design/libs/cl/cl_rtl_ext.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|        q_reg        | Flip-flop |  53   |  Y  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully.
+Information: Building the design 'dff' instantiated from design 'fgu_fac_ctl_msff_ctl_macro__width_12' with
+	the parameters "12". (HDL-193)
+
+Inferred memory devices in process
+	in routine dff_SIZE12 line 1648 in file
+		'/scratch0/linhai88/OST2/OST2.design/libs/cl/cl_rtl_ext.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|        q_reg        | Flip-flop |  12   |  Y  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully.
+Information: Building the design 'dff' instantiated from design 'fgu_fec_ctl_msff_ctl_macro__width_76' with
+	the parameters "76". (HDL-193)
+
+Inferred memory devices in process
+	in routine dff_SIZE76 line 1648 in file
+		'/scratch0/linhai88/OST2/OST2.design/libs/cl/cl_rtl_ext.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|        q_reg        | Flip-flop |  76   |  Y  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully.
+1
+#####
+if {[info exists mix_files] && ($mix_files != {}) } {
+   foreach mix_file $mix_files {
+      set index_beg [expr {[string last "/" $mix_file] + 1}]
+      set mix_file_name [string range $mix_file $index_beg end]
+      read_file -format verilog -define RUNDC gate/${mix_file_name}.exp
+   }
+}
+set design_list [list]
+foreach_in_collection design_object [get_designs] {
+   set design_name [get_object_name $design_object]
+   lappend design_list $design_name
+}
+sh date
+Fri Aug  2 18:04:30 PDT 2013
+current_design $top_module
+Current design is 'fgu'.
+{fgu}
+echo $top_module
+fgu
+if {[get_designs -hier $dont_touch_modules] != {}} {
+   set_dont_touch $dont_touch_modules
+}
+set dc_shell_status [ link ]
+
+  Linking design 'fgu'
+  Using the following designs and libraries:
+  --------------------------------------------------------------------------
+  * (611 designs)             /rsgs/scratch0/linhai88/OST2/OST2.design/design/sys/iop/spc/fgu/synopsys/fgu.db, etc
+  lsi_10k (library)           /cad/synopsys/dc_shell/G-2012.06-SP5-1/libraries/syn/lsi_10k.db
+  dw_foundation.sldb (library) /cad/synopsys/dc_shell/G-2012.06-SP5-1/libraries/syn/dw_foundation.sldb
+
+1
+if {$dc_shell_status == 0} {
+   echo "****************************************************"
+   echo "* ERROR!!!! Failed to Link...exiting prematurely.  *"
+   echo "****************************************************"
+   quit
+}
+###########################################################################
+# 3. Set up design constraints
+###########################################################################
+current_design $top_module
+Current design is 'fgu'.
+{fgu}
+echo $top_module
+fgu
+set clk_name_list [list]
+set ideal_inputs [list]
+foreach clk_spec $clk_list {
+   set listcnt 0
+   set clk_port_pin {}
+   set clk_name {}
+   set clk_freq 0.0
+   set setup_skew $default_setup_skew
+   set hold_skew  $default_hold_skew
+   set clock_transition  $default_clk_transition
+   set clk_is_port 1
+   foreach element $clk_spec {
+      if {$listcnt == 0} {
+         set clk_port_pin $element
+         set clk_name $element
+      }
+      if {$listcnt == 1} {
+         set clk_freq $element
+      }
+      if {$listcnt == 2} {
+         set setup_skew $element
+      }
+      if {$listcnt == 3} {
+         set hold_skew $element
+      }
+      if {$listcnt == 4} {
+         set clock_transition $element
+      }
+      if {$listcnt == 5} {
+         set clk_name $element
+         set clk_is_port 0
+      }
+      set listcnt [expr $listcnt + 1]
+   }
+   if {$clk_is_port == 1} {
+      set clk_exists [sizeof_collection [find port $clk_port_pin]]
+   } else {
+      set clk_exists [sizeof_collection [find pin $clk_port_pin]]
+   }
+   if {$clk_exists != 0} {
+      set clk_period [expr 1000.0 / $clk_freq / 1.0]
+      set high_time [expr $clk_period / 2.0]
+      create_clock $clk_port_pin -period $clk_period -waveform [list 0 $high_time] -name $clk_name
+      set_clock_uncertainty -setup $setup_skew [find clock $clk_name]
+      set_clock_uncertainty -hold $hold_skew [find clock $clk_name]
+      set_clock_transition $clock_transition [find clock $clk_name]
+      set_dont_touch_network $clk_name
+      if {$clk_is_port == 1} {
+         set_drive 0.0 $clk_name
+         lappend ideal_inputs $clk_name
+      }
+      set clk_name_list [concat  $clk_name_list $clk_name]
+   }
+}
+if {$clk_name_list == {} } {
+   echo "\[WARNING\] No clock is defined,create a virtual one -- $default_clk..."
+   set clk_name $default_clk
+   set clk_freq $default_clk_freq
+   set clk_period [expr 1000.0 / $clk_freq / 1.0]
+   set high_time [expr $clk_period / 2.0]
+   set setup_skew $default_setup_skew
+   set hold_skew  $default_hold_skew
+   set clock_transition  $default_clk_transition
+   create_clock -name $clk_name -period $clk_period -waveform [list 0 $high_time]
+   set_clock_uncertainty -setup $setup_skew $clk_name
+   set_clock_uncertainty -hold $hold_skew $clk_name
+}
+set non_ideal_inputs [list]
+foreach_in_collection input_object [all_inputs] {
+   set input_name [get_object_name $input_object]
+   set input_is_ideal [lsearch -exact $ideal_net_list $input_name]
+   if {$input_is_ideal == -1} {
+      lappend non_ideal_inputs $input_name
+   } else {
+      lappend ideal_inputs $input_name
+   }
+}
+echo $ideal_inputs
+l2clk
+echo $non_ideal_inputs
+{dec_frf_r1_addr_d[4]} {dec_frf_r1_addr_d[3]} {dec_frf_r1_addr_d[2]} {dec_frf_r1_addr_d[1]} {dec_frf_r1_addr_d[0]} {dec_frf_r2_addr_d[4]} {dec_frf_r2_addr_d[3]} {dec_frf_r2_addr_d[2]} {dec_frf_r2_addr_d[1]} {dec_frf_r2_addr_d[0]} dec_frf_r1_vld_d dec_frf_r2_vld_d dec_frf_r1_32b_d dec_frf_r2_32b_d dec_frf_r1_odd32b_d dec_frf_r2_odd32b_d dec_frf_w_vld_d {dec_frf_w_addr_d[4]} {dec_frf_w_addr_d[3]} {dec_frf_w_addr_d[2]} {dec_frf_w_addr_d[1]} {dec_frf_w_addr_d[0]} dec_frf_w_32b_d dec_frf_w_odd32b_d dec_spu_grant_d dec_exu_src_vld_d {dec_irf_w_addr_d[4]} {dec_irf_w_addr_d[3]} {dec_irf_w_addr_d[2]} {dec_irf_w_addr_d[1]} {dec_irf_w_addr_d[0]} dec_frf_store_d dec_fsr_store_d {dec_valid_e[1]} {dec_valid_e[0]} {dec_fgu_op3_d[5]} {dec_fgu_op3_d[4]} {dec_fgu_op3_d[3]} {dec_fgu_op3_d[2]} {dec_fgu_op3_d[1]} {dec_fgu_op3_d[0]} {dec_fgu_opf_d[7]} {dec_fgu_opf_d[6]} {dec_fgu_opf_d[5]} {dec_fgu_opf_d[4]} {dec_fgu_opf_d[3]} {dec_fgu_opf_d[2]} {dec_fgu_opf_d[1]} {dec_fgu_opf_d[0]} dec_fgu_fmov_vld_m dec_fgu_decode_d dec_fgu_valid_e {dec_fgu_tid_d[2]} {dec_fgu_tid_d[1]} {dec_fgu_tid_d[0]} dec_flush_f1 dec_flush_f2 tlu_flush_fgu_b {tlu_ceter_pscce[7]} {tlu_ceter_pscce[6]} {tlu_ceter_pscce[5]} {tlu_ceter_pscce[4]} {tlu_ceter_pscce[3]} {tlu_ceter_pscce[2]} {tlu_ceter_pscce[1]} {tlu_ceter_pscce[0]} tlu_cerer_frf {spc_core_running_status[7]} {spc_core_running_status[6]} {spc_core_running_status[5]} {spc_core_running_status[4]} {spc_core_running_status[3]} {spc_core_running_status[2]} {spc_core_running_status[1]} {spc_core_running_status[0]} {lsu_fgu_fld_data_b[63]} {lsu_fgu_fld_data_b[62]} {lsu_fgu_fld_data_b[61]} {lsu_fgu_fld_data_b[60]} {lsu_fgu_fld_data_b[59]} {lsu_fgu_fld_data_b[58]} {lsu_fgu_fld_data_b[57]} {lsu_fgu_fld_data_b[56]} {lsu_fgu_fld_data_b[55]} {lsu_fgu_fld_data_b[54]} {lsu_fgu_fld_data_b[53]} {lsu_fgu_fld_data_b[52]} {lsu_fgu_fld_data_b[51]} {lsu_fgu_fld_data_b[50]} {lsu_fgu_fld_data_b[49]} {lsu_fgu_fld_data_b[48]} {lsu_fgu_fld_data_b[47]} {lsu_fgu_fld_data_b[46]} {lsu_fgu_fld_data_b[45]} {lsu_fgu_fld_data_b[44]} {lsu_fgu_fld_data_b[43]} {lsu_fgu_fld_data_b[42]} {lsu_fgu_fld_data_b[41]} {lsu_fgu_fld_data_b[40]} {lsu_fgu_fld_data_b[39]} {lsu_fgu_fld_data_b[38]} {lsu_fgu_fld_data_b[37]} {lsu_fgu_fld_data_b[36]} {lsu_fgu_fld_data_b[35]} {lsu_fgu_fld_data_b[34]} {lsu_fgu_fld_data_b[33]} {lsu_fgu_fld_data_b[32]} {lsu_fgu_fld_data_b[31]} {lsu_fgu_fld_data_b[30]} {lsu_fgu_fld_data_b[29]} {lsu_fgu_fld_data_b[28]} {lsu_fgu_fld_data_b[27]} {lsu_fgu_fld_data_b[26]} {lsu_fgu_fld_data_b[25]} {lsu_fgu_fld_data_b[24]} {lsu_fgu_fld_data_b[23]} {lsu_fgu_fld_data_b[22]} {lsu_fgu_fld_data_b[21]} {lsu_fgu_fld_data_b[20]} {lsu_fgu_fld_data_b[19]} {lsu_fgu_fld_data_b[18]} {lsu_fgu_fld_data_b[17]} {lsu_fgu_fld_data_b[16]} {lsu_fgu_fld_data_b[15]} {lsu_fgu_fld_data_b[14]} {lsu_fgu_fld_data_b[13]} {lsu_fgu_fld_data_b[12]} {lsu_fgu_fld_data_b[11]} {lsu_fgu_fld_data_b[10]} {lsu_fgu_fld_data_b[9]} {lsu_fgu_fld_data_b[8]} {lsu_fgu_fld_data_b[7]} {lsu_fgu_fld_data_b[6]} {lsu_fgu_fld_data_b[5]} {lsu_fgu_fld_data_b[4]} {lsu_fgu_fld_data_b[3]} {lsu_fgu_fld_data_b[2]} {lsu_fgu_fld_data_b[1]} {lsu_fgu_fld_data_b[0]} {lsu_fgu_fld_addr_b[4]} {lsu_fgu_fld_addr_b[3]} {lsu_fgu_fld_addr_b[2]} {lsu_fgu_fld_addr_b[1]} {lsu_fgu_fld_addr_b[0]} lsu_fgu_fld_vld_w lsu_fgu_fld_b {lsu_fgu_fld_tid_b[2]} {lsu_fgu_fld_tid_b[1]} {lsu_fgu_fld_tid_b[0]} lsu_fgu_fld_32b_b lsu_fgu_fld_odd32b_b lsu_fgu_fsr_load_b lsu_fgu_exception_w lsu_block_store_m {lsu_asi_error_inject[31]} {lsu_asi_error_inject[30]} {lsu_asi_error_inject[29]} {lsu_asi_error_inject[28]} {lsu_asi_error_inject[27]} {lsu_asi_error_inject[26]} {lsu_asi_error_inject[25]} {lsu_asi_error_inject[24]} {lsu_asi_error_inject[23]} {lsu_asi_error_inject[22]} {lsu_asi_error_inject[21]} {lsu_asi_error_inject[20]} {lsu_asi_error_inject[19]} {lsu_asi_error_inject[18]} {lsu_asi_error_inject[17]} {lsu_asi_error_inject[16]} {lsu_asi_error_inject[15]} {lsu_asi_error_inject[14]} {lsu_asi_error_inject[13]} {lsu_asi_error_inject[12]} {lsu_asi_error_inject[11]} {lsu_asi_error_inject[10]} {lsu_asi_error_inject[9]} {lsu_asi_error_inject[8]} {lsu_asi_error_inject[7]} {lsu_asi_error_inject[6]} {lsu_asi_error_inject[5]} {lsu_asi_error_inject[4]} {lsu_asi_error_inject[3]} {lsu_asi_error_inject[2]} {lsu_asi_error_inject[1]} {lsu_asi_error_inject[0]} lsu_fgu_pmen lsu_asi_clken {exu_fgu_rs1_e[63]} {exu_fgu_rs1_e[62]} {exu_fgu_rs1_e[61]} {exu_fgu_rs1_e[60]} {exu_fgu_rs1_e[59]} {exu_fgu_rs1_e[58]} {exu_fgu_rs1_e[57]} {exu_fgu_rs1_e[56]} {exu_fgu_rs1_e[55]} {exu_fgu_rs1_e[54]} {exu_fgu_rs1_e[53]} {exu_fgu_rs1_e[52]} {exu_fgu_rs1_e[51]} {exu_fgu_rs1_e[50]} {exu_fgu_rs1_e[49]} {exu_fgu_rs1_e[48]} {exu_fgu_rs1_e[47]} {exu_fgu_rs1_e[46]} {exu_fgu_rs1_e[45]} {exu_fgu_rs1_e[44]} {exu_fgu_rs1_e[43]} {exu_fgu_rs1_e[42]} {exu_fgu_rs1_e[41]} {exu_fgu_rs1_e[40]} {exu_fgu_rs1_e[39]} {exu_fgu_rs1_e[38]} {exu_fgu_rs1_e[37]} {exu_fgu_rs1_e[36]} {exu_fgu_rs1_e[35]} {exu_fgu_rs1_e[34]} {exu_fgu_rs1_e[33]} {exu_fgu_rs1_e[32]} {exu_fgu_rs1_e[31]} {exu_fgu_rs1_e[30]} {exu_fgu_rs1_e[29]} {exu_fgu_rs1_e[28]} {exu_fgu_rs1_e[27]} {exu_fgu_rs1_e[26]} {exu_fgu_rs1_e[25]} {exu_fgu_rs1_e[24]} {exu_fgu_rs1_e[23]} {exu_fgu_rs1_e[22]} {exu_fgu_rs1_e[21]} {exu_fgu_rs1_e[20]} {exu_fgu_rs1_e[19]} {exu_fgu_rs1_e[18]} {exu_fgu_rs1_e[17]} {exu_fgu_rs1_e[16]} {exu_fgu_rs1_e[15]} {exu_fgu_rs1_e[14]} {exu_fgu_rs1_e[13]} {exu_fgu_rs1_e[12]} {exu_fgu_rs1_e[11]} {exu_fgu_rs1_e[10]} {exu_fgu_rs1_e[9]} {exu_fgu_rs1_e[8]} {exu_fgu_rs1_e[7]} {exu_fgu_rs1_e[6]} {exu_fgu_rs1_e[5]} {exu_fgu_rs1_e[4]} {exu_fgu_rs1_e[3]} {exu_fgu_rs1_e[2]} {exu_fgu_rs1_e[1]} {exu_fgu_rs1_e[0]} {exu_fgu_rs2_e[63]} {exu_fgu_rs2_e[62]} {exu_fgu_rs2_e[61]} {exu_fgu_rs2_e[60]} {exu_fgu_rs2_e[59]} {exu_fgu_rs2_e[58]} {exu_fgu_rs2_e[57]} {exu_fgu_rs2_e[56]} {exu_fgu_rs2_e[55]} {exu_fgu_rs2_e[54]} {exu_fgu_rs2_e[53]} {exu_fgu_rs2_e[52]} {exu_fgu_rs2_e[51]} {exu_fgu_rs2_e[50]} {exu_fgu_rs2_e[49]} {exu_fgu_rs2_e[48]} {exu_fgu_rs2_e[47]} {exu_fgu_rs2_e[46]} {exu_fgu_rs2_e[45]} {exu_fgu_rs2_e[44]} {exu_fgu_rs2_e[43]} {exu_fgu_rs2_e[42]} {exu_fgu_rs2_e[41]} {exu_fgu_rs2_e[40]} {exu_fgu_rs2_e[39]} {exu_fgu_rs2_e[38]} {exu_fgu_rs2_e[37]} {exu_fgu_rs2_e[36]} {exu_fgu_rs2_e[35]} {exu_fgu_rs2_e[34]} {exu_fgu_rs2_e[33]} {exu_fgu_rs2_e[32]} {exu_fgu_rs2_e[31]} {exu_fgu_rs2_e[30]} {exu_fgu_rs2_e[29]} {exu_fgu_rs2_e[28]} {exu_fgu_rs2_e[27]} {exu_fgu_rs2_e[26]} {exu_fgu_rs2_e[25]} {exu_fgu_rs2_e[24]} {exu_fgu_rs2_e[23]} {exu_fgu_rs2_e[22]} {exu_fgu_rs2_e[21]} {exu_fgu_rs2_e[20]} {exu_fgu_rs2_e[19]} {exu_fgu_rs2_e[18]} {exu_fgu_rs2_e[17]} {exu_fgu_rs2_e[16]} {exu_fgu_rs2_e[15]} {exu_fgu_rs2_e[14]} {exu_fgu_rs2_e[13]} {exu_fgu_rs2_e[12]} {exu_fgu_rs2_e[11]} {exu_fgu_rs2_e[10]} {exu_fgu_rs2_e[9]} {exu_fgu_rs2_e[8]} {exu_fgu_rs2_e[7]} {exu_fgu_rs2_e[6]} {exu_fgu_rs2_e[5]} {exu_fgu_rs2_e[4]} {exu_fgu_rs2_e[3]} {exu_fgu_rs2_e[2]} {exu_fgu_rs2_e[1]} {exu_fgu_rs2_e[0]} {exu_fgu_gsr_m[31]} {exu_fgu_gsr_m[30]} {exu_fgu_gsr_m[29]} {exu_fgu_gsr_m[28]} {exu_fgu_gsr_m[27]} {exu_fgu_gsr_m[26]} {exu_fgu_gsr_m[25]} {exu_fgu_gsr_m[24]} {exu_fgu_gsr_m[23]} {exu_fgu_gsr_m[22]} {exu_fgu_gsr_m[21]} {exu_fgu_gsr_m[20]} {exu_fgu_gsr_m[19]} {exu_fgu_gsr_m[18]} {exu_fgu_gsr_m[17]} {exu_fgu_gsr_m[16]} {exu_fgu_gsr_m[15]} {exu_fgu_gsr_m[14]} {exu_fgu_gsr_m[13]} {exu_fgu_gsr_m[12]} {exu_fgu_gsr_m[11]} {exu_fgu_gsr_m[10]} {exu_fgu_gsr_m[9]} {exu_fgu_gsr_m[8]} {exu_fgu_gsr_m[7]} {exu_fgu_gsr_m[6]} {exu_fgu_gsr_m[5]} {exu_fgu_gsr_m[4]} {exu_fgu_gsr_m[3]} {exu_fgu_gsr_m[2]} {exu_fgu_gsr_m[1]} {exu_fgu_gsr_m[0]} {exu_fgu_gsr_vld_m[1]} {exu_fgu_gsr_vld_m[0]} exu_fgu_flush_m {spu_fgu_fpy_ctl_d[6]} {spu_fgu_fpy_ctl_d[5]} {spu_fgu_fpy_ctl_d[4]} {spu_fgu_fpy_ctl_d[3]} {spu_fgu_fpy_ctl_d[2]} {spu_fgu_fpy_ctl_d[1]} {spu_fgu_fpy_ctl_d[0]} {spu_fgu_rs1_e[63]} {spu_fgu_rs1_e[62]} {spu_fgu_rs1_e[61]} {spu_fgu_rs1_e[60]} {spu_fgu_rs1_e[59]} {spu_fgu_rs1_e[58]} {spu_fgu_rs1_e[57]} {spu_fgu_rs1_e[56]} {spu_fgu_rs1_e[55]} {spu_fgu_rs1_e[54]} {spu_fgu_rs1_e[53]} {spu_fgu_rs1_e[52]} {spu_fgu_rs1_e[51]} {spu_fgu_rs1_e[50]} {spu_fgu_rs1_e[49]} {spu_fgu_rs1_e[48]} {spu_fgu_rs1_e[47]} {spu_fgu_rs1_e[46]} {spu_fgu_rs1_e[45]} {spu_fgu_rs1_e[44]} {spu_fgu_rs1_e[43]} {spu_fgu_rs1_e[42]} {spu_fgu_rs1_e[41]} {spu_fgu_rs1_e[40]} {spu_fgu_rs1_e[39]} {spu_fgu_rs1_e[38]} {spu_fgu_rs1_e[37]} {spu_fgu_rs1_e[36]} {spu_fgu_rs1_e[35]} {spu_fgu_rs1_e[34]} {spu_fgu_rs1_e[33]} {spu_fgu_rs1_e[32]} {spu_fgu_rs1_e[31]} {spu_fgu_rs1_e[30]} {spu_fgu_rs1_e[29]} {spu_fgu_rs1_e[28]} {spu_fgu_rs1_e[27]} {spu_fgu_rs1_e[26]} {spu_fgu_rs1_e[25]} {spu_fgu_rs1_e[24]} {spu_fgu_rs1_e[23]} {spu_fgu_rs1_e[22]} {spu_fgu_rs1_e[21]} {spu_fgu_rs1_e[20]} {spu_fgu_rs1_e[19]} {spu_fgu_rs1_e[18]} {spu_fgu_rs1_e[17]} {spu_fgu_rs1_e[16]} {spu_fgu_rs1_e[15]} {spu_fgu_rs1_e[14]} {spu_fgu_rs1_e[13]} {spu_fgu_rs1_e[12]} {spu_fgu_rs1_e[11]} {spu_fgu_rs1_e[10]} {spu_fgu_rs1_e[9]} {spu_fgu_rs1_e[8]} {spu_fgu_rs1_e[7]} {spu_fgu_rs1_e[6]} {spu_fgu_rs1_e[5]} {spu_fgu_rs1_e[4]} {spu_fgu_rs1_e[3]} {spu_fgu_rs1_e[2]} {spu_fgu_rs1_e[1]} {spu_fgu_rs1_e[0]} {spu_fgu_rs2_e[63]} {spu_fgu_rs2_e[62]} {spu_fgu_rs2_e[61]} {spu_fgu_rs2_e[60]} {spu_fgu_rs2_e[59]} {spu_fgu_rs2_e[58]} {spu_fgu_rs2_e[57]} {spu_fgu_rs2_e[56]} {spu_fgu_rs2_e[55]} {spu_fgu_rs2_e[54]} {spu_fgu_rs2_e[53]} {spu_fgu_rs2_e[52]} {spu_fgu_rs2_e[51]} {spu_fgu_rs2_e[50]} {spu_fgu_rs2_e[49]} {spu_fgu_rs2_e[48]} {spu_fgu_rs2_e[47]} {spu_fgu_rs2_e[46]} {spu_fgu_rs2_e[45]} {spu_fgu_rs2_e[44]} {spu_fgu_rs2_e[43]} {spu_fgu_rs2_e[42]} {spu_fgu_rs2_e[41]} {spu_fgu_rs2_e[40]} {spu_fgu_rs2_e[39]} {spu_fgu_rs2_e[38]} {spu_fgu_rs2_e[37]} {spu_fgu_rs2_e[36]} {spu_fgu_rs2_e[35]} {spu_fgu_rs2_e[34]} {spu_fgu_rs2_e[33]} {spu_fgu_rs2_e[32]} {spu_fgu_rs2_e[31]} {spu_fgu_rs2_e[30]} {spu_fgu_rs2_e[29]} {spu_fgu_rs2_e[28]} {spu_fgu_rs2_e[27]} {spu_fgu_rs2_e[26]} {spu_fgu_rs2_e[25]} {spu_fgu_rs2_e[24]} {spu_fgu_rs2_e[23]} {spu_fgu_rs2_e[22]} {spu_fgu_rs2_e[21]} {spu_fgu_rs2_e[20]} {spu_fgu_rs2_e[19]} {spu_fgu_rs2_e[18]} {spu_fgu_rs2_e[17]} {spu_fgu_rs2_e[16]} {spu_fgu_rs2_e[15]} {spu_fgu_rs2_e[14]} {spu_fgu_rs2_e[13]} {spu_fgu_rs2_e[12]} {spu_fgu_rs2_e[11]} {spu_fgu_rs2_e[10]} {spu_fgu_rs2_e[9]} {spu_fgu_rs2_e[8]} {spu_fgu_rs2_e[7]} {spu_fgu_rs2_e[6]} {spu_fgu_rs2_e[5]} {spu_fgu_rs2_e[4]} {spu_fgu_rs2_e[3]} {spu_fgu_rs2_e[2]} {spu_fgu_rs2_e[1]} {spu_fgu_rs2_e[0]} l2clk scan_in spc_aclk_wmr wmr_scan_in lb_scan_en_wmr tcu_pce_ov spc_aclk spc_bclk tcu_muxtest tcu_dectest tcu_scan_en tcu_array_wr_inhibit tcu_se_scancollar_in tcu_se_scancollar_out mbi_frf_read_en mbi_frf_write_en {mbi_addr[7]} {mbi_addr[6]} {mbi_addr[5]} {mbi_addr[4]} {mbi_addr[3]} {mbi_addr[2]} {mbi_addr[1]} {mbi_addr[0]} {mbi_wdata[7]} {mbi_wdata[6]} {mbi_wdata[5]} {mbi_wdata[4]} {mbi_wdata[3]} {mbi_wdata[2]} {mbi_wdata[1]} {mbi_wdata[0]} mbi_run {in_rngl_cdbus[64]} {in_rngl_cdbus[63]} {in_rngl_cdbus[62]} {in_rngl_cdbus[61]} {in_rngl_cdbus[60]} {in_rngl_cdbus[59]} {in_rngl_cdbus[58]} {in_rngl_cdbus[57]} {in_rngl_cdbus[56]} {in_rngl_cdbus[55]} {in_rngl_cdbus[54]} {in_rngl_cdbus[53]} {in_rngl_cdbus[52]} {in_rngl_cdbus[51]} {in_rngl_cdbus[50]} {in_rngl_cdbus[49]} {in_rngl_cdbus[48]} {in_rngl_cdbus[47]} {in_rngl_cdbus[46]} {in_rngl_cdbus[45]} {in_rngl_cdbus[44]} {in_rngl_cdbus[43]} {in_rngl_cdbus[42]} {in_rngl_cdbus[41]} {in_rngl_cdbus[40]} {in_rngl_cdbus[39]} {in_rngl_cdbus[38]} {in_rngl_cdbus[37]} {in_rngl_cdbus[36]} {in_rngl_cdbus[35]} {in_rngl_cdbus[34]} {in_rngl_cdbus[33]} {in_rngl_cdbus[32]} {in_rngl_cdbus[31]} {in_rngl_cdbus[30]} {in_rngl_cdbus[29]} {in_rngl_cdbus[28]} {in_rngl_cdbus[27]} {in_rngl_cdbus[26]} {in_rngl_cdbus[25]} {in_rngl_cdbus[24]} {in_rngl_cdbus[23]} {in_rngl_cdbus[22]} {in_rngl_cdbus[21]} {in_rngl_cdbus[20]} {in_rngl_cdbus[19]} {in_rngl_cdbus[18]} {in_rngl_cdbus[17]} {in_rngl_cdbus[16]} {in_rngl_cdbus[15]} {in_rngl_cdbus[14]} {in_rngl_cdbus[13]} {in_rngl_cdbus[12]} {in_rngl_cdbus[11]} {in_rngl_cdbus[10]} {in_rngl_cdbus[9]} {in_rngl_cdbus[8]} {in_rngl_cdbus[7]} {in_rngl_cdbus[6]} {in_rngl_cdbus[5]} {in_rngl_cdbus[4]} {in_rngl_cdbus[3]} {in_rngl_cdbus[2]} {in_rngl_cdbus[1]} {in_rngl_cdbus[0]}
+set_input_delay $default_input_delay -clock $clk_name $non_ideal_inputs
+1
+set_output_delay $default_output_delay -clock $clk_name [all_outputs]
+1
+if {$clk_name_list != {} } {
+   group_path -name "reg2reg" -critical_range $critical_range -from [ all_registers -clock_pins ] -to [ all_registers -data_pins ]
+   group_path -name "in2reg"  -from $non_ideal_inputs -to [ all_registers -data_pins ]
+   group_path -name "reg2out" -from [ all_registers -clock_pins ] -to [all_outputs]
+}
+Information: Checking out the license 'DesignWare'. (SEC-104)
+1
+group_path -name "in2out"  -from $non_ideal_inputs -to [all_outputs]
+1
+if {[info exists false_path_list] && ($false_path_list != {}) } {
+        set_false_path -through $false_path_list
+}
+if {[info exists enforce_input_fanout_one] && ($enforce_input_fanout_one  == 1)} {
+   set_max_fanout 1 $non_ideal_inputs
+}
+# Load custom constraint file for the unit
+# This will overwrite the default constraints
+###########################################################################
+# 4. More constraints and setup before compile
+###########################################################################
+# This is to prevent assign statements from generated in the netlist
+# Certain rtl coding conventions need to be followed. For IO blocks only 
+# write_name_nets_same_as_ports
+if {[info exists project_io_cfg] && ($project_io_cfg == 1) } {
+   foreach_in_collection design [ get_designs "*" ] {
+      current_design $design
+      set_fix_multiple_port_nets -outputs -feedthroughs 
+   }
+   current_design $top_module
+}
+# Check timing constraints
+###########################################################################
+# 5. Compile
+###########################################################################
+# Disable cells that we don't want to use in the library
+if {$dont_use_cells != 0} {
+   if {[info exists my_dont_use_cell_list] && ($my_dont_use_cell_list != {}) } {
+      set dont_use_cell_list [concat $dont_use_cell_list $my_dont_use_cell_list]
+   }
+   foreach dont_use_cell $dont_use_cell_list {
+      set_dont_use [find lib_cell $dont_use_cell]
+   }
+}
+sh date
+Fri Aug  2 18:04:32 PDT 2013
+sh uptime
+ 18:04:32 up 7 days, 17:08,  4 users,  load average: 2.15, 2.16, 1.94
+# Don't remove sequential cells with constant outputs
+set compile_seqmap_propagate_constants false
+false
+# Switch off the dont_touch attribute globally for set_size_only cells
+set dont_touch_nets_with_size_only_cells false
+false
+## Source user compile options
+#if set to 1, the whole design will be flattened. default 1 for cmp
+if {[info exists compile_flatten_all] && ($compile_flatten_all  == 1)} {
+      ungroup -flatten -all
+   }
+Information: Updating graph... (UID-83)
+Warning: Design 'fgu' contains 3 high-fanout nets. A fanout number of 1000 will be used for delay calculations involving these nets. (TIM-134)
+1
+# compile !!
+if {[info exists project_io_cfg] && ($project_io_cfg == 1) } {
+      set dc_shell_status [ compile -boundary_optimization -exact_map -map_effort $compile_effort ]
+   }
+if {[info exists project_sparc_cfg] && ($project_sparc_cfg == 1) } {
+      if {[info exists use_physopt] && ($use_physopt == 1)} {
+         set_fix_multiple_port_nets -all -buffer_constants
+      }
+      set dc_shell_status [ compile -boundary_optimization -exact_map -map_effort $compile_effort ]
+   }
+Information: Evaluating DesignWare library utilization. (UISN-27)
+
+============================================================================
+| DesignWare Building Block Library  |         Version         | Available |
+============================================================================
+| Basic DW Building Blocks           | G-2012.06-DWBB_201206.4 |     *     |
+| Licensed DW Building Blocks        | G-2012.06-DWBB_201206.4 |     *     |
+============================================================================
+
+
+Information: There are 758 potential problems in your design. Please run 'check_design' for more information. (LINT-99)
+
+
+
+  Beginning Pass 1 Mapping
+  ------------------------
+  Processing 'fgu'
+Information: The register 'fdc/data_lth/d0_0/q_reg[7]' will be removed. (OPT-1207)
+Information: The register 'fec/spares/spare1_flop/q_reg' will be removed. (OPT-1207)
+Information: The register 'fec/spares/spare0_flop/q_reg' will be removed. (OPT-1207)
+Information: The register 'fac/spares/spare4_flop/q_reg' will be removed. (OPT-1207)
+Information: The register 'fac/spares/spare3_flop/q_reg' will be removed. (OPT-1207)
+Information: The register 'fac/spares/spare2_flop/q_reg' will be removed. (OPT-1207)
+Information: The register 'fac/spares/spare1_flop/q_reg' will be removed. (OPT-1207)
+Information: The register 'fac/spares/spare0_flop/q_reg' will be removed. (OPT-1207)
+Information: The register 'fdc/spares/spare2_flop/q_reg' will be removed. (OPT-1207)
+Information: The register 'fdc/spares/spare1_flop/q_reg' will be removed. (OPT-1207)
+Information: The register 'fdc/spares/spare0_flop/q_reg' will be removed. (OPT-1207)
+Information: The register 'fic/spares/spare1_flop/q_reg' will be removed. (OPT-1207)
+Information: The register 'fic/spares/spare0_flop/q_reg' will be removed. (OPT-1207)
+Information: The register 'fpc/spares/spare8_flop/q_reg' will be removed. (OPT-1207)
+Information: The register 'fpc/spares/spare7_flop/q_reg' will be removed. (OPT-1207)
+Information: The register 'fpc/spares/spare6_flop/q_reg' will be removed. (OPT-1207)
+Information: The register 'fpc/spares/spare5_flop/q_reg' will be removed. (OPT-1207)
+Information: The register 'fpc/spares/spare4_flop/q_reg' will be removed. (OPT-1207)
+Information: The register 'fpc/spares/spare3_flop/q_reg' will be removed. (OPT-1207)
+Information: The register 'fpc/spares/spare2_flop/q_reg' will be removed. (OPT-1207)
+Information: The register 'fpc/spares/spare1_flop/q_reg' will be removed. (OPT-1207)
+Information: The register 'fpc/spares/spare0_flop/q_reg' will be removed. (OPT-1207)
+Information: The register 'fdd/isqe_flip/d0_0/q_reg[65]' will be removed. (OPT-1207)
+Information: The register 'fdd/ie_d00lth/d0_0/q_reg[65]' will be removed. (OPT-1207)
+Information: Added key list 'DesignWare' to design 'fgu'. (DDB-72)
+
+  Updating timing information
+Information: Updating design information... (UID-85)
+
+  Beginning Implementation Selection
+  ----------------------------------
+  Processing 'fgu_DW01_add_0'
+  Processing 'fgu_DW01_add_1'
+  Processing 'fgu_DW01_inc_0'
+  Processing 'fgu_DW01_inc_1'
+  Processing 'fgu_DW01_add_2'
+  Processing 'fgu_DW01_add_3'
+  Processing 'fgu_DW01_add_4'
+  Processing 'fgu_DW01_add_5'
+  Processing 'fgu_DW01_add_6'
+  Processing 'fgu_DW01_add_7'
+  Processing 'fgu_DW01_add_8'
+  Processing 'fgu_DW01_add_9'
+  Processing 'fgu_DW01_add_10'
+  Processing 'fgu_DW01_add_11'
+  Processing 'fgu_DW01_add_12'
+  Processing 'fgu_DW01_add_13'
+  Processing 'fgu_DW01_add_14'
+  Processing 'fgu_DW01_add_15'
+  Processing 'fgu_DW01_add_16'
+  Processing 'fgu_DW01_add_17'
+  Processing 'fgu_DW01_add_18'
+  Processing 'fgu_DW01_add_19'
+  Processing 'fgu_DW01_add_20'
+  Processing 'fgu_DW01_add_21'
+  Processing 'fgu_DW01_add_22'
+  Processing 'fgu_DW01_add_23'
+  Processing 'fgu_DW01_add_24'
+  Processing 'fgu_DW01_add_25'
+  Processing 'fgu_DW01_add_26'
+  Processing 'fgu_DW01_add_27'
+  Processing 'fgu_DW01_add_28'
+  Processing 'fgu_DW01_add_29'
+  Processing 'fgu_DW01_add_30'
+  Processing 'fgu_DW01_sub_0'
+  Mapping 'fgu_DW_cmp_0'
+  Processing 'fgu_DW01_add_31'
+  Mapping 'fgu_DW_cmp_1'
+  Mapping 'fgu_DW_cmp_2'
+  Mapping 'fgu_DW_cmp_3'
+  Mapping 'fgu_DW_cmp_4'
+  Mapping 'fgu_DW_cmp_5'
+  Mapping 'fgu_DW_cmp_6'
+  Processing 'fgu_DW01_add_32'
+  Processing 'fgu_DW01_add_33'
+  Processing 'fgu_DW01_add_34'
+  Processing 'fgu_DW01_add_35'
+  Mapping 'fgu_DW_cmp_7'
+  Mapping 'fgu_DW_cmp_8'
+  Mapping 'fgu_DW_cmp_9'
+  Mapping 'fgu_DW_cmp_10'
+  Processing 'fgu_DW01_inc_2'
+  Processing 'fgu_DW01_inc_3'
+  Mapping 'fgu_DW_cmp_11'
+  Mapping 'fgu_DW_cmp_12'
+  Mapping 'fgu_DW_cmp_13'
+  Mapping 'fgu_DW_cmp_14'
+  Mapping 'fgu_DW_cmp_15'
+  Mapping 'fgu_DW_cmp_16'
+  Mapping 'fgu_DW_cmp_17'
+  Mapping 'fgu_DW_cmp_18'
+  Mapping 'fgu_DW_cmp_19'
+  Processing 'fgu_DW01_add_36'
+  Mapping 'fgu_DW_cmp_20'
+  Mapping 'fgu_DW_cmp_21'
+  Mapping 'fgu_DW_cmp_22'
+  Mapping 'fgu_DW_cmp_23'
+  Processing 'fgu_DW01_inc_4'
+  Processing 'fgu_DW01_add_37'
+  Processing 'fgu_DW01_add_38'
+  Processing 'fgu_DW01_add_39'
+  Processing 'fgu_DW01_add_40'
+  Processing 'fgu_DW01_add_41'
+  Processing 'fgu_DW01_add_42'
+  Processing 'fgu_DW01_add_43'
+  Processing 'fgu_DW01_add_44'
+  Processing 'fgu_DW01_add_45'
+
+  Beginning Mapping Optimizations  (Medium effort)
+  -------------------------------
+
+                                  TOTAL                                      
+   ELAPSED            WORST NEG   SETUP    DESIGN                            
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT         
+  --------- --------- --------- --------- --------- -------------------------
+    0:01:19  225551.0      0.00       0.0       0.0                          
+    0:01:19  225551.0      0.00       0.0       0.0                          
+    0:01:20  228781.0      0.00       0.0       0.0                          
+    0:01:21  229233.0      0.00       0.0       0.0                          
+    0:01:27  239763.0      0.00       0.0       0.0                          
+    0:01:27  239763.0      0.00       0.0       0.0                          
+    0:01:27  239763.0      0.00       0.0       0.0                          
+    0:01:27  239763.0      0.00       0.0       0.0                          
+    0:01:27  239763.0      0.00       0.0       0.0                          
+    0:01:28  239763.0      0.00       0.0       0.0                          
+    0:01:59  157260.0      0.00       0.0       0.0                          
+    0:02:00  157260.0      0.00       0.0       0.0                          
+    0:02:00  157260.0      0.00       0.0       0.0                          
+    0:02:01  156592.0      0.00       0.0       0.0                          
+    0:02:01  156592.0      0.00       0.0       0.0                          
+    0:02:02  156592.0      0.00       0.0       0.0                          
+    0:02:02  156592.0      0.00       0.0       0.0                          
+    0:02:02  156592.0      0.00       0.0       0.0                          
+    0:02:02  156592.0      0.00       0.0       0.0                          
+
+
+
+  Beginning Delay Optimization Phase
+  ----------------------------------
+
+                                  TOTAL                                      
+   ELAPSED            WORST NEG   SETUP    DESIGN                            
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT         
+  --------- --------- --------- --------- --------- -------------------------
+    0:02:02  156592.0      0.00       0.0       0.0                          
+    0:02:02  156592.0      0.00       0.0       0.0                          
+    0:02:02  156592.0      0.00       0.0       0.0                          
+
+
+  Beginning Critical Range Optimization
+  -------------------------------------
+
+                                  TOTAL                                      
+   ELAPSED            WORST NEG   SETUP    DESIGN                            
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT         
+  --------- --------- --------- --------- --------- -------------------------
+    0:02:02  156592.0      0.00       0.0       0.0                          
+
+
+  Beginning Area-Recovery Phase  (cleanup)
+  -----------------------------
+
+                                  TOTAL                                      
+   ELAPSED            WORST NEG   SETUP    DESIGN                            
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT         
+  --------- --------- --------- --------- --------- -------------------------
+    0:02:02  156592.0      0.00       0.0       0.0                          
+    0:02:02  156592.0      0.00       0.0       0.0                          
+    0:02:02  156592.0      0.00       0.0       0.0                          
+    0:02:07  154572.0      0.00       0.0       0.0                          
+    0:02:09  153613.0      0.00       0.0       0.0                          
+    0:02:11  152945.0      0.00       0.0       0.0                          
+    0:02:12  152590.0      0.00       0.0       0.0                          
+    0:02:13  152343.0      0.00       0.0       0.0                          
+    0:02:14  152200.0      0.00       0.0       0.0                          
+    0:02:14  152099.0      0.00       0.0       0.0                          
+    0:02:14  152015.0      0.00       0.0       0.0                          
+    0:02:15  151941.0      0.00       0.0       0.0                          
+    0:02:15  151871.0      0.00       0.0       0.0                          
+    0:02:15  151800.0      0.00       0.0       0.0                          
+    0:02:15  151735.0      0.00       0.0       0.0                          
+    0:02:16  151671.0      0.00       0.0       0.0                          
+    0:02:16  151607.0      0.00       0.0       0.0                          
+    0:02:16  151543.0      0.00       0.0       0.0                          
+    0:02:17  151481.0      0.00       0.0       0.0                          
+    0:02:17  151481.0      0.00       0.0       0.0                          
+    0:02:17  151481.0      0.00       0.0       0.0                          
+    0:02:17  151481.0      0.00       0.0       0.0                          
+    0:02:18  151481.0      0.00       0.0       0.0                          
+    0:02:18  151474.0      0.00       0.0       0.0                          
+    0:02:18  151474.0      0.00       0.0       0.0                          
+    0:02:18  151474.0      0.00       0.0       0.0                          
+    0:02:18  151474.0      0.00       0.0       0.0                          
+    0:02:18  151474.0      0.00       0.0       0.0                          
+    0:02:18  151474.0      0.00       0.0       0.0                          
+    0:02:18  151474.0      0.00       0.0       0.0                          
+
+
+  Beginning Critical Range Optimization
+  -------------------------------------
+
+                                  TOTAL                                      
+   ELAPSED            WORST NEG   SETUP    DESIGN                            
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT         
+  --------- --------- --------- --------- --------- -------------------------
+    0:02:18  151474.0      0.00       0.0       0.0                          
+    0:02:19  151474.0      0.00       0.0       0.0                          
+Loading db file '/cad/synopsys/dc_shell/G-2012.06-SP5-1/libraries/syn/lsi_10k.db'
+
+  Optimization Complete
+  ---------------------
+1
+if {$dc_shell_status == 0} {
+      echo "*******************************************************"
+      echo "* ERROR!!!! Failed to compile...exiting prematurely.  *"
+      echo "*******************************************************"
+      quit
+   }
+sh date
+Fri Aug  2 18:07:04 PDT 2013
+###########################################################################
+# 6. Insert Scan - Hook up the scan chain.
+###########################################################################
+if {[info exists use_physopt] && ($use_physopt == 1)} {
+   set skip_scan 1
+}
+if {[info exists skip_scan] && ($skip_scan == 1)} {
+   ######  skip section 5e. 
+} else {
+
+current_design $top_module
+
+## Tell DC the design is "scan ready"
+## We do this because we already instantiate scan flops in the rtl
+set_attribute $top_module is_test_ready true -type boolean
+foreach_in_collection design_object [get_designs] {
+   current_design $design_object
+   # make sure the module has FFs in it to prevent warning messages
+   if { [all_registers] != {} } {
+      set_attribute [all_registers] scanned_by_test_compiler true -type boolean
+   }
+}
+
+current_design $top_module
+
+
+# Tell DC not to optimize away spare FF's 
+set compile_delete_unloaded_sequential_cells false
+
+# Disable cells that we don't want to use in the library
+if {$dont_use_cells != 0} {
+   foreach dont_use_cell $dont_use_cell_list {
+      set_dont_use [find lib_cell $dont_use_cell]
+   }
+}
+
+# Insert scan chain with number of chains specified by user
+# Allow scan chain to hook up flops clocked by different clocks
+# Add lockup latches between clock domains
+set_scan_configuration -add_lockup $add_lockup_latch -chain_count $chain_count -clock_mixing mix_clocks
+
+# This should prevent assign statements from generated in the netlist
+# at the cost of extra compile time. For cmp only 
+if {[info exists project_sparc_cfg] && ($project_sparc_cfg == 1) } {
+   foreach_in_collection design [ get_designs "*" ] {
+      current_design $design
+      set_fix_multiple_port_nets -all -buffer_constants
+   }
+
+   current_design $top_module
+
+   # allow_outport_drive_innodes is used by sparc units but not IO units
+   # set this switch to 0 to make sure output port doesn't driving internal nodes
+   if {[info exists allow_outport_drive_innodes] && ($allow_outport_drive_innodes == 0)} {
+      set_isolate_ports -type inverter [all_outputs]
+   }
+
+   current_design $top_module
+   compile -inc
+}
+
+
+### section 5e. will be skipped if user want to use PC flow
+}
+Current design is 'fgu'.
+Current design is 'fgu'.
+Information: Attribute 'scanned_by_test_compiler' is set on 7490 objects. (UID-186)
+Current design is 'n2_frf_mp_256x78_cust'.
+Current design is 'cl_dp1_add136_8x'.
+Current design is 'cl_dp1_zdt64_8x'.
+Current design is 'cl_dp1_penc2_8x'.
+Current design is 'cl_dp1_muxbuff4_8x'.
+Current design is 'cl_dp1_l1hdr_8x'.
+Current design is 'cl_dp1_penc3_8x'.
+Current design is 'cl_dp1_muxbuff2_8x'.
+Current design is 'cl_dp1_pdec8_8x'.
+Current design is 'cl_dp1_penc4_8x'.
+Current design is 'cl_dp1_penc7_8x'.
+Current design is 'cl_dp1_penc8_8x'.
+Current design is 'cl_dp1_penc5_8x'.
+Current design is 'cl_dp1_penc6_8x'.
+Current design is 'cl_dp1_muxbuff6_8x'.
+Current design is 'cl_dp1_boothenc_4x'.
+Current design is 'cl_dp1_muxbuff5_8x'.
+Current design is 'cl_dp1_muxbuff3_8x'.
+Current design is 'cl_sc1_l1hdr_8x'.
+Current design is 'cl_u1_buf_32x'.
+Current design is 'cl_u1_nand3_8x'.
+Current design is 'cl_u1_inv_8x'.
+Current design is 'cl_u1_aoi22_4x'.
+Current design is 'cl_u1_buf_8x'.
+Current design is 'cl_u1_oai22_4x'.
+Current design is 'cl_u1_inv_16x'.
+Current design is 'cl_u1_nand2_16x'.
+Current design is 'cl_u1_nor3_4x'.
+Current design is 'cl_u1_nand2_8x'.
+Current design is 'cl_u1_buf_16x'.
+Current design is 'cl_u1_nor2_16x'.
+Current design is 'cl_u1_inv_32x'.
+Current design is 'cl_dp1_pdec4_8x'.
+Current design is 'fgu_DW01_add_0'.
+Current design is 'fgu_DW01_add_1'.
+Current design is 'fgu_DW01_inc_0'.
+Current design is 'fgu_DW01_inc_1'.
+Current design is 'fgu_DW01_add_2'.
+Current design is 'fgu_DW01_add_4'.
+Current design is 'fgu_DW01_add_5'.
+Current design is 'fgu_DW01_add_6'.
+Current design is 'fgu_DW01_add_7'.
+Current design is 'fgu_DW01_add_8'.
+Current design is 'fgu_DW01_add_9'.
+Current design is 'fgu_DW01_add_10'.
+Current design is 'fgu_DW01_add_11'.
+Current design is 'fgu_DW01_add_12'.
+Current design is 'fgu_DW01_add_13'.
+Current design is 'fgu_DW01_add_14'.
+Current design is 'fgu_DW01_add_15'.
+Current design is 'fgu_DW01_add_16'.
+Current design is 'fgu_DW01_add_17'.
+Current design is 'fgu_DW01_add_18'.
+Current design is 'fgu_DW01_add_19'.
+Current design is 'fgu_DW01_add_20'.
+Current design is 'fgu_DW01_add_21'.
+Current design is 'fgu_DW01_add_22'.
+Current design is 'fgu_DW01_inc_2'.
+Current design is 'fgu_DW01_inc_3'.
+Current design is 'fgu_DW01_add_36'.
+Current design is 'fgu_DW01_inc_4'.
+Current design is 'fgu_DW01_add_37'.
+Current design is 'fgu_DW01_add_38'.
+Current design is 'fgu_DW01_add_39'.
+Current design is 'fgu_DW01_add_40'.
+Current design is 'fgu_DW01_add_41'.
+Current design is 'fgu_DW01_add_42'.
+Current design is 'fgu_DW01_add_43'.
+Current design is 'fgu_DW01_add_44'.
+Current design is 'fgu_DW01_add_45'.
+Current design is 'fgu'.
+Accepted scan configuration for modes: all_dft
+Current design is 'fgu'.
+Current design is 'n2_frf_mp_256x78_cust'.
+Current design is 'cl_dp1_add136_8x'.
+Current design is 'cl_dp1_zdt64_8x'.
+Current design is 'cl_dp1_penc2_8x'.
+Current design is 'cl_dp1_muxbuff4_8x'.
+Current design is 'cl_dp1_l1hdr_8x'.
+Current design is 'cl_dp1_penc3_8x'.
+Current design is 'cl_dp1_muxbuff2_8x'.
+Current design is 'cl_dp1_pdec8_8x'.
+Current design is 'cl_dp1_penc4_8x'.
+Current design is 'cl_dp1_penc7_8x'.
+Current design is 'cl_dp1_penc8_8x'.
+Current design is 'cl_dp1_penc5_8x'.
+Current design is 'cl_dp1_penc6_8x'.
+Current design is 'cl_dp1_muxbuff6_8x'.
+Current design is 'cl_dp1_boothenc_4x'.
+Current design is 'cl_dp1_muxbuff5_8x'.
+Current design is 'cl_dp1_muxbuff3_8x'.
+Current design is 'cl_sc1_l1hdr_8x'.
+Current design is 'cl_u1_buf_32x'.
+Current design is 'cl_u1_nand3_8x'.
+Current design is 'cl_u1_inv_8x'.
+Current design is 'cl_u1_aoi22_4x'.
+Current design is 'cl_u1_buf_8x'.
+Current design is 'cl_u1_oai22_4x'.
+Current design is 'cl_u1_inv_16x'.
+Current design is 'cl_u1_nand2_16x'.
+Current design is 'cl_u1_nor3_4x'.
+Current design is 'cl_u1_nand2_8x'.
+Current design is 'cl_u1_buf_16x'.
+Current design is 'cl_u1_nor2_16x'.
+Current design is 'cl_u1_inv_32x'.
+Current design is 'cl_dp1_pdec4_8x'.
+Current design is 'fgu_DW01_add_0'.
+Current design is 'fgu_DW01_add_1'.
+Current design is 'fgu_DW01_inc_0'.
+Current design is 'fgu_DW01_inc_1'.
+Current design is 'fgu_DW01_add_2'.
+Current design is 'fgu_DW01_add_4'.
+Current design is 'fgu_DW01_add_5'.
+Current design is 'fgu_DW01_add_6'.
+Current design is 'fgu_DW01_add_7'.
+Current design is 'fgu_DW01_add_8'.
+Current design is 'fgu_DW01_add_9'.
+Current design is 'fgu_DW01_add_10'.
+Current design is 'fgu_DW01_add_11'.
+Current design is 'fgu_DW01_add_12'.
+Current design is 'fgu_DW01_add_13'.
+Current design is 'fgu_DW01_add_14'.
+Current design is 'fgu_DW01_add_15'.
+Current design is 'fgu_DW01_add_16'.
+Current design is 'fgu_DW01_add_17'.
+Current design is 'fgu_DW01_add_18'.
+Current design is 'fgu_DW01_add_19'.
+Current design is 'fgu_DW01_add_20'.
+Current design is 'fgu_DW01_add_21'.
+Current design is 'fgu_DW01_add_22'.
+Current design is 'fgu_DW01_inc_2'.
+Current design is 'fgu_DW01_inc_3'.
+Current design is 'fgu_DW01_add_36'.
+Current design is 'fgu_DW01_inc_4'.
+Current design is 'fgu_DW01_add_37'.
+Current design is 'fgu_DW01_add_38'.
+Current design is 'fgu_DW01_add_39'.
+Current design is 'fgu_DW01_add_40'.
+Current design is 'fgu_DW01_add_41'.
+Current design is 'fgu_DW01_add_42'.
+Current design is 'fgu_DW01_add_43'.
+Current design is 'fgu_DW01_add_44'.
+Current design is 'fgu_DW01_add_45'.
+Current design is 'fgu'.
+Current design is 'fgu'.
+
+Information: There are 450 potential problems in your design. Please run 'check_design' for more information. (LINT-99)
+
+
+
+  Beginning Pass 1 Mapping  (Incremental)
+  ------------------------
+
+  Updating timing information
+Information: Updating design information... (UID-85)
+
+  Beginning Mapping Optimizations  (Medium effort)  (Incremental)
+  -------------------------------
+
+  Beginning Incremental Implementation Selection
+  ----------------------------------------------
+  Selecting implementations
+  Building model 'DW01_add_width8' (rpl)
+  Building model 'DW01_add_width17' (rpl)
+  Building model 'DW01_inc_width13' (rpl)
+  Building model 'DW01_add_width13' (rpl)
+  Building model 'DW01_inc_width11' (rpl)
+  Building model 'DW01_inc_width65' (rpl)
+
+  Beginning Delay Optimization Phase
+  ----------------------------------
+
+                                  TOTAL                                      
+   ELAPSED            WORST NEG   SETUP    DESIGN                            
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT         
+  --------- --------- --------- --------- --------- -------------------------
+    0:00:18  151474.0      0.00       0.0       0.0                          
+    0:00:19  151475.0      0.00       0.0       0.0                          
+    0:00:19  151475.0      0.00       0.0       0.0                          
+
+
+  Beginning Critical Range Optimization
+  -------------------------------------
+
+                                  TOTAL                                      
+   ELAPSED            WORST NEG   SETUP    DESIGN                            
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT         
+  --------- --------- --------- --------- --------- -------------------------
+    0:00:19  151475.0      0.00       0.0       0.0                          
+
+
+  Beginning Critical Range Optimization
+  -------------------------------------
+
+                                  TOTAL                                      
+   ELAPSED            WORST NEG   SETUP    DESIGN                            
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT         
+  --------- --------- --------- --------- --------- -------------------------
+    0:00:19  151475.0      0.00       0.0       0.0                          
+Loading db file '/cad/synopsys/dc_shell/G-2012.06-SP5-1/libraries/syn/lsi_10k.db'
+
+  Optimization Complete
+  ---------------------
+1
+###########################################################################
+# 7. Write Out netlist
+###########################################################################
+# Remove don't touch modules from the design
+# It caused unmatching hierarchy between rtl and netlist
+if { [get_designs -hier $dont_touch_modules] != {} } {
+   remove_design $dont_touch_modules
+}
+# remove dont_touch attribute before flattening the design
+if { [get_designs -hier $dont_touch_modules] != {} } {
+   set_dont_touch $dont_touch_modules false
+}
+current_design $top_module
+Current design is 'fgu'.
+{fgu}
+ungroup -all -flatten
+Information: Updating graph... (UID-83)
+1
+# Make sure flat netlist does not have "/" in signal names
+define_name_rules hier_change -restricted "/" -replacement_char "_"
+1
+change_names -rule hier_change -hierarchy
+1
+# Write out netlist.  
+write -format verilog -output [format "%s%s%s"  gate/ $top_module .vSyn]
+Writing verilog file '/rsgs/scratch0/linhai88/OST2/OST2.design/design/sys/iop/spc/fgu/synopsys/gate/fgu.vSyn'.
+Warning: Verilog writer has added 4 nets to module fgu using SYNOPSYS_UNCONNECTED_ as prefix.  Please use the change_names command to make the correct changes before invoking the verilog writer.  (VO-11)
+Warning: Verilog 'assign' or 'tran' statements are written out. (VO-4)
+1
+# Report flattened results
+redirect [format "%s%s%s" log/ $top_module _area.rep] { report_area }
+redirect -append [format "%s%s%s" log/ $top_module _area.rep] { report_reference }
+###########################################################################
+# 8. Check design and Detect unmapped design
+###########################################################################
+set unmapped_designs [get_designs -filter "is_unmapped == true" $top_module]
+if {  [sizeof_collection $unmapped_designs] != 0 } {
+   echo "****************************************************"
+   echo "* ERROR!!!! Compile finished with unmapped logic.  *"
+   echo "****************************************************"
+   quit
+}
+###########################################################################
+# 9. Done
+###########################################################################
+sh date
+Fri Aug  2 18:07:34 PDT 2013
+echo "run.scr completed successfully"
+run.scr completed successfully
+quit
+
+Thank you...
