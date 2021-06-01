@@ -1,0 +1,424 @@
+--- eqed_ost2_l2c0_ex1.sv	2021-06-01 16:01:36.428605609 -0700
++++ eqed_ost2_ccx_ex1.sv	2021-06-01 16:01:25.716537977 -0700
+@@ -4220,7 +4220,7 @@
+     && (ncu_mcu_ba45 == 1) 
+     && (ncu_mcu_ba67 == 1) 
+     // TCU-L2
+-    && (l2b0.scan_in == '0) 
++/*    && (l2b0.scan_in == '0) 
+     && (l2b0.tcu_se_scancollar_in == 1'b0) 
+     && (l2b0.tcu_se_scancollar_out == 1'b0) 
+     && (l2b1.scan_in == '0) 
+@@ -4276,12 +4276,12 @@
+     && (l2t6.tcu_se_scancollar_out == 1'b0) 
+     && (l2t7.tcu_se_scancollar_in == 1'b0) 
+     && (l2t7.tcu_se_scancollar_out == 1'b0) 
+-    && (ccx.cpx.cpx_dpa_scanin == 1'b0) 
+-/*    && (ccx.scan_in == '0) 
++    && (ccx.cpx.cpx_dpa_scanin == 1'b0) */
++    && (ccx.scan_in == '0) 
+     && (ccx.tcu_aclk == '0) 
+     && (ccx.tcu_bclk == '0) 
+     && (ccx.tcu_pce_ov == '0) 
+-    && (ccx.tcu_scan_en == '0)  */
++    && (ccx.tcu_scan_en == '0)  
+     && (rst_ncu_vld == 1'b0) 
+     && (sii_l2b0_ecc == 7'b0) 
+     && (sii_l2b1_ecc == 7'b0) 
+@@ -4623,8 +4623,6 @@
+ parameter SPC_CCX_SB_SIZE = 1184;
+ parameter CCX_SPC_SB_SIZE = 1240;
+ 
+-/*
+-
+ // Declare the registers for the Signature Analyzer MISRs
+ reg [SPC_CCX_SB_SIZE:0] spc0_ccx_sa;
+ reg [CCX_SPC_SB_SIZE:0] ccx_spc0_sa;
+@@ -5245,7 +5243,7 @@
+     end
+ end
+ 
+-*/
++
+ 
+ // CCX-L2C interface
+ wire [139:0] eqed_ccx_l2c0;
+@@ -5291,7 +5289,6 @@
+ // Declare the registers for the Signature Analyzer MISRs
+ reg [L2C_CCX_SB_SIZE:0] l2c0_ccx_sa;
+ reg [CCX_L2C_SB_SIZE:0] ccx_l2c0_sa;
+-/*
+ reg [L2C_CCX_SB_SIZE:0] l2c1_ccx_sa;
+ reg [CCX_L2C_SB_SIZE:0] ccx_l2c1_sa;
+ reg [L2C_CCX_SB_SIZE:0] l2c2_ccx_sa;
+@@ -5306,11 +5303,10 @@
+ reg [CCX_L2C_SB_SIZE:0] ccx_l2c6_sa;
+ reg [L2C_CCX_SB_SIZE:0] l2c7_ccx_sa;
+ reg [CCX_L2C_SB_SIZE:0] ccx_l2c7_sa;
+-*/
++
+ // Declare the registers for the Signature Analyzer MISRs
+ reg [L2C_CCX_SB_SIZE:0] l2c0_ccx_sa2;
+ reg [CCX_L2C_SB_SIZE:0] ccx_l2c0_sa2;
+-/*
+ reg [L2C_CCX_SB_SIZE:0] l2c1_ccx_sa2;
+ reg [CCX_L2C_SB_SIZE:0] ccx_l2c1_sa2;
+ reg [L2C_CCX_SB_SIZE:0] l2c2_ccx_sa2;
+@@ -5325,7 +5321,7 @@
+ reg [CCX_L2C_SB_SIZE:0] ccx_l2c6_sa2;
+ reg [L2C_CCX_SB_SIZE:0] l2c7_ccx_sa2;
+ reg [CCX_L2C_SB_SIZE:0] ccx_l2c7_sa2;
+-*/
++
+ 
+ always @(posedge clk) begin
+     if (m_rst) begin
+@@ -5399,7 +5395,7 @@
+        end
+     end
+ end
+-/*
++
+ always @(posedge clk) begin
+     if (m_rst) begin
+        l2c1_ccx_sa <= 1;
+@@ -5910,100 +5906,50 @@
+        end
+     end
+ end
+-*/
+-
+-// L2C-L2D interface
+-
+-wire [125:0] eqed_l2c0_l2d0;
+-wire [155:0] eqed_l2d0_l2c0;
+ 
+-assign eqed_l2c0_l2d0 = {l2t0_l2d0_way_sel_c2, l2t0_l2d0_rd_wr_c2, l2t0_l2d0_set_c2, l2t0_l2d0_col_offset_c2, 
+-                         l2t0_l2d0_word_en_c2, l2t0_l2d0_fbrd_c3, l2t0_l2d0_fb_hit_c3, l2t0_l2d0_stdecc_c2};
+-assign eqed_l2d0_l2c0 = {l2d0_l2t0_decc_c6};
+-
+-parameter L2C_L2D_SB_SIZE = 1008;
+-parameter L2D_L2C_SB_SIZE = 1248;
+-
+-// Declare the registers for the Signature Analyzer MISRs
+-reg [L2C_L2D_SB_SIZE:0] l2c0_l2d0_sa;
+-reg [L2D_L2C_SB_SIZE:0] l2d0_l2c0_sa;
+-
+-reg [L2C_L2D_SB_SIZE:0] l2c0_l2d0_sa2;
+-reg [L2D_L2C_SB_SIZE:0] l2d0_l2c0_sa2;
+-
+-
+-always @(posedge clk) begin
+-    if (m_rst) begin
+-       l2c0_l2d0_sa <= 1;
+-       l2d0_l2c0_sa <= 1;
+-    end else begin
+-       for (int i = 0, int j = 0; i < L2C_L2D_SB_SIZE; i = i+8, j++) begin
+-	       if (i == 0) begin
+-		       l2c0_l2d0_sa[0] <= l2c0_l2d0_sa[1008] ^ l2c0_l2d0_sa[1006] ^ l2c0_l2d0_sa[1005] ^ l2c0_l2d0_sa[1001] ^ eqed_l2c0_l2d0[0];
+-		   end else begin
+-			   l2c0_l2d0_sa[i] <= l2c0_l2d0_sa[i-1] ^ eqed_l2c0_l2d0[j]; 
+-		   end
+-		       l2c0_l2d0_sa[i+1] <= l2c0_l2d0_sa[i];
+-		       l2c0_l2d0_sa[i+2] <= l2c0_l2d0_sa[i+1];
+-	           l2c0_l2d0_sa[i+3] <= l2c0_l2d0_sa[i+2];
+-		       l2c0_l2d0_sa[i+4] <= l2c0_l2d0_sa[i+3];
+-		       l2c0_l2d0_sa[i+5] <= l2c0_l2d0_sa[i+4];
+-		       l2c0_l2d0_sa[i+6] <= l2c0_l2d0_sa[i+5];
+-			   l2c0_l2d0_sa[i+7] <= l2c0_l2d0_sa[i+6];
+-       end
+-       for (int i = 0, int j = 0; i < L2D_L2C_SB_SIZE; i = i+8, j++) begin
+-	       if (i == 0) begin
+-		       l2d0_l2c0_sa[0] <= l2d0_l2c0_sa[1247] ^ l2d0_l2c0_sa[1244] ^ l2d0_l2c0_sa[1243] ^ l2d0_l2c0_sa[1240] ^ eqed_l2d0_l2c0[0];
+-		   end else begin
+-			   l2d0_l2c0_sa[i] <= l2d0_l2c0_sa[i-1] ^ eqed_l2d0_l2c0[j]; 
+-		   end
+-		       l2d0_l2c0_sa[i+1] <= l2d0_l2c0_sa[i];
+-		       l2d0_l2c0_sa[i+2] <= l2d0_l2c0_sa[i+1];
+-	           l2d0_l2c0_sa[i+3] <= l2d0_l2c0_sa[i+2];
+-		       l2d0_l2c0_sa[i+4] <= l2d0_l2c0_sa[i+3];
+-		       l2d0_l2c0_sa[i+5] <= l2d0_l2c0_sa[i+4];
+-		       l2d0_l2c0_sa[i+6] <= l2d0_l2c0_sa[i+5];
+-			   l2d0_l2c0_sa[i+7] <= l2d0_l2c0_sa[i+6];
+-       end
+-    end
+-end
++M_stable_eqed_reset : assume property (
++                             @(posedge clk)
++                             ##1 eqed_rst == 1'b0
++                             );
+ 
+ 
+-always @(posedge clk) begin
+-    if (m_rst2) begin
+-       l2c0_l2d0_sa2 <= 1;
+-       l2d0_l2c0_sa2 <= 1;
+-    end else begin
+-       for (int i = 0, int j = 0; i < L2C_L2D_SB_SIZE; i = i+8, j++) begin
+-	       if (i == 0) begin
+-		       l2c0_l2d0_sa2[0] <= l2c0_l2d0_sa2[1008] ^ l2c0_l2d0_sa2[1006] ^ l2c0_l2d0_sa2[1005] ^ l2c0_l2d0_sa2[1001] ^ eqed_l2c0_l2d0[0];
+-		   end else begin
+-			   l2c0_l2d0_sa2[i] <= l2c0_l2d0_sa2[i] ^ eqed_l2c0_l2d0[j]; 
+-		   end
+-		       l2c0_l2d0_sa2[i+1] <= l2c0_l2d0_sa2[i];
+-		       l2c0_l2d0_sa2[i+2] <= l2c0_l2d0_sa2[i+1];
+-	           l2c0_l2d0_sa2[i+3] <= l2c0_l2d0_sa2[i+2];
+-		       l2c0_l2d0_sa2[i+4] <= l2c0_l2d0_sa2[i+3];
+-		       l2c0_l2d0_sa2[i+5] <= l2c0_l2d0_sa2[i+4];
+-		       l2c0_l2d0_sa2[i+6] <= l2c0_l2d0_sa2[i+5];
+-			   l2c0_l2d0_sa2[i+7] <= l2c0_l2d0_sa2[i+6];
+-       end
+-       for (int i = 0, int j = 0; i < L2D_L2C_SB_SIZE; i = i+8, j++) begin
+-	       if (i == 0) begin
+-		       l2d0_l2c0_sa2[0] <= l2d0_l2c0_sa2[1247] ^ l2d0_l2c0_sa2[1244] ^ l2d0_l2c0_sa2[1243] ^ l2d0_l2c0_sa2[1240] ^ eqed_l2d0_l2c0[0];
+-		   end else begin
+-			   l2d0_l2c0_sa2[i] <= l2d0_l2c0_sa2[i] ^ eqed_l2d0_l2c0[j]; 
+-		   end
+-		       l2d0_l2c0_sa2[i+1] <= l2d0_l2c0_sa2[i];
+-		       l2d0_l2c0_sa2[i+2] <= l2d0_l2c0_sa2[i+1];
+-	           l2d0_l2c0_sa2[i+3] <= l2d0_l2c0_sa2[i+2];
+-		       l2d0_l2c0_sa2[i+4] <= l2d0_l2c0_sa2[i+3];
+-		       l2d0_l2c0_sa2[i+5] <= l2d0_l2c0_sa2[i+4];
+-		       l2d0_l2c0_sa2[i+6] <= l2d0_l2c0_sa2[i+5];
+-			   l2d0_l2c0_sa2[i+7] <= l2d0_l2c0_sa2[i+6];
+-       end
+-    end
+-end
++C_check_ccx : cover property (
++                             @(posedge clk)
++                             eqed_rst == 1'b1
++                             ##32
++							 spc0_ccx_sa === 1185'h05be7ef74e67f8dfffbefffe737d6c8fffeeff3fafc06db2000000001f9ff8000000000000097fdeffffde9ff3a703ffff5beff0105c01009643e83727fd6ff3e55f3ffbfa073fe83f47f7f9e694bfefeff2100020bc6913528fb093dee78213fe79aeff00003fdff8361fffeeefffe30000d1a7800000800faffe8fef07ceeee200a0e1215e2bbbffbf478a000010102f7f81800
++							 && spc1_ccx_sa === 1185'h07f859fe088197ec12360007c0efc23803ffde15bfd4ffbee4ce9e417dd00fe015efffef820ffffaffdfe3fffc7f06000168564004000000fbdfee608447de0a5abedffc03e4ffb3fdffeb81edff7dbbef0173c4c1faafff8e9977f56beecfc1c0002b400702b41ff90fe5ff7fa84e17e02e3fcbef9feefd3f16f0fe7e6fffffffffbd32afec77d84bffc62fffe0bb41715233afd
++							 && spc2_ccx_sa === 1185'h0fefccfedfde8010bd3c5c0e4ecf920fa0120cafe4be1fd6c11878109fbfebbfefdeee0fdfc9ebf75fef6f3e6ffbe189f7afdfe0086fb9ae602810d5ca39f5690d45dd409ce8000f480c21fb4bd00e18102398400c0e7ffe6dc40001d261e9648776dffdffd3fde3ef1e01c83cf7ac5bdbaf309cffb43ac7602a213a362e2868490fe07faeefd70bf452bcc1077540000001ff800
++							 && spc3_ccx_sa === 1185'h0fe6c804b1fe98fff8e3c341f2ff80a003ac6120efadabdcec308acb95eff3c359e1e0c3eff84fc7ddcf599fd44e6beffd98bc658ffc07ff52e46007e7c3dffedf9021c0102c12003000cfefffffefff6fe58ef1fa2e47e3bfecc7f3cf8defdf6fe9ecd470a0202fef7f7e14607fc20eefdc415f3fdfc41feebfeee7fb0b3ff863ffc27edd120c44a540013fefefffec17cc2fdf7
++							 && spc4_ccx_sa === 1185'h030003ffec23afec5bdeb11e00001fffebc05130d7800fe025323a019f1ff284feefa4fc1059800035b1ce0fe310777fff7fbfa00c3863bcffffd3ffff69e20f5fafeffffe0fd7efd7cfe059044b08151a8ddfe93c100010134f87efef6e9fdaffb5f83ea8411410002035f10cfc841b8ac030613a5df667383c31cfa6be801edfdf6ff7cf2ff277deffdf304b84f21feffffdffd
++							 && spc5_ccx_sa === 1185'h001021cf8e6fcfe01fc839dfa211cbff74c98dcf8fdb970c000a0103b99f97fff3ffa7936ff346cbe9eefbc00feffbffa640c18f9dff7dec4c80424daffad9c421470004f3da02302c104010100000801e7e983d22007f801ffffc7fff7ecea658f0c1f7150f6fcff0c598fe7febef63309103ae37feffe45fe6f7f0ffef6fcdd9578cbfea0e7fdffd79d4af1ef11feefbffc1ffd
++							 && spc6_ccx_sa === 1185'h08d952803f37c01c000210007fc0db8fd9d9ce08a02ffff8125027c0c3ef208010f801c3971ffad301ffc31e0ff5fffeeb687ffee617d0fe019180001fefffefff83ffefefea01492fedefedfdcbff95fbf3e49a5c001fc9f0b7ff1c3b83bce7c7ba61c2fe6fbf1d4fcffef83fc31fefc4aa2dbaffe8fe07f432ff901f6079300803011a0e40002004ff82dfde00051671cc21940
++							 && spc7_ccx_sa === 1185'h0fc53705de70903edf3b7811006f3fef4bf96ef7f9e2ede9e405909d208bddb812ffbd19e0cf27fdcff6fffffc99c8323e701793901ffd2c10437f23c010d4bf3251c17fefedf34fdfcfd0d0131c29074007e174161817ebf056b5b601ee2a272f6cb1f7f89f70ddefe8fc05d0509fff6efffff75fbfdfdfebab7b5ba7e16007e77900001ffb52bf779800cf9ffffefdb82b624d8
++							 && l2c0_ccx_sa === 1249'h03c3e869de40780c1000fffea775717effb960ff77fffb7fbc4800003004f281c1ce08af2ff0f9e21d2400400fbf6bffb6f818200001eee6c24660a3cc707bcce9027ff127e969987da87e02002017ad4e12de6f3c0bf8f3e008045122e19fe7ebee36d94054bedf185857c43e23f00fcffc2147c4f67dcecdabffb7ff14c2ae9fbdea43c9c90291cf77e04bfa3cf7dfb27f785f69ef817feefd503df
++							 && l2c1_ccx_sa === 1249'h0f9e0ee1fbfffa3842803b9fffef7acfc0c041df928ee76fe7a87e60ec1000403fbe7fea84123a5dde0c3f7a68c61ac000de7efc0061df701cdff0cbcf200a17477d8e404000002b2005e42ec1939ef7fefcc48087e6ef18d21bb5f81a9eae2026c5821fcffffceeefc8ffd23f00042f6f2c485e1c043210ed2a1bcffb434538e300a4bfeff8fdeb7db7f36c0fcb4eefcfefc34b3fdbff9fc5c66e6ef
++							 && l2c2_ccx_sa === 1249'h0408d1d937dfe5733efebe80bd07ce000418157430385ffee7efdbffffeaf9dfffcfe9a5aeef4feeb8086eb068bf8b91efbbffc3ec7f0f2ff9d09b100c114e01300e10305648fb81061ffcc511101db4d805e78ffecd4d05999bebf1ce3be01c6f86f85090c099013cf1797baef3a2343e3f615d41663fffd04f8fc78028f8ce0ca0c3e7a3e6efb873fbe10fffdd3ffbdffdfce2003ffff6eef748088
++							 && l2c3_ccx_sa === 1249'h081e1c10000ffdee7bef0f2023dee82fbfea1fe3b82e07f65a81ffeffbfce07f4e8c4033efef8e0c6eec000467eff5d16f4ddbfb81ef4f2de901fffdf328d3efc839a0d044dfef0fefce2fe1ffa529e3082103476bffeda7ff5ff00d73a0803799eaaeb7c8a77ecfbf10fe6b6fb80fdfec0f008891f445dc09ac03f87647b64eff1c1d44909401ae2d7deff54ea5df022994929ee50787c3ffcfa8e2e
++							 && l2c4_ccx_sa === 1249'h0e683ef3077f2fc6ff9027afeff808cbec37e836d817bdffdffe53e88d6c64000ee7d41bfd2282ebedffefffe61fea3010703db5e2e54101f2297dc00d9ecac0b847a0203bcca3df5fdbffefbb7febff3331078ca1fb7a304468c3f70fc011ceefbfb4557c1401405e9b7710097c60c000c200000300afd35f7fffffff4fad33feefffa439e5c7c058b85dd01f7effc7ca458400a13903879de07fca4
++							 && l2c5_ccx_sa === 1249'h0ab80fe1c80fdc01eafff6fd7df0b1ffffd08812f2283fc8bd64c89fc7fefd5ffbdff80007e757f105e7d7cf8df7cfdfa6fffc37c8affbffc231fd27f65fefe55f7fbe124f9f9cb5dfcdfdcfddbfe7ffd058d863d3ef60ef901f145d00c3eef031c210703be1feee7fe00c360112d7100821b6df800de7ff40cfc812ec01061017e81e56100ff011f3dfe403cbcd3017c047f001c010b60fc34f6fcac
++							 && l2c6_ccx_sa === 1249'h0619e9407fefefffffbfdf259feffde00a5a0c00fffff7afbbdbff57fffcf87fe3c93201ffea819fe37227c0dfefcee61e5bfedfd9c82010212cee2667820321e2e0886039f47fc78fd63affdfffafefeee862600001a7f79f0fdaffefbfff988c07b2384a0213fc7c1f6db9ae579f30101ffb7fc003d612bffdc2dffcf4d80fe079ef9ffecfefee30f7d45fffff7ded3febfbef75bfefcfefecffee8
++							 && l2c7_ccx_sa === 1249'h050033fe1a0fcffdcbcf486fa4866dda2e483c19bf9b9083d710b7ce090f9deff7e9f88e0e2fd997dfcfc30e3873cfe7eee4d695fc09d1e03c400befaeefffc82bf9387f3ddfc04df7efffe843591de9e9c37ff01ffa380067ffe6096bb37fbefedfc7ddd1dff830edfde03fac30ff4e7ccfb80ec90fbf30055a090ffa214fadefc33207e6cdfdffb73e7ff39fcb0fc30ffd3bafe37cfffbfc80feeff
++							 && ccx_spc0_sa === 1241'h0a101e3e3a3e3a2e362c22363e3c06160e2016323026261a1a383e3e3e1e301a080c1a3e0c0e301000381e3e3e342e3e1636321a0000000e3e2030200c041c140e1802143e3c2a30221e3e3e263e3632141c040400382a2e3e1e3a263a2e022c240e1a080816362a3e2e0e3426200806361a300c102c0a3a341e3a30320a3c1e1e22363e3e362810303a36363e362e32161634183c6000000292cf3
++							 && ccx_spc1_sa === 1241'h000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000008060310100c20030c0
++							 && ccx_spc2_sa === 1241'h00000000060006060000000606000606000600060000000606060606000606060000060606060006000000060606060606000606060600000600060006000000000600060606000006060000000600060000000606000600000606000006060606060000060000000600060600000000000600000000060006060000060606060006000006000006000606060600060000060801808060121000800
++							 && ccx_spc3_sa === 1241'h02464240464240000606404444060642004640060246464200000040440400424206464006000644404006420646040202044040464400004440064046464244020404060602020606400000004602000206020606000002444004440644464600460000024602060404460000424246444444044646064646444644404246424240464604000644444646024446004602420b0000000061000000b
++							 && ccx_spc4_sa === 1241'h008080a0a680a6a6a0a08006a620068600868086002020a62626a6a62006a6a6a0808626a62620868020000626a686a626a0a686a626200086a0868086a080002086002686a680a0a60680000086800680a0202606000600a0a686a0208606a6a68680000680008086002626a0a080a020068080a0a0a680a626a0800686a68600a620a026a080a62086262606a026a08086a80000008000c8c0632
++							 && ccx_spc5_sa === 1241'h009290929490961612109284960004960094901602828096060616968206169692109686160602969280028606941616061096969686020096901690969090820014000616141012168410000294120410120206060006029294169200968694169410000690021016028604109092928086901092921492968490928696969480948090061210968096860686920692129418c000010080063000e
++							 && ccx_spc6_sa === 1241'h02060210164210405616100454561652501640164206161240404050541450424206164056505604400006125656545252541040464440001450064006561214121444065652520606405010101652104216121656400042141054441604564650565000024612160454165050120206141444041606164606545604004246525210461614501604440646525456105602125820400001000000109
++							 && ccx_spc7_sa === 1241'h0216125056125010565650045446465240561056020646520000105044445012121656005640461410000642465654524254501016040000545016101656524442540406565252161600504040565240125642464600000254505414461446165056500002164256144446405052121644441414561656161644561400121652425006564450561404160642445640561252580000060e00010000a
++							 && ccx_l2c0_sa === 1121'h0aa0060000a606060606a00600a6808086a6260000000600202080a0a62680a02600860006262026260600008026a6a626a0a0a000a086a026008680008080062000a6a0a6060606a6860680a0a6a080a000a08680060006062626a02680260686060620868020060020000020a08626a686a08080a0a626a6a6a62686a080a0a0a02085fc9490041c0200015
++							 && ccx_l2c1_sa === 1121'h0a46020600120404040414020616101014140404060202020602161414001216060610000200000004020404160614100612121204161216000416100012160600041410120200001610001614141412120612141402060604060216061604041400040414100406060602020016160414101414161616021610120410101012161000163d620a900d3188313
++							 && ccx_l2c2_sa === 1121'h04a00000050020000005200025240404252100200020000101042525010405212024200021210121202000242125052125252520252405210024042004242001202525252000000504200425252524252005242420000000010105012421002420000104242100002120002105240125242524042525010525252104250405252521240770208c1c9a4802001
++							 && ccx_l2c3_sa === 1121'h089204020026060406062006002620202626060002020602020022222604202006002400040400060606000020062626062222200022242206022422022222060000242026060606262404222226202020022024200402060604062206220404260606022622020600000202022226062626202222202606262426062422202020200227b2100090220236022
++							 && ccx_l2c4_sa === 1121'h044705021417161511001310021306001707020413111707151717170216101710111400131707100007040000011710140003070314070707001410171211101100150112110600151101041712151717101502070003171617150000170717171301131713071612161201101411150614001716041301060007171713131602141116a2884000c1818402b
++							 && ccx_l2c5_sa === 1121'h04431112001312010110130012131210131312101311130311131313121200130011100013131310001300001011031010001303131003131310001013021110010011011211121011010100030211030300111213001303121301101003131313130113130313020212021100101111121000131210031102001303030303020200110ff8040080044048009
++							 && ccx_l2c6_sa === 1121'h0a5612961002948484848402961680000484848406021292161216140490821616861080029080009482841416169480969212020416128610941680101216169004048002928080869080861414840212061214840296168496929616961484848084940480040696161212101616948480840406160682969092848080000216100017f782606320183a4d9
++							 && ccx_l2c7_sa === 1121'h052000004000404040000000404040004040404040400040404040404040404040404040004040400000004000404040004040400040004000400040400040000040004040400040404040000040404040400040400040000000404000000000400000400000404040000000004040004000404040004000404000004040400000400007f1118463b2300000b
++							 );
+ 
+ 
+ // L2C-MCU interface
+@@ -6052,7 +5998,6 @@
+ // Declare the registers for the Signature Analyzer MISRs
+ reg [L2C_MCU_SB_SIZE:0] l2c0_mcu0_sa;
+ reg [MCU_L2C_SB_SIZE:0] mcu0_l2c0_sa;
+-/*
+ reg [L2C_MCU_SB_SIZE:0] l2c1_mcu0_sa;
+ reg [MCU_L2C_SB_SIZE:0] mcu0_l2c1_sa;
+ reg [L2C_MCU_SB_SIZE:0] l2c2_mcu1_sa;
+@@ -6067,11 +6012,10 @@
+ reg [MCU_L2C_SB_SIZE:0] mcu3_l2c6_sa;
+ reg [L2C_MCU_SB_SIZE:0] l2c7_mcu3_sa;
+ reg [MCU_L2C_SB_SIZE:0] mcu3_l2c7_sa;
+-*/
++
+ // Declare the registers for the Signature Analyzer MISRs
+ reg [L2C_MCU_SB_SIZE:0] l2c0_mcu0_sa2;
+ reg [MCU_L2C_SB_SIZE:0] mcu0_l2c0_sa2;
+-/*
+ reg [L2C_MCU_SB_SIZE:0] l2c1_mcu0_sa2;
+ reg [MCU_L2C_SB_SIZE:0] mcu0_l2c1_sa2;
+ reg [L2C_MCU_SB_SIZE:0] l2c2_mcu1_sa2;
+@@ -6086,7 +6030,8 @@
+ reg [MCU_L2C_SB_SIZE:0] mcu3_l2c6_sa2;
+ reg [L2C_MCU_SB_SIZE:0] l2c7_mcu3_sa2;
+ reg [MCU_L2C_SB_SIZE:0] mcu3_l2c7_sa2;
+-*/
++
++/*
+ always @(posedge clk) begin
+     if (m_rst) begin
+        l2c0_mcu0_sa <= 1;
+@@ -6123,7 +6068,6 @@
+     end
+ end
+ 
+-/*
+ 
+ always @(posedge clk) begin
+     if (m_rst) begin
+@@ -6671,29 +6615,8 @@
+        end
+     end
+ end
+-
+ */
+ 
+-M_stable_eqed_reset : assume property (
+-                             @(posedge clk)
+-                             ##1 eqed_rst == 1'b0
+-                             );
+-
+-
+-C_check_l2c0 : cover property (
+-                             @(posedge clk)
+-                             eqed_rst == 1'b1
+-                             ##32
+-					         l2d0_l2c0_sa    == 1249'h022000fdfda30509110a01028001ff047ada2f614b8c46cde90000010dc1804c731606098172d54b43f0fc69028072e86a33f4f746bd0f05020a255ecabbfefd86fef34668ca3d9efbff77fe4ae207ddf70000117855aa16ebdbfdad3f9df377ffbfb9ffd7fd00fffd6703c1922cffffc8000200095401123cba8999e467deb7def73d1f281512e2801bde9ad57384387923beef8e7f2f5a040003ce7
+-							 && ccx_l2c0_sa  == 1121'h0aa0060000a606060606a00600a6808086a6260000000600202080a0a62680a02600860006262026260600008026a6a626a0a0a000a086a026008680008080062000a6a0a6060606a6860680a0a6a080a000a08680060006062626a02680260686060620868020060020000020a08626a686a08080a0a626a6a6a62686a080a0a0a02085fc9490041c0200015
+-							 && mcu0_l2c0_sa == 569'h0779ecdf6fbfffc0001200000000100000003f87fffdfe0b19f0601d0ff940000100003fefe006703900018009fffffffdffbfe7ebf4ffe595010fc44e8000003c2693a01d108fa
+-							 && l2c0_l2d0_sa == 1009'h099fced7f7bd7f6effffffffffffffffffffbebefffffff5fdf474f9aff684a464a484b4d4e5cdfb05adb6f6fbefe7f7ffe2de3ba7c9626f7da3fff3f7e72bfffffff7fe8ccffc5fffdffefffffaf9ffffffffffffdffffffbffffea7fffffefdffffffffeffffdfffff7ffffff7ff0a6befffffff5fbffffffffffffffff
+-							 && l2c0_ccx_sa  == 1249'h03c3e869de40780c1000fffea775717effb960ff77fffb7fbc4800003004f281c1ce08af2ff0f9e21d2400400fbf6bffb6f818200001eee6c24660a3cc707bcce9027ff127e969987da87e02002017ad4e12de6f3c0bf8f3e008045122e19fe7ebee36d94054bedf185857c43e23f00fcffc2147c4f67dcecdabffb7ff14c2ae9fbdea43c9c90291cf77e04bfa3cf7dfb27f785f69ef817feefd503df
+-							 && l2c0_mcu0_sa == 545'h0c33ffffefffffffffff8d7ffffffffffbf87ed7fbf7fd73fffffffffffd7dfdf6ffffaffbbfcffdfffffffbfffdffc0000bf0e56510b387fdff9fcffffffff1a71398062
+-                             );
+-
+-
+-
+ /*
+ 
+ spc spc0(
+@@ -7439,8 +7362,6 @@
+ 
+ //assign
+ 
+-/*
+-
+ ccx ccx(
+ 
+   //  .gclk		    ( cmp_gclk_c2_ccx_right ), // cmp_gclk_c1_r[3]) , 
+@@ -7466,7 +7387,7 @@
+ 
+   .ccx_lstg_in              (
+                              {'0
+-							  dbg0_dbg1_l2b0_sio_ack_dest,
++							 /*dbg0_dbg1_l2b0_sio_ack_dest,
+                               dbg0_dbg1_l2b0_sio_ack_type,
+                               dbg0_dbg1_l2b0_sio_ctag_vld,
+                               dbg0_dbg1_l2b1_sio_ack_dest,
+@@ -7519,7 +7440,7 @@
+                               tcu_l2b2_mbist_start,
+                               l2b3_tcu_mbist_done,
+                               l2b3_tcu_mbist_fail,
+-                              tcu_l2b3_mbist_start
++                              tcu_l2b3_mbist_start*/
+                              }
+                             ),
+   .ccx_lstg_out             (
+@@ -7581,7 +7502,7 @@
+                             ),
+   .ccx_rstg_in              (
+                              {'0
+-							  5'b0,
++							  /*5'b0,
+                               sii_l2b5_ecc[ 6 : 5 ],
+                               4'b0,
+                               sii_l2b5_ecc[ 4 : 3 ],
+@@ -7629,7 +7550,7 @@
+                               4'b0,
+                               sii_l2b7_ecc[  4  :  3  ],
+                               4'b0,
+-                              sii_l2b7_ecc[  6  :  5  ]
++                              sii_l2b7_ecc[  6  :  5  ]*/
+                              }
+                             ),
+   .ccx_rstg_out             (
+@@ -7798,8 +7719,6 @@
+         );
+ //________________________________________________________________
+ 
+-*/
+-
+ /*
+ 
+ n2_l2d_sp_512kb_cust l2d0(
+@@ -8148,7 +8067,7 @@
+         );
+ //________________________________________________________________
+ 
+-*/
++
+ 
+ /////// stagging flop
+ 
+@@ -8283,8 +8202,8 @@
+   .sii_l2b_ecc              (sii_l2b0_ecc[ 6 : 0 ]           ),
+   .l2t_sii_iq_dequeue       (l2t0_sii_iq_dequeue         ),
+   .l2t_sii_wib_dequeue      (l2t0_sii_wib_dequeue        ),
+-  .rst_por_                 ( L2_rst ), 
+-  .rst_wmr_                 ( ~L2_rst ), 
++  .rst_por_                 ( gl_l2_por_c3t ), 
++  .rst_wmr_                 ( gl_l2_wmr_c3t ), 
+   .scan_in                  (tcu_soc0_scan_out           ),
+   .scan_out                 (l2t0_scan_out               ),
+   .efu_l2t_fuse_clr          (efu_l2t0_fuse_clr          ),                       
+@@ -8377,8 +8296,6 @@
+         );
+ //________________________________________________________________
+ 
+-/*
+-
+ /////// stagging flop
+ 
+ //assign
+@@ -8628,8 +8545,6 @@
+ 
+ /////// stagging flop
+ 
+-
+-
+ //assign
+ 
+ l2t l2t2(
+@@ -9993,8 +9908,6 @@
+         );
+ //________________________________________________________________
+ 
+-*/
+-
+ l2b l2b0(
+   .ccu_slow_cmp_sync_en ( gl_io_cmp_sync_en_c3t0 ), // ( gl_io_cmp_sync_en_c3t ), - for int6.1
+   .ccu_cmp_slow_sync_en ( gl_cmp_io_sync_en_c3t0 ), // ( gl_cmp_io_sync_en_c3t ), - for int6.1
+@@ -10002,8 +9915,8 @@
+ 
+   .gclk                     ( cmp_gclk_c3_l2b0 ), // cmp_gclk_c0_r[1]), 
+   .tcu_clk_stop ( gl_l2b0_clk_stop ),	// staged clk_stop
+-  .rst_por_                 (L2_rst 			), // ( gl_l2_por_c3t ), - for int6.1
+-  .rst_wmr_                 (~L2_rst 			), // ( gl_l2_wmr_c3t ), - for int6.1
++  .rst_por_                 (gl_l2_por_c3t0 			), // ( gl_l2_por_c3t ), - for int6.1
++  .rst_wmr_                 (gl_l2_wmr_c3t0 			), // ( gl_l2_wmr_c3t ), - for int6.1
+   .l2t_l2b_fbrd_en_c3       (l2t0_l2b0_fbrd_en_c3        ),// scbuf
+   .l2t_l2b_fbrd_wl_c3       (l2t0_l2b0_fbrd_wl_c3        ),
+   .l2t_l2b_fbwr_wen_r2      (l2t0_l2b0_fbwr_wen_r2       ),
+@@ -10083,8 +9996,6 @@
+         );
+ //________________________________________________________________
+ 
+-/*
+-
+ l2b l2b1(
+   .ccu_slow_cmp_sync_en ( gl_io_cmp_sync_en_c3t ),
+   .ccu_cmp_slow_sync_en ( gl_cmp_io_sync_en_c3t ),
+@@ -11418,7 +11329,6 @@
+ 
+ */
+ 
+-
+ endmodule // eqed_ost2
+ 
+ 

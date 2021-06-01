@@ -1,0 +1,84 @@
+#!/bin/bash
+
+
+# Run script for the E-QED OpenSPARC T2 examples in the CAV'17 paper
+#
+# This script applies the necessary patches to:
+#             1. Analyzes the modules for Design Block localization
+#             2. Generate the RTL with muxes for FF analysis
+#             3. Find the list of FF candidates
+#             4. Apply NCC (Neighbor Consistency Checking) to reduce the list
+#
+
+clear
+
+# Export global variable for OST2 file references
+export DV_ROOT=$(cd ../source/OST2_orig_rtl; pwd)
+
+printf "Please enter the E-QED OpenSPARC T2 example to run\n\n"
+
+read -r OST2_EX
+
+printf "Copying original OpenSPARC T2 top-level RTL...\n\n"
+
+(set -x;
+cp ../source/OST2_orig_rtl/design/sys/iop/cpu/rtl/cpu.v .)
+
+printf "Patch original OpenSPARC T2 top-level RTL to prepare for formal analysis...\n\n"
+
+(set -x; cp cpu.v eqed_ost2.sv;
+patch eqed_ost2.sv -i patch_files/ost2/reduce_design.patch)
+
+printf "...add Signature Blocks...\n\n"
+
+(set -x; patch eqed_ost2.sv -i patch_files/ost2/add_sb.patch)
+
+# Loop through all modules and check consistency
+
+bug_module=none
+
+for module in l2c0 ccx; do
+
+  printf "Patching original OpenSPARC T2 RTL to setup consistency check for module %s...\n" "$module"
+
+  (set -x; patch eqed_ost2.sv -i patch_files/example_"$OST2_EX"/LDB_"$module".patch)
+
+  printf "\nCheck module %s for consistency\n\n" "$module"
+
+  printf "Press any key to launch JasperGold\n"
+  read RES
+
+  (set -x; jaspergold -batch -tcl jasper_ost2.tcl)
+
+  printf "\ngrep jgproject/jg.log for cover property ost2.C_check_%s\n\n" "$module"
+
+  printf "RESULT: "
+
+  if (grep -o 'The cover property "ost2.C_check_'"$module"'" was proven unreachable' jgproject/jg.log); then
+
+    printf "\nConsistency Check for %s: FAILED\n\n" "$module"
+    bug_module=$module
+
+  elif (grep -o 'The cover property "ost2.C_check_'"$module"'" was covered' jgproject/jg.log); then
+
+    printf "\nConsistency Check for %s: PASSED\n" "$module"
+
+  else
+
+    printf "\nERROR: Unexpected JasperGold Output during Consistency Check\n"
+    printf "Please check jgproject/jg.log\n"
+    exit 1
+
+  fi
+
+done
+
+
+if [ "$bug_module" = none ]; then
+  printf "\nAll modules passed the Consistency Check\n"
+  exit 1
+else
+  printf "\nThe bug has been localized to module %s\n\n" "$bug_module"
+fi
+
+printf "E-QED Localization to Design Module done\n\n"
