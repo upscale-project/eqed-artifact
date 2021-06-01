@@ -1,6 +1,8 @@
 +define+CPU=cpu 
 +define+FC_NO_PEU_T2 
 +define+FC_NO_NIU_T2
++define+LIB
++define+FORMAL_TOOL
 eqed_ost2.sv
 $DV_ROOT/libs/analog/n2_esd_core_cust_l/n2_esd_core_cust/rtl/n2_esd_core_cust.v
 $DV_ROOT/design/sys/iop/fsr_left/rtl/fsr_left.v
@@ -12,13 +14,53 @@ $DV_ROOT/libs/analog/n2_tmpd_cust_l/n2_tmpd_cust/rtl/n2_tmpd_cust.v
 $DV_ROOT/libs/analog/n2_revid_cust_l/n2_revid_cust/rtl/n2_revid_cust.v
 $DV_ROOT/libs/clk/rtl/clkgen_mio_cmp.v
 $DV_ROOT/libs/clk/rtl/clkgen_mio_io.v
+-f libs.flist
 -f ccx_rtl.flist
 -f db0_rtl.flist
 -f db1_rtl.flist
 -f l2b_rtl.flist
 -f l2t_rtl.flist
 -f mcu_rtl.flist
--f spc.flist
--f libs.flist
+-f spc_rtl.flist
+$DV_ROOT/libs/clk/n2_clk_pgrid_cust_l/n2_clk_ccx_cmp_cust/rtl/n2_clk_ccx_cmp_cust.v
+clkgen_ccx_cmp.v
 $DV_ROOT/libs/tisram/soc/n2_l2d_sp_512kb_cust_l/n2_l2d_sp_512kb_cust/rtl/n2_l2d_sp_512kb_cust.v
+spc.v
 cl_rtl_ext.v
+cl_rtl_ext.v
+cl_u1.v
+cl_sc1.v
+cl_dp1.v
+n2_flop_bank_cust.v
+clkgen_l2t_cmp.v
+clkgen_l2b_cmp.v
+clkgen_l2d_cmp.v
+clkgen_spc_cmp.v
+clkgen_mcu_cmp.v
+n2_clk_spc_cmp_cust.v
+n2_l2t_sp_28kb_cust.v
+n2_l2t_dp_32x128_cust.v
+n2_l2t_dp_16x160_cust.v
+n2_l2t_dp_32x160_cust.v
+n2_com_cm_64x64_cust.v
+n2_com_cm_32x40_cust.v
+n2_com_cm_8x40_cust.v
+n2_efuhdr1_ctl.v
+n2_clk_l2d_cmp_cust.v
+n2_clk_l2t_cmp_cust.v
+n2_clk_l2b_cmp_cust.v
+n2_frf_mp_256x78_cust.v
+n2_irf_mp_128x72_cust.v
+n2_icd_sp_16p5kb_cust.v
+n2_ict_sp_1920b_cust.v 
+n2_dca_sp_9kb_cust.v
+n2_dta_sp_1920b_cust.v
+n2_dva_dp_32x32_cust.v
+n2_tlb_tl_64x59_cust.v
+n2_com_dp_32x152_cust.v
+n2_com_dp_32x72_cust.v
+n2_stb_cm_64x45_cust.v
+n2_com_dp_64x84_cust.v
+n2_tlb_tl_128x59_cust.v
+n2_com_dp_32x84_cust.v 
+

@@ -1,29 +1,10 @@
---- eqed_ost2.reduced.v	2021-02-26 16:59:26.144902318 -0800
-+++ eqed_ost2.sv	2021-03-05 15:56:40.449552903 -0800
-@@ -37,6 +37,9 @@
- // 
- // ========== Copyright Header End ============================================
- module eqed_ost2 (
-+//E-QED clk and rst
-+  clk,
-+  eqed_rst,
-   L2T_VNW, 
-   SPC_VNW, 
-   L2D_VNW0, 
-@@ -3917,6 +3920,9 @@
- wire rst_dmu_peu_por_;
- wire rst_dmu_peu_wmr_;
+--- reduced_ost2.sv	2021-06-01 16:00:48.411003623 -0700
++++ eqed_ost2.sv	2021-06-01 16:01:01.660437644 -0700
+@@ -4561,6 +4561,2026 @@
  
-+//E-QED Inputs
-+input clk;
-+input eqed_rst;
+     assign tcu_ss_request = 0;
  
- input   [ 7 : 0 ]       L2T_VNW;
- input   [ 7 : 0 ]       SPC_VNW;
-@@ -4118,6 +4124,1341 @@
- 
- 
- //________________________________________________________________
++//________________________________________________________________
 +// E-QED signals and signature analyzers
 +
 +
@@ -126,42 +107,70 @@
 +       spc0_ccx_sa <= 1;
 +       ccx_spc0_sa <= 1;
 +    end else begin
-+       spc0_ccx_sa[0] <= spc0_ccx_sa[1147] ^ spc0_ccx_sa[1134] ^ spc0_ccx_sa[1133] ^ spc0_ccx_sa[1128];
-+       for (int i = 1; i < SPC_CCX_SB_SIZE; i++) begin
-+           spc0_ccx_sa[i] <= spc0_ccx_sa[i-1];
++       for (int i = 0, int j = 0; i < SPC_CCX_SB_SIZE; i = i+8, j++) begin
++	       if (i == 0) begin
++		       spc0_ccx_sa[0] <= spc0_ccx_sa[1147] ^ spc0_ccx_sa[1134] ^ spc0_ccx_sa[1133] ^ spc0_ccx_sa[1128] ^ eqed_spc0_ccx[0];
++		   end else begin
++			   spc0_ccx_sa[i] <= spc0_ccx_sa[i-1] ^ eqed_spc0_ccx[j]; 
++		   end
++		       spc0_ccx_sa[i+1] <= spc0_ccx_sa[i];
++		       spc0_ccx_sa[i+2] <= spc0_ccx_sa[i+1];
++	           spc0_ccx_sa[i+3] <= spc0_ccx_sa[i+2];
++		       spc0_ccx_sa[i+4] <= spc0_ccx_sa[i+3];
++		       spc0_ccx_sa[i+5] <= spc0_ccx_sa[i+4];
++		       spc0_ccx_sa[i+6] <= spc0_ccx_sa[i+5];
++			   spc0_ccx_sa[i+7] <= spc0_ccx_sa[i+6];
 +       end
-+       for (int j = 0; j < SPC_CCX_B; j++) begin
-+           spc0_ccx_sa[j*8] <= spc0_ccx_sa[j*8] ^ eqed_spc0_ccx[j];
-+       end
-+       for (int j = 0; j < CCX_SPC_B; j++) begin
-+           ccx_spc0_sa[j*8] <= ccx_spc0_sa[j*8] ^ eqed_ccx_spc0[j];
-+       end
-+       ccx_spc0_sa[0] <= ccx_spc0_sa[1239] ^ ccx_spc0_sa[1235] ^ ccx_spc0_sa[1233] ^ ccx_spc0_sa[1230];
-+       for (int i = 1; i < CCX_SPC_SB_SIZE; i++) begin
-+           ccx_spc0_sa[i] <= ccx_spc0_sa[i-1];
++       for (int i = 0, int j = 0; i < CCX_SPC_SB_SIZE; i = i+8, j++) begin
++	       if (i == 0) begin
++		       ccx_spc0_sa[0] <= ccx_spc0_sa[1239] ^ ccx_spc0_sa[1235] ^ ccx_spc0_sa[1233] ^ ccx_spc0_sa[1230] ^ eqed_ccx_spc0[0];
++		   end else begin
++			   ccx_spc0_sa[i] <= ccx_spc0_sa[i-1] ^ eqed_ccx_spc0[j]; 
++		   end
++		       ccx_spc0_sa[i+1] <= ccx_spc0_sa[i];
++		       ccx_spc0_sa[i+2] <= ccx_spc0_sa[i+1];
++	           ccx_spc0_sa[i+3] <= ccx_spc0_sa[i+2];
++		       ccx_spc0_sa[i+4] <= ccx_spc0_sa[i+3];
++		       ccx_spc0_sa[i+5] <= ccx_spc0_sa[i+4];
++		       ccx_spc0_sa[i+6] <= ccx_spc0_sa[i+5];
++			   ccx_spc0_sa[i+7] <= ccx_spc0_sa[i+6];
 +       end
 +    end
 +end
 +
 +
 +always @(posedge clk) begin
-+    if (m_rst2) begin
++    if (m_rst) begin
 +       spc0_ccx_sa2 <= 1;
 +       ccx_spc0_sa2 <= 1;
 +    end else begin
-+       spc0_ccx_sa2[0] <= spc0_ccx_sa2[1147] ^ spc0_ccx_sa2[1134] ^ spc0_ccx_sa2[1133] ^ spc0_ccx_sa2[1128];
-+       for (int i = 1; i < SPC_CCX_SB_SIZE; i++) begin
-+           spc0_ccx_sa2[i] <= spc0_ccx_sa2[i-1];
++       for (int i = 0, int j = 0; i < SPC_CCX_SB_SIZE; i = i+8, j++) begin
++	       if (i == 0) begin
++		       spc0_ccx_sa2[0] <= spc0_ccx_sa2[1147] ^ spc0_ccx_sa2[1134] ^ spc0_ccx_sa2[1133] ^ spc0_ccx_sa2[1128] ^ eqed_spc0_ccx[0];
++		   end else begin
++			   spc0_ccx_sa2[i] <= spc0_ccx_sa2[i] ^ eqed_spc0_ccx[j]; 
++		   end
++		       spc0_ccx_sa2[i+1] <= spc0_ccx_sa2[i];
++		       spc0_ccx_sa2[i+2] <= spc0_ccx_sa2[i+1];
++	           spc0_ccx_sa2[i+3] <= spc0_ccx_sa2[i+2];
++		       spc0_ccx_sa2[i+4] <= spc0_ccx_sa2[i+3];
++		       spc0_ccx_sa2[i+5] <= spc0_ccx_sa2[i+4];
++		       spc0_ccx_sa2[i+6] <= spc0_ccx_sa2[i+5];
++			   spc0_ccx_sa2[i+7] <= spc0_ccx_sa2[i+6];
 +       end
-+       for (int j = 0; j < SPC_CCX_B; j++) begin
-+           spc0_ccx_sa2[j*8] <= spc0_ccx_sa2[j*8] ^ eqed_spc0_ccx[j];
-+       end
-+       ccx_spc0_sa2[0] <= ccx_spc0_sa2[1239] ^ ccx_spc0_sa2[1235] ^ ccx_spc0_sa2[1233] ^ ccx_spc0_sa2[1230];
-+       for (int i = 1; i < CCX_SPC_SB_SIZE; i++) begin
-+           ccx_spc0_sa2[i] <= ccx_spc0_sa2[i-1];
-+       end
-+       for (int j = 0; j < CCX_SPC_B; j++) begin
-+           ccx_spc0_sa2[j*8] <= ccx_spc0_sa2[j*8] ^ eqed_ccx_spc0[j];
++       for (int i = 0, int j = 0; i < CCX_SPC_SB_SIZE; i = i+8, j++) begin
++	       if (i == 0) begin
++		       ccx_spc0_sa2[0] <= ccx_spc0_sa2[1239] ^ ccx_spc0_sa2[1235] ^ ccx_spc0_sa2[1233] ^ ccx_spc0_sa2[1230] ^ eqed_ccx_spc0[0];
++		   end else begin
++			   ccx_spc0_sa2[i] <= ccx_spc0_sa2[i] ^ eqed_ccx_spc0[j]; 
++		   end
++		       ccx_spc0_sa2[i+1] <= ccx_spc0_sa2[i];
++		       ccx_spc0_sa2[i+2] <= ccx_spc0_sa2[i+1];
++	           ccx_spc0_sa2[i+3] <= ccx_spc0_sa2[i+2];
++		       ccx_spc0_sa2[i+4] <= ccx_spc0_sa2[i+3];
++		       ccx_spc0_sa2[i+5] <= ccx_spc0_sa2[i+4];
++		       ccx_spc0_sa2[i+6] <= ccx_spc0_sa2[i+5];
++			   ccx_spc0_sa2[i+7] <= ccx_spc0_sa2[i+6];
 +       end
 +    end
 +end
@@ -171,42 +180,70 @@
 +       spc1_ccx_sa <= 1;
 +       ccx_spc1_sa <= 1;
 +    end else begin
-+       spc1_ccx_sa[0] <= spc1_ccx_sa[1147] ^ spc1_ccx_sa[1134] ^ spc1_ccx_sa[1133] ^ spc1_ccx_sa[1128];
-+       for (int i = 1; i < SPC_CCX_SB_SIZE; i++) begin
-+           spc1_ccx_sa[i] <= spc1_ccx_sa[i-1];
++       for (int i = 0, int j = 0; i < SPC_CCX_SB_SIZE; i = i+8, j++) begin
++	       if (i == 0) begin
++		       spc1_ccx_sa[0] <= spc1_ccx_sa[1147] ^ spc1_ccx_sa[1134] ^ spc1_ccx_sa[1133] ^ spc1_ccx_sa[1128] ^ eqed_spc1_ccx[0];
++		   end else begin
++			   spc1_ccx_sa[i] <= spc1_ccx_sa[i-1] ^ eqed_spc1_ccx[j]; 
++		   end
++		       spc1_ccx_sa[i+1] <= spc1_ccx_sa[i];
++		       spc1_ccx_sa[i+2] <= spc1_ccx_sa[i+1];
++	           spc1_ccx_sa[i+3] <= spc1_ccx_sa[i+2];
++		       spc1_ccx_sa[i+4] <= spc1_ccx_sa[i+3];
++		       spc1_ccx_sa[i+5] <= spc1_ccx_sa[i+4];
++		       spc1_ccx_sa[i+6] <= spc1_ccx_sa[i+5];
++			   spc1_ccx_sa[i+7] <= spc1_ccx_sa[i+6];
 +       end
-+       for (int j = 0; j < SPC_CCX_B; j++) begin
-+           spc1_ccx_sa[j*8] <= spc1_ccx_sa[j*8] ^ eqed_spc1_ccx[j];
-+       end
-+       for (int j = 0; j < CCX_SPC_B; j++) begin
-+           ccx_spc1_sa[j*8] <= ccx_spc1_sa[j*8] ^ eqed_ccx_spc1[j];
-+       end
-+       ccx_spc1_sa[0] <= ccx_spc1_sa[1239] ^ ccx_spc1_sa[1235] ^ ccx_spc1_sa[1233] ^ ccx_spc1_sa[1230];
-+       for (int i = 1; i < CCX_SPC_SB_SIZE; i++) begin
-+           ccx_spc1_sa[i] <= ccx_spc1_sa[i-1];
++       for (int i = 0, int j = 0; i < CCX_SPC_SB_SIZE; i = i+8, j++) begin
++	       if (i == 0) begin
++		       ccx_spc1_sa[0] <= ccx_spc1_sa[1239] ^ ccx_spc1_sa[1235] ^ ccx_spc1_sa[1233] ^ ccx_spc1_sa[1230] ^ eqed_ccx_spc1[0];
++		   end else begin
++			   ccx_spc1_sa[i] <= ccx_spc1_sa[i-1] ^ eqed_ccx_spc1[j]; 
++		   end
++		       ccx_spc1_sa[i+1] <= ccx_spc1_sa[i];
++		       ccx_spc1_sa[i+2] <= ccx_spc1_sa[i+1];
++	           ccx_spc1_sa[i+3] <= ccx_spc1_sa[i+2];
++		       ccx_spc1_sa[i+4] <= ccx_spc1_sa[i+3];
++		       ccx_spc1_sa[i+5] <= ccx_spc1_sa[i+4];
++		       ccx_spc1_sa[i+6] <= ccx_spc1_sa[i+5];
++			   ccx_spc1_sa[i+7] <= ccx_spc1_sa[i+6];
 +       end
 +    end
 +end
 +
 +
 +always @(posedge clk) begin
-+    if (m_rst2) begin
++    if (m_rst) begin
 +       spc1_ccx_sa2 <= 1;
 +       ccx_spc1_sa2 <= 1;
 +    end else begin
-+       spc1_ccx_sa2[0] <= spc1_ccx_sa2[1147] ^ spc1_ccx_sa2[1134] ^ spc1_ccx_sa2[1133] ^ spc1_ccx_sa2[1128];
-+       for (int i = 1; i < SPC_CCX_SB_SIZE; i++) begin
-+           spc1_ccx_sa2[i] <= spc1_ccx_sa2[i-1];
++       for (int i = 0, int j = 0; i < SPC_CCX_SB_SIZE; i = i+8, j++) begin
++	       if (i == 0) begin
++		       spc1_ccx_sa2[0] <= spc1_ccx_sa2[1147] ^ spc1_ccx_sa2[1134] ^ spc1_ccx_sa2[1133] ^ spc1_ccx_sa2[1128] ^ eqed_spc1_ccx[0];
++		   end else begin
++			   spc1_ccx_sa2[i] <= spc1_ccx_sa2[i] ^ eqed_spc1_ccx[j]; 
++		   end
++		       spc1_ccx_sa2[i+1] <= spc1_ccx_sa2[i];
++		       spc1_ccx_sa2[i+2] <= spc1_ccx_sa2[i+1];
++	           spc1_ccx_sa2[i+3] <= spc1_ccx_sa2[i+2];
++		       spc1_ccx_sa2[i+4] <= spc1_ccx_sa2[i+3];
++		       spc1_ccx_sa2[i+5] <= spc1_ccx_sa2[i+4];
++		       spc1_ccx_sa2[i+6] <= spc1_ccx_sa2[i+5];
++			   spc1_ccx_sa2[i+7] <= spc1_ccx_sa2[i+6];
 +       end
-+       for (int j = 0; j < SPC_CCX_B; j++) begin
-+           spc1_ccx_sa2[j*8] <= spc1_ccx_sa2[j*8] ^ eqed_spc1_ccx[j];
-+       end
-+       ccx_spc1_sa2[0] <= ccx_spc1_sa2[1239] ^ ccx_spc1_sa2[1235] ^ ccx_spc1_sa2[1233] ^ ccx_spc1_sa2[1230];
-+       for (int i = 1; i < CCX_SPC_SB_SIZE; i++) begin
-+           ccx_spc1_sa2[i] <= ccx_spc1_sa2[i-1];
-+       end
-+       for (int j = 0; j < CCX_SPC_B; j++) begin
-+           ccx_spc1_sa2[j*8] <= ccx_spc1_sa2[j*8] ^ eqed_ccx_spc1[j];
++       for (int i = 0, int j = 0; i < CCX_SPC_SB_SIZE; i = i+8, j++) begin
++	       if (i == 0) begin
++		       ccx_spc1_sa2[0] <= ccx_spc1_sa2[1239] ^ ccx_spc1_sa2[1235] ^ ccx_spc1_sa2[1233] ^ ccx_spc1_sa2[1230] ^ eqed_ccx_spc1[0];
++		   end else begin
++			   ccx_spc1_sa2[i] <= ccx_spc1_sa2[i] ^ eqed_ccx_spc1[j]; 
++		   end
++		       ccx_spc1_sa2[i+1] <= ccx_spc1_sa2[i];
++		       ccx_spc1_sa2[i+2] <= ccx_spc1_sa2[i+1];
++	           ccx_spc1_sa2[i+3] <= ccx_spc1_sa2[i+2];
++		       ccx_spc1_sa2[i+4] <= ccx_spc1_sa2[i+3];
++		       ccx_spc1_sa2[i+5] <= ccx_spc1_sa2[i+4];
++		       ccx_spc1_sa2[i+6] <= ccx_spc1_sa2[i+5];
++			   ccx_spc1_sa2[i+7] <= ccx_spc1_sa2[i+6];
 +       end
 +    end
 +end
@@ -216,42 +253,70 @@
 +       spc2_ccx_sa <= 1;
 +       ccx_spc2_sa <= 1;
 +    end else begin
-+       spc2_ccx_sa[0] <= spc2_ccx_sa[1147] ^ spc2_ccx_sa[1134] ^ spc2_ccx_sa[1133] ^ spc2_ccx_sa[1128];
-+       for (int i = 1; i < SPC_CCX_SB_SIZE; i++) begin
-+           spc2_ccx_sa[i] <= spc2_ccx_sa[i-1];
++       for (int i = 0, int j = 0; i < SPC_CCX_SB_SIZE; i = i+8, j++) begin
++	       if (i == 0) begin
++		       spc2_ccx_sa[0] <= spc2_ccx_sa[1147] ^ spc2_ccx_sa[1134] ^ spc2_ccx_sa[1133] ^ spc2_ccx_sa[1128] ^ eqed_spc2_ccx[0];
++		   end else begin
++			   spc2_ccx_sa[i] <= spc2_ccx_sa[i-1] ^ eqed_spc2_ccx[j]; 
++		   end
++		       spc2_ccx_sa[i+1] <= spc2_ccx_sa[i];
++		       spc2_ccx_sa[i+2] <= spc2_ccx_sa[i+1];
++	           spc2_ccx_sa[i+3] <= spc2_ccx_sa[i+2];
++		       spc2_ccx_sa[i+4] <= spc2_ccx_sa[i+3];
++		       spc2_ccx_sa[i+5] <= spc2_ccx_sa[i+4];
++		       spc2_ccx_sa[i+6] <= spc2_ccx_sa[i+5];
++			   spc2_ccx_sa[i+7] <= spc2_ccx_sa[i+6];
 +       end
-+       for (int j = 0; j < SPC_CCX_B; j++) begin
-+           spc2_ccx_sa[j*8] <= spc2_ccx_sa[j*8] ^ eqed_spc2_ccx[j];
-+       end
-+       for (int j = 0; j < CCX_SPC_B; j++) begin
-+           ccx_spc2_sa[j*8] <= ccx_spc2_sa[j*8] ^ eqed_ccx_spc2[j];
-+       end
-+       ccx_spc2_sa[0] <= ccx_spc2_sa[1239] ^ ccx_spc2_sa[1235] ^ ccx_spc2_sa[1233] ^ ccx_spc2_sa[1230];
-+       for (int i = 1; i < CCX_SPC_SB_SIZE; i++) begin
-+           ccx_spc2_sa[i] <= ccx_spc2_sa[i-1];
++       for (int i = 0, int j = 0; i < CCX_SPC_SB_SIZE; i = i+8, j++) begin
++	       if (i == 0) begin
++		       ccx_spc2_sa[0] <= ccx_spc2_sa[1239] ^ ccx_spc2_sa[1235] ^ ccx_spc2_sa[1233] ^ ccx_spc2_sa[1230] ^ eqed_ccx_spc2[0];
++		   end else begin
++			   ccx_spc2_sa[i] <= ccx_spc2_sa[i-1] ^ eqed_ccx_spc2[j]; 
++		   end
++		       ccx_spc2_sa[i+1] <= ccx_spc2_sa[i];
++		       ccx_spc2_sa[i+2] <= ccx_spc2_sa[i+1];
++	           ccx_spc2_sa[i+3] <= ccx_spc2_sa[i+2];
++		       ccx_spc2_sa[i+4] <= ccx_spc2_sa[i+3];
++		       ccx_spc2_sa[i+5] <= ccx_spc2_sa[i+4];
++		       ccx_spc2_sa[i+6] <= ccx_spc2_sa[i+5];
++			   ccx_spc2_sa[i+7] <= ccx_spc2_sa[i+6];
 +       end
 +    end
 +end
 +
 +
 +always @(posedge clk) begin
-+    if (m_rst2) begin
++    if (m_rst) begin
 +       spc2_ccx_sa2 <= 1;
 +       ccx_spc2_sa2 <= 1;
 +    end else begin
-+       spc2_ccx_sa2[0] <= spc2_ccx_sa2[1147] ^ spc2_ccx_sa2[1134] ^ spc2_ccx_sa2[1133] ^ spc2_ccx_sa2[1128];
-+       for (int i = 1; i < SPC_CCX_SB_SIZE; i++) begin
-+           spc2_ccx_sa2[i] <= spc2_ccx_sa2[i-1];
++       for (int i = 0, int j = 0; i < SPC_CCX_SB_SIZE; i = i+8, j++) begin
++	       if (i == 0) begin
++		       spc2_ccx_sa2[0] <= spc2_ccx_sa2[1147] ^ spc2_ccx_sa2[1134] ^ spc2_ccx_sa2[1133] ^ spc2_ccx_sa2[1128] ^ eqed_spc2_ccx[0];
++		   end else begin
++			   spc2_ccx_sa2[i] <= spc2_ccx_sa2[i] ^ eqed_spc2_ccx[j]; 
++		   end
++		       spc2_ccx_sa2[i+1] <= spc2_ccx_sa2[i];
++		       spc2_ccx_sa2[i+2] <= spc2_ccx_sa2[i+1];
++	           spc2_ccx_sa2[i+3] <= spc2_ccx_sa2[i+2];
++		       spc2_ccx_sa2[i+4] <= spc2_ccx_sa2[i+3];
++		       spc2_ccx_sa2[i+5] <= spc2_ccx_sa2[i+4];
++		       spc2_ccx_sa2[i+6] <= spc2_ccx_sa2[i+5];
++			   spc2_ccx_sa2[i+7] <= spc2_ccx_sa2[i+6];
 +       end
-+       for (int j = 0; j < SPC_CCX_B; j++) begin
-+           spc2_ccx_sa2[j*8] <= spc2_ccx_sa2[j*8] ^ eqed_spc2_ccx[j];
-+       end
-+       ccx_spc2_sa2[0] <= ccx_spc2_sa2[1239] ^ ccx_spc2_sa2[1235] ^ ccx_spc2_sa2[1233] ^ ccx_spc2_sa2[1230];
-+       for (int i = 1; i < CCX_SPC_SB_SIZE; i++) begin
-+           ccx_spc2_sa2[i] <= ccx_spc2_sa2[i-1];
-+       end
-+       for (int j = 0; j < CCX_SPC_B; j++) begin
-+           ccx_spc2_sa2[j*8] <= ccx_spc2_sa2[j*8] ^ eqed_ccx_spc2[j];
++       for (int i = 0, int j = 0; i < CCX_SPC_SB_SIZE; i = i+8, j++) begin
++	       if (i == 0) begin
++		       ccx_spc2_sa2[0] <= ccx_spc2_sa2[1239] ^ ccx_spc2_sa2[1235] ^ ccx_spc2_sa2[1233] ^ ccx_spc2_sa2[1230] ^ eqed_ccx_spc2[0];
++		   end else begin
++			   ccx_spc2_sa2[i] <= ccx_spc2_sa2[i] ^ eqed_ccx_spc2[j]; 
++		   end
++		       ccx_spc2_sa2[i+1] <= ccx_spc2_sa2[i];
++		       ccx_spc2_sa2[i+2] <= ccx_spc2_sa2[i+1];
++	           ccx_spc2_sa2[i+3] <= ccx_spc2_sa2[i+2];
++		       ccx_spc2_sa2[i+4] <= ccx_spc2_sa2[i+3];
++		       ccx_spc2_sa2[i+5] <= ccx_spc2_sa2[i+4];
++		       ccx_spc2_sa2[i+6] <= ccx_spc2_sa2[i+5];
++			   ccx_spc2_sa2[i+7] <= ccx_spc2_sa2[i+6];
 +       end
 +    end
 +end
@@ -261,42 +326,70 @@
 +       spc3_ccx_sa <= 1;
 +       ccx_spc3_sa <= 1;
 +    end else begin
-+       spc3_ccx_sa[0] <= spc3_ccx_sa[1147] ^ spc3_ccx_sa[1134] ^ spc3_ccx_sa[1133] ^ spc3_ccx_sa[1128];
-+       for (int i = 1; i < SPC_CCX_SB_SIZE; i++) begin
-+           spc3_ccx_sa[i] <= spc3_ccx_sa[i-1];
++       for (int i = 0, int j = 0; i < SPC_CCX_SB_SIZE; i = i+8, j++) begin
++	       if (i == 0) begin
++		       spc3_ccx_sa[0] <= spc3_ccx_sa[1147] ^ spc3_ccx_sa[1134] ^ spc3_ccx_sa[1133] ^ spc3_ccx_sa[1128] ^ eqed_spc3_ccx[0];
++		   end else begin
++			   spc3_ccx_sa[i] <= spc3_ccx_sa[i-1] ^ eqed_spc3_ccx[j]; 
++		   end
++		       spc3_ccx_sa[i+1] <= spc3_ccx_sa[i];
++		       spc3_ccx_sa[i+2] <= spc3_ccx_sa[i+1];
++	           spc3_ccx_sa[i+3] <= spc3_ccx_sa[i+2];
++		       spc3_ccx_sa[i+4] <= spc3_ccx_sa[i+3];
++		       spc3_ccx_sa[i+5] <= spc3_ccx_sa[i+4];
++		       spc3_ccx_sa[i+6] <= spc3_ccx_sa[i+5];
++			   spc3_ccx_sa[i+7] <= spc3_ccx_sa[i+6];
 +       end
-+       for (int j = 0; j < SPC_CCX_B; j++) begin
-+           spc3_ccx_sa[j*8] <= spc3_ccx_sa[j*8] ^ eqed_spc3_ccx[j];
-+       end
-+       for (int j = 0; j < CCX_SPC_B; j++) begin
-+           ccx_spc3_sa[j*8] <= ccx_spc3_sa[j*8] ^ eqed_ccx_spc3[j];
-+       end
-+       ccx_spc3_sa[0] <= ccx_spc3_sa[1239] ^ ccx_spc3_sa[1235] ^ ccx_spc3_sa[1233] ^ ccx_spc3_sa[1230];
-+       for (int i = 1; i < CCX_SPC_SB_SIZE; i++) begin
-+           ccx_spc3_sa[i] <= ccx_spc3_sa[i-1];
++       for (int i = 0, int j = 0; i < CCX_SPC_SB_SIZE; i = i+8, j++) begin
++	       if (i == 0) begin
++		       ccx_spc3_sa[0] <= ccx_spc3_sa[1239] ^ ccx_spc3_sa[1235] ^ ccx_spc3_sa[1233] ^ ccx_spc3_sa[1230] ^ eqed_ccx_spc3[0];
++		   end else begin
++			   ccx_spc3_sa[i] <= ccx_spc3_sa[i-1] ^ eqed_ccx_spc3[j]; 
++		   end
++		       ccx_spc3_sa[i+1] <= ccx_spc3_sa[i];
++		       ccx_spc3_sa[i+2] <= ccx_spc3_sa[i+1];
++	           ccx_spc3_sa[i+3] <= ccx_spc3_sa[i+2];
++		       ccx_spc3_sa[i+4] <= ccx_spc3_sa[i+3];
++		       ccx_spc3_sa[i+5] <= ccx_spc3_sa[i+4];
++		       ccx_spc3_sa[i+6] <= ccx_spc3_sa[i+5];
++			   ccx_spc3_sa[i+7] <= ccx_spc3_sa[i+6];
 +       end
 +    end
 +end
 +
 +
 +always @(posedge clk) begin
-+    if (m_rst2) begin
++    if (m_rst) begin
 +       spc3_ccx_sa2 <= 1;
 +       ccx_spc3_sa2 <= 1;
 +    end else begin
-+       spc3_ccx_sa2[0] <= spc3_ccx_sa2[1147] ^ spc3_ccx_sa2[1134] ^ spc3_ccx_sa2[1133] ^ spc3_ccx_sa2[1128];
-+       for (int i = 1; i < SPC_CCX_SB_SIZE; i++) begin
-+           spc3_ccx_sa2[i] <= spc3_ccx_sa2[i-1];
++       for (int i = 0, int j = 0; i < SPC_CCX_SB_SIZE; i = i+8, j++) begin
++	       if (i == 0) begin
++		       spc3_ccx_sa2[0] <= spc3_ccx_sa2[1147] ^ spc3_ccx_sa2[1134] ^ spc3_ccx_sa2[1133] ^ spc3_ccx_sa2[1128] ^ eqed_spc3_ccx[0];
++		   end else begin
++			   spc3_ccx_sa2[i] <= spc3_ccx_sa2[i] ^ eqed_spc3_ccx[j]; 
++		   end
++		       spc3_ccx_sa2[i+1] <= spc3_ccx_sa2[i];
++		       spc3_ccx_sa2[i+2] <= spc3_ccx_sa2[i+1];
++	           spc3_ccx_sa2[i+3] <= spc3_ccx_sa2[i+2];
++		       spc3_ccx_sa2[i+4] <= spc3_ccx_sa2[i+3];
++		       spc3_ccx_sa2[i+5] <= spc3_ccx_sa2[i+4];
++		       spc3_ccx_sa2[i+6] <= spc3_ccx_sa2[i+5];
++			   spc3_ccx_sa2[i+7] <= spc3_ccx_sa2[i+6];
 +       end
-+       for (int j = 0; j < SPC_CCX_B; j++) begin
-+           spc3_ccx_sa2[j*8] <= spc3_ccx_sa2[j*8] ^ eqed_spc3_ccx[j];
-+       end
-+       ccx_spc3_sa2[0] <= ccx_spc3_sa2[1239] ^ ccx_spc3_sa2[1235] ^ ccx_spc3_sa2[1233] ^ ccx_spc3_sa2[1230];
-+       for (int i = 1; i < CCX_SPC_SB_SIZE; i++) begin
-+           ccx_spc3_sa2[i] <= ccx_spc3_sa2[i-1];
-+       end
-+       for (int j = 0; j < CCX_SPC_B; j++) begin
-+           ccx_spc3_sa2[j*8] <= ccx_spc3_sa2[j*8] ^ eqed_ccx_spc3[j];
++       for (int i = 0, int j = 0; i < CCX_SPC_SB_SIZE; i = i+8, j++) begin
++	       if (i == 0) begin
++		       ccx_spc3_sa2[0] <= ccx_spc3_sa2[1239] ^ ccx_spc3_sa2[1235] ^ ccx_spc3_sa2[1233] ^ ccx_spc3_sa2[1230] ^ eqed_ccx_spc3[0];
++		   end else begin
++			   ccx_spc3_sa2[i] <= ccx_spc3_sa2[i] ^ eqed_ccx_spc3[j]; 
++		   end
++		       ccx_spc3_sa2[i+1] <= ccx_spc3_sa2[i];
++		       ccx_spc3_sa2[i+2] <= ccx_spc3_sa2[i+1];
++	           ccx_spc3_sa2[i+3] <= ccx_spc3_sa2[i+2];
++		       ccx_spc3_sa2[i+4] <= ccx_spc3_sa2[i+3];
++		       ccx_spc3_sa2[i+5] <= ccx_spc3_sa2[i+4];
++		       ccx_spc3_sa2[i+6] <= ccx_spc3_sa2[i+5];
++			   ccx_spc3_sa2[i+7] <= ccx_spc3_sa2[i+6];
 +       end
 +    end
 +end
@@ -306,42 +399,70 @@
 +       spc4_ccx_sa <= 1;
 +       ccx_spc4_sa <= 1;
 +    end else begin
-+       spc4_ccx_sa[0] <= spc4_ccx_sa[1147] ^ spc4_ccx_sa[1134] ^ spc4_ccx_sa[1133] ^ spc4_ccx_sa[1128];
-+       for (int i = 1; i < SPC_CCX_SB_SIZE; i++) begin
-+           spc4_ccx_sa[i] <= spc4_ccx_sa[i-1];
++       for (int i = 0, int j = 0; i < SPC_CCX_SB_SIZE; i = i+8, j++) begin
++	       if (i == 0) begin
++		       spc4_ccx_sa[0] <= spc4_ccx_sa[1147] ^ spc4_ccx_sa[1134] ^ spc4_ccx_sa[1133] ^ spc4_ccx_sa[1128] ^ eqed_spc4_ccx[0];
++		   end else begin
++			   spc4_ccx_sa[i] <= spc4_ccx_sa[i-1] ^ eqed_spc4_ccx[j]; 
++		   end
++		       spc4_ccx_sa[i+1] <= spc4_ccx_sa[i];
++		       spc4_ccx_sa[i+2] <= spc4_ccx_sa[i+1];
++	           spc4_ccx_sa[i+3] <= spc4_ccx_sa[i+2];
++		       spc4_ccx_sa[i+4] <= spc4_ccx_sa[i+3];
++		       spc4_ccx_sa[i+5] <= spc4_ccx_sa[i+4];
++		       spc4_ccx_sa[i+6] <= spc4_ccx_sa[i+5];
++			   spc4_ccx_sa[i+7] <= spc4_ccx_sa[i+6];
 +       end
-+       for (int j = 0; j < SPC_CCX_B; j++) begin
-+           spc4_ccx_sa[j*8] <= spc4_ccx_sa[j*8] ^ eqed_spc4_ccx[j];
-+       end
-+       for (int j = 0; j < CCX_SPC_B; j++) begin
-+           ccx_spc4_sa[j*8] <= ccx_spc4_sa[j*8] ^ eqed_ccx_spc4[j];
-+       end
-+       ccx_spc4_sa[0] <= ccx_spc4_sa[1239] ^ ccx_spc4_sa[1235] ^ ccx_spc4_sa[1233] ^ ccx_spc4_sa[1230];
-+       for (int i = 1; i < CCX_SPC_SB_SIZE; i++) begin
-+           ccx_spc4_sa[i] <= ccx_spc4_sa[i-1];
++       for (int i = 0, int j = 0; i < CCX_SPC_SB_SIZE; i = i+8, j++) begin
++	       if (i == 0) begin
++		       ccx_spc4_sa[0] <= ccx_spc4_sa[1239] ^ ccx_spc4_sa[1235] ^ ccx_spc4_sa[1233] ^ ccx_spc4_sa[1230] ^ eqed_ccx_spc4[0];
++		   end else begin
++			   ccx_spc4_sa[i] <= ccx_spc4_sa[i-1] ^ eqed_ccx_spc4[j]; 
++		   end
++		       ccx_spc4_sa[i+1] <= ccx_spc4_sa[i];
++		       ccx_spc4_sa[i+2] <= ccx_spc4_sa[i+1];
++	           ccx_spc4_sa[i+3] <= ccx_spc4_sa[i+2];
++		       ccx_spc4_sa[i+4] <= ccx_spc4_sa[i+3];
++		       ccx_spc4_sa[i+5] <= ccx_spc4_sa[i+4];
++		       ccx_spc4_sa[i+6] <= ccx_spc4_sa[i+5];
++			   ccx_spc4_sa[i+7] <= ccx_spc4_sa[i+6];
 +       end
 +    end
 +end
 +
 +
 +always @(posedge clk) begin
-+    if (m_rst2) begin
++    if (m_rst) begin
 +       spc4_ccx_sa2 <= 1;
 +       ccx_spc4_sa2 <= 1;
 +    end else begin
-+       spc4_ccx_sa2[0] <= spc4_ccx_sa2[1147] ^ spc4_ccx_sa2[1134] ^ spc4_ccx_sa2[1133] ^ spc4_ccx_sa2[1128];
-+       for (int i = 1; i < SPC_CCX_SB_SIZE; i++) begin
-+           spc4_ccx_sa2[i] <= spc4_ccx_sa2[i-1];
++       for (int i = 0, int j = 0; i < SPC_CCX_SB_SIZE; i = i+8, j++) begin
++	       if (i == 0) begin
++		       spc4_ccx_sa2[0] <= spc4_ccx_sa2[1147] ^ spc4_ccx_sa2[1134] ^ spc4_ccx_sa2[1133] ^ spc4_ccx_sa2[1128] ^ eqed_spc4_ccx[0];
++		   end else begin
++			   spc4_ccx_sa2[i] <= spc4_ccx_sa2[i] ^ eqed_spc4_ccx[j]; 
++		   end
++		       spc4_ccx_sa2[i+1] <= spc4_ccx_sa2[i];
++		       spc4_ccx_sa2[i+2] <= spc4_ccx_sa2[i+1];
++	           spc4_ccx_sa2[i+3] <= spc4_ccx_sa2[i+2];
++		       spc4_ccx_sa2[i+4] <= spc4_ccx_sa2[i+3];
++		       spc4_ccx_sa2[i+5] <= spc4_ccx_sa2[i+4];
++		       spc4_ccx_sa2[i+6] <= spc4_ccx_sa2[i+5];
++			   spc4_ccx_sa2[i+7] <= spc4_ccx_sa2[i+6];
 +       end
-+       for (int j = 0; j < SPC_CCX_B; j++) begin
-+           spc4_ccx_sa2[j*8] <= spc4_ccx_sa2[j*8] ^ eqed_spc4_ccx[j];
-+       end
-+       ccx_spc4_sa2[0] <= ccx_spc4_sa2[1239] ^ ccx_spc4_sa2[1235] ^ ccx_spc4_sa2[1233] ^ ccx_spc4_sa2[1230];
-+       for (int i = 1; i < CCX_SPC_SB_SIZE; i++) begin
-+           ccx_spc4_sa2[i] <= ccx_spc4_sa2[i-1];
-+       end
-+       for (int j = 0; j < CCX_SPC_B; j++) begin
-+           ccx_spc4_sa2[j*8] <= ccx_spc4_sa2[j*8] ^ eqed_ccx_spc4[j];
++       for (int i = 0, int j = 0; i < CCX_SPC_SB_SIZE; i = i+8, j++) begin
++	       if (i == 0) begin
++		       ccx_spc4_sa2[0] <= ccx_spc4_sa2[1239] ^ ccx_spc4_sa2[1235] ^ ccx_spc4_sa2[1233] ^ ccx_spc4_sa2[1230] ^ eqed_ccx_spc4[0];
++		   end else begin
++			   ccx_spc4_sa2[i] <= ccx_spc4_sa2[i] ^ eqed_ccx_spc4[j]; 
++		   end
++		       ccx_spc4_sa2[i+1] <= ccx_spc4_sa2[i];
++		       ccx_spc4_sa2[i+2] <= ccx_spc4_sa2[i+1];
++	           ccx_spc4_sa2[i+3] <= ccx_spc4_sa2[i+2];
++		       ccx_spc4_sa2[i+4] <= ccx_spc4_sa2[i+3];
++		       ccx_spc4_sa2[i+5] <= ccx_spc4_sa2[i+4];
++		       ccx_spc4_sa2[i+6] <= ccx_spc4_sa2[i+5];
++			   ccx_spc4_sa2[i+7] <= ccx_spc4_sa2[i+6];
 +       end
 +    end
 +end
@@ -351,42 +472,70 @@
 +       spc5_ccx_sa <= 1;
 +       ccx_spc5_sa <= 1;
 +    end else begin
-+       spc5_ccx_sa[0] <= spc5_ccx_sa[1147] ^ spc5_ccx_sa[1134] ^ spc5_ccx_sa[1133] ^ spc5_ccx_sa[1128];
-+       for (int i = 1; i < SPC_CCX_SB_SIZE; i++) begin
-+           spc5_ccx_sa[i] <= spc5_ccx_sa[i-1];
++       for (int i = 0, int j = 0; i < SPC_CCX_SB_SIZE; i = i+8, j++) begin
++	       if (i == 0) begin
++		       spc5_ccx_sa[0] <= spc5_ccx_sa[1147] ^ spc5_ccx_sa[1134] ^ spc5_ccx_sa[1133] ^ spc5_ccx_sa[1128] ^ eqed_spc5_ccx[0];
++		   end else begin
++			   spc5_ccx_sa[i] <= spc5_ccx_sa[i-1] ^ eqed_spc5_ccx[j]; 
++		   end
++		       spc5_ccx_sa[i+1] <= spc5_ccx_sa[i];
++		       spc5_ccx_sa[i+2] <= spc5_ccx_sa[i+1];
++	           spc5_ccx_sa[i+3] <= spc5_ccx_sa[i+2];
++		       spc5_ccx_sa[i+4] <= spc5_ccx_sa[i+3];
++		       spc5_ccx_sa[i+5] <= spc5_ccx_sa[i+4];
++		       spc5_ccx_sa[i+6] <= spc5_ccx_sa[i+5];
++			   spc5_ccx_sa[i+7] <= spc5_ccx_sa[i+6];
 +       end
-+       for (int j = 0; j < SPC_CCX_B; j++) begin
-+           spc5_ccx_sa[j*8] <= spc5_ccx_sa[j*8] ^ eqed_spc5_ccx[j];
-+       end
-+       for (int j = 0; j < CCX_SPC_B; j++) begin
-+           ccx_spc5_sa[j*8] <= ccx_spc5_sa[j*8] ^ eqed_ccx_spc5[j];
-+       end
-+       ccx_spc5_sa[0] <= ccx_spc5_sa[1239] ^ ccx_spc5_sa[1235] ^ ccx_spc5_sa[1233] ^ ccx_spc5_sa[1230];
-+       for (int i = 1; i < CCX_SPC_SB_SIZE; i++) begin
-+           ccx_spc5_sa[i] <= ccx_spc5_sa[i-1];
++       for (int i = 0, int j = 0; i < CCX_SPC_SB_SIZE; i = i+8, j++) begin
++	       if (i == 0) begin
++		       ccx_spc5_sa[0] <= ccx_spc5_sa[1239] ^ ccx_spc5_sa[1235] ^ ccx_spc5_sa[1233] ^ ccx_spc5_sa[1230] ^ eqed_ccx_spc5[0];
++		   end else begin
++			   ccx_spc5_sa[i] <= ccx_spc5_sa[i-1] ^ eqed_ccx_spc5[j]; 
++		   end
++		       ccx_spc5_sa[i+1] <= ccx_spc5_sa[i];
++		       ccx_spc5_sa[i+2] <= ccx_spc5_sa[i+1];
++	           ccx_spc5_sa[i+3] <= ccx_spc5_sa[i+2];
++		       ccx_spc5_sa[i+4] <= ccx_spc5_sa[i+3];
++		       ccx_spc5_sa[i+5] <= ccx_spc5_sa[i+4];
++		       ccx_spc5_sa[i+6] <= ccx_spc5_sa[i+5];
++			   ccx_spc5_sa[i+7] <= ccx_spc5_sa[i+6];
 +       end
 +    end
 +end
 +
 +
 +always @(posedge clk) begin
-+    if (m_rst2) begin
++    if (m_rst) begin
 +       spc5_ccx_sa2 <= 1;
 +       ccx_spc5_sa2 <= 1;
 +    end else begin
-+       spc5_ccx_sa2[0] <= spc5_ccx_sa2[1147] ^ spc5_ccx_sa2[1134] ^ spc5_ccx_sa2[1133] ^ spc5_ccx_sa2[1128];
-+       for (int i = 1; i < SPC_CCX_SB_SIZE; i++) begin
-+           spc5_ccx_sa2[i] <= spc5_ccx_sa2[i-1];
++       for (int i = 0, int j = 0; i < SPC_CCX_SB_SIZE; i = i+8, j++) begin
++	       if (i == 0) begin
++		       spc5_ccx_sa2[0] <= spc5_ccx_sa2[1147] ^ spc5_ccx_sa2[1134] ^ spc5_ccx_sa2[1133] ^ spc5_ccx_sa2[1128] ^ eqed_spc5_ccx[0];
++		   end else begin
++			   spc5_ccx_sa2[i] <= spc5_ccx_sa2[i] ^ eqed_spc5_ccx[j]; 
++		   end
++		       spc5_ccx_sa2[i+1] <= spc5_ccx_sa2[i];
++		       spc5_ccx_sa2[i+2] <= spc5_ccx_sa2[i+1];
++	           spc5_ccx_sa2[i+3] <= spc5_ccx_sa2[i+2];
++		       spc5_ccx_sa2[i+4] <= spc5_ccx_sa2[i+3];
++		       spc5_ccx_sa2[i+5] <= spc5_ccx_sa2[i+4];
++		       spc5_ccx_sa2[i+6] <= spc5_ccx_sa2[i+5];
++			   spc5_ccx_sa2[i+7] <= spc5_ccx_sa2[i+6];
 +       end
-+       for (int j = 0; j < SPC_CCX_B; j++) begin
-+           spc5_ccx_sa2[j*8] <= spc5_ccx_sa2[j*8] ^ eqed_spc5_ccx[j];
-+       end
-+       ccx_spc5_sa2[0] <= ccx_spc5_sa2[1239] ^ ccx_spc5_sa2[1235] ^ ccx_spc5_sa2[1233] ^ ccx_spc5_sa2[1230];
-+       for (int i = 1; i < CCX_SPC_SB_SIZE; i++) begin
-+           ccx_spc5_sa2[i] <= ccx_spc5_sa2[i-1];
-+       end
-+       for (int j = 0; j < CCX_SPC_B; j++) begin
-+           ccx_spc5_sa2[j*8] <= ccx_spc5_sa2[j*8] ^ eqed_ccx_spc5[j];
++       for (int i = 0, int j = 0; i < CCX_SPC_SB_SIZE; i = i+8, j++) begin
++	       if (i == 0) begin
++		       ccx_spc5_sa2[0] <= ccx_spc5_sa2[1239] ^ ccx_spc5_sa2[1235] ^ ccx_spc5_sa2[1233] ^ ccx_spc5_sa2[1230] ^ eqed_ccx_spc5[0];
++		   end else begin
++			   ccx_spc5_sa2[i] <= ccx_spc5_sa2[i] ^ eqed_ccx_spc5[j]; 
++		   end
++		       ccx_spc5_sa2[i+1] <= ccx_spc5_sa2[i];
++		       ccx_spc5_sa2[i+2] <= ccx_spc5_sa2[i+1];
++	           ccx_spc5_sa2[i+3] <= ccx_spc5_sa2[i+2];
++		       ccx_spc5_sa2[i+4] <= ccx_spc5_sa2[i+3];
++		       ccx_spc5_sa2[i+5] <= ccx_spc5_sa2[i+4];
++		       ccx_spc5_sa2[i+6] <= ccx_spc5_sa2[i+5];
++			   ccx_spc5_sa2[i+7] <= ccx_spc5_sa2[i+6];
 +       end
 +    end
 +end
@@ -396,42 +545,70 @@
 +       spc6_ccx_sa <= 1;
 +       ccx_spc6_sa <= 1;
 +    end else begin
-+       spc6_ccx_sa[0] <= spc6_ccx_sa[1147] ^ spc6_ccx_sa[1134] ^ spc6_ccx_sa[1133] ^ spc6_ccx_sa[1128];
-+       for (int i = 1; i < SPC_CCX_SB_SIZE; i++) begin
-+           spc6_ccx_sa[i] <= spc6_ccx_sa[i-1];
++       for (int i = 0, int j = 0; i < SPC_CCX_SB_SIZE; i = i+8, j++) begin
++	       if (i == 0) begin
++		       spc6_ccx_sa[0] <= spc6_ccx_sa[1147] ^ spc6_ccx_sa[1134] ^ spc6_ccx_sa[1133] ^ spc6_ccx_sa[1128] ^ eqed_spc6_ccx[0];
++		   end else begin
++			   spc6_ccx_sa[i] <= spc6_ccx_sa[i-1] ^ eqed_spc6_ccx[j]; 
++		   end
++		       spc6_ccx_sa[i+1] <= spc6_ccx_sa[i];
++		       spc6_ccx_sa[i+2] <= spc6_ccx_sa[i+1];
++	           spc6_ccx_sa[i+3] <= spc6_ccx_sa[i+2];
++		       spc6_ccx_sa[i+4] <= spc6_ccx_sa[i+3];
++		       spc6_ccx_sa[i+5] <= spc6_ccx_sa[i+4];
++		       spc6_ccx_sa[i+6] <= spc6_ccx_sa[i+5];
++			   spc6_ccx_sa[i+7] <= spc6_ccx_sa[i+6];
 +       end
-+       for (int j = 0; j < SPC_CCX_B; j++) begin
-+           spc6_ccx_sa[j*8] <= spc6_ccx_sa[j*8] ^ eqed_spc6_ccx[j];
-+       end
-+       for (int j = 0; j < CCX_SPC_B; j++) begin
-+           ccx_spc6_sa[j*8] <= ccx_spc6_sa[j*8] ^ eqed_ccx_spc6[j];
-+       end
-+       ccx_spc6_sa[0] <= ccx_spc6_sa[1239] ^ ccx_spc6_sa[1235] ^ ccx_spc6_sa[1233] ^ ccx_spc6_sa[1230];
-+       for (int i = 1; i < CCX_SPC_SB_SIZE; i++) begin
-+           ccx_spc6_sa[i] <= ccx_spc6_sa[i-1];
++       for (int i = 0, int j = 0; i < CCX_SPC_SB_SIZE; i = i+8, j++) begin
++	       if (i == 0) begin
++		       ccx_spc6_sa[0] <= ccx_spc6_sa[1239] ^ ccx_spc6_sa[1235] ^ ccx_spc6_sa[1233] ^ ccx_spc6_sa[1230] ^ eqed_ccx_spc6[0];
++		   end else begin
++			   ccx_spc6_sa[i] <= ccx_spc6_sa[i-1] ^ eqed_ccx_spc6[j]; 
++		   end
++		       ccx_spc6_sa[i+1] <= ccx_spc6_sa[i];
++		       ccx_spc6_sa[i+2] <= ccx_spc6_sa[i+1];
++	           ccx_spc6_sa[i+3] <= ccx_spc6_sa[i+2];
++		       ccx_spc6_sa[i+4] <= ccx_spc6_sa[i+3];
++		       ccx_spc6_sa[i+5] <= ccx_spc6_sa[i+4];
++		       ccx_spc6_sa[i+6] <= ccx_spc6_sa[i+5];
++			   ccx_spc6_sa[i+7] <= ccx_spc6_sa[i+6];
 +       end
 +    end
 +end
 +
 +
 +always @(posedge clk) begin
-+    if (m_rst2) begin
++    if (m_rst) begin
 +       spc6_ccx_sa2 <= 1;
 +       ccx_spc6_sa2 <= 1;
 +    end else begin
-+       spc6_ccx_sa2[0] <= spc6_ccx_sa2[1147] ^ spc6_ccx_sa2[1134] ^ spc6_ccx_sa2[1133] ^ spc6_ccx_sa2[1128];
-+       for (int i = 1; i < SPC_CCX_SB_SIZE; i++) begin
-+           spc6_ccx_sa2[i] <= spc6_ccx_sa2[i-1];
++       for (int i = 0, int j = 0; i < SPC_CCX_SB_SIZE; i = i+8, j++) begin
++	       if (i == 0) begin
++		       spc6_ccx_sa2[0] <= spc6_ccx_sa2[1147] ^ spc6_ccx_sa2[1134] ^ spc6_ccx_sa2[1133] ^ spc6_ccx_sa2[1128] ^ eqed_spc6_ccx[0];
++		   end else begin
++			   spc6_ccx_sa2[i] <= spc6_ccx_sa2[i] ^ eqed_spc6_ccx[j]; 
++		   end
++		       spc6_ccx_sa2[i+1] <= spc6_ccx_sa2[i];
++		       spc6_ccx_sa2[i+2] <= spc6_ccx_sa2[i+1];
++	           spc6_ccx_sa2[i+3] <= spc6_ccx_sa2[i+2];
++		       spc6_ccx_sa2[i+4] <= spc6_ccx_sa2[i+3];
++		       spc6_ccx_sa2[i+5] <= spc6_ccx_sa2[i+4];
++		       spc6_ccx_sa2[i+6] <= spc6_ccx_sa2[i+5];
++			   spc6_ccx_sa2[i+7] <= spc6_ccx_sa2[i+6];
 +       end
-+       for (int j = 0; j < SPC_CCX_B; j++) begin
-+           spc6_ccx_sa2[j*8] <= spc6_ccx_sa2[j*8] ^ eqed_spc6_ccx[j];
-+       end
-+       ccx_spc6_sa2[0] <= ccx_spc6_sa2[1239] ^ ccx_spc6_sa2[1235] ^ ccx_spc6_sa2[1233] ^ ccx_spc6_sa2[1230];
-+       for (int i = 1; i < CCX_SPC_SB_SIZE; i++) begin
-+           ccx_spc6_sa2[i] <= ccx_spc6_sa2[i-1];
-+       end
-+       for (int j = 0; j < CCX_SPC_B; j++) begin
-+           ccx_spc6_sa2[j*8] <= ccx_spc6_sa2[j*8] ^ eqed_ccx_spc6[j];
++       for (int i = 0, int j = 0; i < CCX_SPC_SB_SIZE; i = i+8, j++) begin
++	       if (i == 0) begin
++		       ccx_spc6_sa2[0] <= ccx_spc6_sa2[1239] ^ ccx_spc6_sa2[1235] ^ ccx_spc6_sa2[1233] ^ ccx_spc6_sa2[1230] ^ eqed_ccx_spc6[0];
++		   end else begin
++			   ccx_spc6_sa2[i] <= ccx_spc6_sa2[i] ^ eqed_ccx_spc6[j]; 
++		   end
++		       ccx_spc6_sa2[i+1] <= ccx_spc6_sa2[i];
++		       ccx_spc6_sa2[i+2] <= ccx_spc6_sa2[i+1];
++	           ccx_spc6_sa2[i+3] <= ccx_spc6_sa2[i+2];
++		       ccx_spc6_sa2[i+4] <= ccx_spc6_sa2[i+3];
++		       ccx_spc6_sa2[i+5] <= ccx_spc6_sa2[i+4];
++		       ccx_spc6_sa2[i+6] <= ccx_spc6_sa2[i+5];
++			   ccx_spc6_sa2[i+7] <= ccx_spc6_sa2[i+6];
 +       end
 +    end
 +end
@@ -441,42 +618,70 @@
 +       spc7_ccx_sa <= 1;
 +       ccx_spc7_sa <= 1;
 +    end else begin
-+       spc7_ccx_sa[0] <= spc7_ccx_sa[1147] ^ spc7_ccx_sa[1134] ^ spc7_ccx_sa[1133] ^ spc7_ccx_sa[1128];
-+       for (int i = 1; i < SPC_CCX_SB_SIZE; i++) begin
-+           spc7_ccx_sa[i] <= spc7_ccx_sa[i-1];
++       for (int i = 0, int j = 0; i < SPC_CCX_SB_SIZE; i = i+8, j++) begin
++	       if (i == 0) begin
++		       spc7_ccx_sa[0] <= spc7_ccx_sa[1147] ^ spc7_ccx_sa[1134] ^ spc7_ccx_sa[1133] ^ spc7_ccx_sa[1128] ^ eqed_spc7_ccx[0];
++		   end else begin
++			   spc7_ccx_sa[i] <= spc7_ccx_sa[i-1] ^ eqed_spc7_ccx[j]; 
++		   end
++		       spc7_ccx_sa[i+1] <= spc7_ccx_sa[i];
++		       spc7_ccx_sa[i+2] <= spc7_ccx_sa[i+1];
++	           spc7_ccx_sa[i+3] <= spc7_ccx_sa[i+2];
++		       spc7_ccx_sa[i+4] <= spc7_ccx_sa[i+3];
++		       spc7_ccx_sa[i+5] <= spc7_ccx_sa[i+4];
++		       spc7_ccx_sa[i+6] <= spc7_ccx_sa[i+5];
++			   spc7_ccx_sa[i+7] <= spc7_ccx_sa[i+6];
 +       end
-+       for (int j = 0; j < SPC_CCX_B; j++) begin
-+           spc7_ccx_sa[j*8] <= spc7_ccx_sa[j*8] ^ eqed_spc7_ccx[j];
-+       end
-+       for (int j = 0; j < CCX_SPC_B; j++) begin
-+           ccx_spc7_sa[j*8] <= ccx_spc7_sa[j*8] ^ eqed_ccx_spc7[j];
-+       end
-+       ccx_spc7_sa[0] <= ccx_spc7_sa[1239] ^ ccx_spc7_sa[1235] ^ ccx_spc7_sa[1233] ^ ccx_spc7_sa[1230];
-+       for (int i = 1; i < CCX_SPC_SB_SIZE; i++) begin
-+           ccx_spc7_sa[i] <= ccx_spc7_sa[i-1];
++       for (int i = 0, int j = 0; i < CCX_SPC_SB_SIZE; i = i+8, j++) begin
++	       if (i == 0) begin
++		       ccx_spc7_sa[0] <= ccx_spc7_sa[1239] ^ ccx_spc7_sa[1235] ^ ccx_spc7_sa[1233] ^ ccx_spc7_sa[1230] ^ eqed_ccx_spc7[0];
++		   end else begin
++			   ccx_spc7_sa[i] <= ccx_spc7_sa[i-1] ^ eqed_ccx_spc7[j]; 
++		   end
++		       ccx_spc7_sa[i+1] <= ccx_spc7_sa[i];
++		       ccx_spc7_sa[i+2] <= ccx_spc7_sa[i+1];
++	           ccx_spc7_sa[i+3] <= ccx_spc7_sa[i+2];
++		       ccx_spc7_sa[i+4] <= ccx_spc7_sa[i+3];
++		       ccx_spc7_sa[i+5] <= ccx_spc7_sa[i+4];
++		       ccx_spc7_sa[i+6] <= ccx_spc7_sa[i+5];
++			   ccx_spc7_sa[i+7] <= ccx_spc7_sa[i+6];
 +       end
 +    end
 +end
 +
 +
 +always @(posedge clk) begin
-+    if (m_rst2) begin
++    if (m_rst) begin
 +       spc7_ccx_sa2 <= 1;
 +       ccx_spc7_sa2 <= 1;
 +    end else begin
-+       spc7_ccx_sa2[0] <= spc7_ccx_sa2[1147] ^ spc7_ccx_sa2[1134] ^ spc7_ccx_sa2[1133] ^ spc7_ccx_sa2[1128];
-+       for (int i = 1; i < SPC_CCX_SB_SIZE; i++) begin
-+           spc7_ccx_sa2[i] <= spc7_ccx_sa2[i-1];
++       for (int i = 0, int j = 0; i < SPC_CCX_SB_SIZE; i = i+8, j++) begin
++	       if (i == 0) begin
++		       spc7_ccx_sa2[0] <= spc7_ccx_sa2[1147] ^ spc7_ccx_sa2[1134] ^ spc7_ccx_sa2[1133] ^ spc7_ccx_sa2[1128] ^ eqed_spc7_ccx[0];
++		   end else begin
++			   spc7_ccx_sa2[i] <= spc7_ccx_sa2[i] ^ eqed_spc7_ccx[j]; 
++		   end
++		       spc7_ccx_sa2[i+1] <= spc7_ccx_sa2[i];
++		       spc7_ccx_sa2[i+2] <= spc7_ccx_sa2[i+1];
++	           spc7_ccx_sa2[i+3] <= spc7_ccx_sa2[i+2];
++		       spc7_ccx_sa2[i+4] <= spc7_ccx_sa2[i+3];
++		       spc7_ccx_sa2[i+5] <= spc7_ccx_sa2[i+4];
++		       spc7_ccx_sa2[i+6] <= spc7_ccx_sa2[i+5];
++			   spc7_ccx_sa2[i+7] <= spc7_ccx_sa2[i+6];
 +       end
-+       for (int j = 0; j < SPC_CCX_B; j++) begin
-+           spc7_ccx_sa2[j*8] <= spc7_ccx_sa2[j*8] ^ eqed_spc7_ccx[j];
-+       end
-+       ccx_spc7_sa2[0] <= ccx_spc7_sa2[1239] ^ ccx_spc7_sa2[1235] ^ ccx_spc7_sa2[1233] ^ ccx_spc7_sa2[1230];
-+       for (int i = 1; i < CCX_SPC_SB_SIZE; i++) begin
-+           ccx_spc7_sa2[i] <= ccx_spc7_sa2[i-1];
-+       end
-+       for (int j = 0; j < CCX_SPC_B; j++) begin
-+           ccx_spc7_sa2[j*8] <= ccx_spc7_sa2[j*8] ^ eqed_ccx_spc7[j];
++       for (int i = 0, int j = 0; i < CCX_SPC_SB_SIZE; i = i+8, j++) begin
++	       if (i == 0) begin
++		       ccx_spc7_sa2[0] <= ccx_spc7_sa2[1239] ^ ccx_spc7_sa2[1235] ^ ccx_spc7_sa2[1233] ^ ccx_spc7_sa2[1230] ^ eqed_ccx_spc7[0];
++		   end else begin
++			   ccx_spc7_sa2[i] <= ccx_spc7_sa2[i] ^ eqed_ccx_spc7[j]; 
++		   end
++		       ccx_spc7_sa2[i+1] <= ccx_spc7_sa2[i];
++		       ccx_spc7_sa2[i+2] <= ccx_spc7_sa2[i+1];
++	           ccx_spc7_sa2[i+3] <= ccx_spc7_sa2[i+2];
++		       ccx_spc7_sa2[i+4] <= ccx_spc7_sa2[i+3];
++		       ccx_spc7_sa2[i+5] <= ccx_spc7_sa2[i+4];
++		       ccx_spc7_sa2[i+6] <= ccx_spc7_sa2[i+5];
++			   ccx_spc7_sa2[i+7] <= ccx_spc7_sa2[i+6];
 +       end
 +    end
 +end
@@ -560,47 +765,76 @@
 +reg [L2C_CCX_SB_SIZE:0] l2c7_ccx_sa2;
 +reg [CCX_L2C_SB_SIZE:0] ccx_l2c7_sa2;
 +
++
 +always @(posedge clk) begin
 +    if (m_rst) begin
 +       l2c0_ccx_sa <= 1;
 +       ccx_l2c0_sa <= 1;
 +    end else begin
-+       l2c0_ccx_sa[0] <= l2c0_ccx_sa[1119] ^ l2c0_ccx_sa[1114] ^ l2c0_ccx_sa[1110] ^ l2c0_ccx_sa[1108];
-+       for (int i = 1; i < L2C_CCX_SB_SIZE; i++) begin
-+           l2c0_ccx_sa[i] <= l2c0_ccx_sa[i-1];
++       for (int i = 0, int j = 0; i < L2C_CCX_SB_SIZE; i = i+8, j++) begin
++	       if (i == 0) begin
++		       l2c0_ccx_sa[0] <= l2c0_ccx_sa[1246] ^ l2c0_ccx_sa[1243] ^ l2c0_ccx_sa[1242] ^ l2c0_ccx_sa[1241] ^ eqed_l2c0_ccx[0];
++		   end else begin
++			   l2c0_ccx_sa[i] <= l2c0_ccx_sa[i-1] ^ eqed_l2c0_ccx[j]; 
++		   end
++		       l2c0_ccx_sa[i+1] <= l2c0_ccx_sa[i];
++		       l2c0_ccx_sa[i+2] <= l2c0_ccx_sa[i+1];
++	           l2c0_ccx_sa[i+3] <= l2c0_ccx_sa[i+2];
++		       l2c0_ccx_sa[i+4] <= l2c0_ccx_sa[i+3];
++		       l2c0_ccx_sa[i+5] <= l2c0_ccx_sa[i+4];
++		       l2c0_ccx_sa[i+6] <= l2c0_ccx_sa[i+5];
++			   l2c0_ccx_sa[i+7] <= l2c0_ccx_sa[i+6];
 +       end
-+       for (int j = 0; j < L2C_CCX_B; j++) begin
-+           l2c0_ccx_sa[j*8] <= l2c0_ccx_sa[j*8] ^ eqed_spc0_ccx[j];
-+       end
-+       for (int j = 0; j < CCX_L2C_B; j++) begin
-+           ccx_l2c0_sa[j*8] <= ccx_l2c0_sa[j*8] ^ eqed_ccx_l2c0[j];
-+       end
-+       ccx_l2c0_sa[0] <= ccx_l2c0_sa[1246] ^ ccx_l2c0_sa[1243] ^ ccx_l2c0_sa[1242] ^ ccx_l2c0_sa[1241];
-+       for (int i = 1; i < CCX_L2C_SB_SIZE; i++) begin
-+           ccx_l2c0_sa[i] <= ccx_l2c0_sa[i-1];
++       for (int i = 0, int j = 0; i < CCX_L2C_SB_SIZE; i = i+8, j++) begin
++	       if (i == 0) begin
++		       ccx_l2c0_sa[0] <= ccx_l2c0_sa[1119] ^ ccx_l2c0_sa[1114] ^ ccx_l2c0_sa[1110] ^ ccx_l2c0_sa[1108] ^ eqed_ccx_l2c0[0];
++		   end else begin
++			   ccx_l2c0_sa[i] <= ccx_l2c0_sa[i-1] ^ eqed_ccx_l2c0[j]; 
++		   end
++		       ccx_l2c0_sa[i+1] <= ccx_l2c0_sa[i];
++		       ccx_l2c0_sa[i+2] <= ccx_l2c0_sa[i+1];
++	           ccx_l2c0_sa[i+3] <= ccx_l2c0_sa[i+2];
++		       ccx_l2c0_sa[i+4] <= ccx_l2c0_sa[i+3];
++		       ccx_l2c0_sa[i+5] <= ccx_l2c0_sa[i+4];
++		       ccx_l2c0_sa[i+6] <= ccx_l2c0_sa[i+5];
++			   ccx_l2c0_sa[i+7] <= ccx_l2c0_sa[i+6];
 +       end
 +    end
 +end
 +
 +
 +always @(posedge clk) begin
-+    if (m_rst2) begin
++    if (m_rst) begin
 +       l2c0_ccx_sa2 <= 1;
 +       ccx_l2c0_sa2 <= 1;
 +    end else begin
-+       l2c0_ccx_sa2[0] <= l2c0_ccx_sa2[1119] ^ l2c0_ccx_sa2[1114] ^ l2c0_ccx_sa2[1110] ^ l2c0_ccx_sa2[1108];
-+       for (int i = 1; i < L2C_CCX_SB_SIZE; i++) begin
-+           l2c0_ccx_sa2[i] <= l2c0_ccx_sa2[i-1];
++       for (int i = 0, int j = 0; i < L2C_CCX_SB_SIZE; i = i+8, j++) begin
++	       if (i == 0) begin
++		       l2c0_ccx_sa2[0] <= l2c0_ccx_sa2[1246] ^ l2c0_ccx_sa2[1243] ^ l2c0_ccx_sa2[1242] ^ l2c0_ccx_sa2[1241] ^ eqed_l2c0_ccx[0];
++		   end else begin
++			   l2c0_ccx_sa2[i] <= l2c0_ccx_sa2[i] ^ eqed_l2c0_ccx[j]; 
++		   end
++		       l2c0_ccx_sa2[i+1] <= l2c0_ccx_sa2[i];
++		       l2c0_ccx_sa2[i+2] <= l2c0_ccx_sa2[i+1];
++	           l2c0_ccx_sa2[i+3] <= l2c0_ccx_sa2[i+2];
++		       l2c0_ccx_sa2[i+4] <= l2c0_ccx_sa2[i+3];
++		       l2c0_ccx_sa2[i+5] <= l2c0_ccx_sa2[i+4];
++		       l2c0_ccx_sa2[i+6] <= l2c0_ccx_sa2[i+5];
++			   l2c0_ccx_sa2[i+7] <= l2c0_ccx_sa2[i+6];
 +       end
-+       for (int j = 0; j < L2C_CCX_B; j++) begin
-+           l2c0_ccx_sa2[j*8] <= l2c0_ccx_sa2[j*8] ^ eqed_spc0_ccx[j];
-+       end
-+       ccx_l2c0_sa2[0] <= ccx_l2c0_sa2[1246] ^ ccx_l2c0_sa2[1243] ^ ccx_l2c0_sa2[1242] ^ ccx_l2c0_sa2[1241];
-+       for (int i = 1; i < CCX_L2C_SB_SIZE; i++) begin
-+           ccx_l2c0_sa2[i] <= ccx_l2c0_sa2[i-1];
-+       end
-+       for (int j = 0; j < CCX_L2C_B; j++) begin
-+           ccx_l2c0_sa2[j*8] <= ccx_l2c0_sa2[j*8] ^ eqed_ccx_l2c0[j];
++       for (int i = 0, int j = 0; i < CCX_L2C_SB_SIZE; i = i+8, j++) begin
++	       if (i == 0) begin
++		       ccx_l2c0_sa2[0] <= ccx_l2c0_sa2[1119] ^ ccx_l2c0_sa2[1114] ^ ccx_l2c0_sa2[1110] ^ ccx_l2c0_sa2[1108] ^ eqed_ccx_l2c0[0];
++		   end else begin
++			   ccx_l2c0_sa2[i] <= ccx_l2c0_sa2[i] ^ eqed_ccx_l2c0[j]; 
++		   end
++		       ccx_l2c0_sa2[i+1] <= ccx_l2c0_sa2[i];
++		       ccx_l2c0_sa2[i+2] <= ccx_l2c0_sa2[i+1];
++	           ccx_l2c0_sa2[i+3] <= ccx_l2c0_sa2[i+2];
++		       ccx_l2c0_sa2[i+4] <= ccx_l2c0_sa2[i+3];
++		       ccx_l2c0_sa2[i+5] <= ccx_l2c0_sa2[i+4];
++		       ccx_l2c0_sa2[i+6] <= ccx_l2c0_sa2[i+5];
++			   ccx_l2c0_sa2[i+7] <= ccx_l2c0_sa2[i+6];
 +       end
 +    end
 +end
@@ -610,42 +844,70 @@
 +       l2c1_ccx_sa <= 1;
 +       ccx_l2c1_sa <= 1;
 +    end else begin
-+       l2c1_ccx_sa[0] <= l2c1_ccx_sa[1119] ^ l2c1_ccx_sa[1114] ^ l2c1_ccx_sa[1110] ^ l2c1_ccx_sa[1108];
-+       for (int i = 1; i < L2C_CCX_SB_SIZE; i++) begin
-+           l2c1_ccx_sa[i] <= l2c1_ccx_sa[i-1];
++       for (int i = 0, int j = 0; i < L2C_CCX_SB_SIZE; i = i+8, j++) begin
++	       if (i == 0) begin
++		       l2c1_ccx_sa[0] <= l2c1_ccx_sa[1246] ^ l2c1_ccx_sa[1243] ^ l2c1_ccx_sa[1242] ^ l2c1_ccx_sa[1241] ^ eqed_l2c1_ccx[0];
++		   end else begin
++			   l2c1_ccx_sa[i] <= l2c1_ccx_sa[i-1] ^ eqed_l2c1_ccx[j]; 
++		   end
++		       l2c1_ccx_sa[i+1] <= l2c1_ccx_sa[i];
++		       l2c1_ccx_sa[i+2] <= l2c1_ccx_sa[i+1];
++	           l2c1_ccx_sa[i+3] <= l2c1_ccx_sa[i+2];
++		       l2c1_ccx_sa[i+4] <= l2c1_ccx_sa[i+3];
++		       l2c1_ccx_sa[i+5] <= l2c1_ccx_sa[i+4];
++		       l2c1_ccx_sa[i+6] <= l2c1_ccx_sa[i+5];
++			   l2c1_ccx_sa[i+7] <= l2c1_ccx_sa[i+6];
 +       end
-+       for (int j = 0; j < L2C_CCX_B; j++) begin
-+           l2c1_ccx_sa[j*8] <= l2c1_ccx_sa[j*8] ^ eqed_spc1_ccx[j];
-+       end
-+       for (int j = 0; j < CCX_L2C_B; j++) begin
-+           ccx_l2c1_sa[j*8] <= ccx_l2c1_sa[j*8] ^ eqed_ccx_l2c1[j];
-+       end
-+       ccx_l2c1_sa[0] <= ccx_l2c1_sa[1246] ^ ccx_l2c1_sa[1243] ^ ccx_l2c1_sa[1242] ^ ccx_l2c1_sa[1241];
-+       for (int i = 1; i < CCX_L2C_SB_SIZE; i++) begin
-+           ccx_l2c1_sa[i] <= ccx_l2c1_sa[i-1];
++       for (int i = 0, int j = 0; i < CCX_L2C_SB_SIZE; i = i+8, j++) begin
++	       if (i == 0) begin
++		       ccx_l2c1_sa[0] <= ccx_l2c1_sa[1119] ^ ccx_l2c1_sa[1114] ^ ccx_l2c1_sa[1110] ^ ccx_l2c1_sa[1108] ^ eqed_ccx_l2c1[0];
++		   end else begin
++			   ccx_l2c1_sa[i] <= ccx_l2c1_sa[i-1] ^ eqed_ccx_l2c1[j]; 
++		   end
++		       ccx_l2c1_sa[i+1] <= ccx_l2c1_sa[i];
++		       ccx_l2c1_sa[i+2] <= ccx_l2c1_sa[i+1];
++	           ccx_l2c1_sa[i+3] <= ccx_l2c1_sa[i+2];
++		       ccx_l2c1_sa[i+4] <= ccx_l2c1_sa[i+3];
++		       ccx_l2c1_sa[i+5] <= ccx_l2c1_sa[i+4];
++		       ccx_l2c1_sa[i+6] <= ccx_l2c1_sa[i+5];
++			   ccx_l2c1_sa[i+7] <= ccx_l2c1_sa[i+6];
 +       end
 +    end
 +end
 +
 +
 +always @(posedge clk) begin
-+    if (m_rst2) begin
++    if (m_rst) begin
 +       l2c1_ccx_sa2 <= 1;
 +       ccx_l2c1_sa2 <= 1;
 +    end else begin
-+       l2c1_ccx_sa2[0] <= l2c1_ccx_sa2[1119] ^ l2c1_ccx_sa2[1114] ^ l2c1_ccx_sa2[1110] ^ l2c1_ccx_sa2[1108];
-+       for (int i = 1; i < L2C_CCX_SB_SIZE; i++) begin
-+           l2c1_ccx_sa2[i] <= l2c1_ccx_sa2[i-1];
++       for (int i = 0, int j = 0; i < L2C_CCX_SB_SIZE; i = i+8, j++) begin
++	       if (i == 0) begin
++		       l2c1_ccx_sa2[0] <= l2c1_ccx_sa2[1246] ^ l2c1_ccx_sa2[1243] ^ l2c1_ccx_sa2[1242] ^ l2c1_ccx_sa2[1241] ^ eqed_l2c1_ccx[0];
++		   end else begin
++			   l2c1_ccx_sa2[i] <= l2c1_ccx_sa2[i] ^ eqed_l2c1_ccx[j]; 
++		   end
++		       l2c1_ccx_sa2[i+1] <= l2c1_ccx_sa2[i];
++		       l2c1_ccx_sa2[i+2] <= l2c1_ccx_sa2[i+1];
++	           l2c1_ccx_sa2[i+3] <= l2c1_ccx_sa2[i+2];
++		       l2c1_ccx_sa2[i+4] <= l2c1_ccx_sa2[i+3];
++		       l2c1_ccx_sa2[i+5] <= l2c1_ccx_sa2[i+4];
++		       l2c1_ccx_sa2[i+6] <= l2c1_ccx_sa2[i+5];
++			   l2c1_ccx_sa2[i+7] <= l2c1_ccx_sa2[i+6];
 +       end
-+       for (int j = 0; j < L2C_CCX_B; j++) begin
-+           l2c1_ccx_sa2[j*8] <= l2c1_ccx_sa2[j*8] ^ eqed_spc1_ccx[j];
-+       end
-+       ccx_l2c1_sa2[0] <= ccx_l2c1_sa2[1246] ^ ccx_l2c1_sa2[1243] ^ ccx_l2c1_sa2[1242] ^ ccx_l2c1_sa2[1241];
-+       for (int i = 1; i < CCX_L2C_SB_SIZE; i++) begin
-+           ccx_l2c1_sa2[i] <= ccx_l2c1_sa2[i-1];
-+       end
-+       for (int j = 0; j < CCX_L2C_B; j++) begin
-+           ccx_l2c1_sa2[j*8] <= ccx_l2c1_sa2[j*8] ^ eqed_ccx_l2c1[j];
++       for (int i = 0, int j = 0; i < CCX_L2C_SB_SIZE; i = i+8, j++) begin
++	       if (i == 0) begin
++		       ccx_l2c1_sa2[0] <= ccx_l2c1_sa2[1119] ^ ccx_l2c1_sa2[1114] ^ ccx_l2c1_sa2[1110] ^ ccx_l2c1_sa2[1108] ^ eqed_ccx_l2c1[0];
++		   end else begin
++			   ccx_l2c1_sa2[i] <= ccx_l2c1_sa2[i] ^ eqed_ccx_l2c1[j]; 
++		   end
++		       ccx_l2c1_sa2[i+1] <= ccx_l2c1_sa2[i];
++		       ccx_l2c1_sa2[i+2] <= ccx_l2c1_sa2[i+1];
++	           ccx_l2c1_sa2[i+3] <= ccx_l2c1_sa2[i+2];
++		       ccx_l2c1_sa2[i+4] <= ccx_l2c1_sa2[i+3];
++		       ccx_l2c1_sa2[i+5] <= ccx_l2c1_sa2[i+4];
++		       ccx_l2c1_sa2[i+6] <= ccx_l2c1_sa2[i+5];
++			   ccx_l2c1_sa2[i+7] <= ccx_l2c1_sa2[i+6];
 +       end
 +    end
 +end
@@ -655,42 +917,70 @@
 +       l2c2_ccx_sa <= 1;
 +       ccx_l2c2_sa <= 1;
 +    end else begin
-+       l2c2_ccx_sa[0] <= l2c2_ccx_sa[1119] ^ l2c2_ccx_sa[1114] ^ l2c2_ccx_sa[1110] ^ l2c2_ccx_sa[1108];
-+       for (int i = 1; i < L2C_CCX_SB_SIZE; i++) begin
-+           l2c2_ccx_sa[i] <= l2c2_ccx_sa[i-1];
++       for (int i = 0, int j = 0; i < L2C_CCX_SB_SIZE; i = i+8, j++) begin
++	       if (i == 0) begin
++		       l2c2_ccx_sa[0] <= l2c2_ccx_sa[1246] ^ l2c2_ccx_sa[1243] ^ l2c2_ccx_sa[1242] ^ l2c2_ccx_sa[1241] ^ eqed_l2c2_ccx[0];
++		   end else begin
++			   l2c2_ccx_sa[i] <= l2c2_ccx_sa[i-1] ^ eqed_l2c2_ccx[j]; 
++		   end
++		       l2c2_ccx_sa[i+1] <= l2c2_ccx_sa[i];
++		       l2c2_ccx_sa[i+2] <= l2c2_ccx_sa[i+1];
++	           l2c2_ccx_sa[i+3] <= l2c2_ccx_sa[i+2];
++		       l2c2_ccx_sa[i+4] <= l2c2_ccx_sa[i+3];
++		       l2c2_ccx_sa[i+5] <= l2c2_ccx_sa[i+4];
++		       l2c2_ccx_sa[i+6] <= l2c2_ccx_sa[i+5];
++			   l2c2_ccx_sa[i+7] <= l2c2_ccx_sa[i+6];
 +       end
-+       for (int j = 0; j < L2C_CCX_B; j++) begin
-+           l2c2_ccx_sa[j*8] <= l2c2_ccx_sa[j*8] ^ eqed_spc2_ccx[j];
-+       end
-+       for (int j = 0; j < CCX_L2C_B; j++) begin
-+           ccx_l2c2_sa[j*8] <= ccx_l2c2_sa[j*8] ^ eqed_ccx_l2c2[j];
-+       end
-+       ccx_l2c2_sa[0] <= ccx_l2c2_sa[1246] ^ ccx_l2c2_sa[1243] ^ ccx_l2c2_sa[1242] ^ ccx_l2c2_sa[1241];
-+       for (int i = 1; i < CCX_L2C_SB_SIZE; i++) begin
-+           ccx_l2c2_sa[i] <= ccx_l2c2_sa[i-1];
++       for (int i = 0, int j = 0; i < CCX_L2C_SB_SIZE; i = i+8, j++) begin
++	       if (i == 0) begin
++		       ccx_l2c2_sa[0] <= ccx_l2c2_sa[1119] ^ ccx_l2c2_sa[1114] ^ ccx_l2c2_sa[1110] ^ ccx_l2c2_sa[1108] ^ eqed_ccx_l2c2[0];
++		   end else begin
++			   ccx_l2c2_sa[i] <= ccx_l2c2_sa[i-1] ^ eqed_ccx_l2c2[j]; 
++		   end
++		       ccx_l2c2_sa[i+1] <= ccx_l2c2_sa[i];
++		       ccx_l2c2_sa[i+2] <= ccx_l2c2_sa[i+1];
++	           ccx_l2c2_sa[i+3] <= ccx_l2c2_sa[i+2];
++		       ccx_l2c2_sa[i+4] <= ccx_l2c2_sa[i+3];
++		       ccx_l2c2_sa[i+5] <= ccx_l2c2_sa[i+4];
++		       ccx_l2c2_sa[i+6] <= ccx_l2c2_sa[i+5];
++			   ccx_l2c2_sa[i+7] <= ccx_l2c2_sa[i+6];
 +       end
 +    end
 +end
 +
 +
 +always @(posedge clk) begin
-+    if (m_rst2) begin
++    if (m_rst) begin
 +       l2c2_ccx_sa2 <= 1;
 +       ccx_l2c2_sa2 <= 1;
 +    end else begin
-+       l2c2_ccx_sa2[0] <= l2c2_ccx_sa2[1119] ^ l2c2_ccx_sa2[1114] ^ l2c2_ccx_sa2[1110] ^ l2c2_ccx_sa2[1108];
-+       for (int i = 1; i < L2C_CCX_SB_SIZE; i++) begin
-+           l2c2_ccx_sa2[i] <= l2c2_ccx_sa2[i-1];
++       for (int i = 0, int j = 0; i < L2C_CCX_SB_SIZE; i = i+8, j++) begin
++	       if (i == 0) begin
++		       l2c2_ccx_sa2[0] <= l2c2_ccx_sa2[1246] ^ l2c2_ccx_sa2[1243] ^ l2c2_ccx_sa2[1242] ^ l2c2_ccx_sa2[1241] ^ eqed_l2c2_ccx[0];
++		   end else begin
++			   l2c2_ccx_sa2[i] <= l2c2_ccx_sa2[i] ^ eqed_l2c2_ccx[j]; 
++		   end
++		       l2c2_ccx_sa2[i+1] <= l2c2_ccx_sa2[i];
++		       l2c2_ccx_sa2[i+2] <= l2c2_ccx_sa2[i+1];
++	           l2c2_ccx_sa2[i+3] <= l2c2_ccx_sa2[i+2];
++		       l2c2_ccx_sa2[i+4] <= l2c2_ccx_sa2[i+3];
++		       l2c2_ccx_sa2[i+5] <= l2c2_ccx_sa2[i+4];
++		       l2c2_ccx_sa2[i+6] <= l2c2_ccx_sa2[i+5];
++			   l2c2_ccx_sa2[i+7] <= l2c2_ccx_sa2[i+6];
 +       end
-+       for (int j = 0; j < L2C_CCX_B; j++) begin
-+           l2c2_ccx_sa2[j*8] <= l2c2_ccx_sa2[j*8] ^ eqed_spc2_ccx[j];
-+       end
-+       ccx_l2c2_sa2[0] <= ccx_l2c2_sa2[1246] ^ ccx_l2c2_sa2[1243] ^ ccx_l2c2_sa2[1242] ^ ccx_l2c2_sa2[1241];
-+       for (int i = 1; i < CCX_L2C_SB_SIZE; i++) begin
-+           ccx_l2c2_sa2[i] <= ccx_l2c2_sa2[i-1];
-+       end
-+       for (int j = 0; j < CCX_L2C_B; j++) begin
-+           ccx_l2c2_sa2[j*8] <= ccx_l2c2_sa2[j*8] ^ eqed_ccx_l2c2[j];
++       for (int i = 0, int j = 0; i < CCX_L2C_SB_SIZE; i = i+8, j++) begin
++	       if (i == 0) begin
++		       ccx_l2c2_sa2[0] <= ccx_l2c2_sa2[1119] ^ ccx_l2c2_sa2[1114] ^ ccx_l2c2_sa2[1110] ^ ccx_l2c2_sa2[1108] ^ eqed_ccx_l2c2[0];
++		   end else begin
++			   ccx_l2c2_sa2[i] <= ccx_l2c2_sa2[i] ^ eqed_ccx_l2c2[j]; 
++		   end
++		       ccx_l2c2_sa2[i+1] <= ccx_l2c2_sa2[i];
++		       ccx_l2c2_sa2[i+2] <= ccx_l2c2_sa2[i+1];
++	           ccx_l2c2_sa2[i+3] <= ccx_l2c2_sa2[i+2];
++		       ccx_l2c2_sa2[i+4] <= ccx_l2c2_sa2[i+3];
++		       ccx_l2c2_sa2[i+5] <= ccx_l2c2_sa2[i+4];
++		       ccx_l2c2_sa2[i+6] <= ccx_l2c2_sa2[i+5];
++			   ccx_l2c2_sa2[i+7] <= ccx_l2c2_sa2[i+6];
 +       end
 +    end
 +end
@@ -700,42 +990,70 @@
 +       l2c3_ccx_sa <= 1;
 +       ccx_l2c3_sa <= 1;
 +    end else begin
-+       l2c3_ccx_sa[0] <= l2c3_ccx_sa[1119] ^ l2c3_ccx_sa[1114] ^ l2c3_ccx_sa[1110] ^ l2c3_ccx_sa[1108];
-+       for (int i = 1; i < L2C_CCX_SB_SIZE; i++) begin
-+           l2c3_ccx_sa[i] <= l2c3_ccx_sa[i-1];
++       for (int i = 0, int j = 0; i < L2C_CCX_SB_SIZE; i = i+8, j++) begin
++	       if (i == 0) begin
++		       l2c3_ccx_sa[0] <= l2c3_ccx_sa[1246] ^ l2c3_ccx_sa[1243] ^ l2c3_ccx_sa[1242] ^ l2c3_ccx_sa[1241] ^ eqed_l2c3_ccx[0];
++		   end else begin
++			   l2c3_ccx_sa[i] <= l2c3_ccx_sa[i-1] ^ eqed_l2c3_ccx[j]; 
++		   end
++		       l2c3_ccx_sa[i+1] <= l2c3_ccx_sa[i];
++		       l2c3_ccx_sa[i+2] <= l2c3_ccx_sa[i+1];
++	           l2c3_ccx_sa[i+3] <= l2c3_ccx_sa[i+2];
++		       l2c3_ccx_sa[i+4] <= l2c3_ccx_sa[i+3];
++		       l2c3_ccx_sa[i+5] <= l2c3_ccx_sa[i+4];
++		       l2c3_ccx_sa[i+6] <= l2c3_ccx_sa[i+5];
++			   l2c3_ccx_sa[i+7] <= l2c3_ccx_sa[i+6];
 +       end
-+       for (int j = 0; j < L2C_CCX_B; j++) begin
-+           l2c3_ccx_sa[j*8] <= l2c3_ccx_sa[j*8] ^ eqed_spc3_ccx[j];
-+       end
-+       for (int j = 0; j < CCX_L2C_B; j++) begin
-+           ccx_l2c3_sa[j*8] <= ccx_l2c3_sa[j*8] ^ eqed_ccx_l2c3[j];
-+       end
-+       ccx_l2c3_sa[0] <= ccx_l2c3_sa[1246] ^ ccx_l2c3_sa[1243] ^ ccx_l2c3_sa[1242] ^ ccx_l2c3_sa[1241];
-+       for (int i = 1; i < CCX_L2C_SB_SIZE; i++) begin
-+           ccx_l2c3_sa[i] <= ccx_l2c3_sa[i-1];
++       for (int i = 0, int j = 0; i < CCX_L2C_SB_SIZE; i = i+8, j++) begin
++	       if (i == 0) begin
++		       ccx_l2c3_sa[0] <= ccx_l2c3_sa[1119] ^ ccx_l2c3_sa[1114] ^ ccx_l2c3_sa[1110] ^ ccx_l2c3_sa[1108] ^ eqed_ccx_l2c3[0];
++		   end else begin
++			   ccx_l2c3_sa[i] <= ccx_l2c3_sa[i-1] ^ eqed_ccx_l2c3[j]; 
++		   end
++		       ccx_l2c3_sa[i+1] <= ccx_l2c3_sa[i];
++		       ccx_l2c3_sa[i+2] <= ccx_l2c3_sa[i+1];
++	           ccx_l2c3_sa[i+3] <= ccx_l2c3_sa[i+2];
++		       ccx_l2c3_sa[i+4] <= ccx_l2c3_sa[i+3];
++		       ccx_l2c3_sa[i+5] <= ccx_l2c3_sa[i+4];
++		       ccx_l2c3_sa[i+6] <= ccx_l2c3_sa[i+5];
++			   ccx_l2c3_sa[i+7] <= ccx_l2c3_sa[i+6];
 +       end
 +    end
 +end
 +
 +
 +always @(posedge clk) begin
-+    if (m_rst2) begin
++    if (m_rst) begin
 +       l2c3_ccx_sa2 <= 1;
 +       ccx_l2c3_sa2 <= 1;
 +    end else begin
-+       l2c3_ccx_sa2[0] <= l2c3_ccx_sa2[1119] ^ l2c3_ccx_sa2[1114] ^ l2c3_ccx_sa2[1110] ^ l2c3_ccx_sa2[1108];
-+       for (int i = 1; i < L2C_CCX_SB_SIZE; i++) begin
-+           l2c3_ccx_sa2[i] <= l2c3_ccx_sa2[i-1];
++       for (int i = 0, int j = 0; i < L2C_CCX_SB_SIZE; i = i+8, j++) begin
++	       if (i == 0) begin
++		       l2c3_ccx_sa2[0] <= l2c3_ccx_sa2[1246] ^ l2c3_ccx_sa2[1243] ^ l2c3_ccx_sa2[1242] ^ l2c3_ccx_sa2[1241] ^ eqed_l2c3_ccx[0];
++		   end else begin
++			   l2c3_ccx_sa2[i] <= l2c3_ccx_sa2[i] ^ eqed_l2c3_ccx[j]; 
++		   end
++		       l2c3_ccx_sa2[i+1] <= l2c3_ccx_sa2[i];
++		       l2c3_ccx_sa2[i+2] <= l2c3_ccx_sa2[i+1];
++	           l2c3_ccx_sa2[i+3] <= l2c3_ccx_sa2[i+2];
++		       l2c3_ccx_sa2[i+4] <= l2c3_ccx_sa2[i+3];
++		       l2c3_ccx_sa2[i+5] <= l2c3_ccx_sa2[i+4];
++		       l2c3_ccx_sa2[i+6] <= l2c3_ccx_sa2[i+5];
++			   l2c3_ccx_sa2[i+7] <= l2c3_ccx_sa2[i+6];
 +       end
-+       for (int j = 0; j < L2C_CCX_B; j++) begin
-+           l2c3_ccx_sa2[j*8] <= l2c3_ccx_sa2[j*8] ^ eqed_spc3_ccx[j];
-+       end
-+       ccx_l2c3_sa2[0] <= ccx_l2c3_sa2[1246] ^ ccx_l2c3_sa2[1243] ^ ccx_l2c3_sa2[1242] ^ ccx_l2c3_sa2[1241];
-+       for (int i = 1; i < CCX_L2C_SB_SIZE; i++) begin
-+           ccx_l2c3_sa2[i] <= ccx_l2c3_sa2[i-1];
-+       end
-+       for (int j = 0; j < CCX_L2C_B; j++) begin
-+           ccx_l2c3_sa2[j*8] <= ccx_l2c3_sa2[j*8] ^ eqed_ccx_l2c3[j];
++       for (int i = 0, int j = 0; i < CCX_L2C_SB_SIZE; i = i+8, j++) begin
++	       if (i == 0) begin
++		       ccx_l2c3_sa2[0] <= ccx_l2c3_sa2[1119] ^ ccx_l2c3_sa2[1114] ^ ccx_l2c3_sa2[1110] ^ ccx_l2c3_sa2[1108] ^ eqed_ccx_l2c3[0];
++		   end else begin
++			   ccx_l2c3_sa2[i] <= ccx_l2c3_sa2[i] ^ eqed_ccx_l2c3[j]; 
++		   end
++		       ccx_l2c3_sa2[i+1] <= ccx_l2c3_sa2[i];
++		       ccx_l2c3_sa2[i+2] <= ccx_l2c3_sa2[i+1];
++	           ccx_l2c3_sa2[i+3] <= ccx_l2c3_sa2[i+2];
++		       ccx_l2c3_sa2[i+4] <= ccx_l2c3_sa2[i+3];
++		       ccx_l2c3_sa2[i+5] <= ccx_l2c3_sa2[i+4];
++		       ccx_l2c3_sa2[i+6] <= ccx_l2c3_sa2[i+5];
++			   ccx_l2c3_sa2[i+7] <= ccx_l2c3_sa2[i+6];
 +       end
 +    end
 +end
@@ -745,42 +1063,70 @@
 +       l2c4_ccx_sa <= 1;
 +       ccx_l2c4_sa <= 1;
 +    end else begin
-+       l2c4_ccx_sa[0] <= l2c4_ccx_sa[1119] ^ l2c4_ccx_sa[1114] ^ l2c4_ccx_sa[1110] ^ l2c4_ccx_sa[1108];
-+       for (int i = 1; i < L2C_CCX_SB_SIZE; i++) begin
-+           l2c4_ccx_sa[i] <= l2c4_ccx_sa[i-1];
++       for (int i = 0, int j = 0; i < L2C_CCX_SB_SIZE; i = i+8, j++) begin
++	       if (i == 0) begin
++		       l2c4_ccx_sa[0] <= l2c4_ccx_sa[1246] ^ l2c4_ccx_sa[1243] ^ l2c4_ccx_sa[1242] ^ l2c4_ccx_sa[1241] ^ eqed_l2c4_ccx[0];
++		   end else begin
++			   l2c4_ccx_sa[i] <= l2c4_ccx_sa[i-1] ^ eqed_l2c4_ccx[j]; 
++		   end
++		       l2c4_ccx_sa[i+1] <= l2c4_ccx_sa[i];
++		       l2c4_ccx_sa[i+2] <= l2c4_ccx_sa[i+1];
++	           l2c4_ccx_sa[i+3] <= l2c4_ccx_sa[i+2];
++		       l2c4_ccx_sa[i+4] <= l2c4_ccx_sa[i+3];
++		       l2c4_ccx_sa[i+5] <= l2c4_ccx_sa[i+4];
++		       l2c4_ccx_sa[i+6] <= l2c4_ccx_sa[i+5];
++			   l2c4_ccx_sa[i+7] <= l2c4_ccx_sa[i+6];
 +       end
-+       for (int j = 0; j < L2C_CCX_B; j++) begin
-+           l2c4_ccx_sa[j*8] <= l2c4_ccx_sa[j*8] ^ eqed_spc4_ccx[j];
-+       end
-+       for (int j = 0; j < CCX_L2C_B; j++) begin
-+           ccx_l2c4_sa[j*8] <= ccx_l2c4_sa[j*8] ^ eqed_ccx_l2c4[j];
-+       end
-+       ccx_l2c4_sa[0] <= ccx_l2c4_sa[1246] ^ ccx_l2c4_sa[1243] ^ ccx_l2c4_sa[1242] ^ ccx_l2c4_sa[1241];
-+       for (int i = 1; i < CCX_L2C_SB_SIZE; i++) begin
-+           ccx_l2c4_sa[i] <= ccx_l2c4_sa[i-1];
++       for (int i = 0, int j = 0; i < CCX_L2C_SB_SIZE; i = i+8, j++) begin
++	       if (i == 0) begin
++		       ccx_l2c4_sa[0] <= ccx_l2c4_sa[1119] ^ ccx_l2c4_sa[1114] ^ ccx_l2c4_sa[1110] ^ ccx_l2c4_sa[1108] ^ eqed_ccx_l2c4[0];
++		   end else begin
++			   ccx_l2c4_sa[i] <= ccx_l2c4_sa[i-1] ^ eqed_ccx_l2c4[j]; 
++		   end
++		       ccx_l2c4_sa[i+1] <= ccx_l2c4_sa[i];
++		       ccx_l2c4_sa[i+2] <= ccx_l2c4_sa[i+1];
++	           ccx_l2c4_sa[i+3] <= ccx_l2c4_sa[i+2];
++		       ccx_l2c4_sa[i+4] <= ccx_l2c4_sa[i+3];
++		       ccx_l2c4_sa[i+5] <= ccx_l2c4_sa[i+4];
++		       ccx_l2c4_sa[i+6] <= ccx_l2c4_sa[i+5];
++			   ccx_l2c4_sa[i+7] <= ccx_l2c4_sa[i+6];
 +       end
 +    end
 +end
 +
 +
 +always @(posedge clk) begin
-+    if (m_rst2) begin
++    if (m_rst) begin
 +       l2c4_ccx_sa2 <= 1;
 +       ccx_l2c4_sa2 <= 1;
 +    end else begin
-+       l2c4_ccx_sa2[0] <= l2c4_ccx_sa2[1119] ^ l2c4_ccx_sa2[1114] ^ l2c4_ccx_sa2[1110] ^ l2c4_ccx_sa2[1108];
-+       for (int i = 1; i < L2C_CCX_SB_SIZE; i++) begin
-+           l2c4_ccx_sa2[i] <= l2c4_ccx_sa2[i-1];
++       for (int i = 0, int j = 0; i < L2C_CCX_SB_SIZE; i = i+8, j++) begin
++	       if (i == 0) begin
++		       l2c4_ccx_sa2[0] <= l2c4_ccx_sa2[1246] ^ l2c4_ccx_sa2[1243] ^ l2c4_ccx_sa2[1242] ^ l2c4_ccx_sa2[1241] ^ eqed_l2c4_ccx[0];
++		   end else begin
++			   l2c4_ccx_sa2[i] <= l2c4_ccx_sa2[i] ^ eqed_l2c4_ccx[j]; 
++		   end
++		       l2c4_ccx_sa2[i+1] <= l2c4_ccx_sa2[i];
++		       l2c4_ccx_sa2[i+2] <= l2c4_ccx_sa2[i+1];
++	           l2c4_ccx_sa2[i+3] <= l2c4_ccx_sa2[i+2];
++		       l2c4_ccx_sa2[i+4] <= l2c4_ccx_sa2[i+3];
++		       l2c4_ccx_sa2[i+5] <= l2c4_ccx_sa2[i+4];
++		       l2c4_ccx_sa2[i+6] <= l2c4_ccx_sa2[i+5];
++			   l2c4_ccx_sa2[i+7] <= l2c4_ccx_sa2[i+6];
 +       end
-+       for (int j = 0; j < L2C_CCX_B; j++) begin
-+           l2c4_ccx_sa2[j*8] <= l2c4_ccx_sa2[j*8] ^ eqed_spc4_ccx[j];
-+       end
-+       ccx_l2c4_sa2[0] <= ccx_l2c4_sa2[1246] ^ ccx_l2c4_sa2[1243] ^ ccx_l2c4_sa2[1242] ^ ccx_l2c4_sa2[1241];
-+       for (int i = 1; i < CCX_L2C_SB_SIZE; i++) begin
-+           ccx_l2c4_sa2[i] <= ccx_l2c4_sa2[i-1];
-+       end
-+       for (int j = 0; j < CCX_L2C_B; j++) begin
-+           ccx_l2c4_sa2[j*8] <= ccx_l2c4_sa2[j*8] ^ eqed_ccx_l2c4[j];
++       for (int i = 0, int j = 0; i < CCX_L2C_SB_SIZE; i = i+8, j++) begin
++	       if (i == 0) begin
++		       ccx_l2c4_sa2[0] <= ccx_l2c4_sa2[1119] ^ ccx_l2c4_sa2[1114] ^ ccx_l2c4_sa2[1110] ^ ccx_l2c4_sa2[1108] ^ eqed_ccx_l2c4[0];
++		   end else begin
++			   ccx_l2c4_sa2[i] <= ccx_l2c4_sa2[i] ^ eqed_ccx_l2c4[j]; 
++		   end
++		       ccx_l2c4_sa2[i+1] <= ccx_l2c4_sa2[i];
++		       ccx_l2c4_sa2[i+2] <= ccx_l2c4_sa2[i+1];
++	           ccx_l2c4_sa2[i+3] <= ccx_l2c4_sa2[i+2];
++		       ccx_l2c4_sa2[i+4] <= ccx_l2c4_sa2[i+3];
++		       ccx_l2c4_sa2[i+5] <= ccx_l2c4_sa2[i+4];
++		       ccx_l2c4_sa2[i+6] <= ccx_l2c4_sa2[i+5];
++			   ccx_l2c4_sa2[i+7] <= ccx_l2c4_sa2[i+6];
 +       end
 +    end
 +end
@@ -790,42 +1136,70 @@
 +       l2c5_ccx_sa <= 1;
 +       ccx_l2c5_sa <= 1;
 +    end else begin
-+       l2c5_ccx_sa[0] <= l2c5_ccx_sa[1119] ^ l2c5_ccx_sa[1114] ^ l2c5_ccx_sa[1110] ^ l2c5_ccx_sa[1108];
-+       for (int i = 1; i < L2C_CCX_SB_SIZE; i++) begin
-+           l2c5_ccx_sa[i] <= l2c5_ccx_sa[i-1];
++       for (int i = 0, int j = 0; i < L2C_CCX_SB_SIZE; i = i+8, j++) begin
++	       if (i == 0) begin
++		       l2c5_ccx_sa[0] <= l2c5_ccx_sa[1246] ^ l2c5_ccx_sa[1243] ^ l2c5_ccx_sa[1242] ^ l2c5_ccx_sa[1241] ^ eqed_l2c5_ccx[0];
++		   end else begin
++			   l2c5_ccx_sa[i] <= l2c5_ccx_sa[i-1] ^ eqed_l2c5_ccx[j]; 
++		   end
++		       l2c5_ccx_sa[i+1] <= l2c5_ccx_sa[i];
++		       l2c5_ccx_sa[i+2] <= l2c5_ccx_sa[i+1];
++	           l2c5_ccx_sa[i+3] <= l2c5_ccx_sa[i+2];
++		       l2c5_ccx_sa[i+4] <= l2c5_ccx_sa[i+3];
++		       l2c5_ccx_sa[i+5] <= l2c5_ccx_sa[i+4];
++		       l2c5_ccx_sa[i+6] <= l2c5_ccx_sa[i+5];
++			   l2c5_ccx_sa[i+7] <= l2c5_ccx_sa[i+6];
 +       end
-+       for (int j = 0; j < L2C_CCX_B; j++) begin
-+           l2c5_ccx_sa[j*8] <= l2c5_ccx_sa[j*8] ^ eqed_spc5_ccx[j];
-+       end
-+       for (int j = 0; j < CCX_L2C_B; j++) begin
-+           ccx_l2c5_sa[j*8] <= ccx_l2c5_sa[j*8] ^ eqed_ccx_l2c5[j];
-+       end
-+       ccx_l2c5_sa[0] <= ccx_l2c5_sa[1246] ^ ccx_l2c5_sa[1243] ^ ccx_l2c5_sa[1242] ^ ccx_l2c5_sa[1241];
-+       for (int i = 1; i < CCX_L2C_SB_SIZE; i++) begin
-+           ccx_l2c5_sa[i] <= ccx_l2c5_sa[i-1];
++       for (int i = 0, int j = 0; i < CCX_L2C_SB_SIZE; i = i+8, j++) begin
++	       if (i == 0) begin
++		       ccx_l2c5_sa[0] <= ccx_l2c5_sa[1119] ^ ccx_l2c5_sa[1114] ^ ccx_l2c5_sa[1110] ^ ccx_l2c5_sa[1108] ^ eqed_ccx_l2c5[0];
++		   end else begin
++			   ccx_l2c5_sa[i] <= ccx_l2c5_sa[i-1] ^ eqed_ccx_l2c5[j]; 
++		   end
++		       ccx_l2c5_sa[i+1] <= ccx_l2c5_sa[i];
++		       ccx_l2c5_sa[i+2] <= ccx_l2c5_sa[i+1];
++	           ccx_l2c5_sa[i+3] <= ccx_l2c5_sa[i+2];
++		       ccx_l2c5_sa[i+4] <= ccx_l2c5_sa[i+3];
++		       ccx_l2c5_sa[i+5] <= ccx_l2c5_sa[i+4];
++		       ccx_l2c5_sa[i+6] <= ccx_l2c5_sa[i+5];
++			   ccx_l2c5_sa[i+7] <= ccx_l2c5_sa[i+6];
 +       end
 +    end
 +end
 +
 +
 +always @(posedge clk) begin
-+    if (m_rst2) begin
++    if (m_rst) begin
 +       l2c5_ccx_sa2 <= 1;
 +       ccx_l2c5_sa2 <= 1;
 +    end else begin
-+       l2c5_ccx_sa2[0] <= l2c5_ccx_sa2[1119] ^ l2c5_ccx_sa2[1114] ^ l2c5_ccx_sa2[1110] ^ l2c5_ccx_sa2[1108];
-+       for (int i = 1; i < L2C_CCX_SB_SIZE; i++) begin
-+           l2c5_ccx_sa2[i] <= l2c5_ccx_sa2[i-1];
++       for (int i = 0, int j = 0; i < L2C_CCX_SB_SIZE; i = i+8, j++) begin
++	       if (i == 0) begin
++		       l2c5_ccx_sa2[0] <= l2c5_ccx_sa2[1246] ^ l2c5_ccx_sa2[1243] ^ l2c5_ccx_sa2[1242] ^ l2c5_ccx_sa2[1241] ^ eqed_l2c5_ccx[0];
++		   end else begin
++			   l2c5_ccx_sa2[i] <= l2c5_ccx_sa2[i] ^ eqed_l2c5_ccx[j]; 
++		   end
++		       l2c5_ccx_sa2[i+1] <= l2c5_ccx_sa2[i];
++		       l2c5_ccx_sa2[i+2] <= l2c5_ccx_sa2[i+1];
++	           l2c5_ccx_sa2[i+3] <= l2c5_ccx_sa2[i+2];
++		       l2c5_ccx_sa2[i+4] <= l2c5_ccx_sa2[i+3];
++		       l2c5_ccx_sa2[i+5] <= l2c5_ccx_sa2[i+4];
++		       l2c5_ccx_sa2[i+6] <= l2c5_ccx_sa2[i+5];
++			   l2c5_ccx_sa2[i+7] <= l2c5_ccx_sa2[i+6];
 +       end
-+       for (int j = 0; j < L2C_CCX_B; j++) begin
-+           l2c5_ccx_sa2[j*8] <= l2c5_ccx_sa2[j*8] ^ eqed_spc5_ccx[j];
-+       end
-+       ccx_l2c5_sa2[0] <= ccx_l2c5_sa2[1246] ^ ccx_l2c5_sa2[1243] ^ ccx_l2c5_sa2[1242] ^ ccx_l2c5_sa2[1241];
-+       for (int i = 1; i < CCX_L2C_SB_SIZE; i++) begin
-+           ccx_l2c5_sa2[i] <= ccx_l2c5_sa2[i-1];
-+       end
-+       for (int j = 0; j < CCX_L2C_B; j++) begin
-+           ccx_l2c5_sa2[j*8] <= ccx_l2c5_sa2[j*8] ^ eqed_ccx_l2c5[j];
++       for (int i = 0, int j = 0; i < CCX_L2C_SB_SIZE; i = i+8, j++) begin
++	       if (i == 0) begin
++		       ccx_l2c5_sa2[0] <= ccx_l2c5_sa2[1119] ^ ccx_l2c5_sa2[1114] ^ ccx_l2c5_sa2[1110] ^ ccx_l2c5_sa2[1108] ^ eqed_ccx_l2c5[0];
++		   end else begin
++			   ccx_l2c5_sa2[i] <= ccx_l2c5_sa2[i] ^ eqed_ccx_l2c5[j]; 
++		   end
++		       ccx_l2c5_sa2[i+1] <= ccx_l2c5_sa2[i];
++		       ccx_l2c5_sa2[i+2] <= ccx_l2c5_sa2[i+1];
++	           ccx_l2c5_sa2[i+3] <= ccx_l2c5_sa2[i+2];
++		       ccx_l2c5_sa2[i+4] <= ccx_l2c5_sa2[i+3];
++		       ccx_l2c5_sa2[i+5] <= ccx_l2c5_sa2[i+4];
++		       ccx_l2c5_sa2[i+6] <= ccx_l2c5_sa2[i+5];
++			   ccx_l2c5_sa2[i+7] <= ccx_l2c5_sa2[i+6];
 +       end
 +    end
 +end
@@ -835,42 +1209,70 @@
 +       l2c6_ccx_sa <= 1;
 +       ccx_l2c6_sa <= 1;
 +    end else begin
-+       l2c6_ccx_sa[0] <= l2c6_ccx_sa[1119] ^ l2c6_ccx_sa[1114] ^ l2c6_ccx_sa[1110] ^ l2c6_ccx_sa[1108];
-+       for (int i = 1; i < L2C_CCX_SB_SIZE; i++) begin
-+           l2c6_ccx_sa[i] <= l2c6_ccx_sa[i-1];
++       for (int i = 0, int j = 0; i < L2C_CCX_SB_SIZE; i = i+8, j++) begin
++	       if (i == 0) begin
++		       l2c6_ccx_sa[0] <= l2c6_ccx_sa[1246] ^ l2c6_ccx_sa[1243] ^ l2c6_ccx_sa[1242] ^ l2c6_ccx_sa[1241] ^ eqed_l2c6_ccx[0];
++		   end else begin
++			   l2c6_ccx_sa[i] <= l2c6_ccx_sa[i-1] ^ eqed_l2c6_ccx[j]; 
++		   end
++		       l2c6_ccx_sa[i+1] <= l2c6_ccx_sa[i];
++		       l2c6_ccx_sa[i+2] <= l2c6_ccx_sa[i+1];
++	           l2c6_ccx_sa[i+3] <= l2c6_ccx_sa[i+2];
++		       l2c6_ccx_sa[i+4] <= l2c6_ccx_sa[i+3];
++		       l2c6_ccx_sa[i+5] <= l2c6_ccx_sa[i+4];
++		       l2c6_ccx_sa[i+6] <= l2c6_ccx_sa[i+5];
++			   l2c6_ccx_sa[i+7] <= l2c6_ccx_sa[i+6];
 +       end
-+       for (int j = 0; j < L2C_CCX_B; j++) begin
-+           l2c6_ccx_sa[j*8] <= l2c6_ccx_sa[j*8] ^ eqed_spc6_ccx[j];
-+       end
-+       for (int j = 0; j < CCX_L2C_B; j++) begin
-+           ccx_l2c6_sa[j*8] <= ccx_l2c6_sa[j*8] ^ eqed_ccx_l2c6[j];
-+       end
-+       ccx_l2c6_sa[0] <= ccx_l2c6_sa[1246] ^ ccx_l2c6_sa[1243] ^ ccx_l2c6_sa[1242] ^ ccx_l2c6_sa[1241];
-+       for (int i = 1; i < CCX_L2C_SB_SIZE; i++) begin
-+           ccx_l2c6_sa[i] <= ccx_l2c6_sa[i-1];
++       for (int i = 0, int j = 0; i < CCX_L2C_SB_SIZE; i = i+8, j++) begin
++	       if (i == 0) begin
++		       ccx_l2c6_sa[0] <= ccx_l2c6_sa[1119] ^ ccx_l2c6_sa[1114] ^ ccx_l2c6_sa[1110] ^ ccx_l2c6_sa[1108] ^ eqed_ccx_l2c6[0];
++		   end else begin
++			   ccx_l2c6_sa[i] <= ccx_l2c6_sa[i-1] ^ eqed_ccx_l2c6[j]; 
++		   end
++		       ccx_l2c6_sa[i+1] <= ccx_l2c6_sa[i];
++		       ccx_l2c6_sa[i+2] <= ccx_l2c6_sa[i+1];
++	           ccx_l2c6_sa[i+3] <= ccx_l2c6_sa[i+2];
++		       ccx_l2c6_sa[i+4] <= ccx_l2c6_sa[i+3];
++		       ccx_l2c6_sa[i+5] <= ccx_l2c6_sa[i+4];
++		       ccx_l2c6_sa[i+6] <= ccx_l2c6_sa[i+5];
++			   ccx_l2c6_sa[i+7] <= ccx_l2c6_sa[i+6];
 +       end
 +    end
 +end
 +
 +
 +always @(posedge clk) begin
-+    if (m_rst2) begin
++    if (m_rst) begin
 +       l2c6_ccx_sa2 <= 1;
 +       ccx_l2c6_sa2 <= 1;
 +    end else begin
-+       l2c6_ccx_sa2[0] <= l2c6_ccx_sa2[1119] ^ l2c6_ccx_sa2[1114] ^ l2c6_ccx_sa2[1110] ^ l2c6_ccx_sa2[1108];
-+       for (int i = 1; i < L2C_CCX_SB_SIZE; i++) begin
-+           l2c6_ccx_sa2[i] <= l2c6_ccx_sa2[i-1];
++       for (int i = 0, int j = 0; i < L2C_CCX_SB_SIZE; i = i+8, j++) begin
++	       if (i == 0) begin
++		       l2c6_ccx_sa2[0] <= l2c6_ccx_sa2[1246] ^ l2c6_ccx_sa2[1243] ^ l2c6_ccx_sa2[1242] ^ l2c6_ccx_sa2[1241] ^ eqed_l2c6_ccx[0];
++		   end else begin
++			   l2c6_ccx_sa2[i] <= l2c6_ccx_sa2[i] ^ eqed_l2c6_ccx[j]; 
++		   end
++		       l2c6_ccx_sa2[i+1] <= l2c6_ccx_sa2[i];
++		       l2c6_ccx_sa2[i+2] <= l2c6_ccx_sa2[i+1];
++	           l2c6_ccx_sa2[i+3] <= l2c6_ccx_sa2[i+2];
++		       l2c6_ccx_sa2[i+4] <= l2c6_ccx_sa2[i+3];
++		       l2c6_ccx_sa2[i+5] <= l2c6_ccx_sa2[i+4];
++		       l2c6_ccx_sa2[i+6] <= l2c6_ccx_sa2[i+5];
++			   l2c6_ccx_sa2[i+7] <= l2c6_ccx_sa2[i+6];
 +       end
-+       for (int j = 0; j < L2C_CCX_B; j++) begin
-+           l2c6_ccx_sa2[j*8] <= l2c6_ccx_sa2[j*8] ^ eqed_spc6_ccx[j];
-+       end
-+       ccx_l2c6_sa2[0] <= ccx_l2c6_sa2[1246] ^ ccx_l2c6_sa2[1243] ^ ccx_l2c6_sa2[1242] ^ ccx_l2c6_sa2[1241];
-+       for (int i = 1; i < CCX_L2C_SB_SIZE; i++) begin
-+           ccx_l2c6_sa2[i] <= ccx_l2c6_sa2[i-1];
-+       end
-+       for (int j = 0; j < CCX_L2C_B; j++) begin
-+           ccx_l2c6_sa2[j*8] <= ccx_l2c6_sa2[j*8] ^ eqed_ccx_l2c6[j];
++       for (int i = 0, int j = 0; i < CCX_L2C_SB_SIZE; i = i+8, j++) begin
++	       if (i == 0) begin
++		       ccx_l2c6_sa2[0] <= ccx_l2c6_sa2[1119] ^ ccx_l2c6_sa2[1114] ^ ccx_l2c6_sa2[1110] ^ ccx_l2c6_sa2[1108] ^ eqed_ccx_l2c6[0];
++		   end else begin
++			   ccx_l2c6_sa2[i] <= ccx_l2c6_sa2[i] ^ eqed_ccx_l2c6[j]; 
++		   end
++		       ccx_l2c6_sa2[i+1] <= ccx_l2c6_sa2[i];
++		       ccx_l2c6_sa2[i+2] <= ccx_l2c6_sa2[i+1];
++	           ccx_l2c6_sa2[i+3] <= ccx_l2c6_sa2[i+2];
++		       ccx_l2c6_sa2[i+4] <= ccx_l2c6_sa2[i+3];
++		       ccx_l2c6_sa2[i+5] <= ccx_l2c6_sa2[i+4];
++		       ccx_l2c6_sa2[i+6] <= ccx_l2c6_sa2[i+5];
++			   ccx_l2c6_sa2[i+7] <= ccx_l2c6_sa2[i+6];
 +       end
 +    end
 +end
@@ -880,45 +1282,81 @@
 +       l2c7_ccx_sa <= 1;
 +       ccx_l2c7_sa <= 1;
 +    end else begin
-+       l2c7_ccx_sa[0] <= l2c7_ccx_sa[1119] ^ l2c7_ccx_sa[1114] ^ l2c7_ccx_sa[1110] ^ l2c7_ccx_sa[1108];
-+       for (int i = 1; i < L2C_CCX_SB_SIZE; i++) begin
-+           l2c7_ccx_sa[i] <= l2c7_ccx_sa[i-1];
++       for (int i = 0, int j = 0; i < L2C_CCX_SB_SIZE; i = i+8, j++) begin
++	       if (i == 0) begin
++		       l2c7_ccx_sa[0] <= l2c7_ccx_sa[1246] ^ l2c7_ccx_sa[1243] ^ l2c7_ccx_sa[1242] ^ l2c7_ccx_sa[1241] ^ eqed_l2c7_ccx[0];
++		   end else begin
++			   l2c7_ccx_sa[i] <= l2c7_ccx_sa[i-1] ^ eqed_l2c7_ccx[j]; 
++		   end
++		       l2c7_ccx_sa[i+1] <= l2c7_ccx_sa[i];
++		       l2c7_ccx_sa[i+2] <= l2c7_ccx_sa[i+1];
++	           l2c7_ccx_sa[i+3] <= l2c7_ccx_sa[i+2];
++		       l2c7_ccx_sa[i+4] <= l2c7_ccx_sa[i+3];
++		       l2c7_ccx_sa[i+5] <= l2c7_ccx_sa[i+4];
++		       l2c7_ccx_sa[i+6] <= l2c7_ccx_sa[i+5];
++			   l2c7_ccx_sa[i+7] <= l2c7_ccx_sa[i+6];
 +       end
-+       for (int j = 0; j < L2C_CCX_B; j++) begin
-+           l2c7_ccx_sa[j*8] <= l2c7_ccx_sa[j*8] ^ eqed_spc7_ccx[j];
-+       end
-+       for (int j = 0; j < CCX_L2C_B; j++) begin
-+           ccx_l2c7_sa[j*8] <= ccx_l2c7_sa[j*8] ^ eqed_ccx_l2c7[j];
-+       end
-+       ccx_l2c7_sa[0] <= ccx_l2c7_sa[1246] ^ ccx_l2c7_sa[1243] ^ ccx_l2c7_sa[1242] ^ ccx_l2c7_sa[1241];
-+       for (int i = 1; i < CCX_L2C_SB_SIZE; i++) begin
-+           ccx_l2c7_sa[i] <= ccx_l2c7_sa[i-1];
++       for (int i = 0, int j = 0; i < CCX_L2C_SB_SIZE; i = i+8, j++) begin
++	       if (i == 0) begin
++		       ccx_l2c7_sa[0] <= ccx_l2c7_sa[1119] ^ ccx_l2c7_sa[1114] ^ ccx_l2c7_sa[1110] ^ ccx_l2c7_sa[1108] ^ eqed_ccx_l2c7[0];
++		   end else begin
++			   ccx_l2c7_sa[i] <= ccx_l2c7_sa[i-1] ^ eqed_ccx_l2c7[j]; 
++		   end
++		       ccx_l2c7_sa[i+1] <= ccx_l2c7_sa[i];
++		       ccx_l2c7_sa[i+2] <= ccx_l2c7_sa[i+1];
++	           ccx_l2c7_sa[i+3] <= ccx_l2c7_sa[i+2];
++		       ccx_l2c7_sa[i+4] <= ccx_l2c7_sa[i+3];
++		       ccx_l2c7_sa[i+5] <= ccx_l2c7_sa[i+4];
++		       ccx_l2c7_sa[i+6] <= ccx_l2c7_sa[i+5];
++			   ccx_l2c7_sa[i+7] <= ccx_l2c7_sa[i+6];
 +       end
 +    end
 +end
 +
 +
 +always @(posedge clk) begin
-+    if (m_rst2) begin
++    if (m_rst) begin
 +       l2c7_ccx_sa2 <= 1;
 +       ccx_l2c7_sa2 <= 1;
 +    end else begin
-+       l2c7_ccx_sa2[0] <= l2c7_ccx_sa2[1119] ^ l2c7_ccx_sa2[1114] ^ l2c7_ccx_sa2[1110] ^ l2c7_ccx_sa2[1108];
-+       for (int i = 1; i < L2C_CCX_SB_SIZE; i++) begin
-+           l2c7_ccx_sa2[i] <= l2c7_ccx_sa2[i-1];
++       for (int i = 0, int j = 0; i < L2C_CCX_SB_SIZE; i = i+8, j++) begin
++	       if (i == 0) begin
++		       l2c7_ccx_sa2[0] <= l2c7_ccx_sa2[1246] ^ l2c7_ccx_sa2[1243] ^ l2c7_ccx_sa2[1242] ^ l2c7_ccx_sa2[1241] ^ eqed_l2c7_ccx[0];
++		   end else begin
++			   l2c7_ccx_sa2[i] <= l2c7_ccx_sa2[i] ^ eqed_l2c7_ccx[j]; 
++		   end
++		       l2c7_ccx_sa2[i+1] <= l2c7_ccx_sa2[i];
++		       l2c7_ccx_sa2[i+2] <= l2c7_ccx_sa2[i+1];
++	           l2c7_ccx_sa2[i+3] <= l2c7_ccx_sa2[i+2];
++		       l2c7_ccx_sa2[i+4] <= l2c7_ccx_sa2[i+3];
++		       l2c7_ccx_sa2[i+5] <= l2c7_ccx_sa2[i+4];
++		       l2c7_ccx_sa2[i+6] <= l2c7_ccx_sa2[i+5];
++			   l2c7_ccx_sa2[i+7] <= l2c7_ccx_sa2[i+6];
 +       end
-+       for (int j = 0; j < L2C_CCX_B; j++) begin
-+           l2c7_ccx_sa2[j*8] <= l2c7_ccx_sa2[j*8] ^ eqed_spc7_ccx[j];
-+       end
-+       ccx_l2c7_sa2[0] <= ccx_l2c7_sa2[1246] ^ ccx_l2c7_sa2[1243] ^ ccx_l2c7_sa2[1242] ^ ccx_l2c7_sa2[1241];
-+       for (int i = 1; i < CCX_L2C_SB_SIZE; i++) begin
-+           ccx_l2c7_sa2[i] <= ccx_l2c7_sa2[i-1];
-+       end
-+       for (int j = 0; j < CCX_L2C_B; j++) begin
-+           ccx_l2c7_sa2[j*8] <= ccx_l2c7_sa2[j*8] ^ eqed_ccx_l2c7[j];
++       for (int i = 0, int j = 0; i < CCX_L2C_SB_SIZE; i = i+8, j++) begin
++	       if (i == 0) begin
++		       ccx_l2c7_sa2[0] <= ccx_l2c7_sa2[1119] ^ ccx_l2c7_sa2[1114] ^ ccx_l2c7_sa2[1110] ^ ccx_l2c7_sa2[1108] ^ eqed_ccx_l2c7[0];
++		   end else begin
++			   ccx_l2c7_sa2[i] <= ccx_l2c7_sa2[i] ^ eqed_ccx_l2c7[j]; 
++		   end
++		       ccx_l2c7_sa2[i+1] <= ccx_l2c7_sa2[i];
++		       ccx_l2c7_sa2[i+2] <= ccx_l2c7_sa2[i+1];
++	           ccx_l2c7_sa2[i+3] <= ccx_l2c7_sa2[i+2];
++		       ccx_l2c7_sa2[i+4] <= ccx_l2c7_sa2[i+3];
++		       ccx_l2c7_sa2[i+5] <= ccx_l2c7_sa2[i+4];
++		       ccx_l2c7_sa2[i+6] <= ccx_l2c7_sa2[i+5];
++			   ccx_l2c7_sa2[i+7] <= ccx_l2c7_sa2[i+6];
 +       end
 +    end
 +end
++
++M_stable_eqed_reset : assume property (
++                             @(posedge clk)
++                             ##1 eqed_rst == 1'b0
++                             );
++
++
++
 +
 +
 +// L2C-MCU interface
@@ -945,17 +1383,17 @@
 +assign eqed_l2c1_mcu0 = {l2b1_mcu0_wr_data_r5, l2b1_mcu0_data_vld_r5, l2b1_mcu0_data_mecc_r5, l2t1_mcu0_rd_req, l2t1_mcu0_wr_req};
 +assign eqed_mcu0_l2c1 = {mcu0_l2b01_data_r2, mcu0_l2b01_ecc_r2, mcu0_l2t1_rd_ack, mcu0_l2t1_wr_ack, mcu0_l2t1_data_vld_r0, mcu0_l2t1_rd_req_id_r0};
 +assign eqed_l2c2_mcu1 = {l2b2_mcu1_wr_data_r5, l2b2_mcu1_data_vld_r5, l2b2_mcu1_data_mecc_r5, l2t2_mcu1_rd_req, l2t2_mcu1_wr_req};
-+assign eqed_mcu1_l2c2 = {mcu1_l2b23_data_r2, mcu1_l2b23_ecc_r2, mcu1_l2t2_rd_ack, mcu1_l2t2_wr_ack, mcu1_l2t2_data_vld_r0, mcu0_l2t2_rd_req_id_r0};
++assign eqed_mcu1_l2c2 = {mcu1_l2b23_data_r2, mcu1_l2b23_ecc_r2, mcu1_l2t2_rd_ack, mcu1_l2t2_wr_ack, mcu1_l2t2_data_vld_r0, mcu1_l2t2_rd_req_id_r0};
 +assign eqed_l2c3_mcu1 = {l2b3_mcu1_wr_data_r5, l2b3_mcu1_data_vld_r5, l2b3_mcu1_data_mecc_r5, l2t3_mcu1_rd_req, l2t3_mcu1_wr_req};
-+assign eqed_mcu1_l2c3 = {mcu1_l2b23_data_r2, mcu1_l2b23_ecc_r2, mcu1_l2t3_rd_ack, mcu1_l2t3_wr_ack, mcu1_l2t3_data_vld_r0, mcu0_l2t3_rd_req_id_r0};
++assign eqed_mcu1_l2c3 = {mcu1_l2b23_data_r2, mcu1_l2b23_ecc_r2, mcu1_l2t3_rd_ack, mcu1_l2t3_wr_ack, mcu1_l2t3_data_vld_r0, mcu1_l2t3_rd_req_id_r0};
 +assign eqed_l2c4_mcu2 = {l2b4_mcu2_wr_data_r5, l2b4_mcu2_data_vld_r5, l2b4_mcu2_data_mecc_r5, l2t4_mcu2_rd_req, l2t4_mcu2_wr_req};
-+assign eqed_mcu2_l2c4 = {mcu2_l2b45_data_r2, mcu2_l2b45_ecc_r2, mcu2_l2t4_rd_ack, mcu2_l2t4_wr_ack, mcu2_l2t4_data_vld_r0, mcu0_l2t4_rd_req_id_r0};
++assign eqed_mcu2_l2c4 = {mcu2_l2b45_data_r2, mcu2_l2b45_ecc_r2, mcu2_l2t4_rd_ack, mcu2_l2t4_wr_ack, mcu2_l2t4_data_vld_r0, mcu2_l2t4_rd_req_id_r0};
 +assign eqed_l2c5_mcu2 = {l2b5_mcu2_wr_data_r5, l2b5_mcu2_data_vld_r5, l2b5_mcu2_data_mecc_r5, l2t5_mcu2_rd_req, l2t5_mcu2_wr_req};
-+assign eqed_mcu2_l2c5 = {mcu2_l2b45_data_r2, mcu2_l2b45_ecc_r2, mcu2_l2t5_rd_ack, mcu2_l2t5_wr_ack, mcu2_l2t5_data_vld_r0, mcu0_l2t5_rd_req_id_r0};
++assign eqed_mcu2_l2c5 = {mcu2_l2b45_data_r2, mcu2_l2b45_ecc_r2, mcu2_l2t5_rd_ack, mcu2_l2t5_wr_ack, mcu2_l2t5_data_vld_r0, mcu2_l2t5_rd_req_id_r0};
 +assign eqed_l2c6_mcu3 = {l2b6_mcu3_wr_data_r5, l2b6_mcu3_data_vld_r5, l2b6_mcu3_data_mecc_r5, l2t6_mcu3_rd_req, l2t6_mcu3_wr_req};
-+assign eqed_mcu3_l2c6 = {mcu3_l2b67_data_r2, mcu3_l2b67_ecc_r2, mcu3_l2t6_rd_ack, mcu3_l2t6_wr_ack, mcu3_l2t6_data_vld_r0, mcu0_l2t6_rd_req_id_r0};
++assign eqed_mcu3_l2c6 = {mcu3_l2b67_data_r2, mcu3_l2b67_ecc_r2, mcu3_l2t6_rd_ack, mcu3_l2t6_wr_ack, mcu3_l2t6_data_vld_r0, mcu3_l2t6_rd_req_id_r0};
 +assign eqed_l2c7_mcu3 = {l2b7_mcu3_wr_data_r5, l2b7_mcu3_data_vld_r5, l2b7_mcu3_data_mecc_r5, l2t7_mcu3_rd_req, l2t7_mcu3_wr_req};
-+assign eqed_mcu3_l2c7 = {mcu3_l2b67_data_r2, mcu3_l2b67_ecc_r2, mcu3_l2t7_rd_ack, mcu3_l2t7_wr_ack, mcu3_l2t7_data_vld_r0, mcu0_l2t7_rd_req_id_r0};
++assign eqed_mcu3_l2c7 = {mcu3_l2b67_data_r2, mcu3_l2b67_ecc_r2, mcu3_l2t7_rd_ack, mcu3_l2t7_wr_ack, mcu3_l2t7_data_vld_r0, mcu3_l2t7_rd_req_id_r0};
 +
 +
 +parameter L2C_MCU_B = 68;
@@ -1000,47 +1438,76 @@
 +reg [L2C_MCU_SB_SIZE:0] l2c7_mcu3_sa2;
 +reg [MCU_L2C_SB_SIZE:0] mcu3_l2c7_sa2;
 +
++
 +always @(posedge clk) begin
 +    if (m_rst) begin
 +       l2c0_mcu0_sa <= 1;
 +       mcu0_l2c0_sa <= 1;
 +    end else begin
-+       l2c0_mcu0_sa[0] <= l2c0_mcu0_sa[543] ^ l2c0_mcu0_sa[541] ^ l2c0_mcu0_sa[538] ^ l2c0_mcu0_sa[537];
-+       for (int i = 1; i < L2C_MCU_SB_SIZE; i++) begin
-+           l2c0_mcu0_sa[i] <= l2c0_mcu0_sa[i-1];
++       for (int i = 0, int j = 0; i < L2C_MCU_SB_SIZE; i = i+8, j++) begin
++	       if (i == 0) begin
++		       l2c0_mcu0_sa[0] <= l2c0_mcu0_sa[543] ^ l2c0_mcu0_sa[541] ^ l2c0_mcu0_sa[538] ^ l2c0_mcu0_sa[537] ^ eqed_l2c0_mcu0[0];
++		   end else begin
++			   l2c0_mcu0_sa[i] <= l2c0_mcu0_sa[i-1] ^ eqed_l2c0_mcu0[j]; 
++		   end
++		       l2c0_mcu0_sa[i+1] <= l2c0_mcu0_sa[i];
++		       l2c0_mcu0_sa[i+2] <= l2c0_mcu0_sa[i+1];
++	           l2c0_mcu0_sa[i+3] <= l2c0_mcu0_sa[i+2];
++		       l2c0_mcu0_sa[i+4] <= l2c0_mcu0_sa[i+3];
++		       l2c0_mcu0_sa[i+5] <= l2c0_mcu0_sa[i+4];
++		       l2c0_mcu0_sa[i+6] <= l2c0_mcu0_sa[i+5];
++			   l2c0_mcu0_sa[i+7] <= l2c0_mcu0_sa[i+6];
 +       end
-+       for (int j = 0; j < L2C_MCU_B; j++) begin
-+           l2c0_mcu0_sa[j*8] <= l2c0_mcu0_sa[j*8] ^ eqed_spc0_mcu[j];
-+       end
-+       for (int j = 0; j < MCU_L2C_B; j++) begin
-+           mcu0_l2c0_sa[j*8] <= mcu0_l2c0_sa[j*8] ^ eqed_mcu0_l2c0[j];
-+       end
-+       mcu0_l2c0_sa[0] <= mcu0_l2c0_sa[567] ^ mcu0_l2c0_sa[565] ^ mcu0_l2c0_sa[561] ^ mcu0_l2c0_sa[559];
-+       for (int i = 1; i < MCU_L2C_SB_SIZE; i++) begin
-+           mcu0_l2c0_sa[i] <= mcu0_l2c0_sa[i-1];
++       for (int i = 0, int j = 0; i < MCU_L2C_SB_SIZE; i = i+8, j++) begin
++	       if (i == 0) begin
++		       mcu0_l2c0_sa[0] <= mcu0_l2c0_sa[567] ^ mcu0_l2c0_sa[565] ^ mcu0_l2c0_sa[561] ^ mcu0_l2c0_sa[537] ^ eqed_mcu0_l2c0[0];
++		   end else begin
++			   mcu0_l2c0_sa[i] <= mcu0_l2c0_sa[i-1] ^ eqed_mcu0_l2c0[j]; 
++		   end
++		       mcu0_l2c0_sa[i+1] <= mcu0_l2c0_sa[i];
++		       mcu0_l2c0_sa[i+2] <= mcu0_l2c0_sa[i+1];
++	           mcu0_l2c0_sa[i+3] <= mcu0_l2c0_sa[i+2];
++		       mcu0_l2c0_sa[i+4] <= mcu0_l2c0_sa[i+3];
++		       mcu0_l2c0_sa[i+5] <= mcu0_l2c0_sa[i+4];
++		       mcu0_l2c0_sa[i+6] <= mcu0_l2c0_sa[i+5];
++			   mcu0_l2c0_sa[i+7] <= mcu0_l2c0_sa[i+6];
 +       end
 +    end
 +end
 +
 +
 +always @(posedge clk) begin
-+    if (m_rst2) begin
++    if (m_rst) begin
 +       l2c0_mcu0_sa2 <= 1;
 +       mcu0_l2c0_sa2 <= 1;
 +    end else begin
-+       l2c0_mcu0_sa2[0] <= l2c0_mcu0_sa2[543] ^ l2c0_mcu0_sa2[541] ^ l2c0_mcu0_sa2[538] ^ l2c0_mcu0_sa2[537];
-+       for (int i = 1; i < L2C_MCU_SB_SIZE; i++) begin
-+           l2c0_mcu0_sa2[i] <= l2c0_mcu0_sa2[i-1];
++       for (int i = 0, int j = 0; i < L2C_MCU_SB_SIZE; i = i+8, j++) begin
++	       if (i == 0) begin
++		       l2c0_mcu0_sa2[0] <= l2c0_mcu0_sa2[543] ^ l2c0_mcu0_sa2[541] ^ l2c0_mcu0_sa2[538] ^ l2c0_mcu0_sa2[537] ^ eqed_l2c0_mcu0[0];
++		   end else begin
++			   l2c0_mcu0_sa2[i] <= l2c0_mcu0_sa2[i] ^ eqed_l2c0_mcu0[j]; 
++		   end
++		       l2c0_mcu0_sa2[i+1] <= l2c0_mcu0_sa2[i];
++		       l2c0_mcu0_sa2[i+2] <= l2c0_mcu0_sa2[i+1];
++	           l2c0_mcu0_sa2[i+3] <= l2c0_mcu0_sa2[i+2];
++		       l2c0_mcu0_sa2[i+4] <= l2c0_mcu0_sa2[i+3];
++		       l2c0_mcu0_sa2[i+5] <= l2c0_mcu0_sa2[i+4];
++		       l2c0_mcu0_sa2[i+6] <= l2c0_mcu0_sa2[i+5];
++			   l2c0_mcu0_sa2[i+7] <= l2c0_mcu0_sa2[i+6];
 +       end
-+       for (int j = 0; j < L2C_MCU_B; j++) begin
-+           l2c0_mcu0_sa2[j*8] <= l2c0_mcu0_sa2[j*8] ^ eqed_spc0_mcu[j];
-+       end
-+       mcu0_l2c0_sa2[0] <= mcu0_l2c0_sa2[567] ^ mcu0_l2c0_sa2[565] ^ mcu0_l2c0_sa2[561] ^ mcu0_l2c0_sa2[559];
-+       for (int i = 1; i < MCU_L2C_SB_SIZE; i++) begin
-+           mcu0_l2c0_sa2[i] <= mcu0_l2c0_sa2[i-1];
-+       end
-+       for (int j = 0; j < MCU_L2C_B; j++) begin
-+           mcu0_l2c0_sa2[j*8] <= mcu0_l2c0_sa2[j*8] ^ eqed_mcu0_l2c0[j];
++       for (int i = 0, int j = 0; i < MCU_L2C_SB_SIZE; i = i+8, j++) begin
++	       if (i == 0) begin
++		       mcu0_l2c0_sa2[0] <= mcu0_l2c0_sa2[567] ^ mcu0_l2c0_sa2[565] ^ mcu0_l2c0_sa2[561] ^ mcu0_l2c0_sa2[537] ^ eqed_mcu0_l2c0[0];
++		   end else begin
++			   mcu0_l2c0_sa2[i] <= mcu0_l2c0_sa2[i] ^ eqed_mcu0_l2c0[j]; 
++		   end
++		       mcu0_l2c0_sa2[i+1] <= mcu0_l2c0_sa2[i];
++		       mcu0_l2c0_sa2[i+2] <= mcu0_l2c0_sa2[i+1];
++	           mcu0_l2c0_sa2[i+3] <= mcu0_l2c0_sa2[i+2];
++		       mcu0_l2c0_sa2[i+4] <= mcu0_l2c0_sa2[i+3];
++		       mcu0_l2c0_sa2[i+5] <= mcu0_l2c0_sa2[i+4];
++		       mcu0_l2c0_sa2[i+6] <= mcu0_l2c0_sa2[i+5];
++			   mcu0_l2c0_sa2[i+7] <= mcu0_l2c0_sa2[i+6];
 +       end
 +    end
 +end
@@ -1050,42 +1517,70 @@
 +       l2c1_mcu0_sa <= 1;
 +       mcu0_l2c1_sa <= 1;
 +    end else begin
-+       l2c1_mcu0_sa[0] <= l2c1_mcu0_sa[543] ^ l2c1_mcu0_sa[541] ^ l2c1_mcu0_sa[538] ^ l2c1_mcu0_sa[537];
-+       for (int i = 1; i < L2C_MCU_SB_SIZE; i++) begin
-+           l2c1_mcu0_sa[i] <= l2c1_mcu0_sa[i-1];
++       for (int i = 0, int j = 0; i < L2C_MCU_SB_SIZE; i = i+8, j++) begin
++	       if (i == 0) begin
++		       l2c1_mcu0_sa[0] <= l2c1_mcu0_sa[543] ^ l2c1_mcu0_sa[541] ^ l2c1_mcu0_sa[538] ^ l2c1_mcu0_sa[537] ^ eqed_l2c1_mcu0[0];
++		   end else begin
++			   l2c1_mcu0_sa[i] <= l2c1_mcu0_sa[i-1] ^ eqed_l2c1_mcu0[j]; 
++		   end
++		       l2c1_mcu0_sa[i+1] <= l2c1_mcu0_sa[i];
++		       l2c1_mcu0_sa[i+2] <= l2c1_mcu0_sa[i+1];
++	           l2c1_mcu0_sa[i+3] <= l2c1_mcu0_sa[i+2];
++		       l2c1_mcu0_sa[i+4] <= l2c1_mcu0_sa[i+3];
++		       l2c1_mcu0_sa[i+5] <= l2c1_mcu0_sa[i+4];
++		       l2c1_mcu0_sa[i+6] <= l2c1_mcu0_sa[i+5];
++			   l2c1_mcu0_sa[i+7] <= l2c1_mcu0_sa[i+6];
 +       end
-+       for (int j = 0; j < L2C_MCU_B; j++) begin
-+           l2c1_mcu0_sa[j*8] <= l2c1_mcu0_sa[j*8] ^ eqed_spc1_mcu[j];
-+       end
-+       for (int j = 0; j < MCU_L2C_B; j++) begin
-+           mcu0_l2c1_sa[j*8] <= mcu0_l2c1_sa[j*8] ^ eqed_mcu0_l2c1[j];
-+       end
-+       mcu0_l2c1_sa[0] <= mcu0_l2c1_sa[567] ^ mcu0_l2c1_sa[565] ^ mcu0_l2c1_sa[561] ^ mcu0_l2c1_sa[559];
-+       for (int i = 1; i < MCU_L2C_SB_SIZE; i++) begin
-+           mcu0_l2c1_sa[i] <= mcu0_l2c1_sa[i-1];
++       for (int i = 0, int j = 0; i < MCU_L2C_SB_SIZE; i = i+8, j++) begin
++	       if (i == 0) begin
++		       mcu0_l2c1_sa[0] <= mcu0_l2c1_sa[567] ^ mcu0_l2c1_sa[565] ^ mcu0_l2c1_sa[561] ^ mcu0_l2c1_sa[537] ^ eqed_mcu0_l2c1[0];
++		   end else begin
++			   mcu0_l2c1_sa[i] <= mcu0_l2c1_sa[i-1] ^ eqed_mcu0_l2c1[j]; 
++		   end
++		       mcu0_l2c1_sa[i+1] <= mcu0_l2c1_sa[i];
++		       mcu0_l2c1_sa[i+2] <= mcu0_l2c1_sa[i+1];
++	           mcu0_l2c1_sa[i+3] <= mcu0_l2c1_sa[i+2];
++		       mcu0_l2c1_sa[i+4] <= mcu0_l2c1_sa[i+3];
++		       mcu0_l2c1_sa[i+5] <= mcu0_l2c1_sa[i+4];
++		       mcu0_l2c1_sa[i+6] <= mcu0_l2c1_sa[i+5];
++			   mcu0_l2c1_sa[i+7] <= mcu0_l2c1_sa[i+6];
 +       end
 +    end
 +end
 +
 +
 +always @(posedge clk) begin
-+    if (m_rst2) begin
++    if (m_rst) begin
 +       l2c1_mcu0_sa2 <= 1;
 +       mcu0_l2c1_sa2 <= 1;
 +    end else begin
-+       l2c1_mcu0_sa2[0] <= l2c1_mcu0_sa2[543] ^ l2c1_mcu0_sa2[541] ^ l2c1_mcu0_sa2[538] ^ l2c1_mcu0_sa2[537];
-+       for (int i = 1; i < L2C_MCU_SB_SIZE; i++) begin
-+           l2c1_mcu0_sa2[i] <= l2c1_mcu0_sa2[i-1];
++       for (int i = 0, int j = 0; i < L2C_MCU_SB_SIZE; i = i+8, j++) begin
++	       if (i == 0) begin
++		       l2c1_mcu0_sa2[0] <= l2c1_mcu0_sa2[543] ^ l2c1_mcu0_sa2[541] ^ l2c1_mcu0_sa2[538] ^ l2c1_mcu0_sa2[537] ^ eqed_l2c1_mcu0[0];
++		   end else begin
++			   l2c1_mcu0_sa2[i] <= l2c1_mcu0_sa2[i] ^ eqed_l2c1_mcu0[j]; 
++		   end
++		       l2c1_mcu0_sa2[i+1] <= l2c1_mcu0_sa2[i];
++		       l2c1_mcu0_sa2[i+2] <= l2c1_mcu0_sa2[i+1];
++	           l2c1_mcu0_sa2[i+3] <= l2c1_mcu0_sa2[i+2];
++		       l2c1_mcu0_sa2[i+4] <= l2c1_mcu0_sa2[i+3];
++		       l2c1_mcu0_sa2[i+5] <= l2c1_mcu0_sa2[i+4];
++		       l2c1_mcu0_sa2[i+6] <= l2c1_mcu0_sa2[i+5];
++			   l2c1_mcu0_sa2[i+7] <= l2c1_mcu0_sa2[i+6];
 +       end
-+       for (int j = 0; j < L2C_MCU_B; j++) begin
-+           l2c1_mcu0_sa2[j*8] <= l2c1_mcu0_sa2[j*8] ^ eqed_spc1_mcu[j];
-+       end
-+       mcu0_l2c1_sa2[0] <= mcu0_l2c1_sa2[567] ^ mcu0_l2c1_sa2[565] ^ mcu0_l2c1_sa2[561] ^ mcu0_l2c1_sa2[559];
-+       for (int i = 1; i < MCU_L2C_SB_SIZE; i++) begin
-+           mcu0_l2c1_sa2[i] <= mcu0_l2c1_sa2[i-1];
-+       end
-+       for (int j = 0; j < MCU_L2C_B; j++) begin
-+           mcu0_l2c1_sa2[j*8] <= mcu0_l2c1_sa2[j*8] ^ eqed_mcu0_l2c1[j];
++       for (int i = 0, int j = 0; i < MCU_L2C_SB_SIZE; i = i+8, j++) begin
++	       if (i == 0) begin
++		       mcu0_l2c1_sa2[0] <= mcu0_l2c1_sa2[567] ^ mcu0_l2c1_sa2[565] ^ mcu0_l2c1_sa2[561] ^ mcu0_l2c1_sa2[537] ^ eqed_mcu0_l2c1[0];
++		   end else begin
++			   mcu0_l2c1_sa2[i] <= mcu0_l2c1_sa2[i] ^ eqed_mcu0_l2c1[j]; 
++		   end
++		       mcu0_l2c1_sa2[i+1] <= mcu0_l2c1_sa2[i];
++		       mcu0_l2c1_sa2[i+2] <= mcu0_l2c1_sa2[i+1];
++	           mcu0_l2c1_sa2[i+3] <= mcu0_l2c1_sa2[i+2];
++		       mcu0_l2c1_sa2[i+4] <= mcu0_l2c1_sa2[i+3];
++		       mcu0_l2c1_sa2[i+5] <= mcu0_l2c1_sa2[i+4];
++		       mcu0_l2c1_sa2[i+6] <= mcu0_l2c1_sa2[i+5];
++			   mcu0_l2c1_sa2[i+7] <= mcu0_l2c1_sa2[i+6];
 +       end
 +    end
 +end
@@ -1095,42 +1590,70 @@
 +       l2c2_mcu1_sa <= 1;
 +       mcu1_l2c2_sa <= 1;
 +    end else begin
-+       l2c2_mcu1_sa[0] <= l2c2_mcu1_sa[543] ^ l2c2_mcu1_sa[541] ^ l2c2_mcu1_sa[538] ^ l2c2_mcu1_sa[537];
-+       for (int i = 1; i < L2C_MCU_SB_SIZE; i++) begin
-+           l2c2_mcu1_sa[i] <= l2c2_mcu1_sa[i-1];
++       for (int i = 0, int j = 0; i < L2C_MCU_SB_SIZE; i = i+8, j++) begin
++	       if (i == 0) begin
++		       l2c2_mcu1_sa[0] <= l2c2_mcu1_sa[543] ^ l2c2_mcu1_sa[541] ^ l2c2_mcu1_sa[538] ^ l2c2_mcu1_sa[537] ^ eqed_l2c2_mcu1[0];
++		   end else begin
++			   l2c2_mcu1_sa[i] <= l2c2_mcu1_sa[i-1] ^ eqed_l2c2_mcu1[j]; 
++		   end
++		       l2c2_mcu1_sa[i+1] <= l2c2_mcu1_sa[i];
++		       l2c2_mcu1_sa[i+2] <= l2c2_mcu1_sa[i+1];
++	           l2c2_mcu1_sa[i+3] <= l2c2_mcu1_sa[i+2];
++		       l2c2_mcu1_sa[i+4] <= l2c2_mcu1_sa[i+3];
++		       l2c2_mcu1_sa[i+5] <= l2c2_mcu1_sa[i+4];
++		       l2c2_mcu1_sa[i+6] <= l2c2_mcu1_sa[i+5];
++			   l2c2_mcu1_sa[i+7] <= l2c2_mcu1_sa[i+6];
 +       end
-+       for (int j = 0; j < L2C_MCU_B; j++) begin
-+           l2c2_mcu1_sa[j*8] <= l2c2_mcu1_sa[j*8] ^ eqed_spc2_mcu[j];
-+       end
-+       for (int j = 0; j < MCU_L2C_B; j++) begin
-+           mcu1_l2c2_sa[j*8] <= mcu1_l2c2_sa[j*8] ^ eqed_mcu1_l2c2[j];
-+       end
-+       mcu1_l2c2_sa[0] <= mcu1_l2c2_sa[567] ^ mcu1_l2c2_sa[565] ^ mcu1_l2c2_sa[561] ^ mcu1_l2c2_sa[559];
-+       for (int i = 1; i < MCU_L2C_SB_SIZE; i++) begin
-+           mcu1_l2c2_sa[i] <= mcu1_l2c2_sa[i-1];
++       for (int i = 0, int j = 0; i < MCU_L2C_SB_SIZE; i = i+8, j++) begin
++	       if (i == 0) begin
++		       mcu1_l2c2_sa[0] <= mcu1_l2c2_sa[567] ^ mcu1_l2c2_sa[565] ^ mcu1_l2c2_sa[561] ^ mcu1_l2c2_sa[537] ^ eqed_mcu1_l2c2[0];
++		   end else begin
++			   mcu1_l2c2_sa[i] <= mcu1_l2c2_sa[i-1] ^ eqed_mcu1_l2c2[j]; 
++		   end
++		       mcu1_l2c2_sa[i+1] <= mcu1_l2c2_sa[i];
++		       mcu1_l2c2_sa[i+2] <= mcu1_l2c2_sa[i+1];
++	           mcu1_l2c2_sa[i+3] <= mcu1_l2c2_sa[i+2];
++		       mcu1_l2c2_sa[i+4] <= mcu1_l2c2_sa[i+3];
++		       mcu1_l2c2_sa[i+5] <= mcu1_l2c2_sa[i+4];
++		       mcu1_l2c2_sa[i+6] <= mcu1_l2c2_sa[i+5];
++			   mcu1_l2c2_sa[i+7] <= mcu1_l2c2_sa[i+6];
 +       end
 +    end
 +end
 +
 +
 +always @(posedge clk) begin
-+    if (m_rst2) begin
++    if (m_rst) begin
 +       l2c2_mcu1_sa2 <= 1;
 +       mcu1_l2c2_sa2 <= 1;
 +    end else begin
-+       l2c2_mcu1_sa2[0] <= l2c2_mcu1_sa2[543] ^ l2c2_mcu1_sa2[541] ^ l2c2_mcu1_sa2[538] ^ l2c2_mcu1_sa2[537];
-+       for (int i = 1; i < L2C_MCU_SB_SIZE; i++) begin
-+           l2c2_mcu1_sa2[i] <= l2c2_mcu1_sa2[i-1];
++       for (int i = 0, int j = 0; i < L2C_MCU_SB_SIZE; i = i+8, j++) begin
++	       if (i == 0) begin
++		       l2c2_mcu1_sa2[0] <= l2c2_mcu1_sa2[543] ^ l2c2_mcu1_sa2[541] ^ l2c2_mcu1_sa2[538] ^ l2c2_mcu1_sa2[537] ^ eqed_l2c2_mcu1[0];
++		   end else begin
++			   l2c2_mcu1_sa2[i] <= l2c2_mcu1_sa2[i] ^ eqed_l2c2_mcu1[j]; 
++		   end
++		       l2c2_mcu1_sa2[i+1] <= l2c2_mcu1_sa2[i];
++		       l2c2_mcu1_sa2[i+2] <= l2c2_mcu1_sa2[i+1];
++	           l2c2_mcu1_sa2[i+3] <= l2c2_mcu1_sa2[i+2];
++		       l2c2_mcu1_sa2[i+4] <= l2c2_mcu1_sa2[i+3];
++		       l2c2_mcu1_sa2[i+5] <= l2c2_mcu1_sa2[i+4];
++		       l2c2_mcu1_sa2[i+6] <= l2c2_mcu1_sa2[i+5];
++			   l2c2_mcu1_sa2[i+7] <= l2c2_mcu1_sa2[i+6];
 +       end
-+       for (int j = 0; j < L2C_MCU_B; j++) begin
-+           l2c2_mcu1_sa2[j*8] <= l2c2_mcu1_sa2[j*8] ^ eqed_spc2_mcu[j];
-+       end
-+       mcu1_l2c2_sa2[0] <= mcu1_l2c2_sa2[567] ^ mcu1_l2c2_sa2[565] ^ mcu1_l2c2_sa2[561] ^ mcu1_l2c2_sa2[559];
-+       for (int i = 1; i < MCU_L2C_SB_SIZE; i++) begin
-+           mcu1_l2c2_sa2[i] <= mcu1_l2c2_sa2[i-1];
-+       end
-+       for (int j = 0; j < MCU_L2C_B; j++) begin
-+           mcu1_l2c2_sa2[j*8] <= mcu1_l2c2_sa2[j*8] ^ eqed_mcu1_l2c2[j];
++       for (int i = 0, int j = 0; i < MCU_L2C_SB_SIZE; i = i+8, j++) begin
++	       if (i == 0) begin
++		       mcu1_l2c2_sa2[0] <= mcu1_l2c2_sa2[567] ^ mcu1_l2c2_sa2[565] ^ mcu1_l2c2_sa2[561] ^ mcu1_l2c2_sa2[537] ^ eqed_mcu1_l2c2[0];
++		   end else begin
++			   mcu1_l2c2_sa2[i] <= mcu1_l2c2_sa2[i] ^ eqed_mcu1_l2c2[j]; 
++		   end
++		       mcu1_l2c2_sa2[i+1] <= mcu1_l2c2_sa2[i];
++		       mcu1_l2c2_sa2[i+2] <= mcu1_l2c2_sa2[i+1];
++	           mcu1_l2c2_sa2[i+3] <= mcu1_l2c2_sa2[i+2];
++		       mcu1_l2c2_sa2[i+4] <= mcu1_l2c2_sa2[i+3];
++		       mcu1_l2c2_sa2[i+5] <= mcu1_l2c2_sa2[i+4];
++		       mcu1_l2c2_sa2[i+6] <= mcu1_l2c2_sa2[i+5];
++			   mcu1_l2c2_sa2[i+7] <= mcu1_l2c2_sa2[i+6];
 +       end
 +    end
 +end
@@ -1140,42 +1663,70 @@
 +       l2c3_mcu1_sa <= 1;
 +       mcu1_l2c3_sa <= 1;
 +    end else begin
-+       l2c3_mcu1_sa[0] <= l2c3_mcu1_sa[543] ^ l2c3_mcu1_sa[541] ^ l2c3_mcu1_sa[538] ^ l2c3_mcu1_sa[537];
-+       for (int i = 1; i < L2C_MCU_SB_SIZE; i++) begin
-+           l2c3_mcu1_sa[i] <= l2c3_mcu1_sa[i-1];
++       for (int i = 0, int j = 0; i < L2C_MCU_SB_SIZE; i = i+8, j++) begin
++	       if (i == 0) begin
++		       l2c3_mcu1_sa[0] <= l2c3_mcu1_sa[543] ^ l2c3_mcu1_sa[541] ^ l2c3_mcu1_sa[538] ^ l2c3_mcu1_sa[537] ^ eqed_l2c3_mcu1[0];
++		   end else begin
++			   l2c3_mcu1_sa[i] <= l2c3_mcu1_sa[i-1] ^ eqed_l2c3_mcu1[j]; 
++		   end
++		       l2c3_mcu1_sa[i+1] <= l2c3_mcu1_sa[i];
++		       l2c3_mcu1_sa[i+2] <= l2c3_mcu1_sa[i+1];
++	           l2c3_mcu1_sa[i+3] <= l2c3_mcu1_sa[i+2];
++		       l2c3_mcu1_sa[i+4] <= l2c3_mcu1_sa[i+3];
++		       l2c3_mcu1_sa[i+5] <= l2c3_mcu1_sa[i+4];
++		       l2c3_mcu1_sa[i+6] <= l2c3_mcu1_sa[i+5];
++			   l2c3_mcu1_sa[i+7] <= l2c3_mcu1_sa[i+6];
 +       end
-+       for (int j = 0; j < L2C_MCU_B; j++) begin
-+           l2c3_mcu1_sa[j*8] <= l2c3_mcu1_sa[j*8] ^ eqed_spc3_mcu[j];
-+       end
-+       for (int j = 0; j < MCU_L2C_B; j++) begin
-+           mcu1_l2c3_sa[j*8] <= mcu1_l2c3_sa[j*8] ^ eqed_mcu1_l2c3[j];
-+       end
-+       mcu1_l2c3_sa[0] <= mcu1_l2c3_sa[567] ^ mcu1_l2c3_sa[565] ^ mcu1_l2c3_sa[561] ^ mcu1_l2c3_sa[559];
-+       for (int i = 1; i < MCU_L2C_SB_SIZE; i++) begin
-+           mcu1_l2c3_sa[i] <= mcu1_l2c3_sa[i-1];
++       for (int i = 0, int j = 0; i < MCU_L2C_SB_SIZE; i = i+8, j++) begin
++	       if (i == 0) begin
++		       mcu1_l2c3_sa[0] <= mcu1_l2c3_sa[567] ^ mcu1_l2c3_sa[565] ^ mcu1_l2c3_sa[561] ^ mcu1_l2c3_sa[537] ^ eqed_mcu1_l2c3[0];
++		   end else begin
++			   mcu1_l2c3_sa[i] <= mcu1_l2c3_sa[i-1] ^ eqed_mcu1_l2c3[j]; 
++		   end
++		       mcu1_l2c3_sa[i+1] <= mcu1_l2c3_sa[i];
++		       mcu1_l2c3_sa[i+2] <= mcu1_l2c3_sa[i+1];
++	           mcu1_l2c3_sa[i+3] <= mcu1_l2c3_sa[i+2];
++		       mcu1_l2c3_sa[i+4] <= mcu1_l2c3_sa[i+3];
++		       mcu1_l2c3_sa[i+5] <= mcu1_l2c3_sa[i+4];
++		       mcu1_l2c3_sa[i+6] <= mcu1_l2c3_sa[i+5];
++			   mcu1_l2c3_sa[i+7] <= mcu1_l2c3_sa[i+6];
 +       end
 +    end
 +end
 +
 +
 +always @(posedge clk) begin
-+    if (m_rst2) begin
++    if (m_rst) begin
 +       l2c3_mcu1_sa2 <= 1;
 +       mcu1_l2c3_sa2 <= 1;
 +    end else begin
-+       l2c3_mcu1_sa2[0] <= l2c3_mcu1_sa2[543] ^ l2c3_mcu1_sa2[541] ^ l2c3_mcu1_sa2[538] ^ l2c3_mcu1_sa2[537];
-+       for (int i = 1; i < L2C_MCU_SB_SIZE; i++) begin
-+           l2c3_mcu1_sa2[i] <= l2c3_mcu1_sa2[i-1];
++       for (int i = 0, int j = 0; i < L2C_MCU_SB_SIZE; i = i+8, j++) begin
++	       if (i == 0) begin
++		       l2c3_mcu1_sa2[0] <= l2c3_mcu1_sa2[543] ^ l2c3_mcu1_sa2[541] ^ l2c3_mcu1_sa2[538] ^ l2c3_mcu1_sa2[537] ^ eqed_l2c3_mcu1[0];
++		   end else begin
++			   l2c3_mcu1_sa2[i] <= l2c3_mcu1_sa2[i] ^ eqed_l2c3_mcu1[j]; 
++		   end
++		       l2c3_mcu1_sa2[i+1] <= l2c3_mcu1_sa2[i];
++		       l2c3_mcu1_sa2[i+2] <= l2c3_mcu1_sa2[i+1];
++	           l2c3_mcu1_sa2[i+3] <= l2c3_mcu1_sa2[i+2];
++		       l2c3_mcu1_sa2[i+4] <= l2c3_mcu1_sa2[i+3];
++		       l2c3_mcu1_sa2[i+5] <= l2c3_mcu1_sa2[i+4];
++		       l2c3_mcu1_sa2[i+6] <= l2c3_mcu1_sa2[i+5];
++			   l2c3_mcu1_sa2[i+7] <= l2c3_mcu1_sa2[i+6];
 +       end
-+       for (int j = 0; j < L2C_MCU_B; j++) begin
-+           l2c3_mcu1_sa2[j*8] <= l2c3_mcu1_sa2[j*8] ^ eqed_spc3_mcu[j];
-+       end
-+       mcu1_l2c3_sa2[0] <= mcu1_l2c3_sa2[567] ^ mcu1_l2c3_sa2[565] ^ mcu1_l2c3_sa2[561] ^ mcu1_l2c3_sa2[559];
-+       for (int i = 1; i < MCU_L2C_SB_SIZE; i++) begin
-+           mcu1_l2c3_sa2[i] <= mcu1_l2c3_sa2[i-1];
-+       end
-+       for (int j = 0; j < MCU_L2C_B; j++) begin
-+           mcu1_l2c3_sa2[j*8] <= mcu1_l2c3_sa2[j*8] ^ eqed_mcu1_l2c3[j];
++       for (int i = 0, int j = 0; i < MCU_L2C_SB_SIZE; i = i+8, j++) begin
++	       if (i == 0) begin
++		       mcu1_l2c3_sa2[0] <= mcu1_l2c3_sa2[567] ^ mcu1_l2c3_sa2[565] ^ mcu1_l2c3_sa2[561] ^ mcu1_l2c3_sa2[537] ^ eqed_mcu1_l2c3[0];
++		   end else begin
++			   mcu1_l2c3_sa2[i] <= mcu1_l2c3_sa2[i] ^ eqed_mcu1_l2c3[j]; 
++		   end
++		       mcu1_l2c3_sa2[i+1] <= mcu1_l2c3_sa2[i];
++		       mcu1_l2c3_sa2[i+2] <= mcu1_l2c3_sa2[i+1];
++	           mcu1_l2c3_sa2[i+3] <= mcu1_l2c3_sa2[i+2];
++		       mcu1_l2c3_sa2[i+4] <= mcu1_l2c3_sa2[i+3];
++		       mcu1_l2c3_sa2[i+5] <= mcu1_l2c3_sa2[i+4];
++		       mcu1_l2c3_sa2[i+6] <= mcu1_l2c3_sa2[i+5];
++			   mcu1_l2c3_sa2[i+7] <= mcu1_l2c3_sa2[i+6];
 +       end
 +    end
 +end
@@ -1185,42 +1736,70 @@
 +       l2c4_mcu2_sa <= 1;
 +       mcu2_l2c4_sa <= 1;
 +    end else begin
-+       l2c4_mcu2_sa[0] <= l2c4_mcu2_sa[543] ^ l2c4_mcu2_sa[541] ^ l2c4_mcu2_sa[538] ^ l2c4_mcu2_sa[537];
-+       for (int i = 1; i < L2C_MCU_SB_SIZE; i++) begin
-+           l2c4_mcu2_sa[i] <= l2c4_mcu2_sa[i-1];
++       for (int i = 0, int j = 0; i < L2C_MCU_SB_SIZE; i = i+8, j++) begin
++	       if (i == 0) begin
++		       l2c4_mcu2_sa[0] <= l2c4_mcu2_sa[543] ^ l2c4_mcu2_sa[541] ^ l2c4_mcu2_sa[538] ^ l2c4_mcu2_sa[537] ^ eqed_l2c4_mcu2[0];
++		   end else begin
++			   l2c4_mcu2_sa[i] <= l2c4_mcu2_sa[i-1] ^ eqed_l2c4_mcu2[j]; 
++		   end
++		       l2c4_mcu2_sa[i+1] <= l2c4_mcu2_sa[i];
++		       l2c4_mcu2_sa[i+2] <= l2c4_mcu2_sa[i+1];
++	           l2c4_mcu2_sa[i+3] <= l2c4_mcu2_sa[i+2];
++		       l2c4_mcu2_sa[i+4] <= l2c4_mcu2_sa[i+3];
++		       l2c4_mcu2_sa[i+5] <= l2c4_mcu2_sa[i+4];
++		       l2c4_mcu2_sa[i+6] <= l2c4_mcu2_sa[i+5];
++			   l2c4_mcu2_sa[i+7] <= l2c4_mcu2_sa[i+6];
 +       end
-+       for (int j = 0; j < L2C_MCU_B; j++) begin
-+           l2c4_mcu2_sa[j*8] <= l2c4_mcu2_sa[j*8] ^ eqed_spc4_mcu[j];
-+       end
-+       for (int j = 0; j < MCU_L2C_B; j++) begin
-+           mcu2_l2c4_sa[j*8] <= mcu2_l2c4_sa[j*8] ^ eqed_mcu2_l2c4[j];
-+       end
-+       mcu2_l2c4_sa[0] <= mcu2_l2c4_sa[567] ^ mcu2_l2c4_sa[565] ^ mcu2_l2c4_sa[561] ^ mcu2_l2c4_sa[559];
-+       for (int i = 1; i < MCU_L2C_SB_SIZE; i++) begin
-+           mcu2_l2c4_sa[i] <= mcu2_l2c4_sa[i-1];
++       for (int i = 0, int j = 0; i < MCU_L2C_SB_SIZE; i = i+8, j++) begin
++	       if (i == 0) begin
++		       mcu2_l2c4_sa[0] <= mcu2_l2c4_sa[567] ^ mcu2_l2c4_sa[565] ^ mcu2_l2c4_sa[561] ^ mcu2_l2c4_sa[537] ^ eqed_mcu2_l2c4[0];
++		   end else begin
++			   mcu2_l2c4_sa[i] <= mcu2_l2c4_sa[i-1] ^ eqed_mcu2_l2c4[j]; 
++		   end
++		       mcu2_l2c4_sa[i+1] <= mcu2_l2c4_sa[i];
++		       mcu2_l2c4_sa[i+2] <= mcu2_l2c4_sa[i+1];
++	           mcu2_l2c4_sa[i+3] <= mcu2_l2c4_sa[i+2];
++		       mcu2_l2c4_sa[i+4] <= mcu2_l2c4_sa[i+3];
++		       mcu2_l2c4_sa[i+5] <= mcu2_l2c4_sa[i+4];
++		       mcu2_l2c4_sa[i+6] <= mcu2_l2c4_sa[i+5];
++			   mcu2_l2c4_sa[i+7] <= mcu2_l2c4_sa[i+6];
 +       end
 +    end
 +end
 +
 +
 +always @(posedge clk) begin
-+    if (m_rst2) begin
++    if (m_rst) begin
 +       l2c4_mcu2_sa2 <= 1;
 +       mcu2_l2c4_sa2 <= 1;
 +    end else begin
-+       l2c4_mcu2_sa2[0] <= l2c4_mcu2_sa2[543] ^ l2c4_mcu2_sa2[541] ^ l2c4_mcu2_sa2[538] ^ l2c4_mcu2_sa2[537];
-+       for (int i = 1; i < L2C_MCU_SB_SIZE; i++) begin
-+           l2c4_mcu2_sa2[i] <= l2c4_mcu2_sa2[i-1];
++       for (int i = 0, int j = 0; i < L2C_MCU_SB_SIZE; i = i+8, j++) begin
++	       if (i == 0) begin
++		       l2c4_mcu2_sa2[0] <= l2c4_mcu2_sa2[543] ^ l2c4_mcu2_sa2[541] ^ l2c4_mcu2_sa2[538] ^ l2c4_mcu2_sa2[537] ^ eqed_l2c4_mcu2[0];
++		   end else begin
++			   l2c4_mcu2_sa2[i] <= l2c4_mcu2_sa2[i] ^ eqed_l2c4_mcu2[j]; 
++		   end
++		       l2c4_mcu2_sa2[i+1] <= l2c4_mcu2_sa2[i];
++		       l2c4_mcu2_sa2[i+2] <= l2c4_mcu2_sa2[i+1];
++	           l2c4_mcu2_sa2[i+3] <= l2c4_mcu2_sa2[i+2];
++		       l2c4_mcu2_sa2[i+4] <= l2c4_mcu2_sa2[i+3];
++		       l2c4_mcu2_sa2[i+5] <= l2c4_mcu2_sa2[i+4];
++		       l2c4_mcu2_sa2[i+6] <= l2c4_mcu2_sa2[i+5];
++			   l2c4_mcu2_sa2[i+7] <= l2c4_mcu2_sa2[i+6];
 +       end
-+       for (int j = 0; j < L2C_MCU_B; j++) begin
-+           l2c4_mcu2_sa2[j*8] <= l2c4_mcu2_sa2[j*8] ^ eqed_spc4_mcu[j];
-+       end
-+       mcu2_l2c4_sa2[0] <= mcu2_l2c4_sa2[567] ^ mcu2_l2c4_sa2[565] ^ mcu2_l2c4_sa2[561] ^ mcu2_l2c4_sa2[559];
-+       for (int i = 1; i < MCU_L2C_SB_SIZE; i++) begin
-+           mcu2_l2c4_sa2[i] <= mcu2_l2c4_sa2[i-1];
-+       end
-+       for (int j = 0; j < MCU_L2C_B; j++) begin
-+           mcu2_l2c4_sa2[j*8] <= mcu2_l2c4_sa2[j*8] ^ eqed_mcu2_l2c4[j];
++       for (int i = 0, int j = 0; i < MCU_L2C_SB_SIZE; i = i+8, j++) begin
++	       if (i == 0) begin
++		       mcu2_l2c4_sa2[0] <= mcu2_l2c4_sa2[567] ^ mcu2_l2c4_sa2[565] ^ mcu2_l2c4_sa2[561] ^ mcu2_l2c4_sa2[537] ^ eqed_mcu2_l2c4[0];
++		   end else begin
++			   mcu2_l2c4_sa2[i] <= mcu2_l2c4_sa2[i] ^ eqed_mcu2_l2c4[j]; 
++		   end
++		       mcu2_l2c4_sa2[i+1] <= mcu2_l2c4_sa2[i];
++		       mcu2_l2c4_sa2[i+2] <= mcu2_l2c4_sa2[i+1];
++	           mcu2_l2c4_sa2[i+3] <= mcu2_l2c4_sa2[i+2];
++		       mcu2_l2c4_sa2[i+4] <= mcu2_l2c4_sa2[i+3];
++		       mcu2_l2c4_sa2[i+5] <= mcu2_l2c4_sa2[i+4];
++		       mcu2_l2c4_sa2[i+6] <= mcu2_l2c4_sa2[i+5];
++			   mcu2_l2c4_sa2[i+7] <= mcu2_l2c4_sa2[i+6];
 +       end
 +    end
 +end
@@ -1230,42 +1809,70 @@
 +       l2c5_mcu2_sa <= 1;
 +       mcu2_l2c5_sa <= 1;
 +    end else begin
-+       l2c5_mcu2_sa[0] <= l2c5_mcu2_sa[543] ^ l2c5_mcu2_sa[541] ^ l2c5_mcu2_sa[538] ^ l2c5_mcu2_sa[537];
-+       for (int i = 1; i < L2C_MCU_SB_SIZE; i++) begin
-+           l2c5_mcu2_sa[i] <= l2c5_mcu2_sa[i-1];
++       for (int i = 0, int j = 0; i < L2C_MCU_SB_SIZE; i = i+8, j++) begin
++	       if (i == 0) begin
++		       l2c5_mcu2_sa[0] <= l2c5_mcu2_sa[543] ^ l2c5_mcu2_sa[541] ^ l2c5_mcu2_sa[538] ^ l2c5_mcu2_sa[537] ^ eqed_l2c5_mcu2[0];
++		   end else begin
++			   l2c5_mcu2_sa[i] <= l2c5_mcu2_sa[i-1] ^ eqed_l2c5_mcu2[j]; 
++		   end
++		       l2c5_mcu2_sa[i+1] <= l2c5_mcu2_sa[i];
++		       l2c5_mcu2_sa[i+2] <= l2c5_mcu2_sa[i+1];
++	           l2c5_mcu2_sa[i+3] <= l2c5_mcu2_sa[i+2];
++		       l2c5_mcu2_sa[i+4] <= l2c5_mcu2_sa[i+3];
++		       l2c5_mcu2_sa[i+5] <= l2c5_mcu2_sa[i+4];
++		       l2c5_mcu2_sa[i+6] <= l2c5_mcu2_sa[i+5];
++			   l2c5_mcu2_sa[i+7] <= l2c5_mcu2_sa[i+6];
 +       end
-+       for (int j = 0; j < L2C_MCU_B; j++) begin
-+           l2c5_mcu2_sa[j*8] <= l2c5_mcu2_sa[j*8] ^ eqed_spc5_mcu[j];
-+       end
-+       for (int j = 0; j < MCU_L2C_B; j++) begin
-+           mcu2_l2c5_sa[j*8] <= mcu2_l2c5_sa[j*8] ^ eqed_mcu2_l2c5[j];
-+       end
-+       mcu2_l2c5_sa[0] <= mcu2_l2c5_sa[567] ^ mcu2_l2c5_sa[565] ^ mcu2_l2c5_sa[561] ^ mcu2_l2c5_sa[559];
-+       for (int i = 1; i < MCU_L2C_SB_SIZE; i++) begin
-+           mcu2_l2c5_sa[i] <= mcu2_l2c5_sa[i-1];
++       for (int i = 0, int j = 0; i < MCU_L2C_SB_SIZE; i = i+8, j++) begin
++	       if (i == 0) begin
++		       mcu2_l2c5_sa[0] <= mcu2_l2c5_sa[567] ^ mcu2_l2c5_sa[565] ^ mcu2_l2c5_sa[561] ^ mcu2_l2c5_sa[537] ^ eqed_mcu2_l2c5[0];
++		   end else begin
++			   mcu2_l2c5_sa[i] <= mcu2_l2c5_sa[i-1] ^ eqed_mcu2_l2c5[j]; 
++		   end
++		       mcu2_l2c5_sa[i+1] <= mcu2_l2c5_sa[i];
++		       mcu2_l2c5_sa[i+2] <= mcu2_l2c5_sa[i+1];
++	           mcu2_l2c5_sa[i+3] <= mcu2_l2c5_sa[i+2];
++		       mcu2_l2c5_sa[i+4] <= mcu2_l2c5_sa[i+3];
++		       mcu2_l2c5_sa[i+5] <= mcu2_l2c5_sa[i+4];
++		       mcu2_l2c5_sa[i+6] <= mcu2_l2c5_sa[i+5];
++			   mcu2_l2c5_sa[i+7] <= mcu2_l2c5_sa[i+6];
 +       end
 +    end
 +end
 +
 +
 +always @(posedge clk) begin
-+    if (m_rst2) begin
++    if (m_rst) begin
 +       l2c5_mcu2_sa2 <= 1;
 +       mcu2_l2c5_sa2 <= 1;
 +    end else begin
-+       l2c5_mcu2_sa2[0] <= l2c5_mcu2_sa2[543] ^ l2c5_mcu2_sa2[541] ^ l2c5_mcu2_sa2[538] ^ l2c5_mcu2_sa2[537];
-+       for (int i = 1; i < L2C_MCU_SB_SIZE; i++) begin
-+           l2c5_mcu2_sa2[i] <= l2c5_mcu2_sa2[i-1];
++       for (int i = 0, int j = 0; i < L2C_MCU_SB_SIZE; i = i+8, j++) begin
++	       if (i == 0) begin
++		       l2c5_mcu2_sa2[0] <= l2c5_mcu2_sa2[543] ^ l2c5_mcu2_sa2[541] ^ l2c5_mcu2_sa2[538] ^ l2c5_mcu2_sa2[537] ^ eqed_l2c5_mcu2[0];
++		   end else begin
++			   l2c5_mcu2_sa2[i] <= l2c5_mcu2_sa2[i] ^ eqed_l2c5_mcu2[j]; 
++		   end
++		       l2c5_mcu2_sa2[i+1] <= l2c5_mcu2_sa2[i];
++		       l2c5_mcu2_sa2[i+2] <= l2c5_mcu2_sa2[i+1];
++	           l2c5_mcu2_sa2[i+3] <= l2c5_mcu2_sa2[i+2];
++		       l2c5_mcu2_sa2[i+4] <= l2c5_mcu2_sa2[i+3];
++		       l2c5_mcu2_sa2[i+5] <= l2c5_mcu2_sa2[i+4];
++		       l2c5_mcu2_sa2[i+6] <= l2c5_mcu2_sa2[i+5];
++			   l2c5_mcu2_sa2[i+7] <= l2c5_mcu2_sa2[i+6];
 +       end
-+       for (int j = 0; j < L2C_MCU_B; j++) begin
-+           l2c5_mcu2_sa2[j*8] <= l2c5_mcu2_sa2[j*8] ^ eqed_spc5_mcu[j];
-+       end
-+       mcu2_l2c5_sa2[0] <= mcu2_l2c5_sa2[567] ^ mcu2_l2c5_sa2[565] ^ mcu2_l2c5_sa2[561] ^ mcu2_l2c5_sa2[559];
-+       for (int i = 1; i < MCU_L2C_SB_SIZE; i++) begin
-+           mcu2_l2c5_sa2[i] <= mcu2_l2c5_sa2[i-1];
-+       end
-+       for (int j = 0; j < MCU_L2C_B; j++) begin
-+           mcu2_l2c5_sa2[j*8] <= mcu2_l2c5_sa2[j*8] ^ eqed_mcu2_l2c5[j];
++       for (int i = 0, int j = 0; i < MCU_L2C_SB_SIZE; i = i+8, j++) begin
++	       if (i == 0) begin
++		       mcu2_l2c5_sa2[0] <= mcu2_l2c5_sa2[567] ^ mcu2_l2c5_sa2[565] ^ mcu2_l2c5_sa2[561] ^ mcu2_l2c5_sa2[537] ^ eqed_mcu2_l2c5[0];
++		   end else begin
++			   mcu2_l2c5_sa2[i] <= mcu2_l2c5_sa2[i] ^ eqed_mcu2_l2c5[j]; 
++		   end
++		       mcu2_l2c5_sa2[i+1] <= mcu2_l2c5_sa2[i];
++		       mcu2_l2c5_sa2[i+2] <= mcu2_l2c5_sa2[i+1];
++	           mcu2_l2c5_sa2[i+3] <= mcu2_l2c5_sa2[i+2];
++		       mcu2_l2c5_sa2[i+4] <= mcu2_l2c5_sa2[i+3];
++		       mcu2_l2c5_sa2[i+5] <= mcu2_l2c5_sa2[i+4];
++		       mcu2_l2c5_sa2[i+6] <= mcu2_l2c5_sa2[i+5];
++			   mcu2_l2c5_sa2[i+7] <= mcu2_l2c5_sa2[i+6];
 +       end
 +    end
 +end
@@ -1275,42 +1882,70 @@
 +       l2c6_mcu3_sa <= 1;
 +       mcu3_l2c6_sa <= 1;
 +    end else begin
-+       l2c6_mcu3_sa[0] <= l2c6_mcu3_sa[543] ^ l2c6_mcu3_sa[541] ^ l2c6_mcu3_sa[538] ^ l2c6_mcu3_sa[537];
-+       for (int i = 1; i < L2C_MCU_SB_SIZE; i++) begin
-+           l2c6_mcu3_sa[i] <= l2c6_mcu3_sa[i-1];
++       for (int i = 0, int j = 0; i < L2C_MCU_SB_SIZE; i = i+8, j++) begin
++	       if (i == 0) begin
++		       l2c6_mcu3_sa[0] <= l2c6_mcu3_sa[543] ^ l2c6_mcu3_sa[541] ^ l2c6_mcu3_sa[538] ^ l2c6_mcu3_sa[537] ^ eqed_l2c6_mcu3[0];
++		   end else begin
++			   l2c6_mcu3_sa[i] <= l2c6_mcu3_sa[i-1] ^ eqed_l2c6_mcu3[j]; 
++		   end
++		       l2c6_mcu3_sa[i+1] <= l2c6_mcu3_sa[i];
++		       l2c6_mcu3_sa[i+2] <= l2c6_mcu3_sa[i+1];
++	           l2c6_mcu3_sa[i+3] <= l2c6_mcu3_sa[i+2];
++		       l2c6_mcu3_sa[i+4] <= l2c6_mcu3_sa[i+3];
++		       l2c6_mcu3_sa[i+5] <= l2c6_mcu3_sa[i+4];
++		       l2c6_mcu3_sa[i+6] <= l2c6_mcu3_sa[i+5];
++			   l2c6_mcu3_sa[i+7] <= l2c6_mcu3_sa[i+6];
 +       end
-+       for (int j = 0; j < L2C_MCU_B; j++) begin
-+           l2c6_mcu3_sa[j*8] <= l2c6_mcu3_sa[j*8] ^ eqed_spc6_mcu[j];
-+       end
-+       for (int j = 0; j < MCU_L2C_B; j++) begin
-+           mcu3_l2c6_sa[j*8] <= mcu3_l2c6_sa[j*8] ^ eqed_mcu3_l2c6[j];
-+       end
-+       mcu3_l2c6_sa[0] <= mcu3_l2c6_sa[567] ^ mcu3_l2c6_sa[565] ^ mcu3_l2c6_sa[561] ^ mcu3_l2c6_sa[559];
-+       for (int i = 1; i < MCU_L2C_SB_SIZE; i++) begin
-+           mcu3_l2c6_sa[i] <= mcu3_l2c6_sa[i-1];
++       for (int i = 0, int j = 0; i < MCU_L2C_SB_SIZE; i = i+8, j++) begin
++	       if (i == 0) begin
++		       mcu3_l2c6_sa[0] <= mcu3_l2c6_sa[567] ^ mcu3_l2c6_sa[565] ^ mcu3_l2c6_sa[561] ^ mcu3_l2c6_sa[537] ^ eqed_mcu3_l2c6[0];
++		   end else begin
++			   mcu3_l2c6_sa[i] <= mcu3_l2c6_sa[i-1] ^ eqed_mcu3_l2c6[j]; 
++		   end
++		       mcu3_l2c6_sa[i+1] <= mcu3_l2c6_sa[i];
++		       mcu3_l2c6_sa[i+2] <= mcu3_l2c6_sa[i+1];
++	           mcu3_l2c6_sa[i+3] <= mcu3_l2c6_sa[i+2];
++		       mcu3_l2c6_sa[i+4] <= mcu3_l2c6_sa[i+3];
++		       mcu3_l2c6_sa[i+5] <= mcu3_l2c6_sa[i+4];
++		       mcu3_l2c6_sa[i+6] <= mcu3_l2c6_sa[i+5];
++			   mcu3_l2c6_sa[i+7] <= mcu3_l2c6_sa[i+6];
 +       end
 +    end
 +end
 +
 +
 +always @(posedge clk) begin
-+    if (m_rst2) begin
++    if (m_rst) begin
 +       l2c6_mcu3_sa2 <= 1;
 +       mcu3_l2c6_sa2 <= 1;
 +    end else begin
-+       l2c6_mcu3_sa2[0] <= l2c6_mcu3_sa2[543] ^ l2c6_mcu3_sa2[541] ^ l2c6_mcu3_sa2[538] ^ l2c6_mcu3_sa2[537];
-+       for (int i = 1; i < L2C_MCU_SB_SIZE; i++) begin
-+           l2c6_mcu3_sa2[i] <= l2c6_mcu3_sa2[i-1];
++       for (int i = 0, int j = 0; i < L2C_MCU_SB_SIZE; i = i+8, j++) begin
++	       if (i == 0) begin
++		       l2c6_mcu3_sa2[0] <= l2c6_mcu3_sa2[543] ^ l2c6_mcu3_sa2[541] ^ l2c6_mcu3_sa2[538] ^ l2c6_mcu3_sa2[537] ^ eqed_l2c6_mcu3[0];
++		   end else begin
++			   l2c6_mcu3_sa2[i] <= l2c6_mcu3_sa2[i] ^ eqed_l2c6_mcu3[j]; 
++		   end
++		       l2c6_mcu3_sa2[i+1] <= l2c6_mcu3_sa2[i];
++		       l2c6_mcu3_sa2[i+2] <= l2c6_mcu3_sa2[i+1];
++	           l2c6_mcu3_sa2[i+3] <= l2c6_mcu3_sa2[i+2];
++		       l2c6_mcu3_sa2[i+4] <= l2c6_mcu3_sa2[i+3];
++		       l2c6_mcu3_sa2[i+5] <= l2c6_mcu3_sa2[i+4];
++		       l2c6_mcu3_sa2[i+6] <= l2c6_mcu3_sa2[i+5];
++			   l2c6_mcu3_sa2[i+7] <= l2c6_mcu3_sa2[i+6];
 +       end
-+       for (int j = 0; j < L2C_MCU_B; j++) begin
-+           l2c6_mcu3_sa2[j*8] <= l2c6_mcu3_sa2[j*8] ^ eqed_spc6_mcu[j];
-+       end
-+       mcu3_l2c6_sa2[0] <= mcu3_l2c6_sa2[567] ^ mcu3_l2c6_sa2[565] ^ mcu3_l2c6_sa2[561] ^ mcu3_l2c6_sa2[559];
-+       for (int i = 1; i < MCU_L2C_SB_SIZE; i++) begin
-+           mcu3_l2c6_sa2[i] <= mcu3_l2c6_sa2[i-1];
-+       end
-+       for (int j = 0; j < MCU_L2C_B; j++) begin
-+           mcu3_l2c6_sa2[j*8] <= mcu3_l2c6_sa2[j*8] ^ eqed_mcu3_l2c6[j];
++       for (int i = 0, int j = 0; i < MCU_L2C_SB_SIZE; i = i+8, j++) begin
++	       if (i == 0) begin
++		       mcu3_l2c6_sa2[0] <= mcu3_l2c6_sa2[567] ^ mcu3_l2c6_sa2[565] ^ mcu3_l2c6_sa2[561] ^ mcu3_l2c6_sa2[537] ^ eqed_mcu3_l2c6[0];
++		   end else begin
++			   mcu3_l2c6_sa2[i] <= mcu3_l2c6_sa2[i] ^ eqed_mcu3_l2c6[j]; 
++		   end
++		       mcu3_l2c6_sa2[i+1] <= mcu3_l2c6_sa2[i];
++		       mcu3_l2c6_sa2[i+2] <= mcu3_l2c6_sa2[i+1];
++	           mcu3_l2c6_sa2[i+3] <= mcu3_l2c6_sa2[i+2];
++		       mcu3_l2c6_sa2[i+4] <= mcu3_l2c6_sa2[i+3];
++		       mcu3_l2c6_sa2[i+5] <= mcu3_l2c6_sa2[i+4];
++		       mcu3_l2c6_sa2[i+6] <= mcu3_l2c6_sa2[i+5];
++			   mcu3_l2c6_sa2[i+7] <= mcu3_l2c6_sa2[i+6];
 +       end
 +    end
 +end
@@ -1320,45 +1955,75 @@
 +       l2c7_mcu3_sa <= 1;
 +       mcu3_l2c7_sa <= 1;
 +    end else begin
-+       l2c7_mcu3_sa[0] <= l2c7_mcu3_sa[543] ^ l2c7_mcu3_sa[541] ^ l2c7_mcu3_sa[538] ^ l2c7_mcu3_sa[537];
-+       for (int i = 1; i < L2C_MCU_SB_SIZE; i++) begin
-+           l2c7_mcu3_sa[i] <= l2c7_mcu3_sa[i-1];
++       for (int i = 0, int j = 0; i < L2C_MCU_SB_SIZE; i = i+8, j++) begin
++	       if (i == 0) begin
++		       l2c7_mcu3_sa[0] <= l2c7_mcu3_sa[543] ^ l2c7_mcu3_sa[541] ^ l2c7_mcu3_sa[538] ^ l2c7_mcu3_sa[537] ^ eqed_l2c7_mcu3[0];
++		   end else begin
++			   l2c7_mcu3_sa[i] <= l2c7_mcu3_sa[i-1] ^ eqed_l2c7_mcu3[j]; 
++		   end
++		       l2c7_mcu3_sa[i+1] <= l2c7_mcu3_sa[i];
++		       l2c7_mcu3_sa[i+2] <= l2c7_mcu3_sa[i+1];
++	           l2c7_mcu3_sa[i+3] <= l2c7_mcu3_sa[i+2];
++		       l2c7_mcu3_sa[i+4] <= l2c7_mcu3_sa[i+3];
++		       l2c7_mcu3_sa[i+5] <= l2c7_mcu3_sa[i+4];
++		       l2c7_mcu3_sa[i+6] <= l2c7_mcu3_sa[i+5];
++			   l2c7_mcu3_sa[i+7] <= l2c7_mcu3_sa[i+6];
 +       end
-+       for (int j = 0; j < L2C_MCU_B; j++) begin
-+           l2c7_mcu3_sa[j*8] <= l2c7_mcu3_sa[j*8] ^ eqed_spc7_mcu[j];
-+       end
-+       for (int j = 0; j < MCU_L2C_B; j++) begin
-+           mcu3_l2c7_sa[j*8] <= mcu3_l2c7_sa[j*8] ^ eqed_mcu3_l2c7[j];
-+       end
-+       mcu3_l2c7_sa[0] <= mcu3_l2c7_sa[567] ^ mcu3_l2c7_sa[565] ^ mcu3_l2c7_sa[561] ^ mcu3_l2c7_sa[559];
-+       for (int i = 1; i < MCU_L2C_SB_SIZE; i++) begin
-+           mcu3_l2c7_sa[i] <= mcu3_l2c7_sa[i-1];
++       for (int i = 0, int j = 0; i < MCU_L2C_SB_SIZE; i = i+8, j++) begin
++	       if (i == 0) begin
++		       mcu3_l2c7_sa[0] <= mcu3_l2c7_sa[567] ^ mcu3_l2c7_sa[565] ^ mcu3_l2c7_sa[561] ^ mcu3_l2c7_sa[537] ^ eqed_mcu3_l2c7[0];
++		   end else begin
++			   mcu3_l2c7_sa[i] <= mcu3_l2c7_sa[i-1] ^ eqed_mcu3_l2c7[j]; 
++		   end
++		       mcu3_l2c7_sa[i+1] <= mcu3_l2c7_sa[i];
++		       mcu3_l2c7_sa[i+2] <= mcu3_l2c7_sa[i+1];
++	           mcu3_l2c7_sa[i+3] <= mcu3_l2c7_sa[i+2];
++		       mcu3_l2c7_sa[i+4] <= mcu3_l2c7_sa[i+3];
++		       mcu3_l2c7_sa[i+5] <= mcu3_l2c7_sa[i+4];
++		       mcu3_l2c7_sa[i+6] <= mcu3_l2c7_sa[i+5];
++			   mcu3_l2c7_sa[i+7] <= mcu3_l2c7_sa[i+6];
 +       end
 +    end
 +end
 +
 +
 +always @(posedge clk) begin
-+    if (m_rst2) begin
++    if (m_rst) begin
 +       l2c7_mcu3_sa2 <= 1;
 +       mcu3_l2c7_sa2 <= 1;
 +    end else begin
-+       l2c7_mcu3_sa2[0] <= l2c7_mcu3_sa2[543] ^ l2c7_mcu3_sa2[541] ^ l2c7_mcu3_sa2[538] ^ l2c7_mcu3_sa2[537];
-+       for (int i = 1; i < L2C_MCU_SB_SIZE; i++) begin
-+           l2c7_mcu3_sa2[i] <= l2c7_mcu3_sa2[i-1];
++       for (int i = 0, int j = 0; i < L2C_MCU_SB_SIZE; i = i+8, j++) begin
++	       if (i == 0) begin
++		       l2c7_mcu3_sa2[0] <= l2c7_mcu3_sa2[543] ^ l2c7_mcu3_sa2[541] ^ l2c7_mcu3_sa2[538] ^ l2c7_mcu3_sa2[537] ^ eqed_l2c7_mcu3[0];
++		   end else begin
++			   l2c7_mcu3_sa2[i] <= l2c7_mcu3_sa2[i] ^ eqed_l2c7_mcu3[j]; 
++		   end
++		       l2c7_mcu3_sa2[i+1] <= l2c7_mcu3_sa2[i];
++		       l2c7_mcu3_sa2[i+2] <= l2c7_mcu3_sa2[i+1];
++	           l2c7_mcu3_sa2[i+3] <= l2c7_mcu3_sa2[i+2];
++		       l2c7_mcu3_sa2[i+4] <= l2c7_mcu3_sa2[i+3];
++		       l2c7_mcu3_sa2[i+5] <= l2c7_mcu3_sa2[i+4];
++		       l2c7_mcu3_sa2[i+6] <= l2c7_mcu3_sa2[i+5];
++			   l2c7_mcu3_sa2[i+7] <= l2c7_mcu3_sa2[i+6];
 +       end
-+       for (int j = 0; j < L2C_MCU_B; j++) begin
-+           l2c7_mcu3_sa2[j*8] <= l2c7_mcu3_sa2[j*8] ^ eqed_spc7_mcu[j];
-+       end
-+       mcu3_l2c7_sa2[0] <= mcu3_l2c7_sa2[567] ^ mcu3_l2c7_sa2[565] ^ mcu3_l2c7_sa2[561] ^ mcu3_l2c7_sa2[559];
-+       for (int i = 1; i < MCU_L2C_SB_SIZE; i++) begin
-+           mcu3_l2c7_sa2[i] <= mcu3_l2c7_sa2[i-1];
-+       end
-+       for (int j = 0; j < MCU_L2C_B; j++) begin
-+           mcu3_l2c7_sa2[j*8] <= mcu3_l2c7_sa2[j*8] ^ eqed_mcu3_l2c7[j];
++       for (int i = 0, int j = 0; i < MCU_L2C_SB_SIZE; i = i+8, j++) begin
++	       if (i == 0) begin
++		       mcu3_l2c7_sa2[0] <= mcu3_l2c7_sa2[567] ^ mcu3_l2c7_sa2[565] ^ mcu3_l2c7_sa2[561] ^ mcu3_l2c7_sa2[537] ^ eqed_mcu3_l2c7[0];
++		   end else begin
++			   mcu3_l2c7_sa2[i] <= mcu3_l2c7_sa2[i] ^ eqed_mcu3_l2c7[j]; 
++		   end
++		       mcu3_l2c7_sa2[i+1] <= mcu3_l2c7_sa2[i];
++		       mcu3_l2c7_sa2[i+2] <= mcu3_l2c7_sa2[i+1];
++	           mcu3_l2c7_sa2[i+3] <= mcu3_l2c7_sa2[i+2];
++		       mcu3_l2c7_sa2[i+4] <= mcu3_l2c7_sa2[i+3];
++		       mcu3_l2c7_sa2[i+5] <= mcu3_l2c7_sa2[i+4];
++		       mcu3_l2c7_sa2[i+6] <= mcu3_l2c7_sa2[i+5];
++			   mcu3_l2c7_sa2[i+7] <= mcu3_l2c7_sa2[i+6];
 +       end
 +    end
 +end
++
++
  
  
  spc spc0(
