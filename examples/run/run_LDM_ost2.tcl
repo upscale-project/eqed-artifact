@@ -3,11 +3,8 @@
 
 # Run script for the E-QED OpenSPARC T2 examples in the CAV'17 paper
 #
-# This script applies the necessary patches to:
-#             1. Analyzes the modules for Design Block localization
-#             2. Generate the RTL with muxes for FF analysis
-#             3. Find the list of FF candidates
-#             4. Apply NCC (Neighbor Consistency Checking) to reduce the list
+# This script applies the necessary patches to analyze the modules for 
+# Design Block localization
 #
 
 clear
