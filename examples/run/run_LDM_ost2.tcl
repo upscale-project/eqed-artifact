@@ -45,21 +45,21 @@ for module in l2c0 ccx; do
 
   printf "\nCheck module %s for consistency\n\n" "$module"
 
-  printf "Press any key to launch JasperGold\n"
-  read RES
+  printf "JasperGold will start in 5 seconds\n"
+  sleep 5s
 
   (set -x; jaspergold -batch -tcl jasper_ost2.tcl)
 
-  printf "\ngrep jgproject/jg.log for cover property ost2.C_check_%s\n\n" "$module"
+  printf "\ngrep jgproject/jg.log for cover property eqed_ost2.C_check_%s\n\n" "$module"
 
   printf "RESULT: "
 
-  if (grep -o 'The cover property "ost2.C_check_'"$module"'" was proven unreachable' jgproject/jg.log); then
+  if (grep -o 'The cover property "eqed_ost2.C_check_'"$module"'" was proven unreachable' jgproject/jg.log); then
 
     printf "\nConsistency Check for %s: FAILED\n\n" "$module"
     bug_module=$module
 
-  elif (grep -o 'The cover property "ost2.C_check_'"$module"'" was covered' jgproject/jg.log); then
+  elif (grep -o 'The cover property "eqed_ost2.C_check_'"$module"'" was covered' jgproject/jg.log); then
 
     printf "\nConsistency Check for %s: PASSED\n" "$module"
 
