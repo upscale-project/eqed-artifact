@@ -1,0 +1,17 @@
+--- eqed_ost2_l2c0_FF20.sv	2021-06-09 12:05:06.690056423 -0700
++++ eqed_ost2_l2c0_FF21.sv	2021-06-09 12:22:21.236439187 -0700
+@@ -8778,8 +8778,12 @@
+                              M_count == 12'h01b
+ 							 |->
+ 							 binary_sel != 15'h0944
+-							 );							 
+-
++							 );	
++						 
++M_candidate_20 : assume property (
++                             @(posedge clk)
++                             binary_sel == 15'h0000
++							 );	
+ 
+ 
+ 

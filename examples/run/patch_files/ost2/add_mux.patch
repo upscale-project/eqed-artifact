@@ -1,0 +1,36 @@
+--- cl_rtl_ext.v	2021-05-30 22:03:43.014018357 -0700
++++ cl_rtl_ext.v.with_mux	2021-06-09 12:27:09.918576041 -0700
+@@ -1581,7 +1581,7 @@
+ 
+ `ifdef FPGA
+ `else
+-module dff ( q, so, d, l1clk, si, siclk, soclk );
++module dff ( q, so, d, l1clk, si, siclk, soclk, eqed_s );
+ // RFM 05-14-2004
+ // Level sensitive in SCAN_MODE
+ // Edge triggered when not in SCAN_MODE
+@@ -1598,10 +1598,15 @@
+    input     [SIZE-1:0]    si;
+    input                   siclk;
+    input                   soclk;
++   input     [SIZE-1:0]    eqed_s;
+ 
+              reg       [SIZE-1:0] q;
+              wire      [SIZE-1:0] so;
+              wire      l1clk, siclk, soclk;
++             wire      [SIZE-1:0] eqed_d;
++
++         assign eqed_d[SIZE-1:0] = d ^ eqed_s[SIZE-1:0];
++
+ 
+         `ifdef SCAN_MODE
+ 
+@@ -1647,7 +1652,7 @@
+ 
+               always @(posedge l1clk)
+                begin
+-                if (!siclk && !soclk) q[SIZE-1:0] <=  d[SIZE-1:0];
++                if (!siclk && !soclk) q[SIZE-1:0] <= eqed_d[SIZE-1:0];
+                 else                  q[SIZE-1:0] <= {SIZE{1'bx}};
+                end
+         `endif
