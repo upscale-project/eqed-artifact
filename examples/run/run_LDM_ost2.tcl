@@ -47,7 +47,7 @@ for module in l2c0 ccx mcu0; do
   printf "JasperGold will start in 5 seconds\n"
   sleep 5s
 
-  (set -x; jaspergold -batch -tcl jasper_ost2.tcl)
+  (set -x; jaspergold -batch -tcl jasper_ost2_"$module".tcl)
 
   printf "\ngrep jgproject/jg.log for cover property eqed_ost2.C_check_%s\n\n" "$module"
 
