@@ -37,6 +37,8 @@ clkgen_l2b_cmp.v
 clkgen_l2d_cmp.v
 clkgen_spc_cmp.v
 clkgen_mcu_cmp.v
+clkgen_mcu_dr.v
+clkgen_mcu_io.v
 n2_clk_spc_cmp_cust.v
 n2_l2t_sp_28kb_cust.v
 n2_l2t_dp_32x128_cust.v
