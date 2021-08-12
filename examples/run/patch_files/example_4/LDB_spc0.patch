@@ -1,0 +1,348 @@
+--- eqed_ost2.sv	2021-08-11 16:47:07.423163235 -0700
++++ eqed_ost2_spc0_LDM.sv	2021-08-11 16:48:11.723409732 -0700
+@@ -4520,7 +4520,8 @@
+     && (tcu_spc_lbist_pgm == '0) 
+     && (tcu_spc_lbist_scan_in == '0) 
+     && (spc_revid_out[3:0] == '0) 
+-/*    && (spc0.cluster_arst_l == 1'b1)
++	/*
++    && (spc0.cluster_arst_l == 1'b1)
+     && (spc0.scan_in == 1'b0)
+     && (spc0.tcu_pce_ov == 1'b0)
+     && (spc0.tcu_clk_stop == 1'b0)
+@@ -4552,7 +4553,8 @@
+     && (spc0.tcu_spc_lbist_start    == 1'b0)
+     && (spc0.tcu_spc_lbist_scan_in  == 1'b0)
+     && (spc0.tcu_spc_lbist_pgm      == 1'b0)
+-    && (spc0.tcu_spc_test_mode      == 1'b0)*/
++    && (spc0.tcu_spc_test_mode      == 1'b0)
++	*/
+ 	);
+ 
+ 
+@@ -4580,6 +4582,167 @@
+ assign m_rst = (M_count == 11'h3FF) || eqed_rst;
+ assign m_rst2 = (M_count == 11'h7FF) || eqed_rst;
+ 
++// SPC i-cache fetch interface
++wire [303:0] eqed_spc0_ifu;
++wire [303:0] eqed_spc1_ifu;
++wire [303:0] eqed_spc2_ifu;
++wire [303:0] eqed_spc3_ifu;
++wire [303:0] eqed_spc4_ifu;
++wire [303:0] eqed_spc5_ifu;
++wire [303:0] eqed_spc6_ifu;
++wire [303:0] eqed_spc7_ifu;
++
++assign eqed_spc0_ifu = {spc0.ifu_buf0_inst0, spc0.ifu_buf0_inst1, spc0.ifu_buf0_inst2, spc0.ifu_buf0_inst3, spc0.ifu_buf0_inst4, spc0.ifu_buf0_inst5, spc0.ifu_buf0_inst6, spc0.ifu_buf0_inst7, spc0.ifu_buf0_excp0, spc0.ifu_buf0_excp1, spc0.ifu_buf0_excp2, spc0.ifu_buf0_excp3, spc0.ifu_buf0_excp4, spc0.ifu_buf0_excp5, spc0.ifu_buf0_excp6, spc0.ifu_buf0_excp7};
++assign eqed_spc1_ifu = {spc1.ifu_buf0_inst0, spc1.ifu_buf0_inst1, spc1.ifu_buf0_inst2, spc1.ifu_buf0_inst3, spc1.ifu_buf0_inst4, spc1.ifu_buf0_inst5, spc1.ifu_buf0_inst6, spc1.ifu_buf0_inst7, spc1.ifu_buf0_excp0, spc1.ifu_buf0_excp1, spc1.ifu_buf0_excp2, spc1.ifu_buf0_excp3, spc1.ifu_buf0_excp4, spc1.ifu_buf0_excp5, spc1.ifu_buf0_excp6, spc1.ifu_buf0_excp7};
++assign eqed_spc2_ifu = {spc2.ifu_buf0_inst0, spc2.ifu_buf0_inst1, spc2.ifu_buf0_inst2, spc2.ifu_buf0_inst3, spc2.ifu_buf0_inst4, spc2.ifu_buf0_inst5, spc2.ifu_buf0_inst6, spc2.ifu_buf0_inst7, spc2.ifu_buf0_excp0, spc2.ifu_buf0_excp1, spc2.ifu_buf0_excp2, spc2.ifu_buf0_excp3, spc2.ifu_buf0_excp4, spc2.ifu_buf0_excp5, spc2.ifu_buf0_excp6, spc2.ifu_buf0_excp7};
++assign eqed_spc3_ifu = {spc3.ifu_buf0_inst0, spc3.ifu_buf0_inst1, spc3.ifu_buf0_inst2, spc3.ifu_buf0_inst3, spc3.ifu_buf0_inst4, spc3.ifu_buf0_inst5, spc3.ifu_buf0_inst6, spc3.ifu_buf0_inst7, spc3.ifu_buf0_excp0, spc3.ifu_buf0_excp1, spc3.ifu_buf0_excp2, spc3.ifu_buf0_excp3, spc3.ifu_buf0_excp4, spc3.ifu_buf0_excp5, spc3.ifu_buf0_excp6, spc3.ifu_buf0_excp7};
++assign eqed_spc4_ifu = {spc4.ifu_buf0_inst0, spc4.ifu_buf0_inst1, spc4.ifu_buf0_inst2, spc4.ifu_buf0_inst3, spc4.ifu_buf0_inst4, spc4.ifu_buf0_inst5, spc4.ifu_buf0_inst6, spc4.ifu_buf0_inst7, spc4.ifu_buf0_excp0, spc4.ifu_buf0_excp1, spc4.ifu_buf0_excp2, spc4.ifu_buf0_excp3, spc4.ifu_buf0_excp4, spc4.ifu_buf0_excp5, spc4.ifu_buf0_excp6, spc4.ifu_buf0_excp7};
++assign eqed_spc5_ifu = {spc5.ifu_buf0_inst0, spc5.ifu_buf0_inst1, spc5.ifu_buf0_inst2, spc5.ifu_buf0_inst3, spc5.ifu_buf0_inst4, spc5.ifu_buf0_inst5, spc5.ifu_buf0_inst6, spc5.ifu_buf0_inst7, spc5.ifu_buf0_excp0, spc5.ifu_buf0_excp1, spc5.ifu_buf0_excp2, spc5.ifu_buf0_excp3, spc5.ifu_buf0_excp4, spc5.ifu_buf0_excp5, spc5.ifu_buf0_excp6, spc5.ifu_buf0_excp7};
++assign eqed_spc6_ifu = {spc6.ifu_buf0_inst0, spc6.ifu_buf0_inst1, spc6.ifu_buf0_inst2, spc6.ifu_buf0_inst3, spc6.ifu_buf0_inst4, spc6.ifu_buf0_inst5, spc6.ifu_buf0_inst6, spc6.ifu_buf0_inst7, spc6.ifu_buf0_excp0, spc6.ifu_buf0_excp1, spc6.ifu_buf0_excp2, spc6.ifu_buf0_excp3, spc6.ifu_buf0_excp4, spc6.ifu_buf0_excp5, spc6.ifu_buf0_excp6, spc6.ifu_buf0_excp7};
++assign eqed_spc7_ifu = {spc7.ifu_buf0_inst0, spc7.ifu_buf0_inst1, spc7.ifu_buf0_inst2, spc7.ifu_buf0_inst3, spc7.ifu_buf0_inst4, spc7.ifu_buf0_inst5, spc7.ifu_buf0_inst6, spc7.ifu_buf0_inst7, spc7.ifu_buf0_excp0, spc7.ifu_buf0_excp1, spc7.ifu_buf0_excp2, spc7.ifu_buf0_excp3, spc7.ifu_buf0_excp4, spc7.ifu_buf0_excp5, spc7.ifu_buf0_excp6, spc7.ifu_buf0_excp7};
++
++parameter SPC_IFU_B = 304;
++
++parameter SPC_IFU_SB_SIZE = 1215;
++
++// Declare the registers for the Signature Analyzer MISRs
++reg [SPC_IFU_SB_SIZE:0] spc0_ifu_sa;
++/*
++reg [SPC_IFU_SB_SIZE:0] spc1_ifu_sa;
++reg [SPC_IFU_SB_SIZE:0] spc2_ifu_sa;
++reg [SPC_IFU_SB_SIZE:0] spc3_ifu_sa;
++reg [SPC_IFU_SB_SIZE:0] spc4_ifu_sa;
++reg [SPC_IFU_SB_SIZE:0] spc5_ifu_sa;
++reg [SPC_IFU_SB_SIZE:0] spc6_ifu_sa;
++reg [SPC_IFU_SB_SIZE:0] spc7_ifu_sa;
++
++reg [SPC_IFU_SB_SIZE:0] spc0_ifu_sa2;
++reg [SPC_IFU_SB_SIZE:0] spc1_ifu_sa2;
++reg [SPC_IFU_SB_SIZE:0] spc2_ifu_sa2;
++reg [SPC_IFU_SB_SIZE:0] spc3_ifu_sa2;
++reg [SPC_IFU_SB_SIZE:0] spc4_ifu_sa2;
++reg [SPC_IFU_SB_SIZE:0] spc5_ifu_sa2;
++reg [SPC_IFU_SB_SIZE:0] spc6_ifu_sa2;
++reg [SPC_IFU_SB_SIZE:0] spc7_ifu_sa2;
++*/
++
++
++always @(posedge clk) begin
++    if (m_rst) begin
++       spc0_ifu_sa <= 1;
++    end else begin
++       for (int i = 0, int j = 0; i < SPC_IFU_SB_SIZE; i = i+4, j++) begin
++	       if (i == 0) begin
++		       spc0_ifu_sa[0] <= spc0_ifu_sa[1215] ^ spc0_ifu_sa[1214] ^ spc0_ifu_sa[1210] ^ spc0_ifu_sa[1209] ^ eqed_spc0_ifu[0];
++		   end else begin
++			   spc0_ifu_sa[i] <= spc0_ifu_sa[i-1] ^ eqed_spc0_ifu[j]; 
++		   end
++		       spc0_ifu_sa[i+1] <= spc0_ifu_sa[i];
++		       spc0_ifu_sa[i+2] <= spc0_ifu_sa[i+1];
++	           spc0_ifu_sa[i+3] <= spc0_ifu_sa[i+2];
++       end
++    end
++end
++
++/*
++always @(posedge clk) begin
++    if (m_rst) begin
++       spc0_ifu_sa2 <= 1;
++    end else begin
++       for (int i = 0, int j = 0; i < SPC_IFU_SB_SIZE; i = i+4, j++) begin
++	       if (i == 0) begin
++		       spc0_ifu_sa2[0] <= spc0_ifu_sa2[1215] ^ spc0_ifu_sa2[1214] ^ spc0_ifu_sa2[1210] ^ spc0_ifu_sa2[1209] ^ eqed_spc0_ifu[0];
++		   end else begin
++			   spc0_ifu_sa2[i] <= spc0_ifu_sa2[i] ^ eqed_spc0_ifu[j]; 
++		   end
++		       spc0_ifu_sa2[i+1] <= spc0_ifu_sa2[i];
++		       spc0_ifu_sa2[i+2] <= spc0_ifu_sa2[i+1];
++	           spc0_ifu_sa2[i+3] <= spc0_ifu_sa2[i+2];
++       end
++    end
++end
++*/
++
++// SPC data load interface
++wire [149:0] eqed_spc0_data;
++wire [149:0] eqed_spc1_data;
++wire [149:0] eqed_spc2_data;
++wire [149:0] eqed_spc3_data;
++wire [149:0] eqed_spc4_data;
++wire [149:0] eqed_spc5_data;
++wire [149:0] eqed_spc6_data;
++wire [149:0] eqed_spc7_data;
++
++assign eqed_spc0_data = {spc0.lsu_exu_ld_data_b, spc0.lsu_exu_ld_vld_w, spc0.lsu_exu_ld_b, spc0.lsu_exu_rd_m, spc0.lsu_exu_tid_m, spc0.lsu_fgu_fld_data_b, spc0.lsu_fgu_fld_vld_w, spc0.lsu_fgu_fld_b, spc0.lsu_fgu_fld_addr_b, spc0.lsu_fgu_fld_tid_b, spc0.lsu_fgu_fld_32b_b, spc0.lsu_fgu_fld_odd32b_b};
++assign eqed_spc1_data = {spc1.lsu_exu_ld_data_b, spc1.lsu_exu_ld_vld_w, spc1.lsu_exu_ld_b, spc1.lsu_exu_rd_m, spc1.lsu_exu_tid_m, spc1.lsu_fgu_fld_data_b, spc1.lsu_fgu_fld_vld_w, spc1.lsu_fgu_fld_b, spc1.lsu_fgu_fld_addr_b, spc1.lsu_fgu_fld_tid_b, spc1.lsu_fgu_fld_32b_b, spc1.lsu_fgu_fld_odd32b_b};
++assign eqed_spc2_data = {spc2.lsu_exu_ld_data_b, spc2.lsu_exu_ld_vld_w, spc2.lsu_exu_ld_b, spc2.lsu_exu_rd_m, spc2.lsu_exu_tid_m, spc2.lsu_fgu_fld_data_b, spc2.lsu_fgu_fld_vld_w, spc2.lsu_fgu_fld_b, spc2.lsu_fgu_fld_addr_b, spc2.lsu_fgu_fld_tid_b, spc2.lsu_fgu_fld_32b_b, spc2.lsu_fgu_fld_odd32b_b};
++assign eqed_spc3_data = {spc3.lsu_exu_ld_data_b, spc3.lsu_exu_ld_vld_w, spc3.lsu_exu_ld_b, spc3.lsu_exu_rd_m, spc3.lsu_exu_tid_m, spc3.lsu_fgu_fld_data_b, spc3.lsu_fgu_fld_vld_w, spc3.lsu_fgu_fld_b, spc3.lsu_fgu_fld_addr_b, spc3.lsu_fgu_fld_tid_b, spc3.lsu_fgu_fld_32b_b, spc3.lsu_fgu_fld_odd32b_b};
++assign eqed_spc4_data = {spc4.lsu_exu_ld_data_b, spc4.lsu_exu_ld_vld_w, spc4.lsu_exu_ld_b, spc4.lsu_exu_rd_m, spc4.lsu_exu_tid_m, spc4.lsu_fgu_fld_data_b, spc4.lsu_fgu_fld_vld_w, spc4.lsu_fgu_fld_b, spc4.lsu_fgu_fld_addr_b, spc4.lsu_fgu_fld_tid_b, spc4.lsu_fgu_fld_32b_b, spc4.lsu_fgu_fld_odd32b_b};
++assign eqed_spc5_data = {spc5.lsu_exu_ld_data_b, spc5.lsu_exu_ld_vld_w, spc5.lsu_exu_ld_b, spc5.lsu_exu_rd_m, spc5.lsu_exu_tid_m, spc5.lsu_fgu_fld_data_b, spc5.lsu_fgu_fld_vld_w, spc5.lsu_fgu_fld_b, spc5.lsu_fgu_fld_addr_b, spc5.lsu_fgu_fld_tid_b, spc5.lsu_fgu_fld_32b_b, spc5.lsu_fgu_fld_odd32b_b};
++assign eqed_spc6_data = {spc6.lsu_exu_ld_data_b, spc6.lsu_exu_ld_vld_w, spc6.lsu_exu_ld_b, spc6.lsu_exu_rd_m, spc6.lsu_exu_tid_m, spc6.lsu_fgu_fld_data_b, spc6.lsu_fgu_fld_vld_w, spc6.lsu_fgu_fld_b, spc6.lsu_fgu_fld_addr_b, spc6.lsu_fgu_fld_tid_b, spc6.lsu_fgu_fld_32b_b, spc6.lsu_fgu_fld_odd32b_b};
++assign eqed_spc7_data = {spc7.lsu_exu_ld_data_b, spc7.lsu_exu_ld_vld_w, spc7.lsu_exu_ld_b, spc7.lsu_exu_rd_m, spc7.lsu_exu_tid_m, spc7.lsu_fgu_fld_data_b, spc7.lsu_fgu_fld_vld_w, spc7.lsu_fgu_fld_b, spc7.lsu_fgu_fld_addr_b, spc7.lsu_fgu_fld_tid_b, spc7.lsu_fgu_fld_32b_b, spc7.lsu_fgu_fld_odd32b_b};
++
++parameter SPC_DATA_B = 149;
++
++parameter SPC_DATA_SB_SIZE = 599;
++
++// Declare the registers for the Signature Analyzer MISRs
++reg [SPC_DATA_SB_SIZE:0] spc0_data_sa;
++/*
++reg [SPC_DATA_SB_SIZE:0] spc1_data_sa;
++reg [SPC_DATA_SB_SIZE:0] spc2_data_sa;
++reg [SPC_DATA_SB_SIZE:0] spc3_data_sa;
++reg [SPC_DATA_SB_SIZE:0] spc4_data_sa;
++reg [SPC_DATA_SB_SIZE:0] spc5_data_sa;
++reg [SPC_DATA_SB_SIZE:0] spc6_data_sa;
++reg [SPC_DATA_SB_SIZE:0] spc7_data_sa;
++
++reg [SPC_DATA_SB_SIZE:0] spc0_data_sa2;
++reg [SPC_DATA_SB_SIZE:0] spc1_data_sa2;
++reg [SPC_DATA_SB_SIZE:0] spc2_data_sa2;
++reg [SPC_DATA_SB_SIZE:0] spc3_data_sa2;
++reg [SPC_DATA_SB_SIZE:0] spc4_data_sa2;
++reg [SPC_DATA_SB_SIZE:0] spc5_data_sa2;
++reg [SPC_DATA_SB_SIZE:0] spc6_data_sa2;
++reg [SPC_DATA_SB_SIZE:0] spc7_data_sa2;
++*/
++
++
++always @(posedge clk) begin
++    if (m_rst) begin
++       spc0_data_sa <= 1;
++    end else begin
++       for (int i = 0, int j = 0; i < SPC_DATA_SB_SIZE; i = i+8, j++) begin
++	       if (i == 0) begin
++		       spc0_data_sa[0] <= spc0_data_sa[599] ^ spc0_data_sa[598] ^ spc0_data_sa[595] ^ spc0_data_sa[591] ^ eqed_spc0_data[0];
++		   end else begin
++			   spc0_data_sa[i] <= spc0_data_sa[i-1] ^ eqed_spc0_data[j]; 
++		   end
++		       spc0_data_sa[i+1] <= spc0_data_sa[i];
++		       spc0_data_sa[i+2] <= spc0_data_sa[i+1];
++	           spc0_data_sa[i+3] <= spc0_data_sa[i+2];
++       end
++    end
++end
++
++/*
++always @(posedge clk) begin
++    if (m_rst) begin
++       spc0_data_sa2 <= 1;
++    end else begin
++       for (int i = 0, int j = 0; i < SPC_DATA_SB_SIZE; i = i+4, j++) begin
++	       if (i == 0) begin
++		       spc0_data_sa2[0] <= spc0_data_sa2[599] ^ spc0_data_sa2[598] ^ spc0_data_sa2[595] ^ spc0_data_sa2[591] ^ eqed_spc0_data[0];
++		   end else begin
++			   spc0_data_sa2[i] <= spc0_data_sa2[i] ^ eqed_spc0_data[j]; 
++		   end
++		       spc0_data_sa2[i+1] <= spc0_data_sa2[i];
++		       spc0_data_sa2[i+2] <= spc0_data_sa2[i+1];
++	           spc0_data_sa2[i+3] <= spc0_data_sa2[i+2];
++       end
++    end
++end
++*/
+ 
+ // SPC-CCX interface
+ wire [147:0] eqed_spc0_ccx;
+@@ -4626,6 +4789,7 @@
+ // Declare the registers for the Signature Analyzer MISRs
+ reg [SPC_CCX_SB_SIZE:0] spc0_ccx_sa;
+ reg [CCX_SPC_SB_SIZE:0] ccx_spc0_sa;
++/*
+ reg [SPC_CCX_SB_SIZE:0] spc1_ccx_sa;
+ reg [CCX_SPC_SB_SIZE:0] ccx_spc1_sa;
+ reg [SPC_CCX_SB_SIZE:0] spc2_ccx_sa;
+@@ -4658,6 +4822,7 @@
+ reg [CCX_SPC_SB_SIZE:0] ccx_spc6_sa2;
+ reg [SPC_CCX_SB_SIZE:0] spc7_ccx_sa2;
+ reg [CCX_SPC_SB_SIZE:0] ccx_spc7_sa2;
++*/
+ 
+ always @(posedge clk) begin
+     if (m_rst) begin
+@@ -4695,7 +4860,7 @@
+     end
+ end
+ 
+-
++/*
+ always @(posedge clk) begin
+     if (m_rst) begin
+        spc0_ccx_sa2 <= 1;
+@@ -4732,6 +4897,8 @@
+     end
+ end
+ 
++/*
++
+ always @(posedge clk) begin
+     if (m_rst) begin
+        spc1_ccx_sa <= 1;
+@@ -5907,13 +6074,23 @@
+     end
+ end
+ 
++*/
++
+ M_stable_eqed_reset : assume property (
+                              @(posedge clk)
+                              ##1 eqed_rst == 1'b0
+                              );
+ 
+ 
+-
++C_check_spc : cover property (
++                             @(posedge clk)
++                             eqed_rst == 1'b1
++                             ##534
++							 spc0_ifu_sa == 1216'had8af6c29c3b31324fb139e754c591bafebc87bece52a17fb702b2246863c2cc0284574758d743af18e67469b2e95e9d769a483df68f370ccb5902f575cb06b96445c032a0b40c93d8e38015b01ad676eb5a0f50c781a58aa9103cd1dffaabe40b7c1210929db92a5ee8052a18a3f64a4b9654f68ad304e28597e0434f12da52c7142719462dae93b28f753021c502f82ccc59f2934722bd
++							 && spc0_data_sa == 600'h717221c9351500c852e74b90cccdea1ff5656e181727461f52fda6980f5cd67d6fad12f5939ca760e5ccbbe789dfa28d8b52d1a357526198dc430660cc1ba3ec11524b3f1319b6263ceea6
++							 && spc0_ccx_sa == 1185'h2070b80000404242703032702830084830327200004002204040180242500000000000424200004000b07060783070307af07030780cb2f4aa3a8000050404000703072f070303078383030704220404027240080a0a48406042424272703030307030f0707270307030323038700484fc98771f2b0146a4c08f2703038703030727270301275230403070387070707154802c352
++							 && ccx_spc0_sa == 1241'h01e120e0e0002020e020c0200e1e0e02020e000200000200000000000000000e0e00020c0c0c00100c001c0c1000002000e1e0c0c0e0e0c0e0e0e020e0c020c0e1e0e020c0c020e0c02000e0e0e0200000e0e0e0e1e020e0c001000000002020c0e00020e020e00000c0c0e0c0e0e020002020e020e0e1e0c020c0e0c1c1c0c0c1c0c1c0c0c0c0c0e1e1e0c0c0e1e1c0c5a5f0d3f5a1c1fd7d7d79b
++							 );
+ 
+ 
+ // L2C-MCU interface
+@@ -5995,7 +6172,7 @@
+ reg [L2C_MCU_SB_SIZE:0] l2c7_mcu3_sa2;
+ reg [MCU_L2C_SB_SIZE:0] mcu3_l2c7_sa2;
+ 
+-
++/*
+ always @(posedge clk) begin
+     if (m_rst) begin
+        l2c0_mcu0_sa <= 1;
+@@ -6579,7 +6756,7 @@
+        end
+     end
+ end
+-
++*/
+ 
+ 
+ 
+@@ -6668,9 +6845,9 @@
+   .ncu_spc_l2_idx_hash_en(ncu_spc_l2_idx_hash_en)
+             );
+ 
+-*/
+ 
+-/* - 	    
++
++	    
+ assign spc0_tcu_scan_in[1:0] = 2'b0;
+ assign spc0_ncu_core_running_status[7:0] = 8'b0;
+ assign spc0_tcu_shscan_scan_in = 1'b0;
+@@ -6690,7 +6867,7 @@
+ assign spc0_efu_fuse_dxfer_en =1'b0;
+ assign spc0_efu_fuse_idata =1'b0;
+ assign spc0_efu_fuse_ixfer_en =1'b0;
+-*/
++
+ 
+ //________________________________________________________________
+ 
+@@ -7320,12 +7497,13 @@
+ 
+ //________________________________________________________________
+ 
+-
++*/
+ 
+ //// stagging flops
+ 
+ //assign
+ 
++/*
+ ccx ccx(
+ 
+   //  .gclk		    ( cmp_gclk_c2_ccx_right ), // cmp_gclk_c1_r[3]) , 
+@@ -7351,7 +7529,7 @@
+ 
+   .ccx_lstg_in              (
+                              {'0
+-							 /*dbg0_dbg1_l2b0_sio_ack_dest,
++							  dbg0_dbg1_l2b0_sio_ack_dest,
+                               dbg0_dbg1_l2b0_sio_ack_type,
+                               dbg0_dbg1_l2b0_sio_ctag_vld,
+                               dbg0_dbg1_l2b1_sio_ack_dest,
+@@ -7404,7 +7582,7 @@
+                               tcu_l2b2_mbist_start,
+                               l2b3_tcu_mbist_done,
+                               l2b3_tcu_mbist_fail,
+-                              tcu_l2b3_mbist_start*/
++                              tcu_l2b3_mbist_start
+                              }
+                             ),
+   .ccx_lstg_out             (
+@@ -7466,7 +7644,7 @@
+                             ),
+   .ccx_rstg_in              (
+                              {'0
+-							  /*5'b0,
++							  5'b0,
+                               sii_l2b5_ecc[ 6 : 5 ],
+                               4'b0,
+                               sii_l2b5_ecc[ 4 : 3 ],
+@@ -7514,7 +7692,7 @@
+                               4'b0,
+                               sii_l2b7_ecc[  4  :  3  ],
+                               4'b0,
+-                              sii_l2b7_ecc[  6  :  5  ]*/
++                              sii_l2b7_ecc[  6  :  5  ]
+                              }
+                             ),
+   .ccx_rstg_out             (
+@@ -11291,7 +11469,7 @@
+ 
+ //________________________________________________________________
+ 
+-
++*/
+ 
+ endmodule // eqed_ost2
+ 
