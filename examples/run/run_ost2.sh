@@ -37,31 +37,34 @@ printf "...add Signature Blocks...\n\n"
 
 bug_module=none
 
-for module in spc0 spc1 spc2 spc3 spc4 spc5 spc6 spc7 ccx l2c0 l2c1 l2c2 l2c3 l2c4 l2c5 l2c6 l2c7 mcu0 mcu1 mcu2 mcu3; do
+# for module in spc0 spc1 spc2 spc3 spc4 spc5 spc6 spc7 ccx l2c0 l2c1 l2c2 l2c3 l2c4 l2c5 l2c6 l2c7 mcu0 mcu1 mcu2 mcu3; do
+for module in l2c0 ccx mcu0; do
 
   printf "Patching original OpenSPARC T2 RTL to setup consistency check for module %s...\n" "$module"
 
-  (set -x; patch eqed_ost2.sv -i patch_files/example"$OST2_EX"/LDB_"$module".patch)
+  (set -x; patch eqed_ost2.sv -i patch_files/example_"$OST2_EX"/LDB_"$module".patch)
 
   printf "\nCheck module %s for consistency\n\n" "$module"
 
-  printf "Press any key to launch JasperGold\n"
-  read RES
+  printf "JasperGold will start in 5 seconds\n"
+  sleep 5s
 
-  (set -x; jaspergold -batch -tcl jasper_ost2.tcl)
+  (set -x; jaspergold -batch -tcl jasper_ost2_"$module".tcl)
 
-  printf "\ngrep jgproject/jg.log for cover property ost2.C_check_%s\n\n" "$module"
+  printf "\ngrep jgproject/jg.log for cover property eqed_ost2.C_check_%s\n\n" "$module"
 
   printf "RESULT: "
 
-  if (grep -o 'The cover property "ost2.C_check_'"$module"'" was proven unreachable' jgproject/jg.log); then
+  if (grep -o 'The cover property "eqed_ost2.C_check_'"$module"'" was proven unreachable' jgproject/jg.log); then
 
-    printf "\nConsistency Check for %s: FAILED\n\n" "$module"
+    printf "\nConsistency Check for %s: FAILED\n" "$module"
+    printf "\nConsistency Check for %s: FAILED\n" "$module" >> LDM_result.txt
     bug_module=$module
 
-  elif (grep -o 'The cover property "ost2.C_check_'"$module"'" was covered' jgproject/jg.log); then
+  elif (grep -o 'The cover property "eqed_ost2.C_check_'"$module"'" was covered' jgproject/jg.log); then
 
     printf "\nConsistency Check for %s: PASSED\n" "$module"
+    printf "\nConsistency Check for %s: PASSED\n" "$module" >> LDM_result.txt
 
   else
 
@@ -78,6 +81,7 @@ if [ "$bug_module" = none ]; then
   printf "\nAll modules passed the Consistency Check\n"
   exit 1
 else
+  cat LDM_result.txt
   printf "\nThe bug has been localized to module %s\n\n" "$bug_module"
 fi
 
@@ -87,19 +91,14 @@ read RES
 printf "Patching original OpenSPARC T2 RTL to add mux for each FF\n"
 
 (set -x;
-cp -r ../source/OST2_orig_rtl/* ../source/OST2_rtl_ff/.;
-patch -ruN -d ../source/OST2_rtl_ff < ../source/add_mux.patch)  
-
-printf "Updated flist to used RTL with muxes\n"
-
-(set -x;
-patch ost2.flist -i patch_files/ost2/flist.patch)
+cp cl_rtl_ext.v cl_rtl_ext.v.with_mux;
+patch cl_rtl_ext.v.with_mux patch_files/ost2/add_mux.patch)  
 
 
 printf "\nPatching the E-QED decoder controller, MISRs and the E-QED check property\n"
 
 (set -x;
-patch eqed_ost2.sv -i patch_files/example"$OST2_EX"/FF_search1.patch) 
+patch eqed_ost2.sv -i patch_files/example_"$OST2_EX"/FF_search1.patch) 
 
 
 printf "\nPress any key to start FF localization\n"
@@ -111,20 +110,20 @@ iteration=1
 
 while [ "$no_more_candidates" = 0 ]; do
 
-  (set -x; jaspergold -batch -tcl jasper_ost2.tcl)
+  (set -x; jaspergold -batch -tcl jasper_ff_ost2.tcl)
 
-  printf "\ngrep jgproject/jg.log for cover property ost2.C_check_%s_with_ff\n\n" "$bug_module"
+  printf "\ngrep jgproject/jg.log for cover property eqed_ost2.C_check_%s_with_ff\n\n" "$bug_module"
 
   printf "RESULT: "
 
-  if (grep -o 'The cover property "ost2.C_check_'"$bug_module"'_with_ff" was covered' jgproject/jg.log); then
+  if (grep -o 'The cover property "eqed_ost2.C_check_'"$bug_module"'_with_ff" was covered' jgproject/jg.log); then
 
     printf "\nProperty covered: Candidate found!\n\n "
     iteration=$((iteration+1))
     (set -x;
-    patch eqed_ost2.sv -i patch_files/paper_ex/FF_search"$iteration".patch)
+    patch eqed_ost2.sv -i patch_files/example_"$OST2_EX"/FF_search"$iteration".patch)
 
-  elif (grep -o 'The cover property "ost2.C_check_'"$bug_module"'_with_ff" was proven unreachable' jgproject/jg.log); then
+  elif (grep -o 'The cover property "eqed_ost2.C_check_'"$bug_module"'_with_ff" was proven unreachable' jgproject/jg.log); then
 
     no_more_candidates=1
     printf "Property unreachable: No more candidates exist.\n\n"
@@ -166,15 +165,15 @@ for ncc_i in $(seq 1 "$ncc_count"); do
   (set -x;
   jaspergold -batch -tcl jasper_ost2.tcl)
 
-  printf "\ngrep jgproject/jg.log for cover property ost2.C_check_ncc_%s\n\n" "$ncc_i"
+  printf "\ngrep jgproject/jg.log for cover property eqed_ost2.check_ncc_%s\n\n" "$ncc_i"
 
   printf "RESULT: "
 
-  if (grep -o 'The cover property "ost2.C_check_ncc_'"$ncc_i"'" was covered' jgproject/jg.log); then
+  if (grep -o 'The cover property "eqed_ost2.check_ncc_'"$ncc_i"'" was covered' jgproject/jg.log); then
 
     printf "Trace %s: PASSED NCC\n" "$ncc_i" >> ncc_output
 
-  elif (grep -o 'The cover property "ost2.C_check_ncc_'"$ncc_i"'" was proven unreachable' jgproject/jg.log); then
+  elif (grep -o 'The cover property "eqed_ost2.check_ncc_'"$ncc_i"'" was proven unreachable' jgproject/jg.log); then
 
     printf "Trace %s: FAILED NCC\n" "$ncc_i" >> ncc_output
 
